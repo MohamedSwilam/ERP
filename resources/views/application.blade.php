@@ -7,7 +7,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
 
-  <title>Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template</title>
+  <title>Tktbosherp</title>
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset(mix('css/app.css')) }}">
 
@@ -17,7 +17,7 @@
 </head>
 <body>
   <noscript>
-    <strong>We're sorry but Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    <strong>We're sorry but Tktbosherp doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
   </noscript>
   <div id="app">
   </div>
