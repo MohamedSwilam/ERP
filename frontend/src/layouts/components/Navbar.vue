@@ -30,7 +30,7 @@
         <template #button-content>
           <div class="d-sm-flex d-none user-nav">
             <p class="user-name font-weight-bolder mb-0">
-              John Doe
+              Mohamed Swilam
             </p>
             <span class="user-status">Admin</span>
           </div>
@@ -53,33 +53,6 @@
           <span>Profile</span>
         </b-dropdown-item>
 
-        <b-dropdown-item link-class="d-flex align-items-center">
-          <feather-icon
-            size="16"
-            icon="MailIcon"
-            class="mr-50"
-          />
-          <span>Inbox</span>
-        </b-dropdown-item>
-
-        <b-dropdown-item link-class="d-flex align-items-center">
-          <feather-icon
-            size="16"
-            icon="CheckSquareIcon"
-            class="mr-50"
-          />
-          <span>Task</span>
-        </b-dropdown-item>
-
-        <b-dropdown-item link-class="d-flex align-items-center">
-          <feather-icon
-            size="16"
-            icon="MessageSquareIcon"
-            class="mr-50"
-          />
-          <span>Chat</span>
-        </b-dropdown-item>
-
         <b-dropdown-divider />
 
         <b-dropdown-item link-class="d-flex align-items-center">
@@ -96,20 +69,10 @@
 </template>
 
 <script>
-import {
-  BLink, BNavbarNav, BNavItemDropdown, BDropdownItem, BDropdownDivider, BAvatar,
-} from 'bootstrap-vue'
 import DarkToggler from '@core/layouts/components/app-navbar/components/DarkToggler.vue'
 
 export default {
   components: {
-    BLink,
-    BNavbarNav,
-    BNavItemDropdown,
-    BDropdownItem,
-    BDropdownDivider,
-    BAvatar,
-
     // Navbar Components
     DarkToggler,
   },
