@@ -99,9 +99,12 @@ export default {
       isEventHandlerSidebarActive,
     }
   },
+  mounted() {
+    if ('create' in this.$route.query) { this.isEventHandlerSidebarActive = true }
+  },
 }
 </script>
 
 <style lang="scss">
-@import "@core/scss/vue/apps/calendar.scss";
+@import "~@core/scss/vue/apps/calendar.scss";
 </style>

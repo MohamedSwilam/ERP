@@ -77,10 +77,10 @@
               <!-- forgot password -->
               <b-form-group>
                 <div class="d-flex justify-content-between">
-                  <label for="login-password">Password</label>
-                  <b-link :to="{name:'auth-forgot-password-v2'}">
-                    <small>Forgot Password?</small>
-                  </b-link>
+                  <label>Password</label>
+                  <!--                  <b-link :to="{name:'auth-forgot-password-v2'}">-->
+                  <!--                    <small>Forgot Password?</small>-->
+                  <!--                  </b-link>-->
                 </div>
                 <validation-provider
                   #default="{ errors }"
@@ -112,23 +112,12 @@
                 </validation-provider>
               </b-form-group>
 
-              <!-- checkbox -->
-              <b-form-group>
-                <b-form-checkbox
-                  id="remember-me"
-                  v-model="status"
-                  name="checkbox-1"
-                >
-                  Remember Me
-                </b-form-checkbox>
-              </b-form-group>
-
               <!-- submit buttons -->
               <b-button
                 type="submit"
                 variant="primary"
                 block
-                @click="validationForm"
+                @click="login"
               >
                 Sign in
               </b-button>
@@ -156,7 +145,6 @@ export default {
   mixins: [togglePasswordVisibility],
   data() {
     return {
-      status: '',
       password: '',
       userEmail: '',
       sideImg: require('@/assets/images/pages/login-v2.svg'),
@@ -179,19 +167,32 @@ export default {
     },
   },
   methods: {
-    validationForm() {
-      this.$refs.loginValidation.validate().then(success => {
-        if (success) {
-          this.$toast({
-            component: ToastificationContent,
-            props: {
-              title: 'Form Submitted',
-              icon: 'CheckCircleIcon',
-              variant: 'success',
-            },
-          })
-          this.$router.push('/')
-        }
+    login() {
+      this.$store.dispatch('auth/login', {
+        username: this.userEmail,
+        password: this.password,
+        grant_type: 'password',
+        client_id: process.env.MIX_CLIENT_ID,
+        client_secret: process.env.MIX_CLIENT_SECRET,
+      }).then(() => {
+        this.$toast({
+          component: ToastificationContent,
+          props: {
+            title: 'Welcome Back👋',
+            icon: 'CheckCircleIcon',
+            variant: 'success',
+          },
+        })
+      }).catch(error => {
+        this.$toast({
+          component: ToastificationContent,
+          props: {
+            title: 'Oops..',
+            text: error.response.data.error,
+            icon: 'AlertCircleIcon',
+            variant: 'danger',
+          },
+        })
       })
     },
   },

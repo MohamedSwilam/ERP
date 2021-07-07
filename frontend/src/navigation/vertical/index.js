@@ -22,6 +22,18 @@ export default [
     permission: 'browse-customer',
   },
   {
+    title: 'Orders',
+    route: 'browse-orders',
+    icon: 'Edit3Icon',
+    permission: 'browse-order',
+  },
+  {
+    title: 'Events',
+    route: 'browse-events',
+    icon: 'ClipboardIcon',
+    permission: 'browse-event',
+  },
+  {
     title: 'Packages',
     route: 'browse-packages',
     icon: 'PackageIcon',
