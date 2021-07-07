@@ -31,7 +31,7 @@
                 align-h="center"
               >
                 <b-button
-                  v-if="can('store_user')"
+                  v-if="can('create_user')"
                   v-ripple.400="'rgba(255,255,255,0.15)'"
                   class="my-1"
                   size="sm"
@@ -92,7 +92,7 @@
                         <feather-icon icon="EyeIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('edit_user')"
+                        v-if="can('update_user')"
                         v-b-tooltip.hover.v-warning
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Edit User"
@@ -103,7 +103,7 @@
                         <feather-icon icon="EditIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('destroy_user')"
+                        v-if="can('delete_user')"
                         v-b-tooltip.hover.v-danger
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Delete User"
@@ -225,7 +225,7 @@ export default {
     },
   }),
   mounted() {
-    // this.browseUsers(this.users.meta.current_page)
+    this.browseUsers(this.users.meta.current_page)
   },
   methods: {
     browseUsers(page = 0) {

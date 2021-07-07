@@ -9,7 +9,7 @@
         block
         @click="$emit('update:isEventHandlerSidebarActive', true)"
       >
-        Add Order
+        New Record
       </b-button>
       <div class="mt-3">
         <h5 class="app-label section-label mb-1">

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        \Spatie\Permission\Models\Role::class => \App\Modules\Authorization\Domain\Policies\RolePolicy::class,
+        \Spatie\Permission\Models\Permission::class => \App\Modules\Authorization\Domain\Policies\PermissionPolicy::class,
+        \App\Modules\Authentication\Domain\Models\User::class => \App\Modules\Authentication\Domain\Policies\UserPolicy::class,
     ];
 
     /**
@@ -25,6 +28,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        if (! $this->app->routesAreCached()) {
+            Passport::routes();
+        }
     }
 }

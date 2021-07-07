@@ -48,9 +48,19 @@ export default function userCalendar() {
     end: '',
     allDay: false,
     url: '',
+    isEvent: false,
+    type: '',
+    instructor: '',
+    budget: 0,
+    num_of_attendance: 0,
+    expenses: 0,
+    revenue: 0,
+    target_segment: '',
+    customer_id: null,
     extendedProps: {
       calendar: '',
       guests: [],
+      customers: [],
       location: '',
       description: '',
     },
@@ -170,6 +180,7 @@ export default function userCalendar() {
   // addEvent
   // ------------------------------------------------
   const addEvent = eventData => {
+    console.log('CREATING ========> ', eventData)
     store.dispatch('calendar/addEvent', { event: eventData }).then(() => {
       // eslint-disable-next-line no-use-before-define
       refetchEvents()
@@ -230,6 +241,7 @@ export default function userCalendar() {
         calendars: selectedCalendars.value,
       })
       .then(response => {
+        console.log('+++++++++========> ', response.data)
         successCallback(response.data)
       })
       .catch(() => {
@@ -261,19 +273,19 @@ export default function userCalendar() {
       Enable dragging and resizing event
       ? Docs: https://fullcalendar.io/docs/editable
     */
-    editable: true,
+    editable: false,
 
     /*
       Enable resizing event from start
       ? Docs: https://fullcalendar.io/docs/eventResizableFromStart
     */
-    eventResizableFromStart: true,
+    eventResizableFromStart: false,
 
     /*
       Automatically scroll the scroll-containers during event drag-and-drop and date selecting
       ? Docs: https://fullcalendar.io/docs/dragScroll
     */
-    dragScroll: true,
+    dragScroll: false,
 
     /*
       Max number of events within a given day

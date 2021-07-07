@@ -114,7 +114,7 @@
                   style="text-align: center;"
                 >
                   <b-button
-                    v-if="can('edit_user')"
+                    v-if="can('update_user')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     variant="warning"
                     :to="`/users/${user.data.id}/edit`"
@@ -126,7 +126,7 @@
                     <span class="align-middle">Edit User</span>
                   </b-button>
                   <b-button
-                    v-if="can('destroy_user')"
+                    v-if="can('delete_user')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     class="ml-1"
                     :disabled="user.isLoadingDelete"
@@ -169,9 +169,9 @@ export default {
       isLoading: false,
       isLoadingDelete: false,
       data: {
-        id: 3,
-        name: 'Mohamed Swilam',
-        email: 'mohamed_swilam@hotmail.com',
+        id: null,
+        name: '',
+        email: '',
         createdAt: new Date().getTime(),
         updatedAt: new Date().getTime(),
         isDeleted: false,
@@ -179,7 +179,7 @@ export default {
     },
   }),
   mounted() {
-    // this.viewUser()
+    this.viewUser()
   },
   methods: {
     viewUser() {

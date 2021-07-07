@@ -215,130 +215,19 @@ export default {
     user: {
       isCardLoading: false,
       isLoading: false,
-      roles: [{
-        id: 1,
-        core: 1,
-        name: 'Super Admin',
-        guard_name: 'api',
-        created_at: '2021-05-30T00:01:01.000000Z',
-        updated_at: '2021-05-30T00:01:01.000000Z',
-        permissions: [{
-          id: 1, name: 'browse_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 1 },
-        }, {
-          id: 2, name: 'view_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 2 },
-        }, {
-          id: 3, name: 'assign_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 3 },
-        }, {
-          id: 4, name: 'remove_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 4 },
-        }, {
-          id: 5, name: 'create_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 5 },
-        }, {
-          id: 6, name: 'edit_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 6 },
-        }, {
-          id: 7, name: 'delete_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 7 },
-        }, {
-          id: 8, name: 'browse_permission', group: 'permission', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 8 },
-        }, {
-          id: 9, name: 'grant_permission', group: 'permission', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 9 },
-        }, {
-          id: 10, name: 'revoke_permission', group: 'permission', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 10 },
-        }, {
-          id: 16, name: 'browse_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 16 },
-        }, {
-          id: 17, name: 'view_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 17 },
-        }, {
-          id: 18, name: 'store_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 18 },
-        }, {
-          id: 19, name: 'edit_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 19 },
-        }, {
-          id: 20, name: 'destroy_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z', pivot: { role_id: 1, permission_id: 20 },
-        }, {
-          id: 54, name: 'browse_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z', pivot: { role_id: 1, permission_id: 54 },
-        }, {
-          id: 55, name: 'create_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z', pivot: { role_id: 1, permission_id: 55 },
-        }, {
-          id: 56, name: 'view_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z', pivot: { role_id: 1, permission_id: 56 },
-        }, {
-          id: 57, name: 'edit_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z', pivot: { role_id: 1, permission_id: 57 },
-        }, {
-          id: 58, name: 'delete_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z', pivot: { role_id: 1, permission_id: 58 },
-        }],
-      }, {
-        id: 3,
-        core: 0,
-        name: 'Accountant',
-        guard_name: 'api',
-        created_at: '2021-06-06T19:03:18.000000Z',
-        updated_at: '2021-06-06T19:03:18.000000Z',
-        permissions: [{
-          id: 54, name: 'browse_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z', pivot: { role_id: 1, permission_id: 54 },
-        }, {
-          id: 55, name: 'create_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z', pivot: { role_id: 1, permission_id: 55 },
-        }, {
-          id: 56, name: 'view_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z', pivot: { role_id: 1, permission_id: 56 },
-        }, {
-          id: 57, name: 'edit_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z', pivot: { role_id: 1, permission_id: 57 },
-        }, {
-          id: 58, name: 'delete_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z', pivot: { role_id: 1, permission_id: 58 },
-        }],
-      }],
-      permissions: {
-        role: [{
-          id: 1, name: 'browse_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 2, name: 'view_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 3, name: 'assign_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 4, name: 'remove_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 5, name: 'create_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 6, name: 'edit_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 7, name: 'delete_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }],
-        permission: [{
-          id: 8, name: 'browse_permission', group: 'permission', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 9, name: 'grant_permission', group: 'permission', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 10, name: 'revoke_permission', group: 'permission', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }],
-        user: [{
-          id: 16, name: 'browse_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 17, name: 'view_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 18, name: 'store_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 19, name: 'edit_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 20, name: 'destroy_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }],
-        invoice: [{
-          id: 54, name: 'browse_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z',
-        }, {
-          id: 55, name: 'create_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z',
-        }, {
-          id: 56, name: 'view_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z',
-        }, {
-          id: 57, name: 'edit_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z',
-        }, {
-          id: 58, name: 'delete_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z',
-        }],
-      },
+      roles: [],
+      permissions: {},
       selectedGroups: [],
       form: {
         roles: [],
         permissions: [],
-        name: 'Mohamed Swilam',
-        email: 'mohamed_swilam@hotmail.com',
+        name: '',
+        email: '',
       },
     },
   }),
   mounted() {
-    // this.browseRoles()
+    this.browseRoles()
   },
   methods: {
     browseRoles() {

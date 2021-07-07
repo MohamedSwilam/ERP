@@ -1,7 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+// eslint-disable-next-line import/no-cycle
+import AuthMixin from '@/mixins/auth'
+// eslint-disable-next-line import/no-cycle
+import store from '../store/index'
+import axios from '../libs/axios'
 
 Vue.use(VueRouter)
+
+function guard(to, from, next) {
+  if (store.state.auth.accessToken) {
+    // eslint-disable-next-line
+        axios.defaults.headers.common['Authorization'] = store.state.auth.accessToken
+    // eslint-disable-next-line
+        to.meta.permission === undefined || AuthMixin.methods.can(to.meta.permission)
+      ? next() : next('/error-403')
+  } else {
+    console.log(to)
+    next(`/login?to=${to.path}`)
+  }
+}
 
 const router = new VueRouter({
   mode: 'history',
@@ -13,6 +31,7 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
+      beforeEnter: guard,
       component: () => import('@/views/Home.vue'),
       meta: {
         pageTitle: 'Home',
@@ -45,7 +64,7 @@ const router = new VueRouter({
       path: '/users',
       name: 'browse-users',
       component: () => import('../views/user/Browse.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -59,22 +78,22 @@ const router = new VueRouter({
       path: '/users/create',
       name: 'create-user',
       component: () => import('../views/user/Create.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
           { text: 'User', to: '/users', active: false },
           { text: 'Create User', to: '/users/create', active: true },
         ],
-        pageTitle: 'Add User',
-        permission: 'store_user',
+        pageTitle: 'Create User',
+        permission: 'create_user',
       },
     },
     {
       path: '/users/:id',
       name: 'view-user',
       component: () => import('../views/user/View.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -89,7 +108,7 @@ const router = new VueRouter({
       path: '/users/:id/edit',
       name: 'edit-user',
       component: () => import('../views/user/Edit.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -98,11 +117,11 @@ const router = new VueRouter({
           { text: 'Edit', active: true },
         ],
         pageTitle: 'Edit User',
-        permission: 'edit_user',
+        permission: 'update_user',
       },
     },
     // =============================================================================
-    // Customer ROUTES
+    // CUSTOMER ROUTES
     // =============================================================================
     {
       path: '/customers',
@@ -162,6 +181,72 @@ const router = new VueRouter({
         ],
         pageTitle: 'Edit Customer',
         permission: 'edit_customer',
+      },
+    },
+
+    // =============================================================================
+    // ORDER ROUTES
+    // =============================================================================
+    {
+      path: '/orders',
+      name: 'browse-orders',
+      component: () => import('../views/order/Browse.vue'),
+      // beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Order', to: '/orders', active: true },
+        ],
+        pageTitle: 'Order',
+        permission: 'browse_order',
+      },
+    },
+    {
+      path: '/orders/:id',
+      name: 'view-order',
+      component: () => import('../views/order/View.vue'),
+      // beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Order', to: '/orders', active: false },
+          { text: 'View Order', to: '/orders/:id', active: true },
+        ],
+        pageTitle: 'View Order',
+        permission: 'view_order',
+      },
+    },
+
+    // =============================================================================
+    // EVENT ROUTES
+    // =============================================================================
+    {
+      path: '/events',
+      name: 'browse-events',
+      component: () => import('../views/event/Browse.vue'),
+      // beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Event', to: '/events', active: true },
+        ],
+        pageTitle: 'Event',
+        permission: 'browse_event',
+      },
+    },
+    {
+      path: '/events/:id',
+      name: 'view-event',
+      component: () => import('../views/event/View.vue'),
+      // beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Event', to: '/events', active: false },
+          { text: 'View Event', to: '/events/:id', active: true },
+        ],
+        pageTitle: 'View Event',
+        permission: 'view_event',
       },
     },
     // =============================================================================
@@ -234,7 +319,7 @@ const router = new VueRouter({
       path: '/roles',
       name: 'browse-roles',
       component: () => import('../views/settings/role/Browse.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -248,7 +333,7 @@ const router = new VueRouter({
       path: '/roles/create',
       name: 'create-role',
       component: () => import('../views/settings/role/Create.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -263,7 +348,7 @@ const router = new VueRouter({
       path: '/roles/:id',
       name: 'view-role',
       component: () => import('../views/settings/role/View.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -278,7 +363,7 @@ const router = new VueRouter({
       path: '/roles/:id/edit',
       name: 'edit-role',
       component: () => import('../views/settings/role/Edit.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
