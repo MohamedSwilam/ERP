@@ -198,7 +198,7 @@
                     v-if="can('edit_packages')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     variant="warning"
-                    :to="`/packagess/${packages.data.id}/edit`"
+                    :to="`/packages/${packages.data.id}/edit`"
                   >
                     <feather-icon
                       icon="EditIcon"
@@ -250,31 +250,21 @@ export default {
       isLoading: false,
       isLoadingDelete: false,
       data: {
-        id: 1,
-        title: 'Package Title A',
-        price: 200,
-        tax: 12,
+        id: null,
+        title: '',
+        price: 0,
+        tax: 0,
         membership: false,
-        description: 'Package description long text can be found here.',
-        rooms: [
-          {
-            name: 'Room A',
-          },
-          {
-            name: 'Room B',
-          },
-          {
-            name: 'Room C',
-          },
-        ],
-        createdAt: new Date().getTime(),
-        updatedAt: new Date().getTime(),
+        description: '',
+        rooms: [],
+        createdAt: '',
+        updatedAt: '',
         isDeleted: false,
       },
     },
   }),
   mounted() {
-    // this.viewPackage()
+    this.viewPackage()
   },
   methods: {
     viewPackage() {
@@ -316,7 +306,7 @@ export default {
                 position: 'bottom-right',
                 timeout: 5000,
               })
-              this.$router.push('/packagess')
+              this.$router.push('/packages')
             }).catch(error => {
               console.error(error)
               this.packages.isLoadingDelete = false

@@ -46,7 +46,7 @@
                 sm="10"
                 class="mb-1"
               >
-                {{ customer.data.customer_type.name }}
+                {{ customer.data.customer_type.type }}
               </b-col>
               <b-col
                 cols="4"
@@ -241,24 +241,24 @@ export default {
       isLoading: false,
       isLoadingDelete: false,
       data: {
-        id: 3,
-        name: 'Mohamed Swilam',
-        email: 'mohamed_swilam@hotmail.com',
-        phone: '+201096436702',
-        address: 'My Address Here',
-        customer_type_id: 1,
+        id: null,
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        customer_type_id: null,
         customer_type: {
-          name: 'Type 1',
+          type: '',
         },
-        date_of_birth: new Date().getTime(),
-        createdAt: new Date().getTime(),
-        updatedAt: new Date().getTime(),
+        date_of_birth: '',
+        createdAt: '',
+        updatedAt: '',
         isDeleted: false,
       },
     },
   }),
   mounted() {
-    // this.viewCustomer()
+    this.viewCustomer()
   },
   methods: {
     viewCustomer() {

@@ -127,7 +127,7 @@ const router = new VueRouter({
       path: '/customers',
       name: 'browse-customers',
       component: () => import('../views/customer/Browse.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -141,7 +141,7 @@ const router = new VueRouter({
       path: '/customers/create',
       name: 'create-customer',
       component: () => import('../views/customer/Create.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -156,7 +156,7 @@ const router = new VueRouter({
       path: '/customers/:id',
       name: 'view-customer',
       component: () => import('../views/customer/View.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -171,7 +171,7 @@ const router = new VueRouter({
       path: '/customers/:id/edit',
       name: 'edit-customer',
       component: () => import('../views/customer/Edit.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -256,7 +256,7 @@ const router = new VueRouter({
       path: '/packages',
       name: 'browse-packages',
       component: () => import('../views/package/Browse.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -270,7 +270,7 @@ const router = new VueRouter({
       path: '/packages/create',
       name: 'create-package',
       component: () => import('../views/package/Create.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -285,7 +285,7 @@ const router = new VueRouter({
       path: '/packages/:id',
       name: 'view-package',
       component: () => import('../views/package/View.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -300,7 +300,7 @@ const router = new VueRouter({
       path: '/packages/:id/edit',
       name: 'edit-package',
       component: () => import('../views/package/Edit.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },

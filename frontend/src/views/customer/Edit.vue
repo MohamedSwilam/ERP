@@ -68,7 +68,7 @@
                             </b-input-group-prepend>
                             <b-form-input
                               id="name"
-                              v-model="customer.form.customer_type_id"
+                              v-model="customer.form.name"
                               :state="errors.length > 0 ? false:null"
                               placeholder="Name"
                             />
@@ -124,6 +124,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="Phone"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
@@ -154,6 +155,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="Birth Date"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
@@ -185,6 +187,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="National ID"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
@@ -215,6 +218,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="Address"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
@@ -260,7 +264,6 @@
                           </b-button>
                           <b-button
                             v-ripple.400="'rgba(186, 191, 199, 0.15)'"
-                            type="reset"
                             variant="warning"
                           >
                             <feather-icon
@@ -296,12 +299,7 @@ export default {
     customer: {
       isCardLoading: false,
       isLoading: false,
-      customer_types: [
-        { value: null, text: 'Select customer type' },
-        { value: 'Type 1', text: 'Type 1' },
-        { value: 'Type 2', text: 'Type 2' },
-        { value: 'Type 3', text: 'Type 3' },
-      ],
+      customer_types: [],
       form: {
         name: '',
         email: '',
@@ -314,12 +312,47 @@ export default {
     },
   }),
   mounted() {
-    // this.browseRoles()
+    this.browseCustomerTypes()
   },
   methods: {
+    browseCustomerTypes() {
+      this.customer.isCardLoading = true
+      this.$store.dispatch('seed/browseCustomerTypes', '')
+        .then(response => {
+          this.customer.customer_types = this.reformatCustomerTypesData(response.data.data)
+          this.viewCustomer()
+        }).catch(error => {
+          console.error(error)
+          this.customer.isCardLoading = false
+        })
+    },
+
+    reformatCustomerTypesData(customerTypes) {
+      const reformatted = [{ value: null, text: 'Select customer type' }]
+      customerTypes.forEach(customerType => {
+        reformatted.push({ value: customerType.id, text: customerType.type })
+      })
+      return reformatted
+    },
+
+    viewCustomer() {
+      this.customer.isCardLoading = true
+      this.$store.dispatch('customer/view', this.$route.params.id).then(response => {
+        this.customer.form = response.data.data
+        this.customer.isCardLoading = false
+      }).catch(error => {
+        console.error(error)
+        this.customer.isCardLoading = false
+      })
+    },
+
     editCustomer() {
       this.customer.isLoading = true
-      this.$store.dispatch('customer/edit', this.customer.form).then(response => {
+      this.packages.form.rooms = this.packages.selectedRooms.map(room => (room.value))
+      this.$store.dispatch('customer/update', {
+        id: this.$route.params.id,
+        data: this.customer.form,
+      }).then(response => {
         this.customer.isLoading = false
         this.$toast({
           component: ToastificationContent,
@@ -341,10 +374,7 @@ export default {
       })
     },
     reset() {
-      this.customer.form.name = ''
-      this.customer.form.email = ''
-      this.customer.form.password = ''
-      this.customer.form.password_confirmation = ''
+      this.viewCustomer()
     },
   },
 }

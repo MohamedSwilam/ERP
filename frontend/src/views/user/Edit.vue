@@ -252,6 +252,7 @@ export default {
     groupPermissions(permissions) {
       const groups = {}
       permissions.forEach(permission => {
+        // eslint-disable-next-line no-prototype-builtins
         if (groups.hasOwnProperty(permission.group)) groups[permission.group].push(permission)
         else groups[permission.group] = [permission]
       })
@@ -307,7 +308,7 @@ export default {
         response.data.data.permissions.forEach(permission => {
           this.user.form.permissions.push(permission.name)
         })
-        this.updatePermissionsCheckboxes()
+        this.updatePermissionGroupsCheckboxes()
         this.user.isCardLoading = false
       }).catch(error => {
         console.error(error)
@@ -338,6 +339,8 @@ export default {
       })
     },
     reset() {
+      this.user.form.roles = []
+      this.user.form.permissions = []
       this.viewUser()
     },
   },

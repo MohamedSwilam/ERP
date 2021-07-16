@@ -1,4 +1,6 @@
 import { $themeBreakpoints } from '@themeConfig'
+// eslint-disable-next-line import/no-cycle
+import router from '@/router'
 
 export default {
   namespaced: true,
@@ -24,5 +26,19 @@ export default {
       state.shallShowOverlay = val !== undefined ? val : !state.shallShowOverlay
     },
   },
-  actions: {},
+  actions: {
+  // eslint-disable-next-line no-unused-vars
+    async handleError({ commit }, payload) {
+      switch (payload.error.response.status) {
+        case 401:
+          await router.push('/error-403')
+          break
+        case 403:
+          await router.push('/error-403')
+          break
+        default:
+          payload.reject(payload.error)
+      }
+    },
+  },
 }

@@ -124,6 +124,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="Phone"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
@@ -154,6 +155,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="Birth Date"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
@@ -185,6 +187,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="National Id"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
@@ -215,6 +218,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="Address"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
@@ -297,12 +301,7 @@ export default {
     customer: {
       isCardLoading: false,
       isLoading: false,
-      customer_types: [
-        { value: null, text: 'Select customer type' },
-        { value: 'Type 1', text: 'Type 1' },
-        { value: 'Type 2', text: 'Type 2' },
-        { value: 'Type 3', text: 'Type 3' },
-      ],
+      customer_types: [],
       form: {
         name: '',
         email: '',
@@ -315,9 +314,29 @@ export default {
     },
   }),
   mounted() {
-    // this.browseRoles()
+    this.browseCustomerTypes()
   },
   methods: {
+    browseCustomerTypes() {
+      this.customer.isCardLoading = true
+      this.$store.dispatch('seed/browseCustomerTypes', '')
+        .then(response => {
+          this.customer.customer_types = this.reformatCustomerTypesData(response.data.data)
+          this.customer.isCardLoading = false
+        }).catch(error => {
+          console.error(error)
+          this.customer.isCardLoading = false
+        })
+    },
+
+    reformatCustomerTypesData(customerTypes) {
+      const reformatted = [{ value: null, text: 'Select customer type' }]
+      customerTypes.forEach(customerType => {
+        reformatted.push({ value: customerType.id, text: customerType.type })
+      })
+      return reformatted
+    },
+
     createCustomer() {
       this.customer.isLoading = true
       this.$store.dispatch('customer/create', this.customer.form).then(response => {

@@ -148,52 +148,7 @@ export default {
   },
   data: () => ({
     role: {
-      permissions: {
-        role: [{
-          id: 1, name: 'browse_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 2, name: 'view_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 3, name: 'assign_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 4, name: 'remove_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 5, name: 'create_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 6, name: 'edit_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 7, name: 'delete_role', group: 'role', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }],
-        permission: [{
-          id: 8, name: 'browse_permission', group: 'permission', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 9, name: 'grant_permission', group: 'permission', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 10, name: 'revoke_permission', group: 'permission', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }],
-        user: [{
-          id: 16, name: 'browse_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 17, name: 'view_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 18, name: 'store_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 19, name: 'edit_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }, {
-          id: 20, name: 'destroy_user', group: 'user', guard_name: 'api', created_at: '2021-05-30T00:01:00.000000Z', updated_at: '2021-05-30T00:01:00.000000Z',
-        }],
-        invoice: [{
-          id: 54, name: 'browse_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z',
-        }, {
-          id: 55, name: 'create_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z',
-        }, {
-          id: 56, name: 'view_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z',
-        }, {
-          id: 57, name: 'edit_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z',
-        }, {
-          id: 58, name: 'delete_invoice', group: 'invoice', guard_name: 'api', created_at: '2021-05-30T00:01:01.000000Z', updated_at: '2021-05-30T00:01:01.000000Z',
-        }],
-      },
+      permissions: {},
       selectedGroups: [],
       isCardLoading: false,
       isLoading: false,
@@ -204,7 +159,7 @@ export default {
     },
   }),
   mounted() {
-    // this.browsePermissions()
+    this.browsePermissions()
   },
   methods: {
     browsePermissions() {
@@ -220,6 +175,7 @@ export default {
     groupPermissions(permissions) {
       const groups = {}
       permissions.forEach(permission => {
+        // eslint-disable-next-line no-prototype-builtins
         if (groups.hasOwnProperty(permission.group)) groups[permission.group].push(permission)
         else groups[permission.group] = [permission]
       })

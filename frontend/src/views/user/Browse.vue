@@ -197,23 +197,7 @@ export default {
         { key: 'created_at', label: 'Created At' },
         'Action',
       ],
-      data: [
-        {
-          name: 'Ahmed Yousry',
-          email: 'ahmed.yousry@thktbosherp.com',
-          created_at: new Date().getTime(),
-        },
-        {
-          name: 'Helmy Mohamed',
-          email: 'helmy_ahmed@thktbosherp.com',
-          created_at: new Date().getTime(),
-        },
-        {
-          name: 'Mohamed Swilam',
-          email: 'mohamed_swilam@thktbosherp.com',
-          created_at: new Date().getTime(),
-        },
-      ],
+      data: [],
       meta: {
         count: 0,
         current_page: 1,
