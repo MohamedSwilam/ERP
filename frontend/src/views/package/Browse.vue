@@ -31,7 +31,7 @@
                 align-h="center"
               >
                 <b-button
-                  v-if="can('store_package')"
+                  v-if="can('create_package')"
                   v-ripple.400="'rgba(255,255,255,0.15)'"
                   class="my-1"
                   size="sm"
@@ -97,7 +97,7 @@
                         <feather-icon icon="EyeIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('edit_package')"
+                        v-if="can('update_package')"
                         v-b-tooltip.hover.v-warning
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Edit Package"
@@ -204,29 +204,7 @@ export default {
         { key: 'created_at', label: 'Created At' },
         'Action',
       ],
-      data: [
-        {
-          title: 'Package Title A',
-          price: 200,
-          tax: 12,
-          membership: false,
-          created_at: new Date().getTime(),
-        },
-        {
-          title: 'Package Title B',
-          price: 400,
-          tax: 12,
-          membership: true,
-          created_at: new Date().getTime(),
-        },
-        {
-          title: 'Package Title C',
-          price: 600,
-          tax: 12,
-          membership: false,
-          created_at: new Date().getTime(),
-        },
-      ],
+      data: [],
       meta: {
         count: 0,
         current_page: 1,
@@ -238,12 +216,12 @@ export default {
     },
   }),
   mounted() {
-    // this.browsePackages(this.packages.meta.current_page)
+    this.browsePackages(this.packages.meta.current_page)
   },
   methods: {
     browsePackages(page = 0) {
       this.packages.isLoading = true
-      this.$store.dispatch('package/browse', `?paginate=${this.packages.recordsPerPage}&page=${page}&filter[search]=${this.packages.search}`).then(response => {
+      this.$store.dispatch('packages/browse', `?paginate=${this.packages.recordsPerPage}&page=${page}&filter[search]=${this.packages.search}`).then(response => {
         this.packages.data = response.data.data
         this.packages.meta = response.data.meta.pagination
         this.packages.isLoading = false
@@ -264,7 +242,7 @@ export default {
         centered: true,
       }).then(confirmed => {
         if (confirmed) {
-          this.$store.dispatch('package/delete', data.item.id).then(response => {
+          this.$store.dispatch('packages/delete', data.item.id).then(response => {
             this.packages.data = this.packages.data.filter(packageDetails => packageDetails.id !== data.item.id)
             this.$toast({
               component: ToastificationContent,

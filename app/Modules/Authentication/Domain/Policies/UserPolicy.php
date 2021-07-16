@@ -24,7 +24,7 @@ class UserPolicy
         return $user->hasPermissionTo('browse_user');
     }
 
-    public function view(User $user, User $model): bool
+    public function view(User $user): bool
     {
         return $user->hasPermissionTo('view_user');
     }

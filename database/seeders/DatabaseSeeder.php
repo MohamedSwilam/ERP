@@ -16,5 +16,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         (new RolesAndPermissionsSeeder())->run();
         (new UsersTableSeeder())->run();
+        (new CustomerTypesTableSeeder())->run();
+        (new RoomsTableSeeder())->run();
     }
 }

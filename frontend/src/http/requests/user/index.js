@@ -21,8 +21,4 @@ export default {
   delete(id) {
     return axios.delete(`/api/users/${id}`)
   },
-
-  browseStats() {
-    return axios.get('/api/statistics')
-  },
 }

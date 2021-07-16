@@ -30,17 +30,14 @@
         <template #button-content>
           <div class="d-sm-flex d-none user-nav">
             <p class="user-name font-weight-bolder mb-0">
-              Mohamed Swilam
+              {{ fullName }}
             </p>
-            <span class="user-status">Admin</span>
+            <span class="user-status">{{ email }}</span>
           </div>
           <b-avatar
             size="40"
             variant="light-primary"
-            badge
-            :src="require('@/assets/images/avatars/13-small.png')"
-            class="badge-minimal"
-            badge-variant="success"
+            :src="require('@/assets/images/avatars/default.png')"
           />
         </template>
 
@@ -55,7 +52,10 @@
 
         <b-dropdown-divider />
 
-        <b-dropdown-item link-class="d-flex align-items-center">
+        <b-dropdown-item
+          link-class="d-flex align-items-center"
+          @click="logout"
+        >
           <feather-icon
             size="16"
             icon="LogOutIcon"
@@ -80,6 +80,19 @@ export default {
     toggleVerticalMenuActive: {
       type: Function,
       default: () => {},
+    },
+  },
+  computed: {
+    fullName() {
+      return JSON.parse(localStorage.getItem('vuex')).auth.user ? `${JSON.parse(localStorage.getItem('vuex')).auth.user.name}` : ''
+    },
+    email() {
+      return JSON.parse(localStorage.getItem('vuex')).auth.user ? JSON.parse(localStorage.getItem('vuex')).auth.user.email : ''
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('auth/logout')
     },
   },
 }

@@ -21,4 +21,18 @@ return [
         'update_user',
         'delete_user',
     ],
+    'customer' => [
+        'browse_customer',
+        'view_customer',
+        'create_customer',
+        'update_customer',
+        'delete_customer',
+    ],
+    'package' => [
+        'browse_package',
+        'view_package',
+        'create_package',
+        'update_package',
+        'delete_package',
+    ],
 ];

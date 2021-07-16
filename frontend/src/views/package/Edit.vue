@@ -31,7 +31,7 @@
                           vid="packages_rooms"
                         >
                           <v-select
-                            v-model="packages.form.package_rooms"
+                            v-model="packages.selectedRooms"
                             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                             multiple
                             :options="packages.package_rooms"
@@ -114,6 +114,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="Price"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
@@ -145,6 +146,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="Tax"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
@@ -153,7 +155,7 @@
                             </b-input-group-prepend>
                             <b-form-input
                               v-model="packages.form.tax"
-                              type="tax"
+                              type="number"
                               :state="errors.length > 0 ? false:null"
                               placeholder="Tax"
                             />
@@ -251,29 +253,57 @@ export default {
     packages: {
       isCardLoading: false,
       isLoading: false,
-      package_rooms: [
-        { value: null, text: 'Select package rooms' },
-        { value: 'Room 1', text: 'Room 1' },
-        { value: 'Room 2', text: 'Room 2' },
-        { value: 'Room 3', text: 'Room 3' },
-      ],
+      package_rooms: [],
+      selectedRooms: [],
       form: {
         title: '',
         description: '',
         membership: false,
         price: 0,
         tax: 0,
-        package_rooms: [],
+        rooms: [],
       },
     },
   }),
   mounted() {
-    // this.browseRoles()
+    this.browseRooms()
   },
   methods: {
+    browseRooms() {
+      this.packages.isCardLoading = true
+      this.$store.dispatch('seed/browseRooms', '')
+        .then(response => {
+          this.packages.package_rooms = this.reformatRoomsData(response.data.data)
+          this.viewPackage()
+        }).catch(error => {
+          console.error(error)
+          this.packages.isCardLoading = false
+        })
+    },
+
+    reformatRoomsData(rooms) {
+      return rooms.map(room => ({ value: room.id, text: room.name }))
+    },
+
+    viewPackage() {
+      this.packages.isCardLoading = true
+      this.$store.dispatch('packages/view', this.$route.params.id).then(response => {
+        this.packages.form = response.data.data
+        this.packages.selectedRooms = response.data.data.rooms.map(room => ({ value: room.id, text: room.name }))
+        this.packages.isCardLoading = false
+      }).catch(error => {
+        console.error(error)
+        this.packages.isCardLoading = false
+      })
+    },
+
     editPackage() {
       this.packages.isLoading = true
-      this.$store.dispatch('packages/edit', this.packages.form).then(response => {
+      this.packages.form.rooms = this.packages.selectedRooms.map(room => (room.value))
+      this.$store.dispatch('packages/update', {
+        id: this.$route.params.id,
+        data: this.packages.form,
+      }).then(response => {
         this.packages.isLoading = false
         this.$toast({
           component: ToastificationContent,
@@ -288,7 +318,7 @@ export default {
           position: 'bottom-right',
           timeout: 5000,
         })
-        this.$router.push(`/packagess/${response.data.data.id}`)
+        this.$router.push(`/packages/${response.data.data.id}`)
       }).catch(error => {
         this.$refs.editPackageForm.setErrors(error.response.data.errors)
         this.packages.isLoading = false

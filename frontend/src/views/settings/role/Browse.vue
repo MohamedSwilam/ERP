@@ -188,20 +188,7 @@ export default {
         { key: 'updated_at', label: 'Updated At' },
         'Action',
       ],
-      data: [
-        {
-          name: 'Super Admin',
-          core: true,
-          created_at: new Date().getTime(),
-          updated_at: new Date().getTime(),
-        },
-        {
-          name: 'Accountant',
-          core: false,
-          created_at: new Date().getTime(),
-          updated_at: new Date().getTime(),
-        },
-      ],
+      data: [],
       meta: {
         count: 0,
         current_page: 1,
@@ -213,14 +200,14 @@ export default {
     },
   }),
   mounted() {
-    // this.browseRoles(this.roles.meta.current_page)
+    this.browseRoles(this.roles.meta.current_page)
   },
   methods: {
     browseRoles(page) {
       this.roles.isLoading = true
       this.$store.dispatch('rolesAndPermissions/browse', `?paginate=${this.roles.recordsPerPage}&page=${page}`).then(response => {
         this.roles.data = response.data.data
-        // this.roles.meta = response.data.data.meta.pagination
+        this.roles.meta = response.data.data.meta.pagination
         this.roles.isLoading = false
       }).catch(error => {
         console.error(error)

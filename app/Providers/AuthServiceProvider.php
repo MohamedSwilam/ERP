@@ -2,9 +2,22 @@
 
 namespace App\Providers;
 
+use App\Modules\Authentication\Domain\Models\User;
+use App\Modules\Authentication\Domain\Policies\UserPolicy;
+use App\Modules\Authorization\Domain\Policies\PermissionPolicy;
+use App\Modules\Authorization\Domain\Policies\RolePolicy;
+use App\Modules\Customers\Domain\Models\Customer;
+use App\Modules\Customers\Domain\Models\CustomerType;
+use App\Modules\Customers\Domain\Policies\CustomerPolicy;
+use App\Modules\Customers\Domain\Policies\CustomerTypePolicy;
+use App\Modules\Reservations\Domain\Models\Package;
+use App\Modules\Reservations\Domain\Models\Room;
+use App\Modules\Reservations\Domain\Policies\PackagePolicy;
+use App\Modules\Reservations\Domain\Policies\RoomPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,9 +27,13 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        \Spatie\Permission\Models\Role::class => \App\Modules\Authorization\Domain\Policies\RolePolicy::class,
-        \Spatie\Permission\Models\Permission::class => \App\Modules\Authorization\Domain\Policies\PermissionPolicy::class,
-        \App\Modules\Authentication\Domain\Models\User::class => \App\Modules\Authentication\Domain\Policies\UserPolicy::class,
+        Role::class => RolePolicy::class,
+        Permission::class => PermissionPolicy::class,
+        User::class => UserPolicy::class,
+        Customer::class => CustomerPolicy::class,
+        CustomerType::class => CustomerTypePolicy::class,
+        Package::class => PackagePolicy::class,
+        Room::class => RoomPolicy::class
     ];
 
     /**

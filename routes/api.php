@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-require __DIR__ . '/authentication.php';
-require __DIR__ . '/authorization.php';
-
+require __DIR__ . '/api/authentication.php';
+require __DIR__ . '/api/authorization.php';
+require __DIR__ . '/api/customers.php';
+require __DIR__ . '/api/reservations.php';

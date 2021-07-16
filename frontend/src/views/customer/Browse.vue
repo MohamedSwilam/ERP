@@ -198,26 +198,7 @@ export default {
         { key: 'created_at', label: 'Created At' },
         'Action',
       ],
-      data: [
-        {
-          name: 'Ahmed Yousry',
-          email: 'ahmed.yousry@thktbosherp.com',
-          phone: '+201096436702',
-          created_at: new Date().getTime(),
-        },
-        {
-          name: 'Helmy Mohamed',
-          email: 'helmy_ahmed@thktbosherp.com',
-          phone: '+201096436702',
-          created_at: new Date().getTime(),
-        },
-        {
-          name: 'Mohamed Swilam',
-          email: 'mohamed_swilam@thktbosherp.com',
-          phone: '+201096436702',
-          created_at: new Date().getTime(),
-        },
-      ],
+      data: [],
       meta: {
         count: 0,
         current_page: 1,
@@ -229,7 +210,7 @@ export default {
     },
   }),
   mounted() {
-    // this.browseCustomers(this.customers.meta.current_page)
+    this.browseCustomers(this.customers.meta.current_page)
   },
   methods: {
     browseCustomers(page = 0) {
