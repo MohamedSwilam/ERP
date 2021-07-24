@@ -43,4 +43,14 @@ class CustomerPolicy
     {
         return $user->hasPermissionTo('delete_customer');
     }
+
+    public function browseComments(User $user): bool
+    {
+        return $user->hasPermissionTo('browse_customer_comment');
+    }
+
+    public function storeComment(User $user): bool
+    {
+        return $user->hasPermissionTo('create_customer_comment');
+    }
 }

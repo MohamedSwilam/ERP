@@ -28,13 +28,15 @@
       class="menu-content"
       tag="ul"
     >
-      <component
-        :is="resolveNavItemComponent(child)"
-        v-for="child in item.children"
-        :key="child.header || child.title"
-        ref="groupChild"
-        :item="child"
-      />
+      <template v-for="child in item.children">
+        <component
+          :is="resolveNavItemComponent(child)"
+          v-if="can(child.permission) || !child.permission"
+          :key="child.header || child.title"
+          ref="groupChild"
+          :item="child"
+        />
+      </template>
     </b-collapse>
   </li>
 </template>

@@ -27,6 +27,8 @@ return [
         'create_customer',
         'update_customer',
         'delete_customer',
+        'browse_customer_comment',
+        'create_customer_comment',
     ],
     'package' => [
         'browse_package',
@@ -34,5 +36,9 @@ return [
         'create_package',
         'update_package',
         'delete_package',
+    ],
+    'comment' => [
+        'update_comment',
+        'delete_comment',
     ],
 ];

@@ -43,5 +43,6 @@ export default [
     title: 'Roles & Permissions',
     route: 'browse-roles',
     icon: 'ShieldIcon',
+    permission: 'browse_role',
   },
 ]

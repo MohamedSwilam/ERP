@@ -6,6 +6,8 @@ use App\Modules\Authentication\Domain\Models\User;
 use App\Modules\Authentication\Domain\Policies\UserPolicy;
 use App\Modules\Authorization\Domain\Policies\PermissionPolicy;
 use App\Modules\Authorization\Domain\Policies\RolePolicy;
+use App\Modules\Comments\Domain\Models\Comment;
+use App\Modules\Comments\Domain\Policies\CommentPolicy;
 use App\Modules\Customers\Domain\Models\Customer;
 use App\Modules\Customers\Domain\Models\CustomerType;
 use App\Modules\Customers\Domain\Policies\CustomerPolicy;
@@ -33,7 +35,8 @@ class AuthServiceProvider extends ServiceProvider
         Customer::class => CustomerPolicy::class,
         CustomerType::class => CustomerTypePolicy::class,
         Package::class => PackagePolicy::class,
-        Room::class => RoomPolicy::class
+        Room::class => RoomPolicy::class,
+        Comment::class => CommentPolicy::class
     ];
 
     /**

@@ -1,11 +1,13 @@
 <template>
   <ul>
-    <component
-      :is="resolveNavItemComponent(item)"
-      v-for="item in items"
-      :key="item.header || item.title"
-      :item="item"
-    />
+    <template v-for="item in items">
+      <component
+        :is="resolveNavItemComponent(item)"
+        v-if="( can(item.permission) || !item.permission )"
+        :key="item.header || item.title"
+        :item="item"
+      />
+    </template>
   </ul>
 </template>
 
