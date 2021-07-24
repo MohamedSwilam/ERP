@@ -348,7 +348,6 @@ export default {
 
     editCustomer() {
       this.customer.isLoading = true
-      this.packages.form.rooms = this.packages.selectedRooms.map(room => (room.value))
       this.$store.dispatch('customer/update', {
         id: this.$route.params.id,
         data: this.customer.form,

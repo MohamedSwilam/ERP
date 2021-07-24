@@ -2,9 +2,11 @@
 
 namespace App\Modules\Customers\Domain\Models;
 
+use App\Modules\Comments\Domain\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Customer extends Model
 {
@@ -33,5 +35,10 @@ class Customer extends Model
     public function customerType(): BelongsTo
     {
         return $this->belongsTo(CustomerType::class);
+    }
+
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

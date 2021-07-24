@@ -21,4 +21,13 @@ export default {
   delete(id) {
     return axios.delete(`/api/customers/${id}`)
   },
+
+  browseComments(customerId, filters) {
+    // filters=?paginate=5&sortAsc=id
+    return axios.get(`/api/customers/${customerId}/comments${filters}`)
+  },
+
+  createComment(customerId, data) {
+    return axios.post(`/api/customers/${customerId}/comments`, data)
+  },
 }

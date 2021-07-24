@@ -82,5 +82,39 @@ export default {
           .catch(error => dispatch('app/handleError', { reject, error }, { root: true }))
       })
     },
+
+    /**
+     *
+     * @param store
+     * @param payload {{
+     *  id: number,
+     *  filters: string
+     * }}
+     * @return {Promise<unknown>}
+     */
+    browseComments({ dispatch }, payload) {
+      return new Promise((resolve, reject) => {
+        httpResource.browseComments(payload.id, payload.filters)
+          .then(response => resolve(response))
+          .catch(error => dispatch('app/handleError', { reject, error }, { root: true }))
+      })
+    },
+
+    /**
+       *
+       * @param store
+       * @param payload {{
+       *  id: number,
+       *  data: {..}
+       * }}
+       * @return {Promise<unknown>}
+       */
+    createComment({ dispatch }, payload) {
+      return new Promise((resolve, reject) => {
+        httpResource.createComment(payload.id, payload.data)
+          .then(response => resolve(response))
+          .catch(error => dispatch('app/handleError', { reject, error }, { root: true }))
+      })
+    },
   },
 }

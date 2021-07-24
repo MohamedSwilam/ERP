@@ -5,7 +5,7 @@ export default {
     state.accessToken = `${payload.token_type} ${payload.access_token}`
     state.expiresIn = payload.expires_in
     state.refreshToken = payload.refresh_token
-    axios.defaults.headers.common['Authorization'] = `${payload.token_type} ${payload.access_token}`
+    axios.defaults.headers.common.Authorization = `${payload.token_type} ${payload.access_token}`
   },
   UPDATE_USER_INFO(state, payload) {
     state.user = payload

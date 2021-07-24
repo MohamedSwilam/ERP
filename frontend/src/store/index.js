@@ -14,6 +14,7 @@ import auth from './auth/moduleAuth'
 import user from './user/moduleUser'
 import customer from './customer'
 import packages from './package'
+import comment from './comment'
 import seed from './seed'
 import rolesAndPermissions from './roles-and-permissions/moduleRolesAndPermissions'
 
@@ -32,6 +33,7 @@ export default new Vuex.Store({
     user,
     customer,
     packages,
+    comment,
     seed,
     rolesAndPermissions,
   },

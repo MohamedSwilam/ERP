@@ -4,6 +4,9 @@ namespace App\Modules\Customers\App\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Responses\Facades\ApiResponse;
+use App\Modules\Comments\App\Requests\CreateCommentRequest;
+use App\Modules\Comments\Domain\Actions\CreateCommentAction;
+use App\Modules\Comments\Domain\DataTransferObjects\CreateCommentDto;
 use App\Modules\Customers\App\QueryBuilders\CustomerQueryBuilder;
 use App\Modules\Customers\App\Requests\CreateCustomerRequest;
 use App\Modules\Customers\App\Requests\UpdateCustomerRequest;
@@ -91,5 +94,12 @@ class CustomerController extends Controller
         $deleteCustomerAction($customer);
 
         return ApiResponse::deleteResponse();
+    }
+
+    public function storeComment(CreateCommentAction $createCommentAction, CreateCommentRequest $request, Customer $customer): JsonResponse
+    {
+        $createCommentAction($customer, CreateCommentDto::fromRequest($request));
+
+        return ApiResponse::createResponse($customer, CustomerTransformer::class);
     }
 }
