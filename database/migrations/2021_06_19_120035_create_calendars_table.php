@@ -15,8 +15,8 @@ class CreateCalendarsTable extends Migration
     {
         Schema::create('calendars', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('start');
-            $table->timestamp('end');
+            $table->timestamp('start')->nullable();
+            $table->timestamp('end')->nullable();
             $table->morphs('bookable');
             $table->foreignId('package_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('status_id')->nullable()->constrained()->nullOnDelete();
