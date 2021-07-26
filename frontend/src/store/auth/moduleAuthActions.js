@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import router from '@/router'
 import auth from '@/http/requests/auth/index'
 

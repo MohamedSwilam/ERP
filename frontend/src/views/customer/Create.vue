@@ -133,6 +133,7 @@
                             </b-input-group-prepend>
                             <b-form-input
                               v-model="customer.form.phone"
+                              type="number"
                               :state="errors.length > 0 ? false:null"
                               placeholder="Phone"
                             />
@@ -188,7 +189,7 @@
                         <validation-provider
                           v-slot="{ errors }"
                           name="National Id"
-                          rules="required"
+                          rules="required|length:16"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
                             <b-input-group-prepend is-text>

@@ -395,6 +395,14 @@ const router = new VueRouter({
       },
     },
     {
+      path: '/error-403',
+      name: 'error-403',
+      component: () => import('@/views/error/NotAuthorized.vue'),
+      meta: {
+        layout: 'full',
+      },
+    },
+    {
       path: '*',
       redirect: 'error-404',
     },
