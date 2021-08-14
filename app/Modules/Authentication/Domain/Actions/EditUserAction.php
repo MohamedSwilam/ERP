@@ -24,13 +24,17 @@ class EditUserAction
         $this->attachUserPermissionsAction = $attachUserPermissionsAction;
     }
 
-    public function __invoke(User $user, UpdateUserDto $updateUserDto) : User
+    public function __invoke(User $actionOwner, User $user, UpdateUserDto $updateUserDto) : User
     {
         ($this->updateUserAction)($user, $updateUserDto);
 
-        ($this->attachUserRolesAction)($user, $updateUserDto->roles);
+        if ($actionOwner->hasPermissionTo('update_user_permissions')) {
 
-        ($this->attachUserPermissionsAction)($user, $updateUserDto->permissions);
+            ($this->attachUserRolesAction)($user, $updateUserDto->roles);
+
+            ($this->attachUserPermissionsAction)($user, $updateUserDto->permissions);
+
+        }
 
         return $user;
     }

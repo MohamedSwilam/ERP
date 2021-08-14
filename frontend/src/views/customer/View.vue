@@ -23,12 +23,12 @@
               </b-col>
               <b-col
                 cols="8"
-                lg="10"
-                md="10"
+                lg="4"
+                md="4"
                 sm="10"
                 class="mb-1"
               >
-                {{ customer.data.id }}
+                #TKB{{ customer.data.id }}
               </b-col>
               <b-col
                 cols="4"
@@ -101,6 +101,24 @@
                 class="mb-1"
               >
                 {{ customer.data.phone }}
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
+                <b>National ID</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                {{ customer.data.national_id }}
               </b-col>
               <b-col
                 cols="4"
@@ -186,7 +204,7 @@
                   style="text-align: center;"
                 >
                   <b-button
-                    v-if="can('edit_customer')"
+                    v-if="can('update_customer')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     variant="warning"
                     :to="`/customers/${customer.data.id}/edit`"
@@ -198,7 +216,7 @@
                     <span class="align-middle">Edit Customer</span>
                   </b-button>
                   <b-button
-                    v-if="can('destroy_customer')"
+                    v-if="can('delete_customer')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     class="ml-1"
                     :disabled="customer.isLoadingDelete"
@@ -223,7 +241,10 @@
           </b-card-actions>
         </b-overlay>
       </b-col>
-      <b-col cols="12">
+      <b-col
+        v-if="can('browse_customer_comment')"
+        cols="12"
+      >
         <b-overlay
           :show="comments.isLoading"
           rounded="sm"
@@ -236,6 +257,63 @@
             <b-row>
               <b-col cols="12">
                 <app-timeline>
+                  <app-timeline-item v-if="can('create_customer_comment')">
+                    <validation-observer
+                      ref="createCommentForm"
+                      v-slot="{ handleSubmit }"
+                    >
+                      <b-form @submit.prevent="handleSubmit(createComment)">
+                        <b-row>
+                          <!-- Comment -->
+                          <b-col cols="12">
+                            <b-form-group
+                              label="Comment"
+                              label-for="comment"
+                            >
+                              <validation-provider
+                                v-slot="{ errors }"
+                                name="Comment"
+                                rules="required"
+                              >
+                                <b-form-textarea
+                                  v-model="comments.form.comment"
+                                  placeholder="type your comment here..."
+                                  rows="3"
+                                  :state="errors.length > 0 ? false:null"
+                                />
+                                <small class="text-danger">{{ errors[0] }}</small>
+                              </validation-provider>
+                            </b-form-group>
+                          </b-col>
+                          <b-col
+                            cols="12"
+                            class="text-right"
+                          >
+                            <b-button
+                              v-ripple.400="'rgba(255, 255, 255, 0.15)'"
+                              type="submit"
+                              :disabled="comments.isCreateLoading"
+                              variant="primary"
+                              class="mr-1"
+                              size="sm"
+                            >
+                              <template v-if="comments.isCreateLoading">
+                                <b-spinner small />
+                                Loading...
+                              </template>
+                              <template v-else>
+                                <feather-icon
+                                  icon="SendIcon"
+                                  class="mr-50"
+                                />
+                                <span class="align-middle">Post Comment</span>
+                              </template>
+                            </b-button>
+                          </b-col>
+                        </b-row>
+                      </b-form>
+                    </validation-observer>
+                  </app-timeline-item>
                   <app-timeline-item
                     v-for="(comment, index) in comments.data"
                     :key="index"
@@ -248,6 +326,7 @@
                         {{ comment.comment }}
                         <div class="mt-1">
                           <b-button
+                            v-if="can('update_comment')"
                             size="sm"
                             variant="warning"
                             @click="viewCommentEditForm(comment, index)"
@@ -259,6 +338,7 @@
                             Edit
                           </b-button>
                           <b-button
+                            v-if="can('delete_comment')"
                             size="sm"
                             variant="danger"
                             class="ml-1"
@@ -352,63 +432,6 @@
                       </validation-observer>
                     </div>
                   </app-timeline-item>
-                  <app-timeline-item>
-                    <validation-observer
-                      ref="createCommentForm"
-                      v-slot="{ handleSubmit }"
-                    >
-                      <b-form @submit.prevent="handleSubmit(createComment)">
-                        <b-row>
-                          <!-- Comment -->
-                          <b-col cols="12">
-                            <b-form-group
-                              label="Comment"
-                              label-for="comment"
-                            >
-                              <validation-provider
-                                v-slot="{ errors }"
-                                name="Comment"
-                                rules="required"
-                              >
-                                <b-form-textarea
-                                  v-model="comments.form.comment"
-                                  placeholder="type your comment here..."
-                                  rows="3"
-                                  :state="errors.length > 0 ? false:null"
-                                />
-                                <small class="text-danger">{{ errors[0] }}</small>
-                              </validation-provider>
-                            </b-form-group>
-                          </b-col>
-                          <b-col
-                            cols="12"
-                            class="text-right"
-                          >
-                            <b-button
-                              v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-                              type="submit"
-                              :disabled="comments.isCreateLoading"
-                              variant="primary"
-                              class="mr-1"
-                              size="sm"
-                            >
-                              <template v-if="comments.isCreateLoading">
-                                <b-spinner small />
-                                Loading...
-                              </template>
-                              <template v-else>
-                                <feather-icon
-                                  icon="SendIcon"
-                                  class="mr-50"
-                                />
-                                <span class="align-middle">Post Comment</span>
-                              </template>
-                            </b-button>
-                          </b-col>
-                        </b-row>
-                      </b-form>
-                    </validation-observer>
-                  </app-timeline-item>
                 </app-timeline>
               </b-col>
             </b-row>
@@ -473,7 +496,9 @@ export default {
   }),
   mounted() {
     this.viewCustomer()
-    this.browseComments()
+    if (this.can('browse_customer_comment')) {
+      this.browseComments()
+    }
   },
   methods: {
     viewCustomer() {
@@ -528,7 +553,7 @@ export default {
       this.comments.isLoading = true
       this.$store.dispatch('customer/browseComments', {
         id: this.$route.params.id,
-        filters: '',
+        filters: '?sort=-created_at',
       }).then(response => {
         this.comments.data = response.data.data
         this.comments.isLoading = false
@@ -558,7 +583,7 @@ export default {
           position: 'bottom-right',
           timeout: 5000,
         })
-        this.comments.data.push(response.data.data)
+        this.comments.data.unshift(response.data.data)
         this.comments.form.comment = '.'
       }).catch(error => {
         this.$refs.createCommentForm.setErrors(error.response.data.errors)

@@ -10,12 +10,10 @@ export default {
      * @returns {boolean}
      */
     can(permission) {
-      // let result = false
-      // store.state.auth.user.allPermissions.forEach(userPermission => {
-      //   if (userPermission.name === permission) result = true
-      // })
-      // return result
-      return !!permission
+      console.log(permission)
+      return store.state.auth.user.allPermissions
+        .filter(userPermission => userPermission.name === permission).length > 0
+      // return !!permission
     },
   },
 }

@@ -9,6 +9,7 @@ use App\Modules\Comments\App\Transformers\CommentTransformer;
 use App\Modules\Comments\Domain\Actions\CreateCommentAction;
 use App\Modules\Comments\Domain\DataTransferObjects\CreateCommentDto;
 use App\Modules\Comments\Domain\Models\Comment;
+use App\Modules\Customers\App\QueryBuilders\CustomerCommentQueryBuilder;
 use App\Modules\Customers\Domain\Models\Customer;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
@@ -19,15 +20,15 @@ class CustomerCommentController extends Controller
     /**
      * @param Request $request
      * @param Customer $customer
+     * @param CustomerCommentQueryBuilder $customerCommentQueryBuilder
      * @return JsonResponse
      * @throws AuthorizationException
      */
-    public function index(Request $request, Customer $customer): JsonResponse
+    public function index(Request $request, Customer $customer, CustomerCommentQueryBuilder $customerCommentQueryBuilder): JsonResponse
     {
         $this->authorize('browseComments', Customer::class);
-
         return ApiResponse::indexResponse(
-            $customer->comments()->paginate($request->input('paginate')?? 15),
+            $customerCommentQueryBuilder->paginate($request->input('paginate')?? 15),
             CommentTransformer::class
         );
     }

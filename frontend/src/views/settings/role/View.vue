@@ -135,7 +135,7 @@
                   style="text-align: center;"
                 >
                   <b-button
-                    v-if="can('edit_role')"
+                    v-if="can('update_role')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     variant="warning"
                     :to="`/roles/${role.data.id}/edit`"

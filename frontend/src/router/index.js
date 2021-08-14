@@ -149,7 +149,7 @@ const router = new VueRouter({
           { text: 'Create Customer', to: '/customers/create', active: true },
         ],
         pageTitle: 'Add Customer',
-        permission: 'store_customer',
+        permission: 'create_customer',
       },
     },
     {
@@ -180,7 +180,7 @@ const router = new VueRouter({
           { text: 'Edit', active: true },
         ],
         pageTitle: 'Edit Customer',
-        permission: 'edit_customer',
+        permission: 'update_customer',
       },
     },
 
@@ -278,7 +278,7 @@ const router = new VueRouter({
           { text: 'Create Package', to: '/packages/create', active: true },
         ],
         pageTitle: 'Add Package',
-        permission: 'store_package',
+        permission: 'create_package',
       },
     },
     {
@@ -309,7 +309,7 @@ const router = new VueRouter({
           { text: 'Edit', active: true },
         ],
         pageTitle: 'Edit Package',
-        permission: 'edit_package',
+        permission: 'update_package',
       },
     },
     // =============================================================================
@@ -372,7 +372,7 @@ const router = new VueRouter({
           { text: 'Edit', active: true },
         ],
         pageTitle: 'Edit Role',
-        permission: 'edit_role',
+        permission: 'update_role',
       },
     },
     // =============================================================================

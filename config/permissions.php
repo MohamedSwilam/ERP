@@ -19,6 +19,7 @@ return [
         'view_user',
         'create_user',
         'update_user',
+        'update_user_permissions',
         'delete_user',
     ],
     'customer' => [

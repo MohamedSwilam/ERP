@@ -10,25 +10,20 @@ use Illuminate\Http\Request;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class CustomerQueryBuilder extends QueryBuilder
+class CustomerCommentQueryBuilder extends QueryBuilder
 {
     public function __construct(Request $request)
     {
-        $query = Customer::query();
+        $query = $request->customer->comments();
 
         parent::__construct($query, $request);
 
         $this
             ->allowedFilters([
                 AllowedFilter::custom('search', new FuzzyFilter(
-                    'id',
-                    'name',
-                    'phone',
-                    'email',
-                    'national_id',
-                    'date_of_birth',
+                    'comment',
                 )),
             ])
-            ->allowedSorts(['name', 'email', 'phone', 'date_of_birth', 'created_at']);
+            ->allowedSorts(['comment', 'created_at']);
     }
 }

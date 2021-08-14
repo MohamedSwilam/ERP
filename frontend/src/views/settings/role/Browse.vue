@@ -82,7 +82,7 @@
                         <feather-icon icon="EyeIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('edit_role')"
+                        v-if="can('update_role')"
                         v-b-tooltip.hover.v-warning
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Edit Role"

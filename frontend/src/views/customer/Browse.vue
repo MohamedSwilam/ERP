@@ -31,7 +31,7 @@
                 align-h="center"
               >
                 <b-button
-                  v-if="can('store_customer')"
+                  v-if="can('create_customer')"
                   v-ripple.400="'rgba(255,255,255,0.15)'"
                   class="my-1"
                   size="sm"
@@ -59,7 +59,7 @@
                     v-model="customers.search"
                     size="sm"
                     placeholder="Search"
-                    @change="browseCustomers"
+                    @change="browseCustomers(1)"
                   />
                 </b-input-group>
               </b-col>
@@ -74,6 +74,9 @@
                   <!-- A virtual column -->
                   <template #cell(index)="data">
                     {{ customers.meta.current_page * customers.recordsPerPage - customers.recordsPerPage + data.index + 1 }}
+                  </template>
+                  <template #cell(id)="data">
+                    #TKB{{ data.item.id }}
                   </template>
                   <template #cell(created_at)="data">
                     {{ data.item.created_at | date(true) }} - {{ data.item.created_at | time }}
@@ -92,7 +95,7 @@
                         <feather-icon icon="EyeIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('edit_customer')"
+                        v-if="can('update_customer')"
                         v-b-tooltip.hover.v-warning
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Edit Customer"
@@ -103,7 +106,7 @@
                         <feather-icon icon="EditIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('destroy_customer')"
+                        v-if="can('delete_customer')"
                         v-b-tooltip.hover.v-danger
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Delete Customer"
@@ -192,6 +195,7 @@ export default {
       recordsPerPage: 50,
       fields: [
         { key: 'index', label: '#' },
+        { key: 'id', label: 'ID' },
         { key: 'name', label: 'Name' },
         { key: 'email', label: 'Email' },
         { key: 'phone', label: 'Phone' },

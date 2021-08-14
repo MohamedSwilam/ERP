@@ -108,7 +108,7 @@
                         <feather-icon icon="EyeIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('edit_order')"
+                        v-if="can('update_order')"
                         v-b-tooltip.hover.v-warning
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Edit Order"
@@ -119,7 +119,7 @@
                         <feather-icon icon="EditIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('destroy_order')"
+                        v-if="can('delete_order')"
                         v-b-tooltip.hover.v-danger
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Delete Order"

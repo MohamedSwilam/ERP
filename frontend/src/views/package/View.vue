@@ -195,7 +195,7 @@
                   style="text-align: center;"
                 >
                   <b-button
-                    v-if="can('edit_packages')"
+                    v-if="can('update_package')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     variant="warning"
                     :to="`/packages/${packages.data.id}/edit`"
@@ -207,7 +207,7 @@
                     <span class="align-middle">Edit Package</span>
                   </b-button>
                   <b-button
-                    v-if="can('destroy_packages')"
+                    v-if="can('delete_package')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     class="ml-1"
                     :disabled="packages.isLoadingDelete"

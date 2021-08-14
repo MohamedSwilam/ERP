@@ -108,7 +108,7 @@
                         <feather-icon icon="EditIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('destroy_package')"
+                        v-if="can('delete_package')"
                         v-b-tooltip.hover.v-danger
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Delete Package"

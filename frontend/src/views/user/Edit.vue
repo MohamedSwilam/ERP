@@ -20,6 +20,7 @@
                   <b-row>
                     <!-- Roles -->
                     <b-col
+                      v-if="can('update_user_permissions')"
                       lg="12"
                       md="12"
                       sm="12"
@@ -48,7 +49,10 @@
                       </b-form-group>
                     </b-col>
                     <!--permissions-->
-                    <b-col cols="12">
+                    <b-col
+                      v-if="can('update_user_permissions')"
+                      cols="12"
+                    >
                       <h6>Permissions:</h6>
                       <b-row>
                         <b-col
@@ -227,7 +231,8 @@ export default {
     },
   }),
   mounted() {
-    this.browseRoles()
+    if (this.can('update_user_permissions') && this.can('browse_role')) this.browseRoles()
+    else this.viewUser()
   },
   methods: {
     browseRoles() {

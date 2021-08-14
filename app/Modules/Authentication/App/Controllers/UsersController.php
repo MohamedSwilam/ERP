@@ -49,7 +49,7 @@ class UsersController extends Controller
     {
         $this->authorize('update', User::class);
 
-        $user = $editUserAction($user, UpdateUserDto::fromRequest($request));
+        $user = $editUserAction($request->user(), $user, UpdateUserDto::fromRequest($request));
 
         return ApiResponse::updateResponse($user, UserTransformer::class);
     }

@@ -102,7 +102,7 @@
                         <feather-icon icon="EyeIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('edit_event')"
+                        v-if="can('update_event')"
                         v-b-tooltip.hover.v-warning
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Edit Event"
@@ -113,7 +113,7 @@
                         <feather-icon icon="EditIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('destroy_event')"
+                        v-if="can('delete_event')"
                         v-b-tooltip.hover.v-danger
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Delete Event"

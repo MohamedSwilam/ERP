@@ -118,7 +118,7 @@
                   style="text-align: center;"
                 >
                   <b-button
-                    v-if="can('edit_orders')"
+                    v-if="can('update_orders')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     variant="warning"
                     :to="`/orders/${orders.data.id}/edit`"
@@ -130,7 +130,7 @@
                     <span class="align-middle">Edit Order</span>
                   </b-button>
                   <b-button
-                    v-if="can('destroy_orders')"
+                    v-if="can('delete_orders')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     class="ml-1"
                     :disabled="orders.isLoadingDelete"
