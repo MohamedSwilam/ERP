@@ -15,7 +15,13 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('calendar_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('package_id')->constrained()->cascadeOnDelete();
+            $table->integer('total_hours');
+            $table->integer('remaining_hours');
+            $table->timestamp('starts_at');
+            $table->timestamp('expires_at');
+            $table->double('discount')->default(0);
+            $table->string('seller')->nullable();
             $table->foreignId('created_by')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();

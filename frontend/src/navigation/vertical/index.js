@@ -25,7 +25,7 @@ export default [
     title: 'Orders',
     route: 'browse-orders',
     icon: 'Edit3Icon',
-    // permission: 'browse_order',
+    permission: 'browse_order',
   },
   {
     title: 'Events',
@@ -38,6 +38,12 @@ export default [
     route: 'browse-packages',
     icon: 'PackageIcon',
     permission: 'browse_package',
+  },
+  {
+    title: 'Operations',
+    route: 'browse-operations',
+    icon: 'ActivityIcon',
+    permission: 'browse_order',
   },
   {
     title: 'Roles & Permissions',

@@ -24,7 +24,8 @@ class UpdatePackageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255',
+            'package_type_id' => 'required|exists:package_types,id',
+            'name' => 'required|string|max:255',
             'description' => 'string',
             'membership' => 'bool',
             'price' => [
@@ -35,6 +36,19 @@ class UpdatePackageRequest extends FormRequest
                 'required',
                 'numeric'
             ],
+            'hours' => [
+                'required',
+                'numeric'
+            ],
+            'expiration_in_hours' => [
+                'required',
+                'numeric'
+            ],
+            'customers_to_reserve' => [
+                'required',
+                'numeric'
+            ],
+            'customer_type_id' => 'required|exists:customer_types,id',
             'rooms' => 'required',
             'rooms.*' => [
                 'required',

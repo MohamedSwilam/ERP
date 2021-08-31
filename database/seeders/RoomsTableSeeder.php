@@ -31,24 +31,28 @@ class RoomsTableSeeder extends Seeder
     {
         return [
             [
+                'name'          => 'Shared Area',
+                'description'   => 'Description Text Here',
+                'max_seats'     => 50,
+                'multiple_to_reserve'     => true,
+            ],
+            [
                 'name'          => 'Room A',
                 'description'   => 'Description Text Here',
-                'max_seats'     => 10,
+                'max_seats'     => 20,
+                'multiple_to_reserve'     => false,
             ],
             [
                 'name'          => 'Room B',
                 'description'   => 'Description Text Here',
-                'max_seats'     => 20,
+                'max_seats'     => 30,
+                'multiple_to_reserve'     => false,
             ],
             [
                 'name'          => 'Room C',
                 'description'   => 'Description Text Here',
-                'max_seats'     => 30,
-            ],
-            [
-                'name'          => 'Room D',
-                'description'   => 'Description Text Here',
                 'max_seats'     => 40,
+                'multiple_to_reserve'     => false,
             ],
         ];
     }

@@ -3,6 +3,7 @@
 namespace App\Modules\Authentication\Domain\Models;
 
 use App\Modules\Comments\Domain\Models\Comment;
+use App\Modules\Reservations\Domain\Models\Order;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -51,5 +52,13 @@ class User extends Authenticatable
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class, 'created_by');
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
     }
 }

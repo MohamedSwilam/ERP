@@ -15,8 +15,8 @@ class CreatePackageRoomsTable extends Migration
     {
         Schema::create('package_rooms', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('package_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('room_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('package_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('room_id')->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

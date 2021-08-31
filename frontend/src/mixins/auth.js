@@ -10,8 +10,7 @@ export default {
      * @returns {boolean}
      */
     can(permission) {
-      console.log(permission)
-      return store.state.auth.user.allPermissions
+      return store.state.auth.user.permissions
         .filter(userPermission => userPermission.name === permission).length > 0
       // return !!permission
     },

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Modules\Authentication\Domain\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class UsersTableSeeder extends Seeder
@@ -21,6 +22,7 @@ class UsersTableSeeder extends Seeder
                 $user = User::create($userData);
             }
             $user->assignRole('super_admin');
+            $user->syncPermissions(Permission::all());
         }
     }
 

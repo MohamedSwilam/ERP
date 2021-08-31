@@ -21,13 +21,13 @@ class PackageQueryBuilder extends QueryBuilder
         $this
             ->allowedFilters([
                 AllowedFilter::custom('search', new FuzzyFilter(
-                    'title',
+                    'name',
                     'description',
                     'membership',
                     'price',
                     'tax',
                 )),
             ])
-            ->allowedSorts(['title', 'description', 'membership', 'price', 'tax', 'created_at']);
+            ->allowedSorts(['name', 'description', 'membership', 'price', 'tax', 'created_at']);
     }
 }

@@ -31,7 +31,7 @@
                 align-h="center"
               >
                 <b-button
-                  v-if="can('store_event')"
+                  v-if="can('create_event')"
                   v-ripple.400="'rgba(255,255,255,0.15)'"
                   class="my-1"
                   size="sm"

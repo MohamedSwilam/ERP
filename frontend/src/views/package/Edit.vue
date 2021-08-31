@@ -18,11 +18,51 @@
               >
                 <b-form @submit.prevent="handleSubmit(editPackage)">
                   <b-row>
+
+                    <!-- Package Types -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Package Type"
+                        label-for="package_type"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules="required"
+                          name="Package Type"
+                          vid="package_type"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="BoxIcon" />
+                            </b-input-group-prepend>
+                            <b-select
+                              v-model="packages.form.package_type_id"
+                              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                              :options="packages.package_types"
+                              label="text"
+                              :state="errors.length > 0 ? false:null"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
                     <!-- Package Rooms -->
-                    <b-col cols="12">
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
                       <b-form-group
                         label="Package Rooms"
-                        label-for="package_rooms"
+                        label-for="rooms"
                       >
                         <validation-provider
                           v-slot="{ errors }"
@@ -36,7 +76,7 @@
                             multiple
                             :options="packages.package_rooms"
                             label="text"
-                            :state="errors.length > 0 ? false:null"
+                            :state="errors.length > 0 ? false : null"
                           />
                           <small class="text-danger">{{ errors[0] }}</small>
                         </validation-provider>
@@ -51,22 +91,22 @@
                       xs="12"
                     >
                       <b-form-group
-                        label="Title"
-                        label-for="title"
+                        label="Name"
+                        label-for="name"
                       >
                         <validation-provider
                           v-slot="{ errors }"
                           rules="required"
                           name="Title"
-                          vid="title"
+                          vid="name"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
                             <b-input-group-prepend is-text>
                               <feather-icon icon="PackageIcon" />
                             </b-input-group-prepend>
                             <b-form-input
-                              id="title"
-                              v-model="packages.form.title"
+                              id="name"
+                              v-model="packages.form.name"
                               :state="errors.length > 0 ? false:null"
                               placeholder="Title"
                             />
@@ -165,6 +205,137 @@
                       </b-form-group>
                     </b-col>
 
+                    <!-- Hours -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Hours"
+                        label-for="hours"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          name="Hours"
+                          rules="required"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="ClockIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              v-model="packages.form.hours"
+                              type="number"
+                              :state="errors.length > 0 ? false:null"
+                              placeholder="Hours"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
+                    <!-- Hours To Expire -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Hours To Expire"
+                        label-for="expiration_in_hours"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          name="Hours To Expire"
+                          rules="required"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="ClockIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              v-model="packages.form.expiration_in_hours"
+                              type="number"
+                              :state="errors.length > 0 ? false:null"
+                              placeholder="Hours To Expire"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
+                    <!-- Customer Types -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Customer Type"
+                        label-for="customer_type_id"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules=""
+                          name="Customer Type"
+                          vid="customer_type_id"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="UserIcon" />
+                            </b-input-group-prepend>
+                            <b-select
+                              v-model="packages.form.customer_type_id"
+                              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                              :options="packages.customer_types"
+                              label="text"
+                              :state="errors.length > 0 ? false:null"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
+                    <!-- Customers To Reserve -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Customers To Reserve"
+                        label-for="customer_types"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules=""
+                          name="Customers To Reserve"
+                          vid="customer_type"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="ClockIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              v-model="packages.form.customers_to_reserve"
+                              type="number"
+                              :state="errors.length > 0 ? false:null"
+                              placeholder="Customers To Reserve"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
                     <!-- Package Description -->
                     <b-col cols="12">
                       <b-form-group
@@ -173,6 +344,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
+                          name="Package description"
                           rules="required"
                         >
                           <b-form-textarea
@@ -214,6 +386,7 @@
                           </b-button>
                           <b-button
                             v-ripple.400="'rgba(186, 191, 199, 0.15)'"
+                            type="reset"
                             variant="warning"
                           >
                             <feather-icon
@@ -254,14 +427,21 @@ export default {
       isCardLoading: false,
       isLoading: false,
       package_rooms: [],
+      package_types: [],
+      customer_types: [],
       selectedRooms: [],
       form: {
-        title: '',
+        name: '',
         description: '',
         membership: false,
         price: 0,
         tax: 0,
         rooms: [],
+        hours: 0,
+        expiration_in_hours: 0,
+        customer_type_id: null,
+        customers_to_reserve: 1,
+        package_type_id: null,
       },
     },
   }),
@@ -274,7 +454,7 @@ export default {
       this.$store.dispatch('seed/browseRooms', '')
         .then(response => {
           this.packages.package_rooms = this.reformatRoomsData(response.data.data)
-          this.viewPackage()
+          this.browseCustomerTypes()
         }).catch(error => {
           console.error(error)
           this.packages.isCardLoading = false
@@ -283,6 +463,44 @@ export default {
 
     reformatRoomsData(rooms) {
       return rooms.map(room => ({ value: room.id, text: room.name }))
+    },
+
+    browseCustomerTypes() {
+      this.packages.isCardLoading = true
+      this.$store.dispatch('seed/browseCustomerTypes', '')
+        .then(response => {
+          this.packages.customer_types = this.reformatCustomerTypesData(response.data.data)
+          this.browsePackageTypes()
+        }).catch(error => {
+          console.error(error)
+          this.packages.isCardLoading = false
+        })
+    },
+
+    reformatCustomerTypesData(customerTypes) {
+      return [
+        ...[{ value: null, text: 'Select customer type' }],
+        ...customerTypes.map(customerType => ({ value: customerType.id, text: customerType.type })),
+      ]
+    },
+
+    browsePackageTypes() {
+      this.packages.isCardLoading = true
+      this.$store.dispatch('seed/browsePackageTypes', '')
+        .then(response => {
+          this.packages.package_types = this.reformatPackageTypesData(response.data.data)
+          this.viewPackage()
+        }).catch(error => {
+          console.error(error)
+          this.packages.isCardLoading = false
+        })
+    },
+
+    reformatPackageTypesData(packageTypes) {
+      return [
+        ...[{ value: null, text: 'Select package type' }],
+        ...packageTypes.map(packageType => ({ value: packageType.id, text: packageType.name })),
+      ]
     },
 
     viewPackage() {
@@ -300,6 +518,7 @@ export default {
     editPackage() {
       this.packages.isLoading = true
       this.packages.form.rooms = this.packages.selectedRooms.map(room => (room.value))
+      this.packages.form.expiration_in_hours *= 24
       this.$store.dispatch('packages/update', {
         id: this.$route.params.id,
         data: this.packages.form,

@@ -15,11 +15,16 @@ class CreatePackagesTable extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->foreignId('package_type_id')->constrained()->cascadeOnDelete();
+            $table->string('name');
             $table->text('description')->nullable();
             $table->boolean('membership')->nullable();
             $table->double('price');
             $table->double('tax');
+            $table->integer('hours');
+            $table->integer('expiration_in_hours');
+            $table->integer('customers_to_reserve');
+            $table->foreignId('customer_type_id')->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

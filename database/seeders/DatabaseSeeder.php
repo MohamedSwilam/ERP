@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         (new RolesAndPermissionsSeeder())->run();
         (new UsersTableSeeder())->run();
         (new CustomerTypesTableSeeder())->run();
+        (new PackageTypesTableSeeder())->run();
         (new RoomsTableSeeder())->run();
+        (new VisitStatusesTableSeeder())->run();
     }
 }

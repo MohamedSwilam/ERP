@@ -31,12 +31,11 @@
                 align-h="center"
               >
                 <b-button
-                  v-if="can('store_order')"
+                  v-if="can('create_order')"
                   v-ripple.400="'rgba(255,255,255,0.15)'"
-                  class="my-1"
                   size="sm"
                   variant="primary"
-                  to="/calendar?create=order"
+                  to="/orders/create"
                 >
                   <feather-icon
                     icon="PlusIcon"
@@ -48,7 +47,7 @@
               <b-col
                 cols="6"
                 align-h="center"
-                class="text-right"
+                class="text-right mb-2"
               >
                 <b-input-group style="position: relative;top: 13px;">
                   <b-input-group-prepend is-text>
@@ -75,14 +74,22 @@
                   <template #cell(index)="data">
                     {{ orders.meta.current_page * orders.recordsPerPage - orders.recordsPerPage + data.index + 1 }}
                   </template>
-                  <template #cell(date)="data">
-                    {{ data.item.calendars[0].start | date(true) }}
-                  </template>
-                  <template #cell(start)="data">
-                    {{ data.item.calendars[0].start | time }}
-                  </template>
-                  <template #cell(end)="data">
-                    {{ data.item.calendars[0].end | time }}
+                    <template #cell(customers)="data">
+                        <router-link
+                            v-for="(customer, index) in data.item.customers"
+                            :key="index"
+                            :to="`/customers/${customer.id}`"
+                        >
+                            <b-badge
+                                :variant="'primary'"
+                                class="mb-5-px"
+                            >
+                                #TKB{{ customer.id }} - {{ customer.name | capitalize }}
+                            </b-badge>
+                        </router-link>
+                    </template>
+                  <template #cell(expires_at)="data">
+                    {{ data.item.expires_at | date(true) }} - {{ data.item.expires_at | time }}
                   </template>
                   <template #cell(customer)="data">
                     <router-link :to="`/customers/${data.item.customer.id}`">
@@ -106,17 +113,6 @@
                         :to="`/orders/${data.item.id}`"
                       >
                         <feather-icon icon="EyeIcon" />
-                      </b-button>
-                      <b-button
-                        v-if="can('update_order')"
-                        v-b-tooltip.hover.v-warning
-                        v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-                        title="Edit Order"
-                        variant="warning"
-                        class="btn-icon rounded-circle ml-1"
-                        :to="`/orders/${data.item.id}/edit`"
-                      >
-                        <feather-icon icon="EditIcon" />
                       </b-button>
                       <b-button
                         v-if="can('delete_order')"
@@ -208,63 +204,14 @@ export default {
       recordsPerPage: 50,
       fields: [
         { key: 'index', label: '#' },
-        { key: 'date', label: 'Date' },
-        { key: 'start', label: 'Start' },
-        { key: 'end', label: 'End' },
-        { key: 'customer', label: 'Customer' },
+        { key: 'total_hours', label: 'Total Hours' },
+        { key: 'remaining_hours', label: 'Remaining Hours' },
+        { key: 'customers', label: 'Customer(s)' },
+        { key: 'expires_at', label: 'Expiration Date' },
         { key: 'created_by', label: 'Created By' },
         'Action',
       ],
-      data: [
-        {
-          calendars: [
-            {
-              start: new Date().getTime(),
-              end: new Date().getTime() + 1000 * 60 * 60,
-            },
-          ],
-          created_by: {
-            id: 3,
-            name: 'Mohamed Swilam',
-          },
-          customer: {
-            id: 1,
-            name: 'Mohamed Khaled',
-          },
-        },
-        {
-          calendars: [
-            {
-              start: new Date().getTime(),
-              end: new Date().getTime() + 1000 * 60 * 60,
-            },
-          ],
-          created_by: {
-            id: 3,
-            name: 'Mohamed Swilam',
-          },
-          customer: {
-            id: 1,
-            name: 'Mohamed Khaled',
-          },
-        },
-        {
-          calendars: [
-            {
-              start: new Date().getTime(),
-              end: new Date().getTime() + 1000 * 60 * 60,
-            },
-          ],
-          created_by: {
-            id: 3,
-            name: 'Mohamed Swilam',
-          },
-          customer: {
-            id: 1,
-            name: 'Mohamed Khaled',
-          },
-        },
-      ],
+      data: [],
       meta: {
         count: 0,
         current_page: 1,
@@ -276,12 +223,12 @@ export default {
     },
   }),
   mounted() {
-    // this.browseOrders(this.orders.meta.current_page)
+    this.browseOrders(this.orders.meta.current_page)
   },
   methods: {
     browseOrders(page = 0) {
       this.orders.isLoading = true
-      this.$store.dispatch('order/browse', `?paginate=${this.orders.recordsPerPage}&page=${page}&filter[search]=${this.orders.search}`).then(response => {
+      this.$store.dispatch('orders/browse', `?paginate=${this.orders.recordsPerPage}&page=${page}&filter[search]=${this.orders.search}`).then(response => {
         this.orders.data = response.data.data
         this.orders.meta = response.data.meta.pagination
         this.orders.isLoading = false
@@ -302,7 +249,7 @@ export default {
         centered: true,
       }).then(confirmed => {
         if (confirmed) {
-          this.$store.dispatch('order/delete', data.item.id).then(response => {
+          this.$store.dispatch('orders/delete', data.item.id).then(response => {
             this.orders.data = this.orders.data.filter(orderDetails => orderDetails.id !== data.item.id)
             this.$toast({
               component: ToastificationContent,
@@ -335,5 +282,8 @@ export default {
 }
 .dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
     color: white !important;
+}
+.mb-5-px {
+    margin-bottom: 5px;
 }
 </style>

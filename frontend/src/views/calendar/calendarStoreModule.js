@@ -6,26 +6,18 @@ export default {
     calendarOptions: [
       {
         color: 'danger',
-        label: 'Personal',
+        label: 'Canceled',
       },
       {
         color: 'primary',
-        label: 'Business',
-      },
-      {
-        color: 'warning',
-        label: 'Family',
+        label: 'Booking',
       },
       {
         color: 'success',
-        label: 'Holiday',
-      },
-      {
-        color: 'info',
-        label: 'ETC',
+        label: 'Completed',
       },
     ],
-    selectedCalendars: ['Personal', 'Business', 'Family', 'Holiday', 'ETC'],
+    selectedCalendars: ['Canceled', 'Booking', 'Completed'],
   },
   getters: {},
   mutations: {

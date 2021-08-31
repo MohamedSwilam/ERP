@@ -17,7 +17,7 @@ const data = {
       end: nextDay,
       allDay: false,
       extendedProps: {
-        calendar: 'Business',
+        calendar: 'Booking',
       },
     },
     {
@@ -28,7 +28,7 @@ const data = {
       end: new Date(date.getFullYear(), date.getMonth() + 1, -10),
       allDay: true,
       extendedProps: {
-        calendar: 'Business',
+        calendar: 'Booking',
       },
     },
     {
@@ -39,7 +39,7 @@ const data = {
       start: new Date(date.getFullYear(), date.getMonth() + 1, -9),
       end: new Date(date.getFullYear(), date.getMonth() + 1, -7),
       extendedProps: {
-        calendar: 'Holiday',
+        calendar: 'Completed',
       },
     },
     {
@@ -50,7 +50,7 @@ const data = {
       end: new Date(date.getFullYear(), date.getMonth() + 1, -10),
       allDay: true,
       extendedProps: {
-        calendar: 'Personal',
+        calendar: 'Canceled',
       },
     },
     {
@@ -61,7 +61,7 @@ const data = {
       end: new Date(date.getFullYear(), date.getMonth() + 1, -12),
       allDay: true,
       extendedProps: {
-        calendar: 'ETC',
+        calendar: 'Completed',
       },
     },
     {
@@ -72,7 +72,7 @@ const data = {
       end: new Date(date.getFullYear(), date.getMonth() + 1, -12),
       allDay: true,
       extendedProps: {
-        calendar: 'Personal',
+        calendar: 'Canceled',
       },
     },
     {
@@ -83,7 +83,7 @@ const data = {
       end: new Date(date.getFullYear(), date.getMonth() + 1, -12),
       allDay: true,
       extendedProps: {
-        calendar: 'Family',
+        calendar: 'Completed',
       },
     },
     {
@@ -94,7 +94,7 @@ const data = {
       end: new Date(date.getFullYear(), date.getMonth() + 1, -12),
       allDay: true,
       extendedProps: {
-        calendar: 'Business',
+        calendar: 'Booking',
       },
     },
     {
@@ -105,7 +105,7 @@ const data = {
       end: nextMonth,
       allDay: true,
       extendedProps: {
-        calendar: 'Business',
+        calendar: 'Booking',
       },
     },
     {
@@ -116,7 +116,7 @@ const data = {
       end: prevMonth,
       allDay: true,
       extendedProps: {
-        calendar: 'Personal',
+        calendar: 'Canceled',
       },
     },
   ],

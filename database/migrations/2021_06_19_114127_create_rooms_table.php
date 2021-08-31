@@ -18,6 +18,7 @@ class CreateRoomsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('max_seats')->default(0);
+            $table->boolean('multiple_to_reserve')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

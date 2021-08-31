@@ -42,4 +42,20 @@ return [
         'update_comment',
         'delete_comment',
     ],
+    'order' => [
+        'browse_order',
+        'view_order',
+        'create_order',
+        'update_order',
+        'delete_order',
+        'browse_order_comment',
+        'create_order_comment',
+    ],
+    'visit' => [
+        'browse_visit',
+        'view_visit',
+        'create_visit',
+        'update_visit',
+        'delete_visit',
+    ],
 ];

@@ -30,6 +30,20 @@ export default {
      * @param payload
      * @return {Promise<unknown>}
      */
+    browsePackageTypes({ dispatch }, payload) {
+      return new Promise((resolve, reject) => {
+        httpResource.browsePackageTypes(payload)
+          .then(response => resolve(response))
+          .catch(error => dispatch('app/handleError', { reject, error }, { root: true }))
+      })
+    },
+
+    /**
+     *
+     * @param store
+     * @param payload
+     * @return {Promise<unknown>}
+     */
     browseRooms({ dispatch }, payload) {
       return new Promise((resolve, reject) => {
         httpResource.browseRooms(payload)

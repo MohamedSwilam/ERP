@@ -31,16 +31,16 @@ class CustomerTypesTableSeeder extends Seeder
     {
         return [
             [
-                'type'     => 'Customer Type A',
+                'type'     => 'Student',
             ],
             [
-                'type'     => 'Customer Type B',
+                'type'     => 'Student Activity',
             ],
             [
-                'type'     => 'Customer Type C',
+                'type'     => 'Beginner Coach',
             ],
             [
-                'type'     => 'Customer Type D',
+                'type'     => 'Professional Coach',
             ],
         ];
     }

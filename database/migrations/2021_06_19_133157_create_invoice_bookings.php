@@ -16,7 +16,7 @@ class CreateInvoiceBookings extends Migration
         Schema::create('invoice_bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('invoice_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('calendar_id')->nullable()->constrained()->nullOnDelete();
+//            $table->foreignId('calendar_id')->nullable()->constrained()->nullOnDelete();
             $table->double('discount')->default(0);
             $table->double('total');
             $table->timestamps();

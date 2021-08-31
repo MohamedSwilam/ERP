@@ -75,6 +75,9 @@
                   <template #cell(index)="data">
                     {{ packages.meta.current_page * packages.recordsPerPage - packages.recordsPerPage + data.index + 1 }}
                   </template>
+                  <template #cell(type)="data">
+                    {{ data.item.package_type ? data.item.package_type.name : '-' }}
+                  </template>
                   <template #cell(membership)="data">
                     <b-badge :variant="data.item.membership ? 'success' : 'danger'">
                       {{ data.item.membership ? 'Yes' : 'No' }}
@@ -197,9 +200,9 @@ export default {
       recordsPerPage: 50,
       fields: [
         { key: 'index', label: '#' },
-        { key: 'title', label: 'Title' },
+        { key: 'name', label: 'Name' },
+        { key: 'type', label: 'package_type' },
         { key: 'price', label: 'Price' },
-        { key: 'tax', label: 'Tax' },
         { key: 'membership', label: 'Membership' },
         { key: 'created_at', label: 'Created At' },
         'Action',

@@ -32,38 +32,49 @@ export default function userCalendar() {
   // calendars
   // ------------------------------------------------
   const calendarsColor = {
-    Business: 'primary',
-    Holiday: 'success',
-    Personal: 'danger',
-    Family: 'warning',
-    ETC: 'info',
+    Booking: 'primary',
+    Completed: 'success',
+    Canceled: 'danger',
   }
 
   // ------------------------------------------------
   // event
   // ------------------------------------------------
   const blankEvent = {
-    title: '',
-    start: '',
-    end: '',
-    allDay: false,
-    url: '',
-    isEvent: false,
-    type: '',
-    instructor: '',
-    budget: 0,
-    num_of_attendance: 0,
-    expenses: 0,
-    revenue: 0,
-    target_segment: '',
-    customer_id: null,
-    extendedProps: {
-      calendar: '',
-      guests: [],
-      customers: [],
-      location: '',
-      description: '',
-    },
+    room_id: null,
+    date: '',
+    start_time: '',
+    end_time: '',
+    visit_status_id: null,
+
+    order: {},
+    room: {},
+
+    customers: [],
+    orders: [],
+    rooms: [],
+    selectedCustomer: null,
+
+    // customer: '',
+    // order: '',
+    // allDay: false,
+    // url: '',
+    // isEvent: false,
+    // type: '',
+    // instructor: '',
+    // budget: 0,
+    // num_of_attendance: 0,
+    // expenses: 0,
+    // revenue: 0,
+    // target_segment: '',
+    // customer_id: null,
+    // extendedProps: {
+    //   calendar: '',
+    //   guests: [],
+    //   customers: [],
+    //   location: '',
+    //   description: '',
+    // },
   }
   const event = ref(JSON.parse(JSON.stringify(blankEvent)))
   const clearEventData = () => {
@@ -181,9 +192,28 @@ export default function userCalendar() {
   // ------------------------------------------------
   const addEvent = eventData => {
     console.log('CREATING ========> ', eventData)
-    store.dispatch('calendar/addEvent', { event: eventData }).then(() => {
+    store.dispatch('orders/createVisit', {
+      id: eventData.order.id,
+      data: {
+        room_id: eventData.room.id,
+        date: eventData.date,
+        start_time: eventData.start_time,
+        end_time: eventData.end_time,
+        visit_status_id: eventData.visit_status_id,
+      },
+    }).then(() => {
       // eslint-disable-next-line no-use-before-define
       refetchEvents()
+    }).catch(error => {
+      toast({
+        component: ToastificationContent,
+        props: {
+          title: 'Oops..',
+          text: error.response.data.errors[Object.keys(error.response.data.errors)[0]][0],
+          icon: 'AlertTriangleIcon',
+          variant: 'danger',
+        },
+      })
     })
   }
 
@@ -215,6 +245,7 @@ export default function userCalendar() {
   // refetchEvents
   // ------------------------------------------------
   const refetchEvents = () => {
+    // ->
     calendarApi.refetchEvents()
   }
 
@@ -243,6 +274,73 @@ export default function userCalendar() {
       .then(response => {
         console.log('+++++++++========> ', response.data)
         successCallback(response.data)
+      })
+      .catch(() => {
+        toast({
+          component: ToastificationContent,
+          props: {
+            title: 'Error fetching calendar events',
+            icon: 'AlertTriangleIcon',
+            variant: 'danger',
+          },
+        })
+      })
+    console.log('==========>', info)
+    store
+      .dispatch('visits/browse', '')
+      .then(response => {
+        console.log('+++++++++========> ', response.data.data)
+        console.log('+++++++++========> ', response.data.data.map(visit => ({
+          allDay: false,
+          start: new Date(`${visit.date} ${visit.start_time}`).toISOString(),
+          startStr: new Date(`${visit.date} ${visit.start_time}`),
+          end: new Date(`${visit.date} ${visit.end_time}`),
+          endStr: new Date(`${visit.date} ${visit.end_time}`).toISOString(),
+          timeZone: 'local',
+          id: visit.id,
+          url: 'abc',
+          title: `${visit.room.name}`,
+          extendedProps: {
+            calendar: visit.visit_status.name,
+          },
+          room_id: visit.room.id,
+
+          date: visit.date,
+          start_time: visit.start_time,
+          end_time: visit.end_time,
+          visit_status_id: visit.visit_status_id,
+
+          order: visit.bookable,
+          room: visit.room,
+          rooms: visit.bookable ? visit.bookable.package.rooms : [],
+          customers: visit.bookable ? visit.bookable.customers : [],
+        })))
+
+        successCallback(response.data.data.map(visit => ({
+          allDay: false,
+          start: new Date(`${visit.date} ${visit.start_time}`),
+          startStr: new Date(`${visit.date} ${visit.start_time}`).toISOString(),
+          end: new Date(`${visit.date} ${visit.end_time}`),
+          endStr: new Date(`${visit.date} ${visit.end_time}`).toISOString(),
+          timeZone: 'local',
+          id: visit.id,
+          url: '',
+          title: `${visit.room.name}`,
+          extendedProps: {
+            calendar: visit.visit_status.name,
+          },
+          room_id: visit.room.id,
+
+          date: visit.date,
+          start_time: visit.start_time,
+          end_time: visit.end_time,
+          visit_status_id: visit.visit_status_id,
+
+          order: visit.bookable,
+          room: visit.room,
+          rooms: visit.bookable ? visit.bookable.package.rooms : [],
+          customers: visit.bookable ? visit.bookable.customers : [],
+        })))
       })
       .catch(() => {
         toast({

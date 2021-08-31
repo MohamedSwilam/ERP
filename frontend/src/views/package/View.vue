@@ -23,8 +23,8 @@
               </b-col>
               <b-col
                 cols="8"
-                lg="10"
-                md="10"
+                lg="4"
+                md="4"
                 sm="10"
                 class="mb-1"
               >
@@ -37,7 +37,7 @@
                 sm="2"
                 class="mb-1"
               >
-                <b>Title</b>
+                <b>Name</b>
               </b-col>
               <b-col
                 cols="8"
@@ -46,7 +46,25 @@
                 sm="10"
                 class="mb-1"
               >
-                {{ packages.data.title }}
+                {{ packages.data.name }}
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
+                <b>Type</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                {{ packages.data.package_type ? packages.data.package_type.name : '-' }}
               </b-col>
               <b-col
                 cols="4"
@@ -146,6 +164,78 @@
                 >
                   {{ room.name | capitalize }}
                 </b-badge>
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
+                <b>Hours</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                {{ packages.data.hours }}
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
+                <b>Expiration In Hours</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                {{ packages.data.expiration_in_hours }}
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
+                <b>Customers To Reserve</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                {{ packages.data.customers_to_reserve }}
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
+                <b>Customer Type</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                {{ packages.data.customer_type ? packages.data.customer_type.type : '-' }}
               </b-col>
               <b-col
                 cols="4"

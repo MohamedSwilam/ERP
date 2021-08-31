@@ -46,6 +46,7 @@ const router = new VueRouter({
     {
       path: '/calendar',
       name: 'calendar',
+      beforeEnter: guard,
       component: () => import('@/views/calendar/Calendar.vue'),
       meta: {
         pageTitle: 'Calendar',
@@ -191,7 +192,7 @@ const router = new VueRouter({
       path: '/orders',
       name: 'browse-orders',
       component: () => import('../views/order/Browse.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -202,10 +203,25 @@ const router = new VueRouter({
       },
     },
     {
+      path: '/orders/create',
+      name: 'create-order',
+      component: () => import('../views/order/Create.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Order', to: '/orders', active: false },
+          { text: 'Create Order', to: '/orders/create', active: true },
+        ],
+        pageTitle: 'Create Order',
+        // permission: 'create_order',
+      },
+    },
+    {
       path: '/orders/:id',
       name: 'view-order',
       component: () => import('../views/order/View.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -224,7 +240,7 @@ const router = new VueRouter({
       path: '/events',
       name: 'browse-events',
       component: () => import('../views/event/Browse.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -238,7 +254,7 @@ const router = new VueRouter({
       path: '/events/:id',
       name: 'view-event',
       component: () => import('../views/event/View.vue'),
-      // beforeEnter: guard,
+      beforeEnter: guard,
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
@@ -310,6 +326,23 @@ const router = new VueRouter({
         ],
         pageTitle: 'Edit Package',
         permission: 'update_package',
+      },
+    },
+    // =============================================================================
+    // OPERATIONS ROUTES
+    // =============================================================================
+    {
+      path: '/operations',
+      name: 'browse-operations',
+      component: () => import('../views/operation/Browse.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Operations', to: '/operations', active: true },
+        ],
+        pageTitle: 'Operations',
+        permission: 'browse_order',
       },
     },
     // =============================================================================
