@@ -15,7 +15,10 @@ import user from './user/moduleUser'
 import customer from './customer'
 import packages from './package'
 import orders from './order'
+import events from './event'
 import visits from './visit'
+import reports from './report'
+import accounting from './accounting'
 import comment from './comment'
 import seed from './seed'
 import rolesAndPermissions from './roles-and-permissions/moduleRolesAndPermissions'
@@ -36,7 +39,10 @@ export default new Vuex.Store({
     customer,
     packages,
     orders,
+    events,
     visits,
+    reports,
+    accounting,
     comment,
     seed,
     rolesAndPermissions,

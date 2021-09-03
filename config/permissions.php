@@ -51,11 +51,32 @@ return [
         'browse_order_comment',
         'create_order_comment',
     ],
+    'event' => [
+        'browse_event',
+        'view_event',
+        'create_event',
+        'update_event',
+        'delete_event',
+    ],
     'visit' => [
         'browse_visit',
         'view_visit',
         'create_visit',
         'update_visit',
         'delete_visit',
+    ],
+    'report' => [
+        'browse_report',
+        'view_report',
+        'create_report',
+        'update_report',
+        'delete_report',
+    ],
+    'accounting' => [
+        'browse_accounting',
+        'view_accounting',
+        'create_accounting',
+        'update_accounting',
+        'delete_accounting',
     ],
 ];

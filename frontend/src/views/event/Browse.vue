@@ -36,7 +36,7 @@
                   class="my-1"
                   size="sm"
                   variant="primary"
-                  to="/calendar?create=event"
+                  to="/events/create"
                 >
                   <feather-icon
                     icon="PlusIcon"
@@ -80,10 +80,8 @@
                       {{ data.item.customer.name }}
                     </router-link>
                   </template>
-                  <template #cell(created_by)="data">
-                    <router-link :to="`/users/${data.item.created_by.id}`">
-                      {{ data.item.created_by.name }}
-                    </router-link>
+                  <template #cell(event_date)="data">
+                    {{ data.item.event_date | date(true) }} - {{ data.item.event_date | time }}
                   </template>
                   <template #cell(created_at)="data">
                     {{ data.item.created_at | date(true) }} - {{ data.item.created_at | time }}
@@ -108,7 +106,7 @@
                         title="Edit Event"
                         variant="warning"
                         class="btn-icon rounded-circle ml-1"
-                        :to="`/calendar?edit=1`"
+                        :to="`/events/${data.item.id}/edit`"
                       >
                         <feather-icon icon="EditIcon" />
                       </b-button>
@@ -203,59 +201,13 @@ export default {
       fields: [
         { key: 'index', label: '#' },
         { key: 'title', label: 'Title' },
-        { key: 'customer', label: 'Customer' },
-        { key: 'type', label: 'Type' },
-        { key: 'created_by', label: 'Created By' },
+        { key: 'event_date', label: 'Date' },
+        { key: 'host', label: 'Host' },
+        { key: 'event_type', label: 'Type' },
         { key: 'created_at', label: 'Created At' },
         'Action',
       ],
-      data: [
-        {
-          title: 'Event Title A',
-          type: 'Type A',
-          instructor: 'Instructor Name',
-          budget: 'Budget',
-          created_by: {
-            id: 3,
-            name: 'Mohamed Swilam',
-          },
-          customer: {
-            id: 1,
-            name: 'Mohamed Khaled',
-          },
-          created_at: new Date().getTime(),
-        },
-        {
-          title: 'Event Title B',
-          type: 'Type B',
-          instructor: 'Instructor Name',
-          budget: 'Budget',
-          created_by: {
-            id: 3,
-            name: 'Mohamed Swilam',
-          },
-          customer: {
-            id: 1,
-            name: 'Mohamed Khaled',
-          },
-          created_at: new Date().getTime(),
-        },
-        {
-          title: 'Event Title C',
-          type: 'Type C',
-          instructor: 'Instructor Name',
-          budget: 'Budget',
-          created_by: {
-            id: 3,
-            name: 'Mohamed Swilam',
-          },
-          customer: {
-            id: 1,
-            name: 'Mohamed Khaled',
-          },
-          created_at: new Date().getTime(),
-        },
-      ],
+      data: [],
       meta: {
         count: 0,
         current_page: 1,
@@ -267,12 +219,12 @@ export default {
     },
   }),
   mounted() {
-    // this.browseEvents(this.events.meta.current_page)
+    this.browseEvents(this.events.meta.current_page)
   },
   methods: {
     browseEvents(page = 0) {
       this.events.isLoading = true
-      this.$store.dispatch('event/browse', `?paginate=${this.events.recordsPerPage}&page=${page}&filter[search]=${this.events.search}`).then(response => {
+      this.$store.dispatch('events/browse', `?paginate=${this.events.recordsPerPage}&page=${page}&filter[search]=${this.events.search}`).then(response => {
         this.events.data = response.data.data
         this.events.meta = response.data.meta.pagination
         this.events.isLoading = false
@@ -293,7 +245,7 @@ export default {
         centered: true,
       }).then(confirmed => {
         if (confirmed) {
-          this.$store.dispatch('event/delete', data.item.id).then(response => {
+          this.$store.dispatch('events/delete', data.item.id).then(response => {
             this.events.data = this.events.data.filter(eventDetails => eventDetails.id !== data.item.id)
             this.$toast({
               component: ToastificationContent,

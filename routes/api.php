@@ -18,4 +18,5 @@ require __DIR__ . '/api/authentication.php';
 require __DIR__ . '/api/authorization.php';
 require __DIR__ . '/api/customers.php';
 require __DIR__ . '/api/reservations.php';
+require __DIR__ . '/api/statistics.php';
 require __DIR__ . '/api/comments.php';

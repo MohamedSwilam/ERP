@@ -1,6 +1,7 @@
 <?php
 
 use App\Modules\Reservations\App\Controllers\CustomerVisitController;
+use App\Modules\Reservations\App\Controllers\EventController;
 use App\Modules\Reservations\App\Controllers\OrderCommentController;
 use App\Modules\Reservations\App\Controllers\OrderController;
 use App\Modules\Reservations\App\Controllers\OrderCustomerVisitController;
@@ -27,6 +28,10 @@ Route::get('orders/{order}/comments', [OrderCommentController::class, 'index'])
     ->middleware('auth:api');
 
 Route::post('orders/{order}/comments', [OrderCommentController::class, 'store'])
+    ->middleware('auth:api');
+
+Route::resource('events', EventController::class)
+    ->except(['edit', 'create'])
     ->middleware('auth:api');
 
 Route::resource('visits', CustomerVisitController::class)

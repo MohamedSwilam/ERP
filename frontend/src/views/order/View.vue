@@ -293,6 +293,149 @@
         </b-overlay>
       </b-col>
     </b-row>
+    <b-row v-if="can('browse_visit')">
+      <b-col cols="12">
+        <b-overlay
+          :show="visits.isLoading"
+          rounded="sm"
+        >
+          <b-card-actions
+            ref="visitsCard"
+            title="Visits List"
+            action-collapse
+          >
+            <b-modal
+              id="delete-order-modal"
+              title="Are you sure?"
+              ok-only
+              ok-variant="danger"
+              ok-title="Yes, Delete"
+              modal-class="modal-danger"
+              centered
+              no-close-on-backdrop
+            >
+              <b-card-text>
+                You will not be able to retrieve this again!
+              </b-card-text>
+            </b-modal>
+            <b-row>
+              <b-col
+                cols="6"
+                align-h="center"
+              >
+                <!--                <b-button-->
+                <!--                  v-if="can('create_order')"-->
+                <!--                  v-ripple.400="'rgba(255,255,255,0.15)'"-->
+                <!--                  size="sm"-->
+                <!--                  variant="primary"-->
+                <!--                  to="/visits/create"-->
+                <!--                >-->
+                <!--                  <feather-icon-->
+                <!--                    icon="PlusIcon"-->
+                <!--                    class="mr-50"-->
+                <!--                  />-->
+                <!--                  <span class="align-middle">Create Order</span>-->
+                <!--                </b-button>-->
+              </b-col>
+              <b-col
+                cols="6"
+                align-h="center"
+                class="text-right mb-2"
+              >
+                <b-input-group style="position: relative;top: 13px;">
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="SearchIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="search"
+                    v-model="visits.search"
+                    size="sm"
+                    placeholder="Search"
+                    @change="browseVisits"
+                  />
+                </b-input-group>
+              </b-col>
+              <b-col cols="12">
+                <b-table
+                  responsive
+                  :outlined="true"
+                  :items="visits.data"
+                  :fields="visits.fields"
+                  :head-variant="'dark'"
+                >
+                  <!-- A virtual column -->
+                  <template #cell(index)="data">
+                    {{ visits.meta.current_page * visits.recordsPerPage - visits.recordsPerPage + data.index + 1 }}
+                  </template>
+                  <template #cell(visit_status)="data">
+                    <b-badge
+                      v-if="data.item.visit_status"
+                      :variant="data.item.visit_status.color"
+                      class="mb-5-px"
+                    >
+                      {{ data.item.visit_status.name }}
+                    </b-badge>
+                  </template>
+                  <template #cell(room)="data">
+                    {{ data.item.room ? data.item.room.name : '-' }}
+                  </template>
+                </b-table>
+              </b-col>
+              <b-col
+                md="2"
+                sm="4"
+                xs="4"
+                class="my-1"
+              >
+                <b-form-group class="mb-0">
+                  <label class="d-inline-block text-sm-left mr-50">Per page</label>
+                  <b-form-select
+                    id="perPageSelect"
+                    v-model="visits.recordsPerPage"
+                    size="sm"
+                    :options="visits.paginateOptions"
+                    class="w-50"
+                    @change="browseVisits(1)"
+                  />
+                </b-form-group>
+              </b-col>
+              <b-col
+                md="10"
+                sm="8"
+                xs="8"
+                class="my-1"
+              >
+                <b-pagination
+                  v-model="visits.meta.current_page"
+                  :total-rows="visits.meta.total"
+                  :per-page="visits.recordsPerPage"
+                  align="right"
+                  class="my-0"
+                  first-number
+                  last-number
+                  prev-class="prev-item"
+                  next-class="next-item"
+                  @change="browseVisits"
+                >
+                  <template #prev-text>
+                    <feather-icon
+                      icon="ChevronLeftIcon"
+                      size="18"
+                    />
+                  </template>
+                  <template #next-text>
+                    <feather-icon
+                      icon="ChevronRightIcon"
+                      size="18"
+                    />
+                  </template>
+                </b-pagination>
+              </b-col>
+            </b-row>
+          </b-card-actions>
+        </b-overlay>
+      </b-col>
+    </b-row>
     <b-row v-if="can('browse_order_comment')">
       <b-col cols="12">
         <b-overlay
@@ -527,6 +670,29 @@ export default {
         isDeleted: false,
       },
     },
+    visits: {
+      isLoading: false,
+      search: '',
+      paginateOptions: [5, 10, 25, 50, 100, 250],
+      recordsPerPage: 50,
+      fields: [
+        { key: 'index', label: '#' },
+        { key: 'date', label: 'Date' },
+        { key: 'start_time', label: 'Start Time' },
+        { key: 'end_time', label: 'End Time' },
+        { key: 'room', label: 'Room' },
+        { key: 'visit_status', label: 'Status' },
+      ],
+      data: [],
+      meta: {
+        count: 0,
+        current_page: 1,
+        links: {},
+        per_page: 0,
+        total: 0,
+        total_pages: 0,
+      },
+    },
     comments: {
       isLoading: false,
       isCreateLoading: false,
@@ -549,6 +715,10 @@ export default {
 
     if (this.can('browse_order_comment')) {
       this.browseComments()
+    }
+
+    if (this.can('browse_visit')) {
+      this.browseVisits()
     }
   },
   methods: {
@@ -599,6 +769,19 @@ export default {
           }
         })
     },
+
+    browseVisits(page = 0) {
+      this.visits.isLoading = true
+      this.$store.dispatch('visits/browse', `?paginate=${this.visits.recordsPerPage}&page=${page}&filter[search]=${this.visits.search}&order=${this.$route.params.id}`).then(response => {
+        this.visits.data = response.data.data
+        this.visits.meta = response.data.meta.pagination
+        this.visits.isLoading = false
+      }).catch(error => {
+        console.error(error)
+        this.visits.isLoading = false
+      })
+    },
+
     browseComments() {
       this.comments.isLoading = true
       this.$store.dispatch('orders/browseComments', {
@@ -722,6 +905,16 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+@import '~@/assets/scss/variables/_variables.scss';
+.table .thead-dark th {
+    background-color: $primary !important;
+    border-color: #195cff !important;
+}
+.dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
+    color: white !important;
+}
+.mb-5-px {
+    margin-bottom: 5px;
+}
 </style>

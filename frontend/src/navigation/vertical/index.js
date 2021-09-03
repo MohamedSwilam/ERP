@@ -31,7 +31,7 @@ export default [
     title: 'Events',
     route: 'browse-events',
     icon: 'ClipboardIcon',
-    // permission: 'browse_event',
+    permission: 'browse_event',
   },
   {
     title: 'Packages',
@@ -44,6 +44,18 @@ export default [
     route: 'browse-operations',
     icon: 'ActivityIcon',
     permission: 'browse_order',
+  },
+  {
+    title: 'Reports',
+    route: 'browse-reports',
+    icon: 'FileTextIcon',
+    permission: 'browse_report',
+  },
+  {
+    title: 'Accounting',
+    route: 'browse-accounting',
+    icon: 'DollarSignIcon',
+    permission: 'browse_accounting',
   },
   {
     title: 'Roles & Permissions',

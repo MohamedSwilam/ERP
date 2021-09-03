@@ -13,13 +13,19 @@ use App\Modules\Customers\Domain\Models\CustomerType;
 use App\Modules\Customers\Domain\Policies\CustomerPolicy;
 use App\Modules\Customers\Domain\Policies\CustomerTypePolicy;
 use App\Modules\Reservations\Domain\Models\CustomerVisit;
+use App\Modules\Reservations\Domain\Models\Event;
 use App\Modules\Reservations\Domain\Models\Order;
 use App\Modules\Reservations\Domain\Models\Package;
 use App\Modules\Reservations\Domain\Models\Room;
+use App\Modules\Reservations\Domain\Policies\EventPolicy;
 use App\Modules\Reservations\Domain\Policies\OrderPolicy;
 use App\Modules\Reservations\Domain\Policies\PackagePolicy;
 use App\Modules\Reservations\Domain\Policies\RoomPolicy;
 use App\Modules\Reservations\Domain\Policies\VisitPolicy;
+use App\Modules\Statistics\Domain\Models\Accounting;
+use App\Modules\Statistics\Domain\Models\Report;
+use App\Modules\Statistics\Domain\Policies\AccountingPolicy;
+use App\Modules\Statistics\Domain\Policies\ReportPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
 use Spatie\Permission\Models\Permission;
@@ -42,7 +48,10 @@ class AuthServiceProvider extends ServiceProvider
         Room::class => RoomPolicy::class,
         Comment::class => CommentPolicy::class,
         Order::class => OrderPolicy::class,
-        CustomerVisit::class => VisitPolicy::class
+        Event::class => EventPolicy::class,
+        CustomerVisit::class => VisitPolicy::class,
+        Report::class => ReportPolicy::class,
+        Accounting::class => AccountingPolicy::class
     ];
 
     /**

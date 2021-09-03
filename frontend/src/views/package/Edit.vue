@@ -345,7 +345,7 @@
                         <validation-provider
                           v-slot="{ errors }"
                           name="Package description"
-                          rules="required"
+                          rules=""
                         >
                           <b-form-textarea
                             v-model="packages.form.description"

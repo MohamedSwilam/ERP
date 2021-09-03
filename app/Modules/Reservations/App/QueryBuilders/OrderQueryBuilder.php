@@ -24,6 +24,14 @@ class OrderQueryBuilder extends QueryBuilder
             })->get();
         }
 
+        if ($request->input('lastVisit')) {
+            $query->with('lastVisit')->get();
+        }
+
+        if ($request->input('lastComment')) {
+            $query->with('lastComment')->get();
+        }
+
         $this
             ->allowedFilters([
                 AllowedFilter::custom('search', new FuzzyFilter(

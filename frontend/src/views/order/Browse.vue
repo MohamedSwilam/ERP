@@ -74,20 +74,20 @@
                   <template #cell(index)="data">
                     {{ orders.meta.current_page * orders.recordsPerPage - orders.recordsPerPage + data.index + 1 }}
                   </template>
-                    <template #cell(customers)="data">
-                        <router-link
-                            v-for="(customer, index) in data.item.customers"
-                            :key="index"
-                            :to="`/customers/${customer.id}`"
-                        >
-                            <b-badge
-                                :variant="'primary'"
-                                class="mb-5-px"
-                            >
-                                #TKB{{ customer.id }} - {{ customer.name | capitalize }}
-                            </b-badge>
-                        </router-link>
-                    </template>
+                  <template #cell(customers)="data">
+                    <router-link
+                      v-for="(customer, index) in data.item.customers"
+                      :key="index"
+                      :to="`/customers/${customer.id}`"
+                    >
+                      <b-badge
+                        :variant="'primary'"
+                        class="mb-5-px"
+                      >
+                        #TKB{{ customer.id }} - {{ customer.name | capitalize }}
+                      </b-badge>
+                    </router-link>
+                  </template>
                   <template #cell(expires_at)="data">
                     {{ data.item.expires_at | date(true) }} - {{ data.item.expires_at | time }}
                   </template>

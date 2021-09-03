@@ -27,7 +27,7 @@ class UpdatePackageDto extends DataTransferObject
 
     public int $customers_to_reserve;
 
-    public int $customer_type_id;
+    public ?int $customer_type_id;
 
     public array $rooms;
 
@@ -46,7 +46,8 @@ class UpdatePackageDto extends DataTransferObject
         $data['hours'] = (int) $data['hours'];
         $data['expiration_in_hours'] = (int) $data['expiration_in_hours'];
         $data['customers_to_reserve'] = (int) $data['customers_to_reserve'];
-        $data['customer_type_id'] = (int) $data['customer_type_id'];
+        $data['customer_type_id'] = $data['customer_type_id']
+            ? (int) $data['customer_type_id'] : null;
 
         return new self($data);
     }

@@ -84,7 +84,24 @@
                     {{ data.item.package.price }}
                   </template>
                   <template #cell(created_at)="data">
-                    {{ data.item.created_at | date(true) }} - {{ data.item.created_at | time }}
+                    {{ data.item.created_at | date(true) }}
+                    <br>
+                    {{ data.item.created_at | time }}
+                  </template>
+                  <template #cell(last_visit)="data">
+                    {{ data.item.last_visit.length > 0 ? data.item.last_visit[0].date : 'No Visits' }}
+                  </template>
+                  <template #cell(last_comment)="data">
+                    <span
+                      v-if="data.item.last_comment.length > 0"
+                    >
+                      {{ data.item.last_comment[0].created_at | date(true) }}
+                      <br>
+                      {{ data.item.last_comment[0].created_at | time }}
+                    </span>
+                    <span v-else>
+                      No Comments
+                    </span>
                   </template>
                 </b-table>
               </b-col>
@@ -170,6 +187,8 @@ export default {
         { key: 'remaining_hours', label: 'Remaining Hours' },
         { key: 'seller', label: 'Sales' },
         { key: 'created_at', label: 'Created At' },
+        { key: 'last_visit', label: 'Last Visit' },
+        { key: 'last_comment', label: 'Last Comment' },
       ],
       data: [],
       meta: {
@@ -188,7 +207,7 @@ export default {
   methods: {
     browseOrders(page = 0) {
       this.orders.isLoading = true
-      this.$store.dispatch('orders/browse', `?paginate=${this.orders.recordsPerPage}&page=${page}&filter[search]=${this.orders.search}`).then(response => {
+      this.$store.dispatch('orders/browse', `?paginate=${this.orders.recordsPerPage}&page=${page}&filter[search]=${this.orders.search}&lastVisit=true&lastComment=true`).then(response => {
         this.orders.data = response.data.data
         this.orders.meta = response.data.meta.pagination
         this.orders.isLoading = false

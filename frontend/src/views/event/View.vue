@@ -11,7 +11,7 @@
             title="Event Details"
             action-collapse
           >
-            <b-row>
+            <b-row v-if="events.data">
               <b-col
                 cols="4"
                 lg="2"
@@ -55,7 +55,7 @@
                 sm="2"
                 class="mb-1"
               >
-                <b>Customer</b>
+                <b>Date</b>
               </b-col>
               <b-col
                 cols="8"
@@ -64,9 +64,7 @@
                 sm="10"
                 class="mb-1"
               >
-                <router-link :to="`/customers/${events.data.customer.id}`">
-                  {{ events.data.customer.name }}
-                </router-link>
+                {{ events.data.event_date | date(true) }} - {{ events.data.event_date | time }}
               </b-col>
               <b-col
                 cols="4"
@@ -84,7 +82,7 @@
                 sm="10"
                 class="mb-1"
               >
-                {{ events.data.type }}
+                {{ events.data.event_type }}
               </b-col>
               <b-col
                 cols="4"
@@ -183,7 +181,7 @@
                 sm="2"
                 class="mb-1"
               >
-                <b>Target Segment</b>
+                <b>Host</b>
               </b-col>
               <b-col
                 cols="8"
@@ -192,7 +190,7 @@
                 sm="10"
                 class="mb-1"
               >
-                {{ events.data.target_segment }}
+                {{ events.data.host }}
               </b-col>
               <b-col
                 cols="4"
@@ -201,7 +199,7 @@
                 sm="2"
                 class="mb-1"
               >
-                <b>Created By</b>
+                <b>Duration</b>
               </b-col>
               <b-col
                 cols="8"
@@ -210,9 +208,7 @@
                 sm="10"
                 class="mb-1"
               >
-                <router-link :to="`/users/${events.data.created_by.id}`">
-                  {{ events.data.created_by.name }}
-                </router-link>
+                {{ events.data.duration }}
               </b-col>
               <b-col
                 cols="4"
@@ -262,10 +258,10 @@
                   style="text-align: center;"
                 >
                   <b-button
-                    v-if="can('update_events')"
+                    v-if="can('update_event')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     variant="warning"
-                    :to="`/calendar?edit=3`"
+                    :to="`/events/${$route.params.id}/edit`"
                   >
                     <feather-icon
                       icon="EditIcon"
@@ -274,7 +270,7 @@
                     <span class="align-middle">Edit Event</span>
                   </b-button>
                   <b-button
-                    v-if="can('delete_events')"
+                    v-if="can('delete_event')"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     class="ml-1"
                     :disabled="events.isLoadingDelete"
@@ -316,32 +312,11 @@ export default {
     events: {
       isLoading: false,
       isLoadingDelete: false,
-      data: {
-        id: 1,
-        title: 'Event Title A',
-        type: 'Type A',
-        instructor: 'Instructor Name',
-        budget: 300,
-        num_of_attendance: 5,
-        expenses: 0,
-        revenue: 0,
-        target_segment: 'Target Segment',
-        customer: {
-          id: 2,
-          name: 'Mohamed Swilam',
-        },
-        created_by: {
-          id: 3,
-          name: 'Mohamed Swilam',
-        },
-        created_at: new Date().getTime(),
-        updated_at: new Date().getTime(),
-        isDeleted: false,
-      },
+      data: null,
     },
   }),
   mounted() {
-    // this.viewEvent()
+    this.viewEvent()
   },
   methods: {
     viewEvent() {
@@ -383,7 +358,7 @@ export default {
                 position: 'bottom-right',
                 timeout: 5000,
               })
-              this.$router.push('/eventss')
+              this.$router.push('/events')
             }).catch(error => {
               console.error(error)
               this.events.isLoadingDelete = false

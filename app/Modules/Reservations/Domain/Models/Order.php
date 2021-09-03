@@ -69,4 +69,18 @@ class Order extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public function lastVisit() {
+        return $this
+            ->morphMany(CustomerVisit::class, 'bookable')
+            ->orderBy('created_at', 'desc')
+            ->limit(1);
+    }
+
+    public function lastComment() {
+        return $this
+            ->morphMany(Comment::class, 'commentable')
+            ->orderBy('created_at', 'desc')
+            ->limit(1);
+    }
 }

@@ -18,6 +18,13 @@ class CustomerVisitQueryBuilder extends QueryBuilder
 
         parent::__construct($query, $request);
 
+        if ($request->input('order')) {
+            $query
+                ->where('bookable_type', 'App\\Modules\\Reservations\\Domain\\Models\\Order')
+                ->where('bookable_id', $request->input('order'))
+                ->get();
+        }
+
         $this
             ->allowedFilters([
                 AllowedFilter::custom('search', new FuzzyFilter(

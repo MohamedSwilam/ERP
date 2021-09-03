@@ -26,7 +26,7 @@ class UpdatePackageRequest extends FormRequest
         return [
             'package_type_id' => 'required|exists:package_types,id',
             'name' => 'required|string|max:255',
-            'description' => 'string',
+            'description' => 'nullable|string',
             'membership' => 'bool',
             'price' => [
                 'required',
@@ -48,7 +48,7 @@ class UpdatePackageRequest extends FormRequest
                 'required',
                 'numeric'
             ],
-            'customer_type_id' => 'required|exists:customer_types,id',
+            'customer_type_id' => 'nullable|exists:customer_types,id',
             'rooms' => 'required',
             'rooms.*' => [
                 'required',

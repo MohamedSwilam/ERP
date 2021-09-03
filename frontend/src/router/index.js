@@ -251,6 +251,21 @@ const router = new VueRouter({
       },
     },
     {
+      path: '/events/create',
+      name: 'create-event',
+      component: () => import('../views/event/Create.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Event', to: '/events', active: false },
+          { text: 'Create Event', to: '/events/create', active: true },
+        ],
+        pageTitle: 'Add Event',
+        permission: 'create_event',
+      },
+    },
+    {
       path: '/events/:id',
       name: 'view-event',
       component: () => import('../views/event/View.vue'),
@@ -263,6 +278,22 @@ const router = new VueRouter({
         ],
         pageTitle: 'View Event',
         permission: 'view_event',
+      },
+    },
+    {
+      path: '/events/:id/edit',
+      name: 'edit-event',
+      component: () => import('../views/event/Edit.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Event', to: '/events', active: false },
+          { text: 'View Event', to: '/events/:id', active: false },
+          { text: 'Edit Event', to: '/events/:id/edit', active: true },
+        ],
+        pageTitle: 'Edit Event',
+        permission: 'update_event',
       },
     },
     // =============================================================================
@@ -326,6 +357,117 @@ const router = new VueRouter({
         ],
         pageTitle: 'Edit Package',
         permission: 'update_package',
+      },
+    },
+    // =============================================================================
+    // REPORT ROUTES
+    // =============================================================================
+    {
+      path: '/reports',
+      name: 'browse-reports',
+      component: () => import('../views/report/Browse.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Report', to: '/reports', active: true },
+        ],
+        pageTitle: 'Report',
+        permission: 'browse_report',
+      },
+    },
+    {
+      path: '/reports/create',
+      name: 'create-report',
+      component: () => import('../views/report/Create.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Report', to: '/reports', active: false },
+          { text: 'Create Report', to: '/reports/create', active: true },
+        ],
+        pageTitle: 'Add Report',
+        permission: 'create_report',
+      },
+    },
+    {
+      path: '/reports/:id',
+      name: 'view-report',
+      component: () => import('../views/report/View.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Report', to: '/reports', active: false },
+          { text: 'View Report', to: '/reports/:id', active: true },
+        ],
+        pageTitle: 'View Report',
+        permission: 'view_report',
+      },
+    },
+    {
+      path: '/reports/:id/edit',
+      name: 'edit-report',
+      component: () => import('../views/report/Edit.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Reports', to: '/reports', active: false },
+          { text: 'Report', to: '/reports/:id', active: false },
+          { text: 'Edit', active: true },
+        ],
+        pageTitle: 'Edit Report',
+        permission: 'update_report',
+      },
+    },
+    // =============================================================================
+    // ACCOUNTING ROUTES
+    // =============================================================================
+    {
+      path: '/accounting',
+      name: 'browse-accounting',
+      component: () => import('../views/accounting/Browse.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Accounting', to: '/accounting', active: true },
+        ],
+        pageTitle: 'Accounting',
+        permission: 'browse_accounting',
+      },
+    },
+    {
+      path: '/accounting/create',
+      name: 'create-accounting',
+      component: () => import('../views/accounting/Create.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Accounting', to: '/accounting', active: false },
+          { text: 'Create Accounting', to: '/accounting/create', active: true },
+        ],
+        pageTitle: 'Add Accounting',
+        permission: 'create_accounting',
+      },
+    },
+    {
+      path: '/accounting/:id/edit',
+      name: 'edit-accounting',
+      component: () => import('../views/accounting/Edit.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Accounting', to: '/accounting', active: false },
+          { text: 'Details', to: '/accounting/:id', active: false },
+          { text: 'Edit', active: true },
+        ],
+        pageTitle: 'Edit Accounting',
+        permission: 'update_accounting',
       },
     },
     // =============================================================================
