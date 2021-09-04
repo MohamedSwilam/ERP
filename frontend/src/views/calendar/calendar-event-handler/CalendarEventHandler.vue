@@ -15,7 +15,7 @@
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center content-sidebar-header px-2 py-1">
           <h5 class="mb-0">
-            Add Visit
+            {{ eventLocal.id ? 'Edit Visit' : 'Add Visit' }}
           </h5>
           <div>
             <feather-icon
@@ -38,6 +38,7 @@
         >
           <!-- Body -->
           <validation-observer
+            v-if="!eventLocal.id"
             #default="{ handleSubmit }"
             ref="refFormObserver"
           >
@@ -47,7 +48,6 @@
               @submit.prevent="handleSubmit(onSubmit)"
               @reset.prevent="resetForm"
             >
-
               <!-- Customer -->
               <b-form-group
                 label="Customer"
@@ -236,237 +236,184 @@
                 </b-form-group>
               </validation-provider>
 
-              <!-- All Day -->
-              <!--              <b-form-group>-->
-              <!--                <b-form-checkbox-->
-              <!--                  v-model="eventLocal.isEvent"-->
-              <!--                  name="check-button"-->
-              <!--                  inline-->
-              <!--                  switch-->
-              <!--                >-->
-              <!--                  Is Event-->
-              <!--                </b-form-checkbox>-->
-              <!--              </b-form-group>-->
+              <!-- Form Actions -->
+              <div class="d-flex mt-2">
+                <b-button
+                  v-ripple.400="'rgba(255, 255, 255, 0.15)'"
+                  variant="primary"
+                  class="mr-2"
+                  type="submit"
+                >
+                  {{ eventLocal.id ? 'Update' : 'Add ' }}
+                </b-button>
+                <b-button
+                  v-ripple.400="'rgba(186, 191, 199, 0.15)'"
+                  type="reset"
+                  variant="outline-secondary"
+                >
+                  Reset
+                </b-button>
+              </div>
+            </b-form>
+          </validation-observer>
 
-              <!--              <template v-if="eventLocal.isEvent">-->
-              <!--                <b-form-group-->
-              <!--                  label="Event Title"-->
-              <!--                  label-for="title"-->
-              <!--                >-->
-              <!--                  <validation-provider-->
-              <!--                    v-slot="{ errors }"-->
-              <!--                    :rules="eventLocal.isEvent ? 'required':''"-->
-              <!--                    name="title"-->
-              <!--                    vid="title"-->
-              <!--                  >-->
-              <!--                    <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">-->
-              <!--                      <b-input-group-prepend is-text>-->
-              <!--                        <feather-icon icon="ClipboardIcon" />-->
-              <!--                      </b-input-group-prepend>-->
-              <!--                      <b-form-input-->
-              <!--                        id="title"-->
-              <!--                        v-model="eventLocal.title"-->
-              <!--                        :state="errors.length > 0 ? false:null"-->
-              <!--                        placeholder="Event Title"-->
-              <!--                      />-->
-              <!--                    </b-input-group>-->
-              <!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-              <!--                  </validation-provider>-->
-              <!--                </b-form-group>-->
-              <!--              </template>-->
+          <validation-observer
+            v-else
+            #default="{ handleSubmit }"
+            ref="refUpdateFormObserver"
+          >
+            <!-- Form -->
+            <b-form
+              class="p-2"
+              @submit.prevent="handleSubmit(updateVisit)"
+              @reset.prevent="resetForm"
+            >
+              <!-- Rooms -->
+              <b-form-group
+                v-if="eventLocal.order && eventLocal.order.package"
+                label="Room"
+                label-for="room"
+              >
+                <validation-provider
+                  v-slot="{ errors }"
+                  rules="required"
+                  name="Room"
+                  vid="room"
+                >
+                  <v-select
+                    v-model="eventLocal.room"
+                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :options="eventLocal.order.package.rooms"
+                    label="name"
+                    :state="errors.length > 0 ? false:null"
+                  />
+                  <small class="text-danger">{{ errors[0] }}</small>
+                </validation-provider>
+              </b-form-group>
 
-              <!--              <template v-if="eventLocal.isEvent">-->
-              <!--                <b-form-group-->
-              <!--                  label="Event Type"-->
-              <!--                  label-for="type"-->
-              <!--                >-->
-              <!--                  <validation-provider-->
-              <!--                    v-slot="{ errors }"-->
-              <!--                    :rules="eventLocal.isEvent ? 'required':''"-->
-              <!--                    name="type"-->
-              <!--                    vid="type"-->
-              <!--                  >-->
-              <!--                    <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">-->
-              <!--                      <b-input-group-prepend is-text>-->
-              <!--                        <feather-icon icon="ClipboardIcon" />-->
-              <!--                      </b-input-group-prepend>-->
-              <!--                      <b-form-input-->
-              <!--                        id="type"-->
-              <!--                        v-model="eventLocal.type"-->
-              <!--                        :state="errors.length > 0 ? false:null"-->
-              <!--                        placeholder="Event type"-->
-              <!--                      />-->
-              <!--                    </b-input-group>-->
-              <!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-              <!--                  </validation-provider>-->
-              <!--                </b-form-group>-->
-              <!--              </template>-->
+              <!-- Date -->
+              <validation-provider
+                #default="validationContext"
+                name="Date"
+                rules="required"
+              >
+                <b-form-group
+                  label="Date"
+                  label-for="date"
+                  :state="getValidationState(validationContext)"
+                >
+                  <flat-pickr
+                    v-model="eventLocal.date"
+                    class="form-control"
+                    :config="{ enableTime: false, dateFormat: 'Y-m-d'}"
+                  />
+                  <b-form-invalid-feedback :state="getValidationState(validationContext)">
+                    {{ validationContext.errors[0] }}
+                  </b-form-invalid-feedback>
+                </b-form-group>
+              </validation-provider>
 
-              <!--              <template v-if="eventLocal.isEvent">-->
-              <!--                <b-form-group-->
-              <!--                  label="Instructor"-->
-              <!--                  label-for="instructor"-->
-              <!--                >-->
-              <!--                  <validation-provider-->
-              <!--                    v-slot="{ errors }"-->
-              <!--                    :rules="eventLocal.isEvent ? 'required':''"-->
-              <!--                    name="Instructor"-->
-              <!--                    vid="instructor"-->
-              <!--                  >-->
-              <!--                    <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">-->
-              <!--                      <b-input-group-prepend is-text>-->
-              <!--                        <feather-icon icon="UserIcon" />-->
-              <!--                      </b-input-group-prepend>-->
-              <!--                      <b-form-input-->
-              <!--                        id="instructor"-->
-              <!--                        v-model="eventLocal.instructor"-->
-              <!--                        :state="errors.length > 0 ? false:null"-->
-              <!--                        placeholder="Instructor"-->
-              <!--                      />-->
-              <!--                    </b-input-group>-->
-              <!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-              <!--                  </validation-provider>-->
-              <!--                </b-form-group>-->
-              <!--              </template>-->
+              <!-- Start Time -->
+              <validation-provider
+                #default="validationContext"
+                name="Start Time"
+                rules="required"
+              >
+                <b-form-group
+                  label="Start Time"
+                  label-for="start-time"
+                  :state="getValidationState(validationContext)"
+                >
+                  <b-form-timepicker
+                    v-model="eventLocal.start_time"
+                    locale="en"
+                  />
+                  <b-form-invalid-feedback :state="getValidationState(validationContext)">
+                    {{ validationContext.errors[0] }}
+                  </b-form-invalid-feedback>
+                </b-form-group>
+              </validation-provider>
 
-              <!--              <template v-if="eventLocal.isEvent">-->
-              <!--                <b-form-group-->
-              <!--                  label="Budget"-->
-              <!--                  label-for="budget"-->
-              <!--                >-->
-              <!--                  <validation-provider-->
-              <!--                    v-slot="{ errors }"-->
-              <!--                    :rules="eventLocal.isEvent ? 'required':''"-->
-              <!--                    name="Budget"-->
-              <!--                    vid="budget"-->
-              <!--                  >-->
-              <!--                    <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">-->
-              <!--                      <b-input-group-prepend is-text>-->
-              <!--                        <feather-icon icon="DollarSignIcon" />-->
-              <!--                      </b-input-group-prepend>-->
-              <!--                      <b-form-input-->
-              <!--                        id="budget"-->
-              <!--                        v-model="eventLocal.budget"-->
-              <!--                        type="number"-->
-              <!--                        :state="errors.length > 0 ? false:null"-->
-              <!--                        placeholder="Budget"-->
-              <!--                      />-->
-              <!--                    </b-input-group>-->
-              <!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-              <!--                  </validation-provider>-->
-              <!--                </b-form-group>-->
-              <!--              </template>-->
+              <!-- End Date -->
+              <validation-provider
+                #default="validationContext"
+                name="End Time"
+                rules="required"
+              >
+                <b-form-group
+                  label="End Time"
+                  label-for="end-date"
+                  :state="getValidationState(validationContext)"
+                >
+                  <b-form-timepicker
+                    v-model="eventLocal.end_time"
+                    locale="en"
+                  />
+                  <b-form-invalid-feedback :state="getValidationState(validationContext)">
+                    {{ validationContext.errors[0] }}
+                  </b-form-invalid-feedback>
+                </b-form-group>
+              </validation-provider>
 
-              <!--              <template v-if="eventLocal.isEvent">-->
-              <!--                <b-form-group-->
-              <!--                  label="Expenses"-->
-              <!--                  label-for="expenses"-->
-              <!--                >-->
-              <!--                  <validation-provider-->
-              <!--                    v-slot="{ errors }"-->
-              <!--                    :rules="eventLocal.isEvent ? 'required':''"-->
-              <!--                    name="Expenses"-->
-              <!--                    vid="expenses"-->
-              <!--                  >-->
-              <!--                    <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">-->
-              <!--                      <b-input-group-prepend is-text>-->
-              <!--                        <feather-icon icon="DollarSignIcon" />-->
-              <!--                      </b-input-group-prepend>-->
-              <!--                      <b-form-input-->
-              <!--                        id="expenses"-->
-              <!--                        v-model="eventLocal.expenses"-->
-              <!--                        type="number"-->
-              <!--                        :state="errors.length > 0 ? false:null"-->
-              <!--                        placeholder="Expenses"-->
-              <!--                      />-->
-              <!--                    </b-input-group>-->
-              <!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-              <!--                  </validation-provider>-->
-              <!--                </b-form-group>-->
-              <!--              </template>-->
+              <!-- Status -->
+              <validation-provider
+                #default="validationContext"
+                name="Calendar"
+                rules="required"
+              >
+                <b-form-group
+                  label="Status"
+                  label-for="calendar"
+                  :state="getValidationState(validationContext)"
+                >
+                  <v-select
+                    v-model="eventLocal.visit_status_id"
+                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :options="[
+                      {
+                        id: 1,
+                        label: 'Booking',
+                        color: 'primary'
+                      },
+                      {
+                        id: 2,
+                        label: 'Completed',
+                        color: 'success'
+                      },
+                      {
+                        id: 3,
+                        label: 'Canceled',
+                        color: 'danger'
+                      }
+                    ]"
+                    label="label"
+                    :reduce="calendar => calendar.id"
+                    input-id="calendar"
+                  >
+                    <template #option="{ color, label }">
+                      <div
+                        class="rounded-circle d-inline-block mr-50"
+                        :class="`bg-${color}`"
+                        style="height:10px;width:10px"
+                      />
+                      <span> {{ label }}</span>
+                    </template>
 
-              <!--              <template v-if="eventLocal.isEvent">-->
-              <!--                <b-form-group-->
-              <!--                  label="Revenue"-->
-              <!--                  label-for="revenue"-->
-              <!--                >-->
-              <!--                  <validation-provider-->
-              <!--                    v-slot="{ errors }"-->
-              <!--                    :rules="eventLocal.isEvent ? 'required':''"-->
-              <!--                    name="Revenue"-->
-              <!--                    vid="revenue"-->
-              <!--                  >-->
-              <!--                    <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">-->
-              <!--                      <b-input-group-prepend is-text>-->
-              <!--                        <feather-icon icon="DollarSignIcon" />-->
-              <!--                      </b-input-group-prepend>-->
-              <!--                      <b-form-input-->
-              <!--                        id="revenue"-->
-              <!--                        v-model="eventLocal.revenue"-->
-              <!--                        type="number"-->
-              <!--                        :state="errors.length > 0 ? false:null"-->
-              <!--                        placeholder="Revenue"-->
-              <!--                      />-->
-              <!--                    </b-input-group>-->
-              <!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-              <!--                  </validation-provider>-->
-              <!--                </b-form-group>-->
-              <!--              </template>-->
+                    <template #selected-option="{ color, label }">
+                      <div
+                        class="rounded-circle d-inline-block mr-50"
+                        :class="`bg-${color}`"
+                        style="height:10px;width:10px"
+                      />
+                      <span> {{ label }}</span>
+                    </template>
+                  </v-select>
 
-              <!--              <template v-if="eventLocal.isEvent">-->
-              <!--                <b-form-group-->
-              <!--                  label="Number Of Attendee"-->
-              <!--                  label-for="num_of_attendance"-->
-              <!--                >-->
-              <!--                  <validation-provider-->
-              <!--                    v-slot="{ errors }"-->
-              <!--                    :rules="eventLocal.isEvent ? 'required':''"-->
-              <!--                    name="Number Of Attendee"-->
-              <!--                    vid="num_of_attendance"-->
-              <!--                  >-->
-              <!--                    <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">-->
-              <!--                      <b-input-group-prepend is-text>-->
-              <!--                        <feather-icon icon="UsersIcon" />-->
-              <!--                      </b-input-group-prepend>-->
-              <!--                      <b-form-input-->
-              <!--                        id="num_of_attendance"-->
-              <!--                        v-model="eventLocal.num_of_attendance"-->
-              <!--                        type="number"-->
-              <!--                        :state="errors.length > 0 ? false:null"-->
-              <!--                        placeholder="Number Of Attendee"-->
-              <!--                      />-->
-              <!--                    </b-input-group>-->
-              <!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-              <!--                  </validation-provider>-->
-              <!--                </b-form-group>-->
-              <!--              </template>-->
-
-              <!--              <template v-if="eventLocal.isEvent">-->
-              <!--                <b-form-group-->
-              <!--                  label="Target Segment"-->
-              <!--                  label-for="revenue"-->
-              <!--                >-->
-              <!--                  <validation-provider-->
-              <!--                    v-slot="{ errors }"-->
-              <!--                    :rules="eventLocal.isEvent ? 'required':''"-->
-              <!--                    name="Target Segment"-->
-              <!--                    vid="target_segment"-->
-              <!--                  >-->
-              <!--                    <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">-->
-              <!--                      <b-input-group-prepend is-text>-->
-              <!--                        <feather-icon icon="TargetIcon" />-->
-              <!--                      </b-input-group-prepend>-->
-              <!--                      <b-form-input-->
-              <!--                        id="target_segment"-->
-              <!--                        v-model="eventLocal.target_segment"-->
-              <!--                        :state="errors.length > 0 ? false:null"-->
-              <!--                        placeholder="Target Segment"-->
-              <!--                      />-->
-              <!--                    </b-input-group>-->
-              <!--                    <small class="text-danger">{{ errors[0] }}</small>-->
-              <!--                  </validation-provider>-->
-              <!--                </b-form-group>-->
-              <!--              </template>-->
+                  <b-form-invalid-feedback :state="getValidationState(validationContext)">
+                    {{ validationContext.errors[0] }}
+                  </b-form-invalid-feedback>
+                </b-form-group>
+              </validation-provider>
 
               <!-- Form Actions -->
               <div class="d-flex mt-2">
@@ -502,6 +449,7 @@ import { ValidationProvider, ValidationObserver } from 'vee-validate'
 import { required, email, url } from '@validations'
 import formValidation from '@core/comp-functions/forms/form-validation'
 import { ref, toRefs } from '@vue/composition-api'
+import ToastificationContent from '@core/components/toastification/ToastificationContent'
 import useCalendarEventHandler from './useCalendarEventHandler'
 
 export default {
@@ -540,6 +488,7 @@ export default {
       customers: [],
       orders: [],
       selectedCustomer: null,
+      loadingForm: false,
     }
   },
   watch: {
@@ -547,6 +496,11 @@ export default {
     selectedCustomer(customer) {
       this.eventLocal.selectedCustomer = customer
       this.browseCustomerOrders()
+    },
+    eventLocal(newVal) {
+      if (newVal.id && !this.loadingForm) {
+        this.viewVisit()
+      }
     },
   },
   setup(props, { emit }) {
@@ -597,15 +551,30 @@ export default {
       getValidationState,
     }
   },
-  mounted() {
-    this.eventLocal.isEvent = this.$route.query.create === 'event'
-  },
   methods: {
     browseCustomers(search) {
       this.$store.dispatch('customer/browse', `?paginate=100&page=1&filter[search]=${search}`)
         .then(response => {
           this.eventLocal.customers = this.reformatCustomersData(response.data.data)
         }).catch(error => {
+          console.error(error)
+        })
+    },
+
+    viewVisit() {
+      this.loadingForm = true
+      this.$store.dispatch('visits/view', this.eventLocal.id)
+        .then(response => {
+          this.loadingForm = false
+          console.log('Visit to update', response.data)
+          this.eventLocal.order = response.data.data.bookable
+          this.eventLocal.room = response.data.data.room
+          this.eventLocal.date = response.data.data.date
+          this.eventLocal.start_time = response.data.data.start_time
+          this.eventLocal.end_time = response.data.data.end_time
+          this.eventLocal.visit_status_id = response.data.data.visit_status_id
+        }).catch(error => {
+          this.loadingForm = false
           console.error(error)
         })
     },
@@ -629,6 +598,37 @@ export default {
       return [
         ...orders.map(order => ({ ...order, value: order.id, text: `${order.package.name} - ${order.remaining_hours} remaining hours` })),
       ]
+    },
+
+    updateVisit() {
+      this.$store.dispatch('visits/update', {
+        id: this.eventLocal.id,
+        data: {
+          room_id: this.eventLocal.room.id,
+          date: this.eventLocal.date,
+          start_time: this.eventLocal.start_time,
+          end_time: this.eventLocal.end_time,
+          visit_status_id: this.eventLocal.visit_status_id,
+        },
+      })
+        .then(response => {
+          this.$toast({
+            component: ToastificationContent,
+            props: {
+              title: 'Success',
+              icon: 'CheckCircleIcon',
+              text: response.data.message,
+              variant: 'success',
+            },
+          },
+          {
+            position: 'bottom-right',
+            timeout: 5000,
+          })
+        }).catch(error => {
+          console.error(error)
+          this.$refs.refUpdateFormObserver.setErrors(error.response.data.errors)
+        })
     },
   },
 }

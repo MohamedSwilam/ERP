@@ -34,7 +34,10 @@ export default {
               calendars: calendars.join(','),
             },
           })
-          .then(response => resolve(response))
+          .then(response => {
+            console.log('HERE ========> ', response)
+            resolve(response)
+          })
           .catch(error => reject(error))
       })
     },

@@ -10,6 +10,10 @@ export default {
     return axios.get(`/api/visits/${id}`)
   },
 
+  update(id, data) {
+    return axios.put(`/api/visits/${id}`, data)
+  },
+
   delete(id) {
     return axios.delete(`/api/visits/${id}`)
   },

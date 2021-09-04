@@ -43,6 +43,8 @@ export default function userCalendar() {
   const blankEvent = {
     room_id: null,
     date: '',
+    start: '',
+    end: '',
     start_time: '',
     end_time: '',
     visit_status_id: null,
@@ -56,7 +58,7 @@ export default function userCalendar() {
     selectedCustomer: null,
 
     // customer: '',
-    // order: '',
+    // // order: '',
     // allDay: false,
     // url: '',
     // isEvent: false,
@@ -68,13 +70,9 @@ export default function userCalendar() {
     // revenue: 0,
     // target_segment: '',
     // customer_id: null,
-    // extendedProps: {
-    //   calendar: '',
-    //   guests: [],
-    //   customers: [],
-    //   location: '',
-    //   description: '',
-    // },
+    extendedProps: {
+      calendar: '',
+    },
   }
   const event = ref(JSON.parse(JSON.stringify(blankEvent)))
   const clearEventData = () => {
@@ -167,6 +165,13 @@ export default function userCalendar() {
       title,
       start,
       end,
+      visit_status_id,
+      order,
+      room,
+      customer,
+      orders,
+      rooms,
+      selectedCustomer,
       // eslint-disable-next-line object-curly-newline
       extendedProps: { calendar, guests, location, description },
       allDay,
@@ -177,11 +182,15 @@ export default function userCalendar() {
       title,
       start,
       end,
+      visit_status_id,
+      order,
+      room,
+      customer,
+      orders,
+      rooms,
+      selectedCustomer,
       extendedProps: {
         calendar,
-        guests,
-        location,
-        description,
       },
       allDay,
     }
@@ -267,38 +276,38 @@ export default function userCalendar() {
     if (!info) return
 
     // Fetch Events from API endpoint
-    store
-      .dispatch('calendar/fetchEvents', {
-        calendars: selectedCalendars.value,
-      })
-      .then(response => {
-        console.log('+++++++++========> ', response.data)
-        successCallback(response.data)
-      })
-      .catch(() => {
-        toast({
-          component: ToastificationContent,
-          props: {
-            title: 'Error fetching calendar events',
-            icon: 'AlertTriangleIcon',
-            variant: 'danger',
-          },
-        })
-      })
+    // store
+    //   .dispatch('calendar/fetchEvents', {
+    //     calendars: selectedCalendars.value,
+    //   })
+    //   .then(response => {
+    //     console.log('+++++++++========> ', response.data)
+    //     successCallback(response.data)
+    //   })
+    //   .catch(() => {
+    //     toast({
+    //       component: ToastificationContent,
+    //       props: {
+    //         title: 'Error fetching calendar events',
+    //         icon: 'AlertTriangleIcon',
+    //         variant: 'danger',
+    //       },
+    //     })
+    //   })
     console.log('==========>', info)
     store
       .dispatch('visits/browse', '')
       .then(response => {
-        console.log('+++++++++========> ', response.data.data)
+        console.log('HEREEEEEEEEEEEE', response.data.data[0].date)
         console.log('+++++++++========> ', response.data.data.map(visit => ({
           allDay: false,
-          start: new Date(`${visit.date} ${visit.start_time}`).toISOString(),
-          startStr: new Date(`${visit.date} ${visit.start_time}`),
+          start: new Date(`${visit.date} ${visit.start_time}`),
+          startStr: new Date(`${visit.date} ${visit.start_time}`).toISOString(),
           end: new Date(`${visit.date} ${visit.end_time}`),
           endStr: new Date(`${visit.date} ${visit.end_time}`).toISOString(),
           timeZone: 'local',
           id: visit.id,
-          url: 'abc',
+          url: '',
           title: `${visit.room.name}`,
           extendedProps: {
             calendar: visit.visit_status.name,
@@ -318,9 +327,9 @@ export default function userCalendar() {
 
         successCallback(response.data.data.map(visit => ({
           allDay: false,
-          start: new Date(`${visit.date} ${visit.start_time}`),
+          start: new Date(`${visit.date} ${visit.start_time}`).toISOString(),
           startStr: new Date(`${visit.date} ${visit.start_time}`).toISOString(),
-          end: new Date(`${visit.date} ${visit.end_time}`),
+          end: new Date(`${visit.date} ${visit.end_time}`).toISOString(),
           endStr: new Date(`${visit.date} ${visit.end_time}`).toISOString(),
           timeZone: 'local',
           id: visit.id,

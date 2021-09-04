@@ -42,6 +42,21 @@ export default {
     /**
      *
      * @param store
+     * id: number
+     * @return {Promise<unknown>}
+     * @param payload
+     */
+    update({ dispatch }, payload) {
+      return new Promise((resolve, reject) => {
+        httpResource.update(payload.id, payload.data)
+          .then(response => resolve(response))
+          .catch(error => dispatch('app/handleError', { reject, error }, { root: true }))
+      })
+    },
+
+    /**
+     *
+     * @param store
      * @param payload
      * @return {Promise<unknown>}
      */
