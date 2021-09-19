@@ -21,5 +21,7 @@ class Report extends Model
         'customer_numbers',
         'follow_up',
         'results',
+        'title',
+        'audience_description',
     ];
 }

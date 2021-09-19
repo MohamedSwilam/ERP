@@ -38,6 +38,8 @@ class UpdateCustomerRequest extends FormRequest
                 'required',
                 'exists:customer_types,id'
             ],
+            'last_follow_up' => '',
+            'next_follow_up' => '',
         ];
     }
 }

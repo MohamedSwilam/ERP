@@ -18,6 +18,38 @@
               >
                 <b-form @submit.prevent="handleSubmit(editReport)">
                   <b-row>
+                    <!-- Title -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Title"
+                        label-for="title"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules="required"
+                          name="Title"
+                          vid="title"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="FileIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              id="title"
+                              v-model="report.form.title"
+                              :state="errors.length > 0 ? false:null"
+                              placeholder="Title"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
                     <!-- Start Date -->
                     <b-col
                       lg="6"
@@ -141,11 +173,12 @@
                             <b-input-group-prepend is-text>
                               <feather-icon icon="UsersIcon" />
                             </b-input-group-prepend>
-                            <b-form-input
+                            <b-form-textarea
                               id="customer_numbers"
                               v-model="report.form.customer_numbers"
-                              :state="errors.length > 0 ? false:null"
                               placeholder="Customer numbers"
+                              :state="errors.length > 0 ? false:null"
+                              rows="3"
                             />
                           </b-input-group>
                           <small class="text-danger">{{ errors[0] }}</small>
@@ -174,11 +207,12 @@
                             <b-input-group-prepend is-text>
                               <feather-icon icon="RefreshCcwIcon" />
                             </b-input-group-prepend>
-                            <b-form-input
+                            <b-form-textarea
                               id="follow_up"
                               v-model="report.form.follow_up"
+                              placeholder="Follow up"
                               :state="errors.length > 0 ? false:null"
-                              placeholder="Follow Up"
+                              rows="3"
                             />
                           </b-input-group>
                           <small class="text-danger">{{ errors[0] }}</small>
@@ -207,11 +241,46 @@
                             <b-input-group-prepend is-text>
                               <feather-icon icon="ClipboardIcon" />
                             </b-input-group-prepend>
-                            <b-form-input
+                            <b-form-textarea
                               id="results"
                               v-model="report.form.results"
-                              :state="errors.length > 0 ? false:null"
                               placeholder="Results"
+                              :state="errors.length > 0 ? false:null"
+                              rows="3"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
+                    <!-- Audience Description -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Audience Description"
+                        label-for="audience_description"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules="required"
+                          name="Audience Description"
+                          vid="audience_description"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="ClipboardIcon" />
+                            </b-input-group-prepend>
+                            <b-form-textarea
+                              id="audience_description"
+                              v-model="report.form.audience_description"
+                              placeholder="Audience Description"
+                              :state="errors.length > 0 ? false:null"
+                              rows="3"
                             />
                           </b-input-group>
                           <small class="text-danger">{{ errors[0] }}</small>
@@ -291,6 +360,8 @@ export default {
         customer_numbers: '',
         follow_up: '',
         results: '',
+        audience_description: '',
+        title: '',
       },
     },
   }),

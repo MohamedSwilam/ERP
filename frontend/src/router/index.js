@@ -370,9 +370,9 @@ const router = new VueRouter({
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
-          { text: 'Report', to: '/reports', active: true },
+          { text: 'Ads Report', to: '/reports', active: true },
         ],
-        pageTitle: 'Report',
+        pageTitle: 'Ads Report',
         permission: 'browse_report',
       },
     },
@@ -384,7 +384,7 @@ const router = new VueRouter({
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
-          { text: 'Report', to: '/reports', active: false },
+          { text: 'Ads Report', to: '/reports', active: false },
           { text: 'Create Report', to: '/reports/create', active: true },
         ],
         pageTitle: 'Add Report',
@@ -399,7 +399,7 @@ const router = new VueRouter({
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
-          { text: 'Report', to: '/reports', active: false },
+          { text: 'Ads Report', to: '/reports', active: false },
           { text: 'View Report', to: '/reports/:id', active: true },
         ],
         pageTitle: 'View Report',
@@ -414,12 +414,75 @@ const router = new VueRouter({
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
-          { text: 'Reports', to: '/reports', active: false },
-          { text: 'Report', to: '/reports/:id', active: false },
+          { text: 'Ads Reports', to: '/reports', active: false },
+          { text: 'Ads Report', to: '/reports/:id', active: false },
           { text: 'Edit', active: true },
         ],
         pageTitle: 'Edit Report',
         permission: 'update_report',
+      },
+    },
+    // =============================================================================
+    // STOCK ROUTES
+    // =============================================================================
+    {
+      path: '/stocks',
+      name: 'browse-stocks',
+      component: () => import('../views/stock/Browse.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Stocks', to: '/stocks', active: true },
+        ],
+        pageTitle: 'Stocks',
+        permission: 'browse_stock',
+      },
+    },
+    {
+      path: '/stocks/create',
+      name: 'create-stock',
+      component: () => import('../views/stock/Create.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Stocks', to: '/stocks', active: false },
+          { text: 'Create Stock', to: '/stocks/create', active: true },
+        ],
+        pageTitle: 'Add Stock',
+        permission: 'create_stock',
+      },
+    },
+    {
+      path: '/stocks/:id',
+      name: 'view-stock',
+      component: () => import('../views/stock/View.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Stocks', to: '/stocks', active: false },
+          { text: 'View Stock', to: '/stocks/:id', active: true },
+        ],
+        pageTitle: 'View Stock',
+        permission: 'view_stock',
+      },
+    },
+    {
+      path: '/stocks/:id/edit',
+      name: 'edit-stock',
+      component: () => import('../views/stock/Edit.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Stocks', to: '/stocks', active: false },
+          { text: 'Stock', to: '/stocks/:id', active: false },
+          { text: 'Edit', active: true },
+        ],
+        pageTitle: 'Edit Stock',
+        permission: 'update_stock',
       },
     },
     // =============================================================================

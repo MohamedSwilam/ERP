@@ -28,6 +28,8 @@ class Customer extends Model
         'date_of_birth',
         'address',
         'customer_type_id',
+        'last_follow_up',
+        'next_follow_up',
     ];
 
     protected $with = ['customerType'];

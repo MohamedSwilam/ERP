@@ -237,6 +237,70 @@
                       </b-form-group>
                     </b-col>
 
+                    <!-- Last Follow Up -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Last Follow Up"
+                        label-for="last_follow_up"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          name="Last Follow Up"
+                          rules=""
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="UserCheckIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              v-model="customer.form.last_follow_up"
+                              :state="errors.length > 0 ? false:null"
+                              type="datetime-local"
+                              placeholder="Last follow up"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
+                    <!-- Next Follow Up -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Next Follow Up"
+                        label-for="next_follow_up"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          name="Next Follow Up"
+                          rules=""
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="UserCheckIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              v-model="customer.form.next_follow_up"
+                              :state="errors.length > 0 ? false:null"
+                              type="datetime-local"
+                              placeholder="Next follow up"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
                     <!-- submit and reset -->
                     <b-col cols="12">
                       <b-container>
@@ -309,6 +373,8 @@ export default {
         date_of_birth: '',
         address: '',
         customer_type_id: null,
+        last_follow_up: null,
+        next_follow_up: null,
       },
     },
   }),
@@ -339,7 +405,17 @@ export default {
     viewCustomer() {
       this.customer.isCardLoading = true
       this.$store.dispatch('customer/view', this.$route.params.id).then(response => {
-        this.customer.form = response.data.data
+        this.customer.form = {
+          ...response.data.data,
+          last_follow_up:
+          response.data.data.last_follow_up
+            ? new Date(`${new Date(response.data.data.last_follow_up).toString().split('GMT')[0]} UTC`).toISOString().split('.')[0]
+            : '',
+          next_follow_up:
+          response.data.data.next_follow_up
+            ? new Date(`${new Date(response.data.data.next_follow_up).toString().split('GMT')[0]} UTC`).toISOString().split('.')[0]
+            : '',
+        }
         this.customer.isCardLoading = false
       }).catch(error => {
         console.error(error)

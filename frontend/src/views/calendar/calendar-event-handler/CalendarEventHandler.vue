@@ -268,6 +268,21 @@
               @submit.prevent="handleSubmit(updateVisit)"
               @reset.prevent="resetForm"
             >
+              <b>Customers:</b>
+              <p v-if="eventLocal.order">
+                <router-link
+                  v-for="(customer, index) in eventLocal.order.customers"
+                  :key="index"
+                  :to="`/customers/${customer.id}`"
+                >
+                  <b-badge
+                    variant="primary"
+                    class="mr-1"
+                  >
+                    #TKB{{ customer.id }} - {{ customer.name }}
+                  </b-badge>
+                </router-link>
+              </p>
               <!-- Rooms -->
               <b-form-group
                 v-if="eventLocal.order && eventLocal.order.package"
@@ -449,7 +464,7 @@ import { ValidationProvider, ValidationObserver } from 'vee-validate'
 import { required, email, url } from '@validations'
 import formValidation from '@core/comp-functions/forms/form-validation'
 import { ref, toRefs } from '@vue/composition-api'
-import ToastificationContent from '@core/components/toastification/ToastificationContent'
+import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import useCalendarEventHandler from './useCalendarEventHandler'
 
 export default {

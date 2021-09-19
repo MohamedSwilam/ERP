@@ -25,9 +25,7 @@ class UpdateEventRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'event_date' => 'required|date',
             'host' => 'required|string|max:255',
-            'duration' => 'required|string|max:255',
             'event_type' => 'required|string|max:255',
             'instructor' => 'required|string|max:255',
             'num_of_attendance' => 'required|numeric',

@@ -33,6 +33,8 @@ class VisitTransformer extends TransformerAbstract
      */
     public function transform(CustomerVisit $customerVisit)
     {
-        return $customerVisit->toArray();
+        $data = $customerVisit->toArray();
+        $data['isEvent'] = $data['bookable_type'] === 'App\\Modules\\Reservations\\Domain\\Models\\Event';
+        return $data;
     }
 }

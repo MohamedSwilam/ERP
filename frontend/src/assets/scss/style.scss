@@ -4,3 +4,52 @@ NOTE:
 ------
 PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+@import "~@/assets/scss/variables/_variables.scss";
+
+.table .thead-dark th {
+    background-color: $primary !important;
+    border-color: #195cff !important;
+}
+
+.dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
+    color: white !important;
+}
+
+.dark-layout hr {
+    border-color: #ffffff;
+}
+
+.dark-layout .border {
+    border-color: $primary !important;
+}
+
+.dark-layout .table td {
+    border-color: $primary !important;
+}
+
+.dark-layout input.form-control:not(:focus),
+.dark-layout .custom-file-label:not(:focus),
+.dark-layout textarea.form-control:not(:focus) {
+    border-color: #ffffff;
+}
+
+.dark-layout .input-group .input-group-text {
+    background-color: #283046;
+    border-color: #ffffff;
+}
+
+.dark-layout select.form-control,
+.dark-layout .custom-select {
+    background-color: #283046;
+    border-color: #ffffff;
+}
+
+.dark-layout .vs__dropdown-toggle {
+    background: #283046;
+    border-color: #ffffff !important;
+}
+
+.dark-layout .vs__actions svg {
+    fill: #ffffff !important;
+}

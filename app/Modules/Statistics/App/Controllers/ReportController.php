@@ -57,9 +57,9 @@ class ReportController extends Controller
     {
         $this->authorize('store', Report::class);
 
-        $event = $createReportAction(CreateReportDto::fromRequest($request));
+        $report = $createReportAction(CreateReportDto::fromRequest($request));
 
-        return ApiResponse::createResponse($event, ReportTransformer::class);
+        return ApiResponse::createResponse($report, ReportTransformer::class);
     }
 
     /**

@@ -27,6 +27,7 @@ class CustomerQueryBuilder extends QueryBuilder
                     'email',
                     'national_id',
                     'date_of_birth',
+                    'next_follow_up',
                 )),
             ])
             ->allowedSorts(['name', 'email', 'phone', 'date_of_birth', 'created_at']);

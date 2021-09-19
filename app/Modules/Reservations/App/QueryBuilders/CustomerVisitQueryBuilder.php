@@ -25,6 +25,13 @@ class CustomerVisitQueryBuilder extends QueryBuilder
                 ->get();
         }
 
+        if ($request->input('event')) {
+            $query
+                ->where('bookable_type', 'App\\Modules\\Reservations\\Domain\\Models\\Event')
+                ->where('bookable_id', $request->input('event'))
+                ->get();
+        }
+
         $this
             ->allowedFilters([
                 AllowedFilter::custom('search', new FuzzyFilter(

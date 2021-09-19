@@ -79,4 +79,11 @@ return [
         'update_accounting',
         'delete_accounting',
     ],
+    'stock' => [
+        'browse_stock',
+        'view_stock',
+        'create_stock',
+        'update_stock',
+        'delete_stock',
+    ],
 ];

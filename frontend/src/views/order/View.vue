@@ -304,39 +304,11 @@
             title="Visits List"
             action-collapse
           >
-            <b-modal
-              id="delete-order-modal"
-              title="Are you sure?"
-              ok-only
-              ok-variant="danger"
-              ok-title="Yes, Delete"
-              modal-class="modal-danger"
-              centered
-              no-close-on-backdrop
-            >
-              <b-card-text>
-                You will not be able to retrieve this again!
-              </b-card-text>
-            </b-modal>
             <b-row>
               <b-col
                 cols="6"
                 align-h="center"
-              >
-                <!--                <b-button-->
-                <!--                  v-if="can('create_order')"-->
-                <!--                  v-ripple.400="'rgba(255,255,255,0.15)'"-->
-                <!--                  size="sm"-->
-                <!--                  variant="primary"-->
-                <!--                  to="/visits/create"-->
-                <!--                >-->
-                <!--                  <feather-icon-->
-                <!--                    icon="PlusIcon"-->
-                <!--                    class="mr-50"-->
-                <!--                  />-->
-                <!--                  <span class="align-middle">Create Order</span>-->
-                <!--                </b-button>-->
-              </b-col>
+              />
               <b-col
                 cols="6"
                 align-h="center"

@@ -10,11 +10,11 @@ class UpdateCustomerAction
 {
     /**
      * @param Customer $customer
-     * @param UpdateCustomerDto $customerDto
+     * @param UpdateCustomerDto $updateCustomerDto
      * @return bool
      */
-    public function __invoke(Customer $customer, UpdateCustomerDto $customerDto): bool
+    public function __invoke(Customer $customer, UpdateCustomerDto $updateCustomerDto): bool
     {
-        return $customer->update($customerDto->toArray());
+        return $customer->update($updateCustomerDto->toArray());
     }
 }

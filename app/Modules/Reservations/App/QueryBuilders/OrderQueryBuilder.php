@@ -4,6 +4,7 @@
 namespace App\Modules\Reservations\App\QueryBuilders;
 
 
+use App\Modules\Reservations\App\QueryBuilders\CustomFilters\FilterCustomer;
 use App\Modules\Reservations\Domain\Models\Order;
 use App\Support\Filters\FuzzyFilter;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class OrderQueryBuilder extends QueryBuilder
 {
     public function __construct(Request $request)
     {
-        $query = Order::query();
+        $query = Order::with('customers');
 
         parent::__construct($query, $request);
 
@@ -32,6 +33,11 @@ class OrderQueryBuilder extends QueryBuilder
             $query->with('lastComment')->get();
         }
 
+        if ($request->input('filter[search]')) {
+            $query->orWhere('customers.id', 'LIKE', "%{$request->input('filter[search]')}%")->get();
+            $query->orWhere('customers.name', 'LIKE', "%{$request->input('filter[search]')}%")->get();
+        }
+
         $this
             ->allowedFilters([
                 AllowedFilter::custom('search', new FuzzyFilter(
@@ -43,6 +49,7 @@ class OrderQueryBuilder extends QueryBuilder
                     'seller',
                     'created_by',
                 )),
+                AllowedFilter::scope('customer_filter'),
             ])
             ->allowedSorts(['total_hours', 'remaining_hours', 'starts_at', 'expires_at', 'discount', 'seller', 'created_by']);
     }

@@ -13,11 +13,7 @@ class UpdateEventDto extends DataTransferObject
 {
     public string $title;
 
-    public string $event_date;
-
     public string $host;
-
-    public string $duration;
 
     public string $event_type;
 
@@ -32,14 +28,13 @@ class UpdateEventDto extends DataTransferObject
     public float $revenue;
 
     /**
-     * @param UpdateEventDto $request
+     * @param UpdateEventRequest $request
      * @return UpdateEventDto
      */
     public static function fromRequest(UpdateEventRequest $request): UpdateEventDto
     {
         $data = $request->validated();
 
-        $data['event_date'] = Carbon::make($data['event_date'])->toDateTimeString();
         $data['num_of_attendance'] = (int) $data['num_of_attendance'];
         $data['budget'] = (float) $data['budget'];
         $data['expenses'] = (float) $data['expenses'];

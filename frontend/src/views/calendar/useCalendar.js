@@ -299,7 +299,7 @@ export default function userCalendar() {
       .dispatch('visits/browse', '')
       .then(response => {
         console.log('HEREEEEEEEEEEEE', response.data.data[0].date)
-        console.log('+++++++++========> ', response.data.data.map(visit => ({
+        const visits = response.data.data.map(visit => ({
           allDay: false,
           start: new Date(`${visit.date} ${visit.start_time}`),
           startStr: new Date(`${visit.date} ${visit.start_time}`).toISOString(),
@@ -308,11 +308,11 @@ export default function userCalendar() {
           timeZone: 'local',
           id: visit.id,
           url: '',
-          title: `${visit.room.name}`,
+          title: `${visit.isEvent ? visit.bookable.title : visit.room.name}`,
           extendedProps: {
             calendar: visit.visit_status.name,
           },
-          room_id: visit.room.id,
+          room_id: visit?.room?.id,
 
           date: visit.date,
           start_time: visit.start_time,
@@ -321,35 +321,12 @@ export default function userCalendar() {
 
           order: visit.bookable,
           room: visit.room,
-          rooms: visit.bookable ? visit.bookable.package.rooms : [],
-          customers: visit.bookable ? visit.bookable.customers : [],
-        })))
+          rooms: visit.bookable ? visit?.bookable?.package?.rooms : [],
+          customers: visit.bookable ? visit?.bookable?.customers : [],
+        }))
+        console.log('+++++++++========> ', visits)
 
-        successCallback(response.data.data.map(visit => ({
-          allDay: false,
-          start: new Date(`${visit.date} ${visit.start_time}`).toISOString(),
-          startStr: new Date(`${visit.date} ${visit.start_time}`).toISOString(),
-          end: new Date(`${visit.date} ${visit.end_time}`).toISOString(),
-          endStr: new Date(`${visit.date} ${visit.end_time}`).toISOString(),
-          timeZone: 'local',
-          id: visit.id,
-          url: '',
-          title: `${visit.room.name}`,
-          extendedProps: {
-            calendar: visit.visit_status.name,
-          },
-          room_id: visit.room.id,
-
-          date: visit.date,
-          start_time: visit.start_time,
-          end_time: visit.end_time,
-          visit_status_id: visit.visit_status_id,
-
-          order: visit.bookable,
-          room: visit.room,
-          rooms: visit.bookable ? visit.bookable.package.rooms : [],
-          customers: visit.bookable ? visit.bookable.customers : [],
-        })))
+        successCallback(visits)
       })
       .catch(() => {
         toast({

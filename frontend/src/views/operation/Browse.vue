@@ -79,6 +79,7 @@
                     <router-link :to="`/packages/${data.item.package.id}`">
                       {{ data.item.package.name }}
                     </router-link>
+                    <br> ({{ data.item.package.package_type.name }})
                   </template>
                   <template #cell(price)="data">
                     {{ data.item.package.price }}
@@ -207,7 +208,7 @@ export default {
   methods: {
     browseOrders(page = 0) {
       this.orders.isLoading = true
-      this.$store.dispatch('orders/browse', `?paginate=${this.orders.recordsPerPage}&page=${page}&filter[search]=${this.orders.search}&lastVisit=true&lastComment=true`).then(response => {
+      this.$store.dispatch('orders/browse', `?paginate=${this.orders.recordsPerPage}&page=${page}&filter[customer_filter]=${this.orders.search}&lastVisit=true&lastComment=true`).then(response => {
         this.orders.data = response.data.data
         this.orders.meta = response.data.meta.pagination
         this.orders.isLoading = false

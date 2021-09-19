@@ -60,24 +60,82 @@
                     >
                       <b-form-group
                         label="Event Date"
-                        label-for="event_date"
+                        label-for="date"
                       >
                         <validation-provider
                           v-slot="{ errors }"
                           rules="required"
                           name="Event date"
-                          vid="event_date"
+                          vid="date"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
                             <b-input-group-prepend is-text>
                               <feather-icon icon="ClockIcon" />
                             </b-input-group-prepend>
                             <b-form-input
-                              id="event_date"
-                              v-model="event.form.event_date"
-                              type="datetime-local"
+                              id="date"
+                              v-model="event.form.date"
+                              type="date"
                               :state="errors.length > 0 ? false:null"
                               placeholder="Event date"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
+                    <!-- Start Time -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Start Time"
+                        label-for="start_time"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules="required"
+                          name="Start time"
+                          vid="start_time"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-form-timepicker
+                              id="start_time"
+                              v-model="event.form.start_time"
+                              :state="errors.length > 0 ? false:null"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
+                    <!-- End Time -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="End Time"
+                        label-for="end_time"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules="required"
+                          name="End time"
+                          vid="end_time"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-form-timepicker
+                              id="end_time"
+                              v-model="event.form.end_time"
+                              :state="errors.length > 0 ? false:null"
                             />
                           </b-input-group>
                           <small class="text-danger">{{ errors[0] }}</small>
@@ -111,39 +169,6 @@
                               v-model="event.form.host"
                               :state="errors.length > 0 ? false:null"
                               placeholder="Event host"
-                            />
-                          </b-input-group>
-                          <small class="text-danger">{{ errors[0] }}</small>
-                        </validation-provider>
-                      </b-form-group>
-                    </b-col>
-
-                    <!-- Duration -->
-                    <b-col
-                      lg="6"
-                      md="6"
-                      sm="12"
-                      xs="12"
-                    >
-                      <b-form-group
-                        label="Duration"
-                        label-for="duration"
-                      >
-                        <validation-provider
-                          v-slot="{ errors }"
-                          rules="required"
-                          name="Duration"
-                          vid="duration"
-                        >
-                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
-                            <b-input-group-prepend is-text>
-                              <feather-icon icon="ClockIcon" />
-                            </b-input-group-prepend>
-                            <b-form-input
-                              id="duration"
-                              v-model="event.form.duration"
-                              :state="errors.length > 0 ? false:null"
-                              placeholder="Event duration"
                             />
                           </b-input-group>
                           <small class="text-danger">{{ errors[0] }}</small>
@@ -353,6 +378,124 @@
                       </b-form-group>
                     </b-col>
 
+                    <!-- Rooms -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Room"
+                        label-for="room_id"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules=""
+                          name="Rooms"
+                          vid="room_id"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="BoxIcon" />
+                            </b-input-group-prepend>
+                            <b-select
+                              v-if="!event.other_room"
+                              id="room_id"
+                              v-model="event.form.room_id"
+                              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                              :options="event.rooms"
+                              label="text"
+                              :state="errors.length > 0 ? false:null"
+                            />
+                            <b-form-input
+                              v-else
+                              id="other_room"
+                              v-model.number="event.form.other_room"
+                              :state="errors.length > 0 ? false:null"
+                              placeholder="room"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                          <b-form-checkbox
+                            v-model="event.other_room"
+                            class="mt-1"
+                            :value="true"
+                            @change="event.form.room_id = null"
+                          >
+                            Other
+                          </b-form-checkbox>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
+                    <!-- Rooms -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Room"
+                        label-for="room_id"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules=""
+                          name="Rooms"
+                          vid="room_id"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <v-select
+                              v-model="event.form.visit_status_id"
+                              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                              :options="[
+                                {
+                                  id: 1,
+                                  label: 'Booking',
+                                  color: 'primary'
+                                },
+                                {
+                                  id: 2,
+                                  label: 'Completed',
+                                  color: 'success'
+                                },
+                                {
+                                  id: 3,
+                                  label: 'Canceled',
+                                  color: 'danger'
+                                }
+                              ]"
+                              label="label"
+                              :reduce="calendar => calendar.id"
+                              input-id="calendar"
+                              style="width: 100%;"
+                            >
+                              <template #option="{ color, label }">
+                                <div
+                                  class="rounded-circle d-inline-block mr-50"
+                                  :class="`bg-${color}`"
+                                  style="height:10px;width:10px"
+                                />
+                                <span> {{ label }}</span>
+                              </template>
+
+                              <template #selected-option="{ color, label }">
+                                <div
+                                  class="rounded-circle d-inline-block mr-50"
+                                  :class="`bg-${color}`"
+                                  style="height:10px;width:10px"
+                                />
+                                <span> {{ label }}</span>
+                              </template>
+                            </v-select>
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
                     <!-- submit and reset -->
                     <b-col cols="12">
                       <b-container>
@@ -408,9 +551,13 @@
 <script>
 import Ripple from 'vue-ripple-directive'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
+import vSelect from 'vue-select'
 
 export default {
   name: 'CreateEvent',
+  components: {
+    vSelect,
+  },
   directives: {
     Ripple,
   },
@@ -418,22 +565,48 @@ export default {
     event: {
       isCardLoading: false,
       isLoading: false,
+      other_room: false,
       event_types: [],
+      rooms: [],
       form: {
         title: '',
-        event_date: '',
+        date: '',
+        start_time: '',
+        end_time: '',
         host: '',
-        duration: '',
         event_type: '',
         instructor: '',
         num_of_attendance: 0,
         budget: 0,
         expenses: 0,
         revenue: 0,
+        room_id: null,
+        visit_status_id: 1,
+        other_room: '',
       },
     },
   }),
+  mounted() {
+    this.browseRooms()
+  },
   methods: {
+    browseRooms() {
+      this.event.isCardLoading = true
+      this.$store.dispatch('seed/browseRooms', '')
+        .then(response => {
+          this.event.rooms = [
+            { value: null, text: 'Select a room' },
+            ...response.data.data.map(room => ({
+              value: room.id,
+              text: room.name,
+            })),
+          ]
+          this.event.isCardLoading = false
+        }).catch(error => {
+          console.error(error)
+          this.event.isCardLoading = false
+        })
+    },
     createEvent() {
       this.event.isLoading = true
       this.$store.dispatch('events/create', this.event.form).then(response => {
@@ -459,21 +632,26 @@ export default {
     },
     reset() {
       this.event.form.title = ''
-      this.event.form.event_date = ''
+      this.event.form.date = ''
+      this.event.form.start_time = ''
+      this.event.form.end_time = ''
       this.event.form.host = ''
-      this.event.form.duration = ''
       this.event.form.event_type = ''
       this.event.form.instructor = ''
       this.event.form.num_of_attendance = 0
       this.event.form.budget = 0
       this.event.form.expenses = 0
       this.event.form.revenue = 0
+      this.event.form.room_id = null
+      this.event.form.visit_status_id = 1
+      this.event.form.other_room = ''
     },
   },
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '~@core/scss/vue/libs/vue-select.scss';
 #event-form ul,
 #event-form li {
     list-style-type: none;

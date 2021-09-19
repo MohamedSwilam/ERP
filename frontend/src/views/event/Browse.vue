@@ -201,7 +201,6 @@ export default {
       fields: [
         { key: 'index', label: '#' },
         { key: 'title', label: 'Title' },
-        { key: 'event_date', label: 'Date' },
         { key: 'host', label: 'Host' },
         { key: 'event_type', label: 'Type' },
         { key: 'created_at', label: 'Created At' },

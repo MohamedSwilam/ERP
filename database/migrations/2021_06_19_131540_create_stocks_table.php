@@ -15,8 +15,13 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->double('price');
+            $table->string('name');
+            $table->integer('quantity');
+            $table->double('price_per_piece');
+            $table->double('sale_price');
+            $table->string('payment_type');
+            $table->double('total');
+            $table->double('paid');
             $table->timestamps();
             $table->softDeletes();
         });

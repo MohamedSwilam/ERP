@@ -57,7 +57,7 @@ class EventController extends Controller
     {
         $this->authorize('store', Event::class);
 
-        $event = $createEventAction(CreateEventDto::fromRequest($request));
+        $event = $createEventAction($request);
 
         return ApiResponse::createResponse($event, EventTransformer::class);
     }

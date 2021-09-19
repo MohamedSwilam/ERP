@@ -22,6 +22,10 @@ class CreateReportDto extends DataTransferObject
 
     public string $results;
 
+    public string $title;
+
+    public string $audience_description;
+
     /**
      * @param CreateReportRequest $request
      * @return CreateReportDto

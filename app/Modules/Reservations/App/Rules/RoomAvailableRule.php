@@ -28,6 +28,7 @@ class RoomAvailableRule implements Rule
      */
     public function passes($attribute, $value)
     {
+        if (!$value) return true;
         $visit = CustomerVisit::where([
           ['room_id', '=', $value],
           ['date', '=', request()->input('date')],

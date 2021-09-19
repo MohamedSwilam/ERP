@@ -26,6 +26,8 @@ use App\Modules\Statistics\Domain\Models\Accounting;
 use App\Modules\Statistics\Domain\Models\Report;
 use App\Modules\Statistics\Domain\Policies\AccountingPolicy;
 use App\Modules\Statistics\Domain\Policies\ReportPolicy;
+use App\Modules\Stocks\Domain\Models\Stock;
+use App\Modules\Stocks\Domain\Policies\StockPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
 use Spatie\Permission\Models\Permission;
@@ -51,7 +53,8 @@ class AuthServiceProvider extends ServiceProvider
         Event::class => EventPolicy::class,
         CustomerVisit::class => VisitPolicy::class,
         Report::class => ReportPolicy::class,
-        Accounting::class => AccountingPolicy::class
+        Accounting::class => AccountingPolicy::class,
+        Stock::class => StockPolicy::class
     ];
 
     /**

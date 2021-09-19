@@ -23,8 +23,9 @@ class EventQueryBuilder extends QueryBuilder
                 AllowedFilter::custom('search', new FuzzyFilter(
                     'title',
                     'event_date',
+                    'start_time',
+                    'end_time',
                     'host',
-                    'duration',
                     'event_type',
                     'instructor',
                     'num_of_attendance',
@@ -36,15 +37,15 @@ class EventQueryBuilder extends QueryBuilder
             ->allowedSorts([
                 'title',
                 'event_date',
+                'start_time',
+                'end_time',
                 'host',
-                'duration',
                 'event_type',
                 'instructor',
                 'num_of_attendance',
                 'budget',
                 'expenses',
                 'revenue',
-                'created_at'
             ]);
     }
 }

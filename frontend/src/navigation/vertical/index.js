@@ -46,7 +46,7 @@ export default [
     permission: 'browse_order',
   },
   {
-    title: 'Reports',
+    title: 'Ads Reports',
     route: 'browse-reports',
     icon: 'FileTextIcon',
     permission: 'browse_report',
@@ -56,6 +56,12 @@ export default [
     route: 'browse-accounting',
     icon: 'DollarSignIcon',
     permission: 'browse_accounting',
+  },
+  {
+    title: 'Stocks',
+    route: 'browse-stocks',
+    icon: 'BoxIcon',
+    permission: 'browse_stock',
   },
   {
     title: 'Roles & Permissions',

@@ -4,6 +4,8 @@ namespace App\Modules\Reservations\Domain\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Event extends Model
 {
@@ -25,5 +27,24 @@ class Event extends Model
         'budget',
         'expenses',
         'revenue',
+        'room_id',
     ];
+
+    protected $with = ['room'];
+
+    /**
+     * @return MorphMany
+     */
+    public function customerVisits(): MorphMany
+    {
+        return $this->morphMany(CustomerVisit::class, 'bookable');
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function room(): BelongsTo
+    {
+        return $this->belongsTo(Room::class);
+    }
 }

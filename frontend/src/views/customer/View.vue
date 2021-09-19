@@ -163,6 +163,44 @@
                 sm="2"
                 class="mb-1"
               >
+                <b>Last Follow Up</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                <span v-if="customer.data.last_follow_up">{{ customer.data.last_follow_up | date(true) }} - {{ customer.data.last_follow_up | time }}</span>
+                <span v-else>-</span>
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
+                <b>Next Follow Up</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                <span v-if="customer.data.next_follow_up">{{ customer.data.next_follow_up | date(true) }} - {{ customer.data.next_follow_up | time }}</span>
+                <span v-else>-</span>
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
                 <b>Created At</b>
               </b-col>
               <b-col

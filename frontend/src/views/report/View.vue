@@ -37,6 +37,24 @@
                 sm="2"
                 class="mb-1"
               >
+                <b>Title</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                {{ reports.data.title }}
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
                 <b>Start Date</b>
               </b-col>
               <b-col
@@ -137,6 +155,24 @@
                 class="mb-1"
               >
                 {{ reports.data.results }}
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
+                <b>Audience Description</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                {{ reports.data.audience_description }}
               </b-col>
               <b-col
                 cols="4"

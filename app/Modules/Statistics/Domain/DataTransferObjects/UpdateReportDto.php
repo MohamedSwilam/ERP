@@ -23,6 +23,10 @@ class UpdateReportDto extends DataTransferObject
 
     public string $results;
 
+    public string $title;
+
+    public string $audience_description;
+
     /**
      * @param UpdateReportRequest $request
      * @return UpdateReportDto

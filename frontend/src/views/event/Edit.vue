@@ -51,40 +51,6 @@
                       </b-form-group>
                     </b-col>
 
-                    <!-- Date -->
-                    <b-col
-                      lg="6"
-                      md="6"
-                      sm="12"
-                      xs="12"
-                    >
-                      <b-form-group
-                        label="Event Date"
-                        label-for="event_date"
-                      >
-                        <validation-provider
-                          v-slot="{ errors }"
-                          rules="required"
-                          name="Title"
-                          vid="event_date"
-                        >
-                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
-                            <b-input-group-prepend is-text>
-                              <feather-icon icon="ClockIcon" />
-                            </b-input-group-prepend>
-                            <b-form-input
-                              id="event_date"
-                              v-model="event.form.event_date"
-                              type="datetime-local"
-                              :state="errors.length > 0 ? false:null"
-                              placeholder="Event date"
-                            />
-                          </b-input-group>
-                          <small class="text-danger">{{ errors[0] }}</small>
-                        </validation-provider>
-                      </b-form-group>
-                    </b-col>
-
                     <!-- Host -->
                     <b-col
                       lg="6"
@@ -111,39 +77,6 @@
                               v-model="event.form.host"
                               :state="errors.length > 0 ? false:null"
                               placeholder="Event host"
-                            />
-                          </b-input-group>
-                          <small class="text-danger">{{ errors[0] }}</small>
-                        </validation-provider>
-                      </b-form-group>
-                    </b-col>
-
-                    <!-- Duration -->
-                    <b-col
-                      lg="6"
-                      md="6"
-                      sm="12"
-                      xs="12"
-                    >
-                      <b-form-group
-                        label="Duration"
-                        label-for="duration"
-                      >
-                        <validation-provider
-                          v-slot="{ errors }"
-                          rules="required"
-                          name="Duration"
-                          vid="duration"
-                        >
-                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
-                            <b-input-group-prepend is-text>
-                              <feather-icon icon="ClockIcon" />
-                            </b-input-group-prepend>
-                            <b-form-input
-                              id="duration"
-                              v-model="event.form.duration"
-                              :state="errors.length > 0 ? false:null"
-                              placeholder="Event duration"
                             />
                           </b-input-group>
                           <small class="text-danger">{{ errors[0] }}</small>
@@ -381,6 +314,7 @@
                           </b-button>
                           <b-button
                             v-ripple.400="'rgba(186, 191, 199, 0.15)'"
+                            type="reset"
                             variant="warning"
                             @click="reset"
                           >
@@ -407,9 +341,13 @@
 <script>
 import Ripple from 'vue-ripple-directive'
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
+import vSelect from 'vue-select'
 
 export default {
   name: 'EditEvent',
+  components: {
+    vSelect,
+  },
   directives: {
     Ripple,
   },
@@ -417,31 +355,49 @@ export default {
     event: {
       isCardLoading: false,
       isLoading: false,
+      other_room: false,
       event_types: [],
+      rooms: [],
       form: {
         title: '',
-        event_date: '',
         host: '',
-        duration: '',
         event_type: '',
         instructor: '',
         num_of_attendance: 0,
         budget: 0,
         expenses: 0,
         revenue: 0,
+        room_id: null,
+        visit_status_id: 1,
+        other_room: '',
       },
     },
   }),
   mounted() {
-    this.viewEvent()
+    this.browseRooms()
   },
   methods: {
+    browseRooms() {
+      this.event.isCardLoading = true
+      this.$store.dispatch('seed/browseRooms', '')
+        .then(response => {
+          this.event.rooms = [
+            { value: null, text: 'Select a room' },
+            ...response.data.data.map(room => ({
+              value: room.id,
+              text: room.name,
+            })),
+          ]
+          this.viewEvent()
+        }).catch(error => {
+          console.error(error)
+          this.event.isCardLoading = false
+        })
+    },
     viewEvent() {
       this.event.isCardLoading = true
       this.$store.dispatch('events/view', this.$route.params.id).then(response => {
         this.event.form = response.data.data
-        // eslint-disable-next-line prefer-destructuring
-        this.event.form.event_date = new Date(`${new Date(response.data.data.event_date).toString().split('GMT')[0]} UTC`).toISOString().split('.')[0]
         this.event.isCardLoading = false
       }).catch(error => {
         console.error(error)
@@ -481,7 +437,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '~@core/scss/vue/libs/vue-select.scss';
 #event-form ul,
 #event-form li {
     list-style-type: none;

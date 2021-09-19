@@ -5,6 +5,7 @@ namespace App\Modules\Reservations\Domain\Models;
 use App\Modules\Authentication\Domain\Models\User;
 use App\Modules\Comments\Domain\Models\Comment;
 use App\Modules\Customers\Domain\Models\Customer;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -82,5 +83,12 @@ class Order extends Model
             ->morphMany(Comment::class, 'commentable')
             ->orderBy('created_at', 'desc')
             ->limit(1);
+    }
+
+    public function scopeCustomerFilter(Builder $query, string $value) {
+        return $query
+            ->whereHas('customers', function (Builder $q) use ($value) {
+                $q->where('name', 'LIKE', "%$value%");
+            });
     }
 }

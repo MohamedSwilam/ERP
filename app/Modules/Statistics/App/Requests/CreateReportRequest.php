@@ -30,6 +30,8 @@ class CreateReportRequest extends FormRequest
             'customer_numbers' => 'required|string|max:255',
             'follow_up' => 'required|string|max:255',
             'results' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'audience_description' => 'required|string',
         ];
     }
 }

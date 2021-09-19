@@ -19,6 +19,7 @@ import events from './event'
 import visits from './visit'
 import reports from './report'
 import accounting from './accounting'
+import stock from './stock'
 import comment from './comment'
 import seed from './seed'
 import rolesAndPermissions from './roles-and-permissions/moduleRolesAndPermissions'
@@ -43,6 +44,7 @@ export default new Vuex.Store({
     visits,
     reports,
     accounting,
+    stock,
     comment,
     seed,
     rolesAndPermissions,
