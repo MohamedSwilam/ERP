@@ -14,6 +14,10 @@ export default {
     return axios.post('/api/orders', data)
   },
 
+  update(id, data) {
+    return axios.put(`/api/orders/${id}`, data)
+  },
+
   delete(id) {
     return axios.delete(`/api/orders/${id}`)
   },

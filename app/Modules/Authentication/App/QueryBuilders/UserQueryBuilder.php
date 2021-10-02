@@ -22,7 +22,8 @@ class UserQueryBuilder extends QueryBuilder
                     'name',
                     'email',
                 )),
+                AllowedFilter::scope('role'),
             ])
-            ->allowedSorts(['name', 'email', 'created_at']);
+            ->allowedSorts(['name', 'email']);
     }
 }

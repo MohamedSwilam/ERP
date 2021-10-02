@@ -2,6 +2,110 @@
   <section>
     <b-row>
       <b-col cols="12">
+        <b-card-actions
+          ref="filterCard"
+          title="Filters"
+          no-actions
+        >
+          <b-row>
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Search"
+                label-for="search"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="SearchIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="search_order"
+                    v-model="events.search"
+                    placeholder="Search title, host"
+                    @change="browseEvents(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <!-- Room -->
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Filter Rooms"
+                label-for="filter_rooms"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="BoxIcon" />
+                  </b-input-group-prepend>
+                  <b-select
+                    v-model="events.room"
+                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :options="events.rooms"
+                    label="text"
+                    @change="browseEvents(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="From"
+                label-for="from"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="ClockIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="from"
+                    v-model="events.from"
+                    type="date"
+                    @change="browseEvents(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="To"
+                label-for="to"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="ClockIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="to"
+                    v-model="events.to"
+                    type="date"
+                    @change="browseEvents(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+          </b-row>
+        </b-card-actions>
+      </b-col>
+      <b-col cols="12">
         <b-overlay
           :show="events.isLoading"
           rounded="sm"
@@ -11,20 +115,6 @@
             title="Events List"
             action-collapse
           >
-            <b-modal
-              id="delete-event-modal"
-              title="Are you sure?"
-              ok-only
-              ok-variant="danger"
-              ok-title="Yes, Delete"
-              modal-class="modal-danger"
-              centered
-              no-close-on-backdrop
-            >
-              <b-card-text>
-                You will not be able to retrieve this again!
-              </b-card-text>
-            </b-modal>
             <b-row>
               <b-col
                 cols="6"
@@ -47,21 +137,23 @@
               </b-col>
               <b-col
                 cols="6"
-                align-h="center"
                 class="text-right"
+                align-h="center"
               >
-                <b-input-group style="position: relative;top: 13px;">
-                  <b-input-group-prepend is-text>
-                    <feather-icon icon="SearchIcon" />
-                  </b-input-group-prepend>
-                  <b-form-input
-                    id="search"
-                    v-model="events.search"
-                    size="sm"
-                    placeholder="Search"
-                    @change="browseEvents"
+                <b-button
+                  v-if="can('create_event')"
+                  v-ripple.400="'rgba(255,255,255,0.15)'"
+                  class="my-1"
+                  size="sm"
+                  variant="primary"
+                  @click="exportCsv"
+                >
+                  <feather-icon
+                    icon="FileIcon"
+                    class="mr-50"
                   />
-                </b-input-group>
+                  <span class="align-middle">Export CSV</span>
+                </b-button>
               </b-col>
               <b-col cols="12">
                 <b-table
@@ -186,6 +278,8 @@
 <script>
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import Ripple from 'vue-ripple-directive'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ExportToCsv } from 'export-to-csv'
 
 export default {
   name: 'BrowseEvents',
@@ -196,6 +290,10 @@ export default {
     events: {
       isLoading: false,
       search: '',
+      from: '',
+      to: '',
+      room: '',
+      rooms: '',
       paginateOptions: [5, 10, 25, 50, 100, 250],
       recordsPerPage: 50,
       fields: [
@@ -219,11 +317,25 @@ export default {
   }),
   mounted() {
     this.browseEvents(this.events.meta.current_page)
+    this.browseRooms()
   },
   methods: {
+    browseRooms() {
+      this.$store.dispatch('seed/browseRooms', '').then(response => {
+        this.events.rooms = [
+          { text: 'All', value: '' },
+          ...response.data.data.map(record => ({
+            text: record.name,
+            value: record.id,
+          })),
+        ]
+      }).catch(error => {
+        console.error(error)
+      })
+    },
     browseEvents(page = 0) {
       this.events.isLoading = true
-      this.$store.dispatch('events/browse', `?paginate=${this.events.recordsPerPage}&page=${page}&filter[search]=${this.events.search}`).then(response => {
+      this.$store.dispatch('events/browse', `?paginate=${this.events.recordsPerPage}&page=${page}&filter[search]=${this.events.search}&filter[room]=${this.events.room}&filter[from]=${this.events.from}&filter[to]=${this.events.to}`).then(response => {
         this.events.data = response.data.data
         this.events.meta = response.data.meta.pagination
         this.events.isLoading = false
@@ -265,17 +377,36 @@ export default {
         }
       })
     },
+    exportCsv() {
+      const csvExporter = new ExportToCsv({
+        fieldSeparator: ',',
+        quoteStrings: '"',
+        decimalSeparator: '.',
+        showLabels: true,
+        showTitle: true,
+        title: 'Events List',
+        useTextFile: false,
+        useBom: true,
+        useKeysAsHeaders: true,
+      })
+
+      csvExporter.generateCsv(this.events.data.map(event => ({
+        Id: event.id,
+        Title: event.title,
+        Host: event.host,
+        Type: event.event_type,
+        Instructor: event.instructor,
+        'Number Of Attendance': event.num_of_attendance,
+        Budget: event.budget,
+        Expenses: event.expenses,
+        Revenue: event.revenue,
+        Room: event.room ? event.room.name : event.other_room,
+        'Created At': event.created_at,
+      })))
+    },
   },
 }
 </script>
 
-<style lang="scss">
-@import '~@/assets/scss/variables/_variables.scss';
-.table .thead-dark th {
-    background-color: $primary !important;
-    border-color: #195cff !important;
-}
-.dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
-    color: white !important;
-}
+<style>
 </style>

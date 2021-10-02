@@ -28,7 +28,7 @@
                 v-for="item in $route.meta.breadcrumb"
                 :key="item.text"
                 :active="item.active"
-                :to="item.to"
+                :to="setUrl(item.to)"
               >
                 {{ item.text }}
               </b-breadcrumb-item>
@@ -41,20 +41,22 @@
 </template>
 
 <script>
-import {
-  BBreadcrumb, BBreadcrumbItem, BRow, BCol,
-} from 'bootstrap-vue'
 import Ripple from 'vue-ripple-directive'
 
 export default {
   directives: {
     Ripple,
   },
-  components: {
-    BBreadcrumb,
-    BBreadcrumbItem,
-    BRow,
-    BCol,
+  methods: {
+    setUrl(path) {
+      if (path) {
+        Object.keys(this.$route.params).forEach(param => {
+          // eslint-disable-next-line no-param-reassign
+          path = path.replace(`:${param}`, this.$route.params[param])
+        })
+      }
+      return path
+    },
   },
 }
 </script>

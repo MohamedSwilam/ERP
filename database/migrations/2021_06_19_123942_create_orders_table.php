@@ -14,7 +14,7 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->id()->startingValue(1000);
             $table->foreignId('package_id')->constrained()->cascadeOnDelete();
             $table->integer('total_hours');
             $table->integer('remaining_hours');

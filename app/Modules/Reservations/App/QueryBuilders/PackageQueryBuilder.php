@@ -27,7 +27,10 @@ class PackageQueryBuilder extends QueryBuilder
                     'price',
                     'tax',
                 )),
+                AllowedFilter::scope('package_type'),
+                AllowedFilter::scope('room'),
+                AllowedFilter::scope('customer_type'),
             ])
-            ->allowedSorts(['name', 'description', 'membership', 'price', 'tax', 'created_at']);
+            ->allowedSorts(['name', 'description', 'membership', 'price', 'package_type_id', 'hours', 'tax', 'created_at']);
     }
 }

@@ -1,5 +1,113 @@
 <template>
   <section>
+    <b-row class="mt-2 mb-3">
+      <b-col cols="12">
+        <h1 class="font-weight-bolder">
+          Welcome <span class="text-primary">{{ fullName }},</span>
+        </h1>
+      </b-col>
+    </b-row>
+    <b-row v-if="can('browse_statistics')">
+      <b-col
+        lg="4"
+        md="4"
+        sm="6"
+      >
+        <statistic-card-horizontal
+          icon="UsersIcon"
+          :statistic="statistics.data ? statistics.data.monthly_registered_users : 0"
+          statistic-title="Month Customers"
+        />
+      </b-col>
+      <b-col
+        lg="4"
+        md="4"
+        sm="6"
+      >
+        <statistic-card-horizontal
+          icon="Edit3Icon"
+          :statistic="statistics.data ? statistics.data.monthly_orders : 0"
+          statistic-title="Month Orders"
+        />
+      </b-col>
+      <b-col
+        lg="4"
+        md="4"
+        sm="6"
+      >
+        <statistic-card-horizontal
+          icon="ShoppingBagIcon"
+          :statistic="statistics.data ? statistics.data.monthly_buffet_orders.count : 0"
+          statistic-title="Month Buffet Orders"
+        />
+      </b-col>
+      <b-col
+        lg="4"
+        md="4"
+        sm="6"
+      >
+        <statistic-card-horizontal
+          icon="DollarSignIcon"
+          :statistic="statistics.data ? statistics.data.monthly_package_sales.total : 0"
+          statistic-title="Month Package Sales"
+        />
+      </b-col>
+      <b-col
+        lg="4"
+        md="4"
+        sm="6"
+      >
+        <statistic-card-horizontal
+          icon="DollarSignIcon"
+          :statistic="statistics.data ? statistics.data.monthly_package_sales.paid : 0"
+          statistic-title="Month Paid Sales"
+        />
+      </b-col>
+      <b-col
+        lg="4"
+        md="4"
+        sm="6"
+      >
+        <statistic-card-horizontal
+          icon="DollarSignIcon"
+          :statistic="statistics.data ? statistics.data.monthly_package_sales.total - statistics.data.monthly_package_sales.paid : 0"
+          statistic-title="Month Remaining Sales"
+        />
+      </b-col>
+      <b-col
+        lg="4"
+        md="4"
+        sm="6"
+      >
+        <statistic-card-horizontal
+          icon="DollarSignIcon"
+          :statistic="statistics.data ? statistics.data.monthly_buffet_orders.amount : 0"
+          statistic-title="Month Buffet Sales"
+        />
+      </b-col>
+      <b-col
+        lg="4"
+        md="4"
+        sm="6"
+      >
+        <statistic-card-horizontal
+          icon="CalendarIcon"
+          :statistic="statistics.data ? statistics.data.monthly_visits.orders : 0"
+          statistic-title="Month Order Visits"
+        />
+      </b-col>
+      <b-col
+        lg="4"
+        md="4"
+        sm="6"
+      >
+        <statistic-card-horizontal
+          icon="CalendarIcon"
+          :statistic="statistics.data ? statistics.data.monthly_visits.events : 0"
+          statistic-title="Month Event Visits"
+        />
+      </b-col>
+    </b-row>
     <b-row>
       <b-col
         lg="6"
@@ -200,13 +308,36 @@
         </b-overlay>
       </b-col>
     </b-row>
+    <b-row>
+      <b-col cols="12">
+        <div class="app-calendar overflow-hidden border">
+          <full-calendar
+            ref="refCalendar"
+            :options="calendarOptions"
+            class="full-calendar"
+          />
+        </div>
+      </b-col>
+    </b-row>
   </section>
 </template>
 
 <script>
 import Ripple from 'vue-ripple-directive'
+import FullCalendar from '@fullcalendar/vue'
+import listPlugin from '@fullcalendar/list'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from '@fullcalendar/interaction'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import store from '@/store'
+import StatisticCardHorizontal from '@core/components/statistics-cards/StatisticCardHorizontal.vue'
+// import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 
 export default {
+  components: {
+    FullCalendar,
+    StatisticCardHorizontal,
+  },
   directives: {
     Ripple,
   },
@@ -230,9 +361,31 @@ export default {
         total_pages: 0,
       },
     },
+    calendarOptions: {
+      plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin, listPlugin],
+      initialView: 'timeGridWeek',
+      headerToolbar: {
+        start: 'sidebarToggle, prev,next, title',
+        end: 'timeGridWeek,timeGridDay,listMonth',
+      },
+      events: [],
+    },
+    statistics: {
+      isLoading: false,
+      data: null,
+    },
   }),
+  computed: {
+    fullName() {
+      return JSON.parse(localStorage.getItem('vuex')).auth.user ? `${JSON.parse(localStorage.getItem('vuex')).auth.user.name}` : ''
+    },
+  },
   mounted() {
     this.browseCustomers(this.customers.meta.current_page)
+    this.fetchEvents()
+    if (this.can('browse_statistics')) {
+      this.browseStatistics()
+    }
   },
   methods: {
     browseCustomers(page = 0) {
@@ -246,10 +399,63 @@ export default {
         this.customers.isLoading = false
       })
     },
+    browseStatistics() {
+      this.statistics.isLoading = true
+      this.$store.dispatch('statistic/browse', '').then(response => {
+        this.statistics.data = response.data.data
+        this.statistics.isLoading = false
+      }).catch(error => {
+        console.error(error)
+        this.statistics.isLoading = false
+      })
+    },
+    fetchEvents() {
+      store
+        .dispatch('visits/browse', '')
+        .then(response => {
+          this.calendarOptions.events = response.data.data.map(visit => ({
+            allDay: false,
+            start: new Date(`${visit.date} ${visit.start_time}`),
+            startStr: new Date(`${visit.date} ${visit.start_time}`).toISOString(),
+            end: new Date(`${visit.date} ${visit.end_time}`),
+            endStr: new Date(`${visit.date} ${visit.end_time}`).toISOString(),
+            timeZone: 'local',
+            id: visit.id,
+            url: '',
+            title: `${visit.isEvent ? visit.bookable.title : visit.room.name}`,
+            extendedProps: {
+              calendar: visit.visit_status.name,
+            },
+            room_id: visit?.room?.id,
+
+            date: visit.date,
+            start_time: visit.start_time,
+            end_time: visit.end_time,
+            visit_status_id: visit.visit_status_id,
+
+            order: visit.bookable,
+            room: visit.room,
+            rooms: visit.bookable ? visit?.bookable?.package?.rooms : [],
+            customers: visit.bookable ? visit?.bookable?.customers : [],
+          }))
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
   },
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import "~@core/scss/vue/apps/calendar.scss";
+.app-calendar {
+    padding: 40px;
+}
+.fc-timegrid-event .fc-event-time,
+.fc-v-event .fc-event-title-container{
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
 </style>

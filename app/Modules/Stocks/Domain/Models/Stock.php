@@ -4,6 +4,7 @@ namespace App\Modules\Stocks\Domain\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Stock extends Model
 {
@@ -23,4 +24,13 @@ class Stock extends Model
         'total',
         'paid',
     ];
+
+
+    /**
+     * @return belongsToMany
+     */
+    public function buffetOrders(): belongsToMany
+    {
+        return $this->belongsToMany(BuffetOrder::class, 'buffet_order_items', 'stock_id', 'buffet_order_id');
+    }
 }

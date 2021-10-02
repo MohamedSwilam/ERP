@@ -2,6 +2,114 @@
   <section>
     <b-row>
       <b-col cols="12">
+        <b-card-actions
+          ref="filterCard"
+          title="Filters"
+          no-actions
+        >
+          <b-row>
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Search"
+                label-for="search"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="SearchIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="search_order"
+                    v-model="packages.search"
+                    placeholder="Search title, host"
+                    @change="browsePackages(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <!-- Package Type -->
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Filter Package Types"
+                label-for="filter_package_types"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="BoxIcon" />
+                  </b-input-group-prepend>
+                  <b-select
+                    v-model="packages.package_type"
+                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :options="packages.package_types"
+                    label="text"
+                    @change="browsePackages(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <!-- Room -->
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Filter Rooms"
+                label-for="filter_rooms"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="BoxIcon" />
+                  </b-input-group-prepend>
+                  <b-select
+                    v-model="packages.room"
+                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :options="packages.rooms"
+                    label="text"
+                    @change="browsePackages(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <!-- Customer Type -->
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Filter Customer Types"
+                label-for="filter_customer_types"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="UsersIcon" />
+                  </b-input-group-prepend>
+                  <b-select
+                    v-model="packages.customer_type"
+                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :options="packages.customer_types"
+                    label="text"
+                    @change="browsePackages(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+          </b-row>
+        </b-card-actions>
+      </b-col>
+      <b-col cols="12">
         <b-overlay
           :show="packages.isLoading"
           rounded="sm"
@@ -11,23 +119,9 @@
             title="Packages List"
             action-collapse
           >
-            <b-modal
-              id="delete-package-modal"
-              title="Are you sure?"
-              ok-only
-              ok-variant="danger"
-              ok-title="Yes, Delete"
-              modal-class="modal-danger"
-              centered
-              no-close-on-backdrop
-            >
-              <b-card-text>
-                You will not be able to retrieve this again!
-              </b-card-text>
-            </b-modal>
             <b-row>
               <b-col
-                cols="6"
+                cols="12"
                 align-h="center"
               >
                 <b-button
@@ -47,21 +141,44 @@
               </b-col>
               <b-col
                 cols="6"
-                align-h="center"
-                class="text-right"
+                class="mb-2"
               >
-                <b-input-group style="position: relative;top: 13px;">
-                  <b-input-group-prepend is-text>
-                    <feather-icon icon="SearchIcon" />
-                  </b-input-group-prepend>
-                  <b-form-input
-                    id="search"
-                    v-model="packages.search"
-                    size="sm"
-                    placeholder="Search"
-                    @change="browsePackages"
-                  />
-                </b-input-group>
+                <b-form-group
+                  label="Sort"
+                  label-size="sm"
+                  label-for="sortBySelect"
+                  class="mb-0"
+                >
+                  <b-input-group size="sm">
+                    <b-form-select
+                      id="sortBySelect"
+                      v-model="packages.sort.by"
+                      :options="packages.sort.options"
+                      class="w-75"
+                      @change="browsePackages(1)"
+                    >
+                      <template v-slot:first>
+                        <option value="">
+                          -- none --
+                        </option>
+                      </template>
+                    </b-form-select>
+                    <b-form-select
+                      v-model="packages.sort.desc"
+                      size="sm"
+                      :disabled="!packages.sort.by"
+                      class="w-25"
+                      @change="browsePackages(1)"
+                    >
+                      <option :value="false">
+                        Asc
+                      </option>
+                      <option :value="true">
+                        Desc
+                      </option>
+                    </b-form-select>
+                  </b-input-group>
+                </b-form-group>
               </b-col>
               <b-col cols="12">
                 <b-table
@@ -196,8 +313,25 @@ export default {
     packages: {
       isLoading: false,
       search: '',
+      customer_type: '',
+      customer_types: [],
+      package_type: '',
+      package_types: [],
+      room: '',
+      rooms: [],
       paginateOptions: [5, 10, 25, 50, 100, 250],
       recordsPerPage: 50,
+      sort: {
+        by: '',
+        desc: false,
+        options: [
+          { text: 'Name', value: 'name' },
+          { text: 'Hours', value: 'hours' },
+          { text: 'Price', value: 'price' },
+          { text: 'Membership', value: 'membership' },
+          { text: 'Package Type', value: 'package_type_id' },
+        ],
+      },
       fields: [
         { key: 'index', label: '#' },
         { key: 'name', label: 'Name' },
@@ -220,11 +354,53 @@ export default {
   }),
   mounted() {
     this.browsePackages(this.packages.meta.current_page)
+    this.browseCustomerTypes()
+    this.browsePackageTypes()
+    this.browseRooms()
   },
   methods: {
+    browseRooms() {
+      this.$store.dispatch('seed/browseRooms', '').then(response => {
+        this.packages.rooms = [
+          { text: 'All', value: '' },
+          ...response.data.data.map(record => ({
+            text: record.name,
+            value: record.id,
+          })),
+        ]
+      }).catch(error => {
+        console.error(error)
+      })
+    },
+    browseCustomerTypes() {
+      this.$store.dispatch('seed/browseCustomerTypes', '').then(response => {
+        this.packages.customer_types = [
+          { text: 'All', value: '' },
+          ...response.data.data.map(record => ({
+            text: record.type,
+            value: record.id,
+          })),
+        ]
+      }).catch(error => {
+        console.error(error)
+      })
+    },
+    browsePackageTypes() {
+      this.$store.dispatch('seed/browsePackageTypes', '').then(response => {
+        this.packages.package_types = [
+          { text: 'All', value: '' },
+          ...response.data.data.map(record => ({
+            text: record.name,
+            value: record.id,
+          })),
+        ]
+      }).catch(error => {
+        console.error(error)
+      })
+    },
     browsePackages(page = 0) {
       this.packages.isLoading = true
-      this.$store.dispatch('packages/browse', `?paginate=${this.packages.recordsPerPage}&page=${page}&filter[search]=${this.packages.search}`).then(response => {
+      this.$store.dispatch('packages/browse', `?paginate=${this.packages.recordsPerPage}&page=${page}&filter[search]=${this.packages.search}&filter[package_type]=${this.packages.package_type}&filter[customer_type]=${this.packages.customer_type}&filter[room]=${this.packages.room}&sort=${this.packages.sort.desc ? '-' : ''}${this.packages.sort.by}`).then(response => {
         this.packages.data = response.data.data
         this.packages.meta = response.data.meta.pagination
         this.packages.isLoading = false
@@ -270,13 +446,5 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '~@/assets/scss/variables/_variables.scss';
-.table .thead-dark th {
-    background-color: $primary !important;
-    border-color: #195cff !important;
-}
-.dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
-    color: white !important;
-}
+<style>
 </style>

@@ -29,6 +29,8 @@ class Order extends Model
         'expires_at',
         'discount',
         'seller',
+        'paid',
+        'total',
         'created_by',
     ];
 
@@ -60,7 +62,7 @@ class Order extends Model
      */
     public function customers(): BelongsToMany
     {
-        return $this->belongsToMany(Customer::class, 'order_customers');
+        return $this->belongsToMany(Customer::class, 'order_customers', 'order_id', 'customer_id');
     }
 
     /**
@@ -88,7 +90,24 @@ class Order extends Model
     public function scopeCustomerFilter(Builder $query, string $value) {
         return $query
             ->whereHas('customers', function (Builder $q) use ($value) {
-                $q->where('name', 'LIKE', "%$value%");
+                $q->where('customer_id', $value);
+                $q->orWhere('name', 'LIKE', "%$value%");
             });
+    }
+
+    public function scopePackageType(Builder $query, string $value) {
+        return $query
+            ->with('package', 'package.packageType')
+            ->whereHas('package.packageType', function (Builder $q) use ($value) {
+                $q->where('id', $value);
+            });
+    }
+
+    public function scopeFrom(Builder $query, string $value) {
+        return $query->where('created_at', '>=', $value);
+    }
+
+    public function scopeTo(Builder $query, string $value) {
+        return $query->where('created_at', '<=', $value);
     }
 }

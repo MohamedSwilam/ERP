@@ -196,7 +196,7 @@ const router = new VueRouter({
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
-          { text: 'Order', to: '/orders', active: true },
+          { text: 'Orders', to: '/orders', active: true },
         ],
         pageTitle: 'Order',
         permission: 'browse_order',
@@ -210,11 +210,11 @@ const router = new VueRouter({
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
-          { text: 'Order', to: '/orders', active: false },
+          { text: 'Orders', to: '/orders', active: false },
           { text: 'Create Order', to: '/orders/create', active: true },
         ],
         pageTitle: 'Create Order',
-        // permission: 'create_order',
+        permission: 'create_order',
       },
     },
     {
@@ -225,11 +225,91 @@ const router = new VueRouter({
       meta: {
         breadcrumb: [
           { text: 'Home', to: '/', active: false },
-          { text: 'Order', to: '/orders', active: false },
+          { text: 'Orders', to: '/orders', active: false },
           { text: 'View Order', to: '/orders/:id', active: true },
         ],
         pageTitle: 'View Order',
         permission: 'view_order',
+      },
+    },
+    {
+      path: '/orders/:id/edit',
+      name: 'edit-order',
+      component: () => import('../views/order/Update.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Orders', to: '/orders', active: false },
+          { text: 'View Order', to: '/orders/:id', active: false },
+          { text: 'Edit', to: '/orders/:id', active: false },
+        ],
+        pageTitle: 'Edit Order',
+        permission: 'update_order',
+      },
+    },
+
+    // =============================================================================
+    // BUFFET ORDER ROUTES
+    // =============================================================================
+    {
+      path: '/buffet-orders',
+      name: 'browse-buffet-orders',
+      component: () => import('../views/buffet-order/Browse.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Buffet Orders', to: '/buffet-orders', active: true },
+        ],
+        pageTitle: 'Buffet Orders',
+        permission: 'browse_buffet_order',
+      },
+    },
+    {
+      path: '/buffet-orders/create',
+      name: 'create-buffet-order',
+      component: () => import('../views/buffet-order/Create.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Buffet Orders', to: '/buffet-orders', active: false },
+          { text: 'Create', to: '/buffet-orders/create', active: true },
+        ],
+        pageTitle: 'Create Buffet Order',
+        permission: 'create_buffet_order',
+      },
+    },
+    {
+      path: '/buffet-orders/:id',
+      name: 'view-buffet-order',
+      component: () => import('../views/buffet-order/View.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Buffet Orders', to: '/buffet-orders', active: false },
+          { text: 'View', to: '/buffet-orders/:id', active: true },
+        ],
+        pageTitle: 'View Buffet Order',
+        permission: 'view_buffet_order',
+      },
+    },
+    {
+      path: '/buffet-orders/:id/edit',
+      name: 'edit-buffet-order',
+      component: () => import('../views/buffet-order/Edit.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Buffet Orders', to: '/buffet-orders', active: false },
+          { text: 'View', to: '/buffet-orders/:id', active: false },
+          { text: 'Edit', to: '/buffet-orders/:id/edit', active: true },
+        ],
+        pageTitle: 'Edit Buffet Order',
+        permission: 'update_buffet_order',
       },
     },
 

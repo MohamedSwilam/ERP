@@ -20,8 +20,10 @@ import visits from './visit'
 import reports from './report'
 import accounting from './accounting'
 import stock from './stock'
+import buffetOrder from './buffet-order'
 import comment from './comment'
 import seed from './seed'
+import statistic from './statistic'
 import rolesAndPermissions from './roles-and-permissions/moduleRolesAndPermissions'
 
 Vue.use(Vuex)
@@ -45,8 +47,10 @@ export default new Vuex.Store({
     reports,
     accounting,
     stock,
+    buffetOrder,
     comment,
     seed,
+    statistic,
     rolesAndPermissions,
   },
   plugins: [vuexLocal.plugin],

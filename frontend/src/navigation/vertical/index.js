@@ -64,6 +64,12 @@ export default [
     permission: 'browse_stock',
   },
   {
+    title: 'Buffet Orders',
+    route: 'browse-buffet-orders',
+    icon: 'ShoppingBagIcon',
+    permission: 'browse_buffet_order',
+  },
+  {
     title: 'Roles & Permissions',
     route: 'browse-roles',
     icon: 'ShieldIcon',

@@ -1,1 +1,4248 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{"0UnL":function(t,a,e){"use strict";e.r(a);var r=e("Blph"),i=e("dhAQ"),o=e("WHwe"),s=e("1w2d"),n={components:{VuexyLogo:r.a},mixins:[{data:function(){return{passwordFieldType:"password"}},methods:{togglePasswordVisibility:function(){this.passwordFieldType="password"===this.passwordFieldType?"text":"password"}}}],data:function(){return{password:"",userEmail:"",sideImg:e("7wjf"),required:i.b,email:i.a}},computed:{passwordToggleIcon:function(){return"password"===this.passwordFieldType?"EyeIcon":"EyeOffIcon"},imgUrl:function(){return"dark"===o.a.state.appConfig.layout.skin?(this.sideImg=e("QUcX"),this.sideImg):this.sideImg}},methods:{login:function(){var t=this;this.$store.dispatch("auth/login",{username:this.userEmail,password:this.password,grant_type:"password",client_id:"2",client_secret:"xmSKj8GI7fFBKwEuAFpVVBhlekdMjrMeVwly5kEc"}).then((function(){t.$toast({component:s.a,props:{title:"Welcome Back👋",icon:"CheckCircleIcon",variant:"success"}})})).catch((function(a){t.$toast({component:s.a,props:{title:"Oops..",text:a.response.data.error,icon:"AlertCircleIcon",variant:"danger"}})}))}}},l=(e("fgPP"),e("KHd+")),A=Object(l.a)(n,(function(){var t=this,a=t.$createElement,e=t._self._c||a;return e("div",{staticClass:"auth-wrapper auth-v2"},[e("b-row",{staticClass:"auth-inner m-0"},[e("b-link",{staticClass:"brand-logo"},[e("vuexy-logo"),t._v(" "),e("h2",{staticClass:"brand-text text-primary ml-1"},[t._v("\n        Tktbosherp\n      ")])],1),t._v(" "),e("b-col",{staticClass:"d-none d-lg-flex align-items-center p-5",attrs:{lg:"8"}},[e("div",{staticClass:"w-100 d-lg-flex align-items-center justify-content-center px-5"},[e("b-img",{attrs:{fluid:"",src:t.imgUrl,alt:"Login V2"}})],1)]),t._v(" "),e("b-col",{staticClass:"d-flex align-items-center auth-bg px-2 p-lg-5",attrs:{lg:"4"}},[e("b-col",{staticClass:"px-xl-2 mx-auto",attrs:{sm:"8",md:"6",lg:"12"}},[e("b-card-title",{staticClass:"font-weight-bold mb-1",attrs:{"title-tag":"h2"}},[t._v("\n          Welcome to Tktbosherp! 👋\n        ")]),t._v(" "),e("b-card-text",{staticClass:"mb-2"},[t._v("\n          Please sign-in to your account and start the adventure\n        ")]),t._v(" "),e("validation-observer",{ref:"loginValidation"},[e("b-form",{staticClass:"auth-login-form mt-2",on:{submit:function(t){t.preventDefault()}}},[e("b-form-group",{attrs:{label:"Email","label-for":"login-email"}},[e("validation-provider",{attrs:{name:"Email",rules:"required|email"},scopedSlots:t._u([{key:"default",fn:function(a){var r=a.errors;return[e("b-form-input",{attrs:{id:"login-email",state:!(r.length>0)&&null,name:"login-email",placeholder:"john@example.com"},model:{value:t.userEmail,callback:function(a){t.userEmail=a},expression:"userEmail"}}),t._v(" "),e("small",{staticClass:"text-danger"},[t._v(t._s(r[0]))])]}}])})],1),t._v(" "),e("b-form-group",[e("div",{staticClass:"d-flex justify-content-between"},[e("label",[t._v("Password")])]),t._v(" "),e("validation-provider",{attrs:{name:"Password",rules:"required"},scopedSlots:t._u([{key:"default",fn:function(a){var r=a.errors;return[e("b-input-group",{staticClass:"input-group-merge",class:r.length>0?"is-invalid":null},[e("b-form-input",{staticClass:"form-control-merge",attrs:{id:"login-password",state:!(r.length>0)&&null,type:t.passwordFieldType,name:"login-password",placeholder:"············"},model:{value:t.password,callback:function(a){t.password=a},expression:"password"}}),t._v(" "),e("b-input-group-append",{attrs:{"is-text":""}},[e("feather-icon",{staticClass:"cursor-pointer",attrs:{icon:t.passwordToggleIcon},on:{click:t.togglePasswordVisibility}})],1)],1),t._v(" "),e("small",{staticClass:"text-danger"},[t._v(t._s(r[0]))])]}}])})],1),t._v(" "),e("b-button",{attrs:{type:"submit",variant:"primary",block:""},on:{click:t.login}},[t._v("\n              Sign in\n            ")])],1)],1)],1)],1)],1)],1)}),[],!1,null,null,null);a.default=A.exports},"1w2d":function(t,a,e){"use strict";var r={components:{BAvatar:e("G/QR").a},props:{variant:{type:String,default:"primary"},icon:{type:String,default:null},title:{type:String,default:null},text:{type:String,default:null},hideClose:{type:Boolean,default:!1}}},i=(e("MOdh"),e("KHd+")),o=Object(i.a)(r,(function(){var t=this,a=t.$createElement,e=t._self._c||a;return e("div",{staticClass:"toastification"},[e("div",{staticClass:"d-flex align-items-start"},[e("b-avatar",{staticClass:"mr-75 flex-shrink-0",attrs:{variant:t.variant,size:"1.8rem"}},[e("feather-icon",{attrs:{icon:t.icon,size:"15"}})],1),t._v(" "),e("div",{staticClass:"d-flex flex-grow-1"},[e("div",[t.title?e("h5",{staticClass:"mb-0 font-weight-bolder toastification-title",class:"text-"+t.variant,domProps:{textContent:t._s(t.title)}}):t._e(),t._v(" "),t.text?e("small",{staticClass:"d-inline-block text-body",domProps:{textContent:t._s(t.text)}}):t._e()]),t._v(" "),e("span",{staticClass:"cursor-pointer toastification-close-icon ml-auto ",on:{click:function(a){return t.$emit("close-toast")}}},[t.hideClose?t._e():e("feather-icon",{staticClass:"text-body",attrs:{icon:"XIcon"}})],1)])],1)])}),[],!1,null,"13ed5408",null);a.a=o.exports},"7wjf":function(t,a){t.exports="/images/_/_/_/_/tktbosherp/frontend/src/assets/images/pages/login-v2.svg"},Blph:function(t,a,e){"use strict";var r=e("KHd+"),i=Object(r.a)({},(function(){var t=this,a=t.$createElement,e=t._self._c||a;return e("svg",{attrs:{viewBox:"0 0 139 95",version:"1.1",xmlns:"http://www.w3.org/2000/svg","xmlns:xlink":"http://www.w3.org/1999/xlink",height:"24"}},[e("defs",[e("linearGradient",{attrs:{id:"linearGradient-1",x1:"100%",y1:"10.5120544%",x2:"50%",y2:"89.4879456%"}},[e("stop",{attrs:{"stop-color":"#000000",offset:"0%"}}),t._v(" "),e("stop",{attrs:{"stop-color":"#FFFFFF",offset:"100%"}})],1),t._v(" "),e("linearGradient",{attrs:{id:"linearGradient-2",x1:"64.0437835%",y1:"46.3276743%",x2:"37.373316%",y2:"100%"}},[e("stop",{attrs:{"stop-color":"#EEEEEE","stop-opacity":"0",offset:"0%"}}),t._v(" "),e("stop",{attrs:{"stop-color":"#FFFFFF",offset:"100%"}})],1)],1),t._v(" "),e("g",{attrs:{id:"Page-1",stroke:"none","stroke-width":"1",fill:"none","fill-rule":"evenodd"}},[e("g",{attrs:{id:"Artboard",transform:"translate(-400.000000, -178.000000)"}},[e("g",{attrs:{id:"Group",transform:"translate(400.000000, 178.000000)"}},[e("path",{staticClass:"text-primary",staticStyle:{fill:"currentColor"},attrs:{id:"Path",d:"M-5.68434189e-14,2.84217094e-14 L39.1816085,2.84217094e-14 L69.3453773,32.2519224 L101.428699,2.84217094e-14 L138.784583,2.84217094e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L6.71554594,44.4188507 C2.46876683,39.9813776 0.345377275,35.1089553 0.345377275,29.8015838 C0.345377275,24.4942122 0.230251516,14.560351 -5.68434189e-14,2.84217094e-14 Z"}}),t._v(" "),e("path",{attrs:{id:"Path1",d:"M69.3453773,32.2519224 L101.428699,1.42108547e-14 L138.784583,1.42108547e-14 L138.784199,29.8015838 C137.958931,37.3510206 135.784352,42.5567762 132.260463,45.4188507 C128.736573,48.2809251 112.33867,64.5239941 83.0667527,94.1480575 L56.2750821,94.1480575 L32.8435758,70.5039241 L69.3453773,32.2519224 Z",fill:"url(#linearGradient-1)",opacity:"0.2"}}),t._v(" "),e("polygon",{attrs:{id:"Path-2",fill:"#000000",opacity:"0.049999997",points:"69.3922914 32.4202615 32.8435758 70.5039241 54.0490008 16.1851325"}}),t._v(" "),e("polygon",{attrs:{id:"Path-21",fill:"#000000",opacity:"0.099999994",points:"69.3922914 32.4202615 32.8435758 70.5039241 58.3683556 20.7402338"}}),t._v(" "),e("polygon",{attrs:{id:"Path-3",fill:"url(#linearGradient-2)",opacity:"0.099999994",points:"101.428699 0 83.0667527 94.1480575 130.378721 47.0740288"}})])])])])}),[],!1,null,null,null);a.a=i.exports},DEUr:function(t,a,e){var r=e("o1KL");"string"==typeof r&&(r=[[t.i,r,""]]);var i={hmr:!0,transform:void 0,insertInto:void 0};e("aET+")(r,i);r.locals&&(t.exports=r.locals)},MOdh:function(t,a,e){"use strict";e("DEUr")},QUcX:function(t,a){t.exports="/images/_/_/_/_/tktbosherp/frontend/src/assets/images/pages/login-v2-dark.svg"},U8Af:function(t,a,e){(t.exports=e("I1BE")(!1)).push([t.i,'.auth-wrapper{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-preferred-size:100%;flex-basis:100%;min-height:100vh;min-height:calc(var(--vh, 1vh)*100);width:100%}.auth-wrapper .auth-inner{width:100%;position:relative}.auth-wrapper.auth-v1{-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;overflow:hidden}.auth-wrapper.auth-v1 .auth-inner:before{width:244px;height:243px;content:" ";position:absolute;top:-54px}[dir] .auth-wrapper.auth-v1 .auth-inner:before{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPQAAADzCAMAAACG9Mt0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAA9KADAAQAAAABAAAA8wAAAADhQHfUAAAAyVBMVEUAAAD///+AgP+AgP9mZv+AgNWAgP9tbf9gYP+AgP9xcf9mZv+AZuaAgP9dXf90dOhiYv92dv9mZu5mZv93d+53d/9paf94afCAcfFrXvJra/9mZvJzZvJzc/JoaP96b/Rqav91aupsYvV2bOt2bPVxaPZ7cfZqavZyau1waPd4aO9xafBxafh4afB1bfh4avFuZ/F2afJzZvJzZ/N0aPN0bvN3bPR0ae5yZ/R3be93bfR1au9zafBxbPVzavV0a/F0a/ZyafFwaPKZm3nTAAAAQ3RSTlMAAQIEBQYGBwgICQoKCgsLDQ0PDw8PERESExMUFBQWFxgYGhoaGxsdHSAgIiIiIyQlJygqLCwtLi8vLzAzNDU3Nzg7h9vbHgAAA9RJREFUeNrt3ftS2kAUx/Fc1gSyWsErtuJdRDQiiteolb7/QzUoTm07k4AzObuu3/MCez45yWbzT36eZ6b8erO1e1B97baadd+zocJWmg0HaXe/+uqmg2GWtkLT5Lle1m9LdhG2+1lvzuiUO1knEF81yFc1N+35m15kZOGodz1vyLx+v2Lseq/erxtZd/NuweCTtfiwaWLOD5FnsqI7+VnP3y8afnEs3Es/1+H1qvETwuq18B7e6VlwLup1ZM8kWWQBOsrmHL7GVtxvYRZYgQ4ywae61ffsqH5Lbq20bQm6ncp9P2ehJegwE/u+rl95ttSwLrVSc2ANetAU28dSa9Cp2E623bUG3d2VWmn/wBq0XCugQYMGLdVKoOJaoiuok1NdXSW1WAUfRPtRUllflaJf5ZE/O9pXVbZUPTov5c+IDqvtRwStdTgLutoxy6GnGfYb2o+1I2gd+1OiqzfLocvVE7TSDqG1mgodaqfQZbvZC9rXjqG1X45WzqFVKVpk0LLo4lGP0ZGD6KgMnTiITkrQgXYQrYNitHISrYrRsZPouBhdcxJdK0YnTqKTYrR2Eq1BgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRoh9DH59ag86ACoSYOL61B55EUQk1s3VqDzsNHhJpYe7QGncfMSHUxaliCHgcKSXVxeWQJehwdJdXF4dAS9DgkTKqLxuibFeiXODixNi7OrEC/BP+JtbE0WrYA/RrxKNfH2YUF6NegSbk+Gk87xtErN6EsWm88fzeMXpwE9EruLns/l42io4dJFLPo2/Po1w+D6IW7t9Bt2SPx3vOOMfS7eHVZtN54ulg2go56138Ct4XRunE2Ovsmjg46WeddUoUWr6WL0fCoIYgO2/2s91fstDZQjcPL0ePt5flpdXUwqW46uMrS1j95JNpQrW0dHp9UV/uT2m416/8HVGg3qzhpBjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KBBgwYNGjRo0KC/FDpx0pwUo2tOomvF6NhJdFyMVk6iVTE6cBIdeF9vJyvZx/I/AzuIjsrQvoNovwzt4FamSs0Ojrp80PmvoB0zh940pb7azf1yg7t0LIt978uppzbnalfucDW92ZndLPRmKweGPduYJ+zoM5/Dk+gD5NdvLhXXPp88qcUqmEH5G5JZRs6cuxwIAAAAAElFTkSuQmCC")}[dir=ltr] .auth-wrapper.auth-v1 .auth-inner:before{left:-46px}[dir=rtl] .auth-wrapper.auth-v1 .auth-inner:before{right:-46px}@media (max-width:575.98px){.auth-wrapper.auth-v1 .auth-inner:before{display:none}}.auth-wrapper.auth-v1 .auth-inner:after{width:272px;height:272px;content:" ";position:absolute;bottom:-55px;z-index:-1}[dir] .auth-wrapper.auth-v1 .auth-inner:after{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARAAAAEQCAMAAABP1NsnAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAABEKADAAQAAAABAAABEAAAAAAQWxS2AAAAwFBMVEUAAAD///+AgICAgP9VVaqqVf+qqv+AgL+AgP9mZsxmZv+ZZv+AgNWAgP9tbdttbf+Sbf+AYN+AgN+AgP9xceNmZv+AZuaAZv90dOh0dP9qav+AauqAav+AgP92dv9tbf+Abe2Abf93Zu53d+6AcO94afCAcfF5a+R5a/JzZuaAZvKAc/J5bed5bfOAaPN6b/R1auqAavR6ZvV6cPV2bOuAbPV7aPZ2be2AbfZ7au17avZ3Zu53b+57a+97a/d4aO9J6CoeAAAAQHRSTlMAAQICAwMDBAQFBQUGBgcHBwgICAkKCgoLCwwMDAwNDg4ODw8QERITExQUFBUVFhcYGBkZGhobHBwdHR4eHx8gJ5uMWwAAA/FJREFUeNrt2G1XEkEYxvHZNk2xHGzdbKFl0cTwgdSkCKzu7/+t4pw6sAjtjIueE/f8r3fMO35nZnbuy5gVGcvfzJe0rnTfGI+MggGJRUZnbpPIhJKt88nU53JnFULvyISY6KAv8vPj0vr2rYwiE2Z2B9J+uNYcyyQxwWZvaeGH3G4bMjsvI/kcwTC/V+7kLoahlITzQojP3ZFgsJCh7IJQzpX0QFj4uMiY18eDMZ9bZCF9OQahnK6cm/Y7js0sh/LF3Auv1PlQd3MxbdXYIQspV44EEEAAAWTNDAYYkKdJbNMsLzYueZbaZ2iM46RVbHBaiZ9Js+nHEdli42N9XuSen5hGp1CQTuOJQDRsD99N4gMSpYWapNH6IJo83CIeILZQFesEaber79NCWRoukOpNEnW0gXQqD81w6ACxhbrYde7VuFCYeA2QRCNIsgZISyNIqz6IyhPjOjNVIFYniK3dmKU6QdLaJUimEySrDZLrBMlrgxRKU7sxCw/EMe0CAggggADySJCqxixIkKpNEh6IozELD8RxjQACCCCAAPJIkKrGLEgQXqqAAEJjxrQLCCCAAEJjRmNGY8a0CwgggABCYwYIfQgggNCYMe0CAggggNCY0ZjRmDHtAgIIIIAAQmNGHwIIIDRmTLuAAAIIIDRmNGY0Zky7gAACCCCA0JjRhwACCI0Z0y4ggAACCI0ZjRmNGdMuIIAAAgggNGb0IYAAQmPGtAsIIIAAQmNGY0ZjxrQLCCCAAAIIjRl9CCCA0Jgx7QICCCCA0JjRmNGYMe0CAggggABCY0YfAgggNGZMu4AAAgggNGY0ZjRmTLuAAAIIIIDQmNGHAAIIjRnTLiCAAAIIjRmNGY0ZIEy7gAACCCA0ZvQhgABCY8a0CwgggABCY0ZjBgiNGdMuIIAAAgiN2f/Sh+Q6PfLaIJlOkKw2SKoTJK3dmFmdILb2tBvrBIlrg5iWRo+WqQ+SaARJ1gCJAzsxThCN16p1vNurGjNjoo42j07kAHFskoY2kEbl33U0ZgoPjXW+Rl0gkarnahqtDaJKxMPDDWIiNafGenh4gExvVhXfmk7Da6L1AVGxSby2h6MxK79Zk42ea1pJbJ48sU2zDezQ8iy1z6BBwoyjMQsvXp8YQAAhgADilRfyy+wf8WqZZUfGZihvgZiB3FybC+kCUU5XLkAo50C+gbBQdUzkAIVyejIAYfFTI1solHP2HgNCnHn5AYNy4jvpoVB6fVzL91cwzLJ9Lfd7S0jhehxO5H5/yePr1W6gHonI7fJ5ORSR/n6Q2yQanq763zuXU5LJZRKiyD/W9/pjkdPZz0/yJ8fqVyry+qQZDMjJKoDfy8bRVhHhQTwAAAAASUVORK5CYII=")}[dir=ltr] .auth-wrapper.auth-v1 .auth-inner:after{right:-75px}[dir=rtl] .auth-wrapper.auth-v1 .auth-inner:after{left:-75px}@media (max-width:575.98px){.auth-wrapper.auth-v1 .auth-inner:after{display:none}}.auth-wrapper.auth-v2{-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.auth-wrapper.auth-v2 .auth-inner{height:100vh;overflow-y:auto;height:calc(var(--vh, 1vh)*100)}.auth-wrapper.auth-v2 .brand-logo{position:absolute;top:2rem;z-index:1}[dir] .auth-wrapper.auth-v2 .brand-logo{margin:0}[dir=ltr] .auth-wrapper.auth-v2 .brand-logo{left:2rem}[dir=rtl] .auth-wrapper.auth-v2 .brand-logo{right:2rem}.auth-wrapper.auth-v1 .auth-inner{max-width:400px}.auth-wrapper .brand-logo{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}[dir] .auth-wrapper .brand-logo{margin:1rem 0 2rem}.auth-wrapper .brand-logo .brand-text{font-weight:600}[dir] .auth-wrapper .auth-footer-btn .btn{padding:.6rem!important}[dir=ltr] .auth-wrapper .auth-footer-btn .btn:not(:last-child){margin-right:1rem}[dir=rtl] .auth-wrapper .auth-footer-btn .btn:not(:last-child){margin-left:1rem}@media (min-width:1200px){.auth-wrapper.auth-v2 .auth-card{width:400px}}[dir] .auth-wrapper .auth-bg{background-color:#fff}[dir] .dark-layout .auth-wrapper .auth-bg{background-color:#283046}.brand-logo svg{height:28px;width:40.95px}html[dir=rtl] svg.feather{-webkit-transform:rotate(180deg);transform:rotate(180deg)}',""])},fgPP:function(t,a,e){"use strict";e("h+V9")},"h+V9":function(t,a,e){var r=e("U8Af");"string"==typeof r&&(r=[[t.i,r,""]]);var i={hmr:!0,transform:void 0,insertInto:void 0};e("aET+")(r,i);r.locals&&(t.exports=r.locals)},o1KL:function(t,a,e){(t.exports=e("I1BE")(!1)).push([t.i,".toastification-close-icon[data-v-13ed5408],.toastification-title[data-v-13ed5408]{line-height:26px}.toastification-title[data-v-13ed5408]{color:inherit}",""])}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6],{
+
+/***/ "./frontend/src/@core/comp-functions/forms/form-validation.js":
+/*!********************************************************************!*\
+  !*** ./frontend/src/@core/comp-functions/forms/form-validation.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return formValidation; });
+/* harmony import */ var _vue_composition_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/composition-api */ "./frontend/node_modules/@vue/composition-api/dist/vue-composition-api.esm.js");
+ // ===========================================================
+// ! This is coupled with "veeValidate" plugin
+// ===========================================================
+
+function formValidation(resetFormData) {
+  var clearFormData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
+  // ------------------------------------------------
+  // refFormObserver
+  // ! This is for veeValidate Observer
+  // * Used for veeValidate form observer
+  // ------------------------------------------------
+  var refFormObserver = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_0__["ref"])(null); // ------------------------------------------------
+  // resetObserver
+  // ! This function is coupled with veeValidate
+  // * It resets form observer
+  // ------------------------------------------------
+
+  var resetObserver = function resetObserver() {
+    refFormObserver.value.reset();
+  }; // ------------------------------------------------
+  // getValidationState
+  // ! This function is coupled with veeValidate
+  // * It returns true/false based on validation
+  // ------------------------------------------------
+  // eslint-disable-next-line object-curly-newline
+
+
+  var getValidationState = function getValidationState(_ref) {
+    var dirty = _ref.dirty,
+        validated = _ref.validated,
+        fieldRequired = _ref.required,
+        changed = _ref.changed,
+        _ref$valid = _ref.valid,
+        valid = _ref$valid === void 0 ? null : _ref$valid;
+    var result = dirty || validated ? valid : null;
+    return !fieldRequired && !changed ? null : result;
+  }; // ------------------------------------------------
+  // resetForm
+  // ! This function is coupled with veeValidate
+  // * This uses resetFormData arg to reset form data
+  // ------------------------------------------------
+
+
+  var resetForm = function resetForm() {
+    resetFormData();
+    Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_0__["nextTick"])(function () {
+      resetObserver();
+    });
+  }; // ------------------------------------------------
+  // clearForm
+  // ! This function is coupled with veeValidate
+  // * This uses clearFormData arg to reset form data
+  // ------------------------------------------------
+
+
+  var clearForm = function clearForm() {
+    clearFormData();
+    Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_0__["nextTick"])(function () {
+      resetObserver();
+    });
+  };
+
+  return {
+    refFormObserver: refFormObserver,
+    resetObserver: resetObserver,
+    getValidationState: getValidationState,
+    resetForm: resetForm,
+    clearForm: clearForm
+  };
+}
+
+/***/ }),
+
+/***/ "./frontend/src/@core/components/toastification/ToastificationContent.vue":
+/*!********************************************************************************!*\
+  !*** ./frontend/src/@core/components/toastification/ToastificationContent.vue ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true& */ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true&");
+/* harmony import */ var _ToastificationContent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ToastificationContent.vue?vue&type=script&lang=js& */ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& */ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ToastificationContent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "2fedfe59",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "frontend/src/@core/components/toastification/ToastificationContent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************!*\
+  !*** ./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ToastificationContent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&":
+/*!******************************************************************************************************************************************!*\
+  !*** ./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& ***!
+  \******************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true&":
+/*!***************************************************************************************************************************!*\
+  !*** ./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true& ***!
+  \***************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./frontend/src/assets/images/avatars/11-small.png":
+/*!*********************************************************!*\
+  !*** ./frontend/src/assets/images/avatars/11-small.png ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/_/_/_/_/tktbosherp/frontend/src/assets/images/avatars/11-small.png";
+
+/***/ }),
+
+/***/ "./frontend/src/assets/images/avatars/3-small.png":
+/*!********************************************************!*\
+  !*** ./frontend/src/assets/images/avatars/3-small.png ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/_/_/_/_/tktbosherp/frontend/src/assets/images/avatars/3-small.png";
+
+/***/ }),
+
+/***/ "./frontend/src/assets/images/avatars/5-small.png":
+/*!********************************************************!*\
+  !*** ./frontend/src/assets/images/avatars/5-small.png ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/_/_/_/_/tktbosherp/frontend/src/assets/images/avatars/5-small.png";
+
+/***/ }),
+
+/***/ "./frontend/src/assets/images/avatars/7-small.png":
+/*!********************************************************!*\
+  !*** ./frontend/src/assets/images/avatars/7-small.png ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/_/_/_/_/tktbosherp/frontend/src/assets/images/avatars/7-small.png";
+
+/***/ }),
+
+/***/ "./frontend/src/assets/images/avatars/9-small.png":
+/*!********************************************************!*\
+  !*** ./frontend/src/assets/images/avatars/9-small.png ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/_/_/_/_/tktbosherp/frontend/src/assets/images/avatars/9-small.png";
+
+/***/ }),
+
+/***/ "./frontend/src/assets/images/pages/calendar-illustration.png":
+/*!********************************************************************!*\
+  !*** ./frontend/src/assets/images/pages/calendar-illustration.png ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/_/_/_/_/tktbosherp/frontend/src/assets/images/pages/calendar-illustration.png";
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/Calendar.vue":
+/*!**************************************************!*\
+  !*** ./frontend/src/views/calendar/Calendar.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Calendar_vue_vue_type_template_id_84ed64d8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Calendar.vue?vue&type=template&id=84ed64d8& */ "./frontend/src/views/calendar/Calendar.vue?vue&type=template&id=84ed64d8&");
+/* harmony import */ var _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Calendar.vue?vue&type=script&lang=js& */ "./frontend/src/views/calendar/Calendar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Calendar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Calendar.vue?vue&type=style&index=0&lang=scss& */ "./frontend/src/views/calendar/Calendar.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Calendar_vue_vue_type_template_id_84ed64d8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Calendar_vue_vue_type_template_id_84ed64d8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "frontend/src/views/calendar/Calendar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/Calendar.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./frontend/src/views/calendar/Calendar.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Calendar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/Calendar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/Calendar.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************!*\
+  !*** ./frontend/src/views/calendar/Calendar.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/sass-loader/dist/cjs.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Calendar.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/Calendar.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/Calendar.vue?vue&type=template&id=84ed64d8&":
+/*!*********************************************************************************!*\
+  !*** ./frontend/src/views/calendar/Calendar.vue?vue&type=template&id=84ed64d8& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendar_vue_vue_type_template_id_84ed64d8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Calendar.vue?vue&type=template&id=84ed64d8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/Calendar.vue?vue&type=template&id=84ed64d8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendar_vue_vue_type_template_id_84ed64d8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Calendar_vue_vue_type_template_id_84ed64d8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue":
+/*!*************************************************************************************!*\
+  !*** ./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CalendarEventHandler_vue_vue_type_template_id_1f55576f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CalendarEventHandler.vue?vue&type=template&id=1f55576f& */ "./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=template&id=1f55576f&");
+/* harmony import */ var _CalendarEventHandler_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CalendarEventHandler.vue?vue&type=script&lang=js& */ "./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _CalendarEventHandler_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CalendarEventHandler.vue?vue&type=style&index=0&lang=scss& */ "./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _CalendarEventHandler_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CalendarEventHandler_vue_vue_type_template_id_1f55576f___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CalendarEventHandler_vue_vue_type_template_id_1f55576f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************!*\
+  !*** ./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarEventHandler_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CalendarEventHandler.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarEventHandler_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************************!*\
+  !*** ./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarEventHandler_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CalendarEventHandler.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarEventHandler_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarEventHandler_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarEventHandler_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarEventHandler_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=template&id=1f55576f&":
+/*!********************************************************************************************************************!*\
+  !*** ./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=template&id=1f55576f& ***!
+  \********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarEventHandler_vue_vue_type_template_id_1f55576f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CalendarEventHandler.vue?vue&type=template&id=1f55576f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=template&id=1f55576f&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarEventHandler_vue_vue_type_template_id_1f55576f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarEventHandler_vue_vue_type_template_id_1f55576f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/calendar-event-handler/useCalendarEventHandler.js":
+/*!***************************************************************************************!*\
+  !*** ./frontend/src/views/calendar/calendar-event-handler/useCalendarEventHandler.js ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return useCalendarEventHandler; });
+/* harmony import */ var _vue_composition_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @vue/composition-api */ "./frontend/node_modules/@vue/composition-api/dist/vue-composition-api.esm.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/store */ "./frontend/src/store/index.js");
+
+
+function useCalendarEventHandler(props, clearForm, emit) {
+  // ------------------------------------------------
+  // eventLocal
+  // ------------------------------------------------
+  var eventLocal = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_0__["ref"])(JSON.parse(JSON.stringify(props.event.value)));
+
+  var resetEventLocal = function resetEventLocal() {
+    eventLocal.value = JSON.parse(JSON.stringify(props.event.value));
+  };
+
+  Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_0__["watch"])(props.event, function () {
+    resetEventLocal();
+  }); // ------------------------------------------------
+  // isEventHandlerSidebarActive
+  // * Clear form if sidebar is closed
+  // ------------------------------------------------
+
+  Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_0__["watch"])(props.isEventHandlerSidebarActive, function (val) {
+    // ? Don't reset event till transition is finished
+    if (!val) {
+      setTimeout(function () {
+        clearForm.value();
+      }, 350);
+    }
+  }); // ------------------------------------------------
+  // calendarOptions
+  // ------------------------------------------------
+
+  var calendarOptions = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_0__["computed"])(function () {
+    return _store__WEBPACK_IMPORTED_MODULE_1__["default"].state.calendar.calendarOptions;
+  });
+
+  var onSubmit = function onSubmit() {
+    var eventData = JSON.parse(JSON.stringify(eventLocal)); // * If event has id => Edit Event
+    // Emit event for add/update event
+
+    if (props.event.value.id) emit('update-event', eventData.value);else emit('add-event', eventData.value); // Close sidebar
+
+    emit('update:is-event-handler-sidebar-active', false);
+  }; // *===============================================---*
+  // *--------- UI ---------------------------------------*
+  // *===============================================---*
+  // ------------------------------------------------
+  // guestOptions
+  // ------------------------------------------------
+
+  /* eslint-disable global-require */
+
+
+  var guestsOptions = [{
+    avatar: __webpack_require__(/*! @/assets/images/avatars/1-small.png */ "./frontend/src/assets/images/avatars/1-small.png"),
+    name: 'Jane Foster'
+  }, {
+    avatar: __webpack_require__(/*! @/assets/images/avatars/3-small.png */ "./frontend/src/assets/images/avatars/3-small.png"),
+    name: 'Donna Frank'
+  }, {
+    avatar: __webpack_require__(/*! @/assets/images/avatars/5-small.png */ "./frontend/src/assets/images/avatars/5-small.png"),
+    name: 'Gabrielle Robertson'
+  }, {
+    avatar: __webpack_require__(/*! @/assets/images/avatars/7-small.png */ "./frontend/src/assets/images/avatars/7-small.png"),
+    name: 'Lori Spears'
+  }, {
+    avatar: __webpack_require__(/*! @/assets/images/avatars/9-small.png */ "./frontend/src/assets/images/avatars/9-small.png"),
+    name: 'Sandy Vega'
+  }, {
+    avatar: __webpack_require__(/*! @/assets/images/avatars/11-small.png */ "./frontend/src/assets/images/avatars/11-small.png"),
+    name: 'Cheryl May'
+  }];
+  /* eslint-enable global-require */
+
+  return {
+    eventLocal: eventLocal,
+    resetEventLocal: resetEventLocal,
+    calendarOptions: calendarOptions,
+    // UI
+    guestsOptions: guestsOptions,
+    onSubmit: onSubmit
+  };
+}
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue":
+/*!**************************************************************************!*\
+  !*** ./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CalendarSidebar_vue_vue_type_template_id_69183112___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CalendarSidebar.vue?vue&type=template&id=69183112& */ "./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=template&id=69183112&");
+/* harmony import */ var _CalendarSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CalendarSidebar.vue?vue&type=script&lang=js& */ "./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CalendarSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CalendarSidebar_vue_vue_type_template_id_69183112___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CalendarSidebar_vue_vue_type_template_id_69183112___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CalendarSidebar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarSidebar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=template&id=69183112&":
+/*!*********************************************************************************************************!*\
+  !*** ./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=template&id=69183112& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarSidebar_vue_vue_type_template_id_69183112___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CalendarSidebar.vue?vue&type=template&id=69183112& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=template&id=69183112&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarSidebar_vue_vue_type_template_id_69183112___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CalendarSidebar_vue_vue_type_template_id_69183112___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/calendar-sidebar/useCalendarSidebar.js":
+/*!****************************************************************************!*\
+  !*** ./frontend/src/views/calendar/calendar-sidebar/useCalendarSidebar.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return useCalendarSidebar; });
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store */ "./frontend/src/store/index.js");
+/* harmony import */ var _vue_composition_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @vue/composition-api */ "./frontend/node_modules/@vue/composition-api/dist/vue-composition-api.esm.js");
+
+
+function useCalendarSidebar() {
+  // ------------------------------------------------
+  // calendarOptions
+  // ------------------------------------------------
+  var calendarOptions = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_1__["computed"])(function () {
+    return _store__WEBPACK_IMPORTED_MODULE_0__["default"].state.calendar.calendarOptions;
+  }); // ------------------------------------------------
+  // selectedCalendars
+  // ------------------------------------------------
+
+  var selectedCalendars = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_1__["computed"])({
+    get: function get() {
+      return _store__WEBPACK_IMPORTED_MODULE_0__["default"].state.calendar.selectedCalendars;
+    },
+    set: function set(val) {
+      _store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('calendar/SET_SELECTED_EVENTS', val);
+    }
+  }); // ------------------------------------------------
+  // checkAll
+  // ------------------------------------------------
+
+  var checkAll = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_1__["computed"])({
+    /*
+      GET: Return boolean `true` => if length of options matches length of selected filters => Length matches when all events are selected
+      SET: If value is `true` => then add all available options in selected filters => Select All
+           Else if => all filters are selected (by checking length of both array) => Empty Selected array  => Deselect All
+    */
+    get: function get() {
+      return selectedCalendars.value.length === calendarOptions.value.length;
+    },
+    set: function set(val) {
+      if (val) {
+        selectedCalendars.value = calendarOptions.value.map(function (i) {
+          return i.label;
+        });
+      } else if (selectedCalendars.value.length === calendarOptions.value.length) {
+        selectedCalendars.value = [];
+      }
+    }
+  });
+  return {
+    calendarOptions: calendarOptions,
+    selectedCalendars: selectedCalendars,
+    checkAll: checkAll
+  };
+}
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/calendarStoreModule.js":
+/*!************************************************************!*\
+  !*** ./frontend/src/views/calendar/calendarStoreModule.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @axios */ "./frontend/src/libs/axios.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: {
+    calendarOptions: [{
+      color: 'danger',
+      label: 'Canceled'
+    }, {
+      color: 'primary',
+      label: 'Booking'
+    }, {
+      color: 'success',
+      label: 'Completed'
+    }],
+    selectedCalendars: ['Canceled', 'Booking', 'Completed']
+  },
+  getters: {},
+  mutations: {
+    SET_SELECTED_EVENTS: function SET_SELECTED_EVENTS(state, val) {
+      state.selectedCalendars = val;
+    }
+  },
+  actions: {
+    fetchEvents: function fetchEvents(ctx, _ref) {
+      var calendars = _ref.calendars;
+      return new Promise(function (resolve, reject) {
+        _axios__WEBPACK_IMPORTED_MODULE_0__["default"].get('/apps/calendar/events', {
+          params: {
+            calendars: calendars.join(',')
+          }
+        }).then(function (response) {
+          console.log('HERE ========> ', response);
+          resolve(response);
+        })["catch"](function (error) {
+          return reject(error);
+        });
+      });
+    },
+    addEvent: function addEvent(ctx, _ref2) {
+      var event = _ref2.event;
+      return new Promise(function (resolve, reject) {
+        _axios__WEBPACK_IMPORTED_MODULE_0__["default"].post('/apps/calendar/events', {
+          event: event
+        }).then(function (response) {
+          return resolve(response);
+        })["catch"](function (error) {
+          return reject(error);
+        });
+      });
+    },
+    updateEvent: function updateEvent(ctx, _ref3) {
+      var event = _ref3.event;
+      return new Promise(function (resolve, reject) {
+        _axios__WEBPACK_IMPORTED_MODULE_0__["default"].post("/apps/calendar/events/".concat(event.id), {
+          event: event
+        }).then(function (response) {
+          return resolve(response);
+        })["catch"](function (error) {
+          return reject(error);
+        });
+      });
+    },
+    removeEvent: function removeEvent(ctx, _ref4) {
+      var id = _ref4.id;
+      return new Promise(function (resolve, reject) {
+        _axios__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("/apps/calendar/events/".concat(id)).then(function (response) {
+          return resolve(response);
+        })["catch"](function (error) {
+          return reject(error);
+        });
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/src/views/calendar/useCalendar.js":
+/*!****************************************************!*\
+  !*** ./frontend/src/views/calendar/useCalendar.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return userCalendar; });
+/* harmony import */ var _fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fullcalendar/daygrid */ "./frontend/node_modules/@fullcalendar/daygrid/main.js");
+/* harmony import */ var _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fullcalendar/timegrid */ "./frontend/node_modules/@fullcalendar/timegrid/main.js");
+/* harmony import */ var _fullcalendar_list__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fullcalendar/list */ "./frontend/node_modules/@fullcalendar/list/main.js");
+/* harmony import */ var _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fullcalendar/interaction */ "./frontend/node_modules/@fullcalendar/interaction/main.js");
+/* harmony import */ var vue_toastification_composition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-toastification/composition */ "./frontend/node_modules/vue-toastification/composition/index.js");
+/* harmony import */ var vue_toastification_composition__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_toastification_composition__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _core_components_toastification_ToastificationContent_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @core/components/toastification/ToastificationContent.vue */ "./frontend/src/@core/components/toastification/ToastificationContent.vue");
+/* harmony import */ var _vue_composition_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @vue/composition-api */ "./frontend/node_modules/@vue/composition-api/dist/vue-composition-api.esm.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/store */ "./frontend/src/store/index.js");
+// Full Calendar Plugins
+
+
+
+ // Notification
+
+
+ // eslint-disable-next-line object-curly-newline
+
+
+
+function userCalendar() {
+  // Use toast
+  var toast = Object(vue_toastification_composition__WEBPACK_IMPORTED_MODULE_4__["useToast"])(); // ------------------------------------------------
+  // refCalendar
+  // ------------------------------------------------
+
+  var refCalendar = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["ref"])(null); // ------------------------------------------------
+  // calendarApi
+  // ------------------------------------------------
+
+  var calendarApi = null;
+  Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["onMounted"])(function () {
+    calendarApi = refCalendar.value.getApi();
+  }); // ------------------------------------------------
+  // calendars
+  // ------------------------------------------------
+
+  var calendarsColor = {
+    Booking: 'primary',
+    Completed: 'success',
+    Canceled: 'danger'
+  }; // ------------------------------------------------
+  // event
+  // ------------------------------------------------
+
+  var blankEvent = {
+    room_id: null,
+    date: '',
+    start: '',
+    end: '',
+    start_time: '',
+    end_time: '',
+    visit_status_id: null,
+    order: {},
+    room: {},
+    customers: [],
+    orders: [],
+    rooms: [],
+    selectedCustomer: null,
+    // customer: '',
+    // // order: '',
+    // allDay: false,
+    // url: '',
+    // isEvent: false,
+    // type: '',
+    // instructor: '',
+    // budget: 0,
+    // num_of_attendance: 0,
+    // expenses: 0,
+    // revenue: 0,
+    // target_segment: '',
+    // customer_id: null,
+    extendedProps: {
+      calendar: ''
+    }
+  };
+  var event = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["ref"])(JSON.parse(JSON.stringify(blankEvent)));
+
+  var clearEventData = function clearEventData() {
+    event.value = JSON.parse(JSON.stringify(blankEvent));
+  }; // *===========================================================================---*
+  // *--------- Calendar API Function/Utils --------------------------------------------*
+  // Template Future Update: We might move this utils function in its own file
+  // *===========================================================================---*
+  // ------------------------------------------------
+  // (UI) addEventInCalendar
+  // ? This is useless because this just add event in calendar and not in our data
+  // * If we try to call it on new event then callback & try to toggle from calendar we get two events => One from UI and one from data
+  // ------------------------------------------------
+  // const addEventInCalendar = eventData => {
+  //   toast({
+  //     component: ToastificationContent,
+  //     position: 'bottom-right',
+  //     props: {
+  //       title: 'Event Added',
+  //       icon: 'CheckIcon',
+  //       variant: 'success',
+  //     },
+  //   })
+  //   calendarApi.addEvent(eventData)
+  // }
+  // ------------------------------------------------
+  // (UI) updateEventInCalendar
+  // ------------------------------------------------
+
+
+  var updateEventInCalendar = function updateEventInCalendar(updatedEventData, propsToUpdate, extendedPropsToUpdate) {
+    toast({
+      component: _core_components_toastification_ToastificationContent_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+      props: {
+        title: 'Event Updated',
+        icon: 'CheckIcon',
+        variant: 'success'
+      }
+    });
+    var existingEvent = calendarApi.getEventById(updatedEventData.id); // --- Set event properties except date related ----- //
+    // ? Docs: https://fullcalendar.io/docs/Event-setProp
+    // dateRelatedProps => ['start', 'end', 'allDay']
+    // eslint-disable-next-line no-plusplus
+
+    for (var index = 0; index < propsToUpdate.length; index++) {
+      var propName = propsToUpdate[index];
+      existingEvent.setProp(propName, updatedEventData[propName]);
+    } // --- Set date related props ----- //
+    // ? Docs: https://fullcalendar.io/docs/Event-setDates
+
+
+    existingEvent.setDates(updatedEventData.start, updatedEventData.end, {
+      allDay: updatedEventData.allDay
+    }); // --- Set event's extendedProps ----- //
+    // ? Docs: https://fullcalendar.io/docs/Event-setExtendedProp
+    // eslint-disable-next-line no-plusplus
+
+    for (var _index = 0; _index < extendedPropsToUpdate.length; _index++) {
+      var _propName = extendedPropsToUpdate[_index];
+      existingEvent.setExtendedProp(_propName, updatedEventData.extendedProps[_propName]);
+    }
+  }; // ------------------------------------------------
+  // (UI) removeEventInCalendar
+  // ------------------------------------------------
+
+
+  var removeEventInCalendar = function removeEventInCalendar(eventId) {
+    toast({
+      component: _core_components_toastification_ToastificationContent_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+      props: {
+        title: 'Event Removed',
+        icon: 'TrashIcon',
+        variant: 'danger'
+      }
+    });
+    calendarApi.getEventById(eventId).remove();
+  }; // ------------------------------------------------
+  // grabEventDataFromEventApi
+  // ? It will return just event data from fullCalendar's EventApi which is not required for event mutations and other tasks
+  // ! You need to update below function as per your extendedProps
+  // ------------------------------------------------
+
+
+  var grabEventDataFromEventApi = function grabEventDataFromEventApi(eventApi) {
+    var id = eventApi.id,
+        title = eventApi.title,
+        start = eventApi.start,
+        end = eventApi.end,
+        visit_status_id = eventApi.visit_status_id,
+        order = eventApi.order,
+        room = eventApi.room,
+        customer = eventApi.customer,
+        orders = eventApi.orders,
+        rooms = eventApi.rooms,
+        selectedCustomer = eventApi.selectedCustomer,
+        _eventApi$extendedPro = eventApi.extendedProps,
+        calendar = _eventApi$extendedPro.calendar,
+        guests = _eventApi$extendedPro.guests,
+        location = _eventApi$extendedPro.location,
+        description = _eventApi$extendedPro.description,
+        allDay = eventApi.allDay;
+    return {
+      id: id,
+      title: title,
+      start: start,
+      end: end,
+      visit_status_id: visit_status_id,
+      order: order,
+      room: room,
+      customer: customer,
+      orders: orders,
+      rooms: rooms,
+      selectedCustomer: selectedCustomer,
+      extendedProps: {
+        calendar: calendar
+      },
+      allDay: allDay
+    };
+  }; // ------------------------------------------------
+  // addEvent
+  // ------------------------------------------------
+
+
+  var addEvent = function addEvent(eventData) {
+    console.log('CREATING ========> ', eventData);
+    _store__WEBPACK_IMPORTED_MODULE_7__["default"].dispatch('orders/createVisit', {
+      id: eventData.order.id,
+      data: {
+        room_id: eventData.room.id,
+        date: eventData.date,
+        start_time: eventData.start_time,
+        end_time: eventData.end_time,
+        visit_status_id: eventData.visit_status_id
+      }
+    }).then(function () {
+      // eslint-disable-next-line no-use-before-define
+      refetchEvents();
+    })["catch"](function (error) {
+      toast({
+        component: _core_components_toastification_ToastificationContent_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+        props: {
+          title: 'Oops..',
+          text: error.response.data.errors[Object.keys(error.response.data.errors)[0]][0],
+          icon: 'AlertTriangleIcon',
+          variant: 'danger'
+        }
+      });
+    });
+  }; // ------------------------------------------------
+  // updateEvent
+  // ------------------------------------------------
+
+
+  var updateEvent = function updateEvent(eventData) {
+    _store__WEBPACK_IMPORTED_MODULE_7__["default"].dispatch('calendar/updateEvent', {
+      event: eventData
+    }).then(function (response) {
+      var updatedEvent = response.data.event;
+      var propsToUpdate = ['id', 'title', 'url'];
+      var extendedPropsToUpdate = ['calendar', 'guests', 'location', 'description'];
+      updateEventInCalendar(updatedEvent, propsToUpdate, extendedPropsToUpdate);
+    });
+  }; // ------------------------------------------------
+  // removeEvent
+  // ------------------------------------------------
+
+
+  var removeEvent = function removeEvent() {
+    var eventId = event.value.id;
+    _store__WEBPACK_IMPORTED_MODULE_7__["default"].dispatch('calendar/removeEvent', {
+      id: eventId
+    }).then(function () {
+      removeEventInCalendar(eventId);
+    });
+  }; // ------------------------------------------------
+  // refetchEvents
+  // ------------------------------------------------
+
+
+  var refetchEvents = function refetchEvents() {
+    // ->
+    calendarApi.refetchEvents();
+  }; // ------------------------------------------------
+  // selectedCalendars
+  // ------------------------------------------------
+
+
+  var selectedCalendars = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["computed"])(function () {
+    return _store__WEBPACK_IMPORTED_MODULE_7__["default"].state.calendar.selectedCalendars;
+  });
+  Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["watch"])(selectedCalendars, function () {
+    refetchEvents();
+  }); // --------------------------------------------------------------------------------------------------
+  // AXIOS: fetchEvents
+  // * This will be called by fullCalendar to fetch events. Also this can be used to refetch events.
+  // --------------------------------------------------------------------------------------------------
+
+  var fetchEvents = function fetchEvents(info, successCallback) {
+    // If there's no info => Don't make useless API call
+    if (!info) return; // Fetch Events from API endpoint
+    // store
+    //   .dispatch('calendar/fetchEvents', {
+    //     calendars: selectedCalendars.value,
+    //   })
+    //   .then(response => {
+    //     console.log('+++++++++========> ', response.data)
+    //     successCallback(response.data)
+    //   })
+    //   .catch(() => {
+    //     toast({
+    //       component: ToastificationContent,
+    //       props: {
+    //         title: 'Error fetching calendar events',
+    //         icon: 'AlertTriangleIcon',
+    //         variant: 'danger',
+    //       },
+    //     })
+    //   })
+
+    console.log('==========>', info);
+    _store__WEBPACK_IMPORTED_MODULE_7__["default"].dispatch('visits/browse', '').then(function (response) {
+      console.log('HEREEEEEEEEEEEE', response.data.data[0].date);
+      var visits = response.data.data.map(function (visit) {
+        var _visit$room, _visit$bookable, _visit$bookable$packa, _visit$bookable2;
+
+        return {
+          allDay: false,
+          start: new Date("".concat(visit.date, " ").concat(visit.start_time)),
+          startStr: new Date("".concat(visit.date, " ").concat(visit.start_time)).toISOString(),
+          end: new Date("".concat(visit.date, " ").concat(visit.end_time)),
+          endStr: new Date("".concat(visit.date, " ").concat(visit.end_time)).toISOString(),
+          timeZone: 'local',
+          id: visit.id,
+          url: '',
+          title: "".concat(visit.isEvent ? visit.bookable.title : visit.room.name),
+          extendedProps: {
+            calendar: visit.visit_status.name
+          },
+          room_id: visit === null || visit === void 0 ? void 0 : (_visit$room = visit.room) === null || _visit$room === void 0 ? void 0 : _visit$room.id,
+          date: visit.date,
+          start_time: visit.start_time,
+          end_time: visit.end_time,
+          visit_status_id: visit.visit_status_id,
+          order: visit.bookable,
+          room: visit.room,
+          rooms: visit.bookable ? visit === null || visit === void 0 ? void 0 : (_visit$bookable = visit.bookable) === null || _visit$bookable === void 0 ? void 0 : (_visit$bookable$packa = _visit$bookable["package"]) === null || _visit$bookable$packa === void 0 ? void 0 : _visit$bookable$packa.rooms : [],
+          customers: visit.bookable ? visit === null || visit === void 0 ? void 0 : (_visit$bookable2 = visit.bookable) === null || _visit$bookable2 === void 0 ? void 0 : _visit$bookable2.customers : []
+        };
+      });
+      console.log('+++++++++========> ', visits);
+      successCallback(visits);
+    })["catch"](function () {
+      toast({
+        component: _core_components_toastification_ToastificationContent_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+        props: {
+          title: 'Error fetching calendar events',
+          icon: 'AlertTriangleIcon',
+          variant: 'danger'
+        }
+      });
+    });
+  }; // ------------------------------------------------------------------------
+  // calendarOptions
+  // * This isn't considered in UI because this is the core of calendar app
+  // ------------------------------------------------------------------------
+
+
+  var calendarOptions = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["ref"])({
+    plugins: [_fullcalendar_daygrid__WEBPACK_IMPORTED_MODULE_0__["default"], _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_3__["default"], _fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_1__["default"], _fullcalendar_list__WEBPACK_IMPORTED_MODULE_2__["default"]],
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      start: 'sidebarToggle, prev,next, title',
+      end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+    },
+    events: fetchEvents,
+
+    /*
+      Enable dragging and resizing event
+      ? Docs: https://fullcalendar.io/docs/editable
+    */
+    editable: false,
+
+    /*
+      Enable resizing event from start
+      ? Docs: https://fullcalendar.io/docs/eventResizableFromStart
+    */
+    eventResizableFromStart: false,
+
+    /*
+      Automatically scroll the scroll-containers during event drag-and-drop and date selecting
+      ? Docs: https://fullcalendar.io/docs/dragScroll
+    */
+    dragScroll: false,
+
+    /*
+      Max number of events within a given day
+      ? Docs: https://fullcalendar.io/docs/dayMaxEvents
+    */
+    dayMaxEvents: 2,
+
+    /*
+      Determines if day names and week names are clickable
+      ? Docs: https://fullcalendar.io/docs/navLinks
+    */
+    navLinks: true,
+    eventClassNames: function eventClassNames(_ref) {
+      var calendarEvent = _ref.event;
+      // eslint-disable-next-line no-underscore-dangle
+      var colorName = calendarsColor[calendarEvent._def.extendedProps.calendar];
+      return [// Background Color
+      "bg-light-".concat(colorName)];
+    },
+    eventClick: function eventClick(_ref2) {
+      var clickedEvent = _ref2.event;
+      // * Only grab required field otherwise it goes in infinity loop
+      // ! Always grab all fields rendered by form (even if it get `undefined`) otherwise due to Vue3/Composition API you might get: "object is not extensible"
+      event.value = grabEventDataFromEventApi(clickedEvent); // eslint-disable-next-line no-use-before-define
+
+      isEventHandlerSidebarActive.value = true;
+    },
+    customButtons: {
+      sidebarToggle: {
+        // --- This dummy text actual icon rendering is handled using SCSS ----- //
+        text: 'sidebar',
+        click: function click() {
+          // eslint-disable-next-line no-use-before-define
+          isCalendarOverlaySidebarActive.value = !isCalendarOverlaySidebarActive.value;
+        }
+      }
+    },
+    dateClick: function dateClick(info) {
+      /*
+        ! Vue3 Change
+        Using Vue.set isn't working for now so we will try to check reactivity in Vue 3 as it can handle this automatically
+        ```
+        event.value.start = info.date
+        ```
+      */
+      event.value = JSON.parse(JSON.stringify(Object.assign(event.value, {
+        start: info.date
+      }))); // eslint-disable-next-line no-use-before-define
+
+      isEventHandlerSidebarActive.value = true;
+    },
+
+    /*
+      Handle event drop (Also include dragged event)
+      ? Docs: https://fullcalendar.io/docs/eventDrop
+      ? We can use `eventDragStop` but it doesn't return updated event so we have to use `eventDrop` which returns updated event
+    */
+    eventDrop: function eventDrop(_ref3) {
+      var droppedEvent = _ref3.event;
+      updateEvent(grabEventDataFromEventApi(droppedEvent));
+    },
+
+    /*
+      Handle event resize
+      ? Docs: https://fullcalendar.io/docs/eventResize
+    */
+    eventResize: function eventResize(_ref4) {
+      var resizedEvent = _ref4.event;
+      updateEvent(grabEventDataFromEventApi(resizedEvent));
+    },
+    // Get direction from app state (store)
+    direction: Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["computed"])(function () {
+      return _store__WEBPACK_IMPORTED_MODULE_7__["default"].state.appConfig.isRTL ? 'rtl' : 'ltr';
+    }),
+    rerenderDelay: 350
+  }); // ------------------------------------------------------------------------
+  // *===============================================---*
+  // *--------- UI ---------------------------------------*
+  // *===============================================---*
+
+  var isEventHandlerSidebarActive = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["ref"])(false);
+  var isCalendarOverlaySidebarActive = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["ref"])(false);
+  return {
+    refCalendar: refCalendar,
+    isCalendarOverlaySidebarActive: isCalendarOverlaySidebarActive,
+    calendarOptions: calendarOptions,
+    event: event,
+    clearEventData: clearEventData,
+    addEvent: addEvent,
+    updateEvent: updateEvent,
+    removeEvent: removeEvent,
+    refetchEvents: refetchEvents,
+    fetchEvents: fetchEvents,
+    // ----- UI ----- //
+    isEventHandlerSidebarActive: isEventHandlerSidebarActive
+  };
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./frontend/node_modules/bootstrap-vue/esm/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    BAvatar: bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["BAvatar"]
+  },
+  props: {
+    variant: {
+      type: String,
+      "default": 'primary'
+    },
+    icon: {
+      type: String,
+      "default": null
+    },
+    title: {
+      type: String,
+      "default": null
+    },
+    text: {
+      type: String,
+      "default": null
+    },
+    hideClose: {
+      type: Boolean,
+      "default": false
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/Calendar.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/calendar/Calendar.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _fullcalendar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fullcalendar/vue */ "./frontend/node_modules/@fullcalendar/vue/dist/main.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/store */ "./frontend/src/store/index.js");
+/* harmony import */ var _vue_composition_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/composition-api */ "./frontend/node_modules/@vue/composition-api/dist/vue-composition-api.esm.js");
+/* harmony import */ var _calendarStoreModule__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./calendarStoreModule */ "./frontend/src/views/calendar/calendarStoreModule.js");
+/* harmony import */ var _calendar_sidebar_CalendarSidebar_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./calendar-sidebar/CalendarSidebar.vue */ "./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue");
+/* harmony import */ var _calendar_event_handler_CalendarEventHandler_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./calendar-event-handler/CalendarEventHandler.vue */ "./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue");
+/* harmony import */ var _useCalendar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./useCalendar */ "./frontend/src/views/calendar/useCalendar.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    FullCalendar: _fullcalendar_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    // make the <FullCalendar> tag available
+    CalendarSidebar: _calendar_sidebar_CalendarSidebar_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    CalendarEventHandler: _calendar_event_handler_CalendarEventHandler_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+  },
+  setup: function setup() {
+    var CALENDAR_APP_STORE_MODULE_NAME = 'calendar'; // Register module
+
+    if (!_store__WEBPACK_IMPORTED_MODULE_1__["default"].hasModule(CALENDAR_APP_STORE_MODULE_NAME)) _store__WEBPACK_IMPORTED_MODULE_1__["default"].registerModule(CALENDAR_APP_STORE_MODULE_NAME, _calendarStoreModule__WEBPACK_IMPORTED_MODULE_3__["default"]); // UnRegister on leave
+
+    Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_2__["onUnmounted"])(function () {
+      if (_store__WEBPACK_IMPORTED_MODULE_1__["default"].hasModule(CALENDAR_APP_STORE_MODULE_NAME)) _store__WEBPACK_IMPORTED_MODULE_1__["default"].unregisterModule(CALENDAR_APP_STORE_MODULE_NAME);
+    });
+
+    var _useCalendar = Object(_useCalendar__WEBPACK_IMPORTED_MODULE_6__["default"])(),
+        refCalendar = _useCalendar.refCalendar,
+        isCalendarOverlaySidebarActive = _useCalendar.isCalendarOverlaySidebarActive,
+        event = _useCalendar.event,
+        clearEventData = _useCalendar.clearEventData,
+        addEvent = _useCalendar.addEvent,
+        updateEvent = _useCalendar.updateEvent,
+        removeEvent = _useCalendar.removeEvent,
+        fetchEvents = _useCalendar.fetchEvents,
+        refetchEvents = _useCalendar.refetchEvents,
+        calendarOptions = _useCalendar.calendarOptions,
+        isEventHandlerSidebarActive = _useCalendar.isEventHandlerSidebarActive;
+
+    fetchEvents();
+    return {
+      refCalendar: refCalendar,
+      isCalendarOverlaySidebarActive: isCalendarOverlaySidebarActive,
+      event: event,
+      clearEventData: clearEventData,
+      addEvent: addEvent,
+      updateEvent: updateEvent,
+      removeEvent: removeEvent,
+      refetchEvents: refetchEvents,
+      calendarOptions: calendarOptions,
+      // ----- UI ----- //
+      isEventHandlerSidebarActive: isEventHandlerSidebarActive
+    };
+  },
+  mounted: function mounted() {
+    if ('create' in this.$route.query) {
+      this.isEventHandlerSidebarActive = true;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-select */ "./frontend/node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-flatpickr-component */ "./frontend/node_modules/vue-flatpickr-component/dist/vue-flatpickr.min.js");
+/* harmony import */ var vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_ripple_directive__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-ripple-directive */ "./frontend/node_modules/vue-ripple-directive/src/ripple.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vee-validate */ "./frontend/node_modules/vee-validate/dist/vee-validate.esm.js");
+/* harmony import */ var _validations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @validations */ "./frontend/src/@core/utils/validations/validations.js");
+/* harmony import */ var _core_comp_functions_forms_form_validation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @core/comp-functions/forms/form-validation */ "./frontend/src/@core/comp-functions/forms/form-validation.js");
+/* harmony import */ var _vue_composition_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @vue/composition-api */ "./frontend/node_modules/@vue/composition-api/dist/vue-composition-api.esm.js");
+/* harmony import */ var _core_components_toastification_ToastificationContent_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @core/components/toastification/ToastificationContent.vue */ "./frontend/src/@core/components/toastification/ToastificationContent.vue");
+/* harmony import */ var _useCalendarEventHandler__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./useCalendarEventHandler */ "./frontend/src/views/calendar/calendar-event-handler/useCalendarEventHandler.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    vSelect: vue_select__WEBPACK_IMPORTED_MODULE_0___default.a,
+    flatPickr: vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_1___default.a,
+    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_3__["ValidationProvider"],
+    ValidationObserver: vee_validate__WEBPACK_IMPORTED_MODULE_3__["ValidationObserver"]
+  },
+  directives: {
+    Ripple: vue_ripple_directive__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  model: {
+    prop: 'isEventHandlerSidebarActive',
+    event: 'update:is-event-handler-sidebar-active'
+  },
+  props: {
+    isEventHandlerSidebarActive: {
+      type: Boolean,
+      required: true
+    },
+    event: {
+      type: Object,
+      required: true
+    },
+    clearEventData: {
+      type: Function,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      required: _validations__WEBPACK_IMPORTED_MODULE_4__["required"],
+      email: _validations__WEBPACK_IMPORTED_MODULE_4__["email"],
+      url: _validations__WEBPACK_IMPORTED_MODULE_4__["url"],
+      customers: [],
+      orders: [],
+      selectedCustomer: null,
+      loadingForm: false
+    };
+  },
+  watch: {
+    // whenever start_date changes, this function will run
+    selectedCustomer: function selectedCustomer(customer) {
+      this.eventLocal.selectedCustomer = customer;
+      this.browseCustomerOrders();
+    },
+    eventLocal: function eventLocal(newVal) {
+      if (newVal.id && !this.loadingForm) {
+        this.viewVisit();
+      }
+    }
+  },
+  setup: function setup(props, _ref) {
+    var emit = _ref.emit;
+
+    /*
+     ? This is handled quite differently in SFC due to deadlock of `useFormValidation` and this composition function.
+     ? If we don't handle it the way it is being handled then either of two composition function used by this SFC get undefined as one of it's argument.
+     * The Trick:
+      * We created reactive property `clearFormData` and set to null so we can get `resetEventLocal` from `useCalendarEventHandler` composition function.
+     * Once we get `resetEventLocal` function which is required by `useFormValidation` we will pass it to `useFormValidation` and in return we will get `clearForm` function which shall be original value of `clearFormData`.
+     * Later we just assign `clearForm` to `clearFormData` and can resolve the deadlock. 😎
+      ? Behind The Scene
+     ? When we passed it to `useCalendarEventHandler` for first time it will be null but right after it we are getting correct value (which is `clearForm`) and assigning that correct value.
+     ? As `clearFormData` is reactive it is being changed from `null` to corrent value and thanks to reactivity it is also update in `useCalendarEventHandler` composition function and it is getting correct value in second time and can work w/o any issues.
+    */
+    var clearFormData = Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["ref"])(null);
+
+    var _useCalendarEventHand = Object(_useCalendarEventHandler__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_6__["toRefs"])(props), clearFormData, emit),
+        eventLocal = _useCalendarEventHand.eventLocal,
+        resetEventLocal = _useCalendarEventHand.resetEventLocal,
+        calendarOptions = _useCalendarEventHand.calendarOptions,
+        onSubmit = _useCalendarEventHand.onSubmit,
+        guestsOptions = _useCalendarEventHand.guestsOptions;
+
+    var _formValidation = Object(_core_comp_functions_forms_form_validation__WEBPACK_IMPORTED_MODULE_5__["default"])(resetEventLocal, props.clearEventData),
+        refFormObserver = _formValidation.refFormObserver,
+        getValidationState = _formValidation.getValidationState,
+        resetForm = _formValidation.resetForm,
+        clearForm = _formValidation.clearForm;
+
+    clearFormData.value = clearForm;
+    return {
+      // Add New Event
+      eventLocal: eventLocal,
+      calendarOptions: calendarOptions,
+      onSubmit: onSubmit,
+      guestsOptions: guestsOptions,
+      // Form Validation
+      resetForm: resetForm,
+      refFormObserver: refFormObserver,
+      getValidationState: getValidationState
+    };
+  },
+  methods: {
+    browseCustomers: function browseCustomers(search) {
+      var _this = this;
+
+      this.$store.dispatch('customer/browse', "?paginate=100&page=1&filter[search]=".concat(search)).then(function (response) {
+        _this.eventLocal.customers = _this.reformatCustomersData(response.data.data);
+      })["catch"](function (error) {
+        console.error(error);
+      });
+    },
+    viewVisit: function viewVisit() {
+      var _this2 = this;
+
+      this.loadingForm = true;
+      this.$store.dispatch('visits/view', this.eventLocal.id).then(function (response) {
+        _this2.loadingForm = false;
+        console.log('Visit to update', response.data);
+        _this2.eventLocal.order = response.data.data.bookable;
+        _this2.eventLocal.room = response.data.data.room;
+        _this2.eventLocal.date = response.data.data.date;
+        _this2.eventLocal.start_time = response.data.data.start_time;
+        _this2.eventLocal.end_time = response.data.data.end_time;
+        _this2.eventLocal.visit_status_id = response.data.data.visit_status_id;
+      })["catch"](function (error) {
+        _this2.loadingForm = false;
+        console.error(error);
+      });
+    },
+    reformatCustomersData: function reformatCustomersData(customers) {
+      return _toConsumableArray(customers.map(function (customer) {
+        return _objectSpread(_objectSpread({}, customer), {}, {
+          value: customer.id,
+          text: "#TKB".concat(customer.id, " - ").concat(customer.name)
+        });
+      }));
+    },
+    browseCustomerOrders: function browseCustomerOrders() {
+      var _this3 = this;
+
+      this.$store.dispatch('orders/browse', "?customer=".concat(this.eventLocal.selectedCustomer.id)).then(function (response) {
+        _this3.eventLocal.orders = _this3.reformatOrdersData(response.data.data);
+      })["catch"](function (error) {
+        console.error(error);
+      });
+    },
+    reformatOrdersData: function reformatOrdersData(orders) {
+      return _toConsumableArray(orders.map(function (order) {
+        return _objectSpread(_objectSpread({}, order), {}, {
+          value: order.id,
+          text: "".concat(order["package"].name, " - ").concat(order.remaining_hours, " remaining hours")
+        });
+      }));
+    },
+    updateVisit: function updateVisit() {
+      var _this4 = this;
+
+      this.$store.dispatch('visits/update', {
+        id: this.eventLocal.id,
+        data: {
+          room_id: this.eventLocal.room.id,
+          date: this.eventLocal.date,
+          start_time: this.eventLocal.start_time,
+          end_time: this.eventLocal.end_time,
+          visit_status_id: this.eventLocal.visit_status_id
+        }
+      }).then(function (response) {
+        _this4.$toast({
+          component: _core_components_toastification_ToastificationContent_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
+          props: {
+            title: 'Success',
+            icon: 'CheckCircleIcon',
+            text: response.data.message,
+            variant: 'success'
+          }
+        }, {
+          position: 'bottom-right',
+          timeout: 5000
+        });
+      })["catch"](function (error) {
+        console.error(error);
+
+        _this4.$refs.refUpdateFormObserver.setErrors(error.response.data.errors);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./frontend/node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var vue_ripple_directive__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-ripple-directive */ "./frontend/node_modules/vue-ripple-directive/src/ripple.js");
+/* harmony import */ var _useCalendarSidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useCalendarSidebar */ "./frontend/src/views/calendar/calendar-sidebar/useCalendarSidebar.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  directives: {
+    Ripple: vue_ripple_directive__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  components: {
+    BButton: bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["BButton"],
+    BImg: bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["BImg"],
+    BFormCheckbox: bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["BFormCheckbox"],
+    BFormGroup: bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["BFormGroup"],
+    BFormCheckboxGroup: bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["BFormCheckboxGroup"]
+  },
+  props: {
+    isEventHandlerSidebarActive: {
+      type: Boolean,
+      require: true
+    }
+  },
+  setup: function setup() {
+    var _useCalendarSidebar = Object(_useCalendarSidebar__WEBPACK_IMPORTED_MODULE_2__["default"])(),
+        calendarOptions = _useCalendarSidebar.calendarOptions,
+        selectedCalendars = _useCalendarSidebar.selectedCalendars,
+        checkAll = _useCalendarSidebar.checkAll;
+
+    return {
+      calendarOptions: calendarOptions,
+      selectedCalendars: selectedCalendars,
+      checkAll: checkAll
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".toastification-close-icon[data-v-2fedfe59],\n.toastification-title[data-v-2fedfe59] {\n  line-height: 26px;\n}\n.toastification-title[data-v-2fedfe59] {\n  color: inherit;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/Calendar.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/calendar/Calendar.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".fc .fc-toolbar {\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -webkit-box-orient: horizontal !important;\n  -webkit-box-direction: normal !important;\n      -ms-flex-direction: row !important;\n          flex-direction: row !important;\n}\n.fc .fc-toolbar .fc-prev-button,\n.fc .fc-toolbar .fc-next-button {\n  display: inline-block;\n}\n[dir] .fc .fc-toolbar .fc-prev-button, [dir] .fc .fc-toolbar .fc-next-button {\n  background-color: transparent;\n  border-color: transparent;\n}\n.fc .fc-toolbar .fc-prev-button .fc-icon,\n.fc .fc-toolbar .fc-next-button .fc-icon {\n  color: #6e6b7b;\n}\n.fc .fc-toolbar .fc-prev-button:hover, .fc .fc-toolbar .fc-prev-button:active, .fc .fc-toolbar .fc-prev-button:focus,\n.fc .fc-toolbar .fc-next-button:hover,\n.fc .fc-toolbar .fc-next-button:active,\n.fc .fc-toolbar .fc-next-button:focus {\n  -webkit-box-shadow: none !important;\n}\n[dir] .fc .fc-toolbar .fc-prev-button:hover, [dir] .fc .fc-toolbar .fc-prev-button:active, [dir] .fc .fc-toolbar .fc-prev-button:focus, [dir] .fc .fc-toolbar .fc-next-button:hover, [dir] .fc .fc-toolbar .fc-next-button:active, [dir] .fc .fc-toolbar .fc-next-button:focus {\n  background-color: transparent !important;\n  border-color: transparent !important;\n          -webkit-box-shadow: none !important;\n                  box-shadow: none !important;\n}\n[dir=ltr] .fc .fc-toolbar .fc-prev-button {\n  padding-left: 0 !important;\n}\n[dir=rtl] .fc .fc-toolbar .fc-prev-button {\n  padding-right: 0 !important;\n}\n.fc .fc-toolbar .fc-toolbar-chunk:first-child {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n}\n[dir] .fc .fc-toolbar .fc-button {\n  padding: 0.438rem 0.5rem;\n}\n.fc .fc-toolbar .fc-button:active, .fc .fc-toolbar .fc-button:focus {\n  -webkit-box-shadow: none;\n}\n[dir] .fc .fc-toolbar .fc-button:active, [dir] .fc .fc-toolbar .fc-button:focus {\n          -webkit-box-shadow: none;\n                  box-shadow: none;\n}\n.fc .fc-toolbar .fc-button-group .fc-button {\n  text-transform: capitalize;\n}\n.fc .fc-toolbar .fc-button-group .fc-button:focus {\n  -webkit-box-shadow: none;\n}\n[dir] .fc .fc-toolbar .fc-button-group .fc-button:focus {\n          -webkit-box-shadow: none;\n                  box-shadow: none;\n}\n.fc .fc-toolbar .fc-button-group .fc-button-primary:not(.fc-prev-button):not(.fc-next-button) {\n  color: #9b8666;\n}\n[dir] .fc .fc-toolbar .fc-button-group .fc-button-primary:not(.fc-prev-button):not(.fc-next-button) {\n  background-color: transparent;\n  border-color: #9b8666;\n}\n.fc .fc-toolbar .fc-button-group .fc-button-primary:not(.fc-prev-button):not(.fc-next-button).fc-button-active, .fc .fc-toolbar .fc-button-group .fc-button-primary:not(.fc-prev-button):not(.fc-next-button):hover {\n  color: #9b8666;\n}\n[dir] .fc .fc-toolbar .fc-button-group .fc-button-primary:not(.fc-prev-button):not(.fc-next-button).fc-button-active, [dir] .fc .fc-toolbar .fc-button-group .fc-button-primary:not(.fc-prev-button):not(.fc-next-button):hover {\n  background-color: rgba(155, 134, 102, 0.2) !important;\n  border-color: #9b8666 !important;\n}\n[dir] .fc .fc-toolbar .fc-button-group .fc-button-primary.fc-sidebarToggle-button {\n  border: 0;\n}\n.fc .fc-toolbar .fc-button-group .fc-button-primary.fc-sidebarToggle-button i,\n.fc .fc-toolbar .fc-button-group .fc-button-primary.fc-sidebarToggle-button svg {\n  height: 21px;\n  width: 21px;\n  font-size: 21px;\n}\n.fc .fc-toolbar .fc-button-group .fc-sidebarToggle-button {\n  color: #6e6b7b !important;\n}\n[dir] .fc .fc-toolbar .fc-button-group .fc-sidebarToggle-button {\n  background-color: transparent !important;\n}\n[dir=ltr] .fc .fc-toolbar .fc-button-group .fc-sidebarToggle-button {\n  padding-left: 0;\n}\n[dir=rtl] .fc .fc-toolbar .fc-button-group .fc-sidebarToggle-button {\n  padding-right: 0;\n}\n[dir] .fc .fc-toolbar .fc-button-group .fc-sidebarToggle-button:not(.fc-prev-button):not(.fc-next-button):hover {\n  background-color: transparent !important;\n}\n[dir=ltr] .fc .fc-toolbar .fc-button-group .fc-sidebarToggle-button + div {\n  margin-left: 0;\n}\n[dir=rtl] .fc .fc-toolbar .fc-button-group .fc-sidebarToggle-button + div {\n  margin-right: 0;\n}\n[dir] .fc .fc-toolbar .fc-button-group .fc-dayGridMonth-button, [dir] .fc .fc-toolbar .fc-button-group .fc-timeGridWeek-button, [dir] .fc .fc-toolbar .fc-button-group .fc-timeGridDay-button, [dir] .fc .fc-toolbar .fc-button-group .fc-listMonth-button {\n  padding: 0.55rem 1.5rem;\n}\n[dir] .fc .fc-toolbar .fc-button-group .fc-dayGridMonth-button:last-child, [dir] .fc .fc-toolbar .fc-button-group .fc-dayGridMonth-button:first-child, [dir] .fc .fc-toolbar .fc-button-group .fc-timeGridWeek-button:last-child, [dir] .fc .fc-toolbar .fc-button-group .fc-timeGridWeek-button:first-child, [dir] .fc .fc-toolbar .fc-button-group .fc-timeGridDay-button:last-child, [dir] .fc .fc-toolbar .fc-button-group .fc-timeGridDay-button:first-child, [dir] .fc .fc-toolbar .fc-button-group .fc-listMonth-button:last-child, [dir] .fc .fc-toolbar .fc-button-group .fc-listMonth-button:first-child {\n  border-radius: 0.358rem;\n}\n[dir=ltr] .fc .fc-toolbar .fc-button-group .fc-dayGridMonth-button:first-child, [dir=ltr] .fc .fc-toolbar .fc-button-group .fc-timeGridWeek-button:first-child, [dir=ltr] .fc .fc-toolbar .fc-button-group .fc-timeGridDay-button:first-child, [dir=ltr] .fc .fc-toolbar .fc-button-group .fc-listMonth-button:first-child {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n[dir=rtl] .fc .fc-toolbar .fc-button-group .fc-dayGridMonth-button:first-child, [dir=rtl] .fc .fc-toolbar .fc-button-group .fc-timeGridWeek-button:first-child, [dir=rtl] .fc .fc-toolbar .fc-button-group .fc-timeGridDay-button:first-child, [dir=rtl] .fc .fc-toolbar .fc-button-group .fc-listMonth-button:first-child {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n[dir=ltr] .fc .fc-toolbar .fc-button-group .fc-dayGridMonth-button:last-child, [dir=ltr] .fc .fc-toolbar .fc-button-group .fc-timeGridWeek-button:last-child, [dir=ltr] .fc .fc-toolbar .fc-button-group .fc-timeGridDay-button:last-child, [dir=ltr] .fc .fc-toolbar .fc-button-group .fc-listMonth-button:last-child {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n[dir=rtl] .fc .fc-toolbar .fc-button-group .fc-dayGridMonth-button:last-child, [dir=rtl] .fc .fc-toolbar .fc-button-group .fc-timeGridWeek-button:last-child, [dir=rtl] .fc .fc-toolbar .fc-button-group .fc-timeGridDay-button:last-child, [dir=rtl] .fc .fc-toolbar .fc-button-group .fc-listMonth-button:last-child {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n[dir=ltr] .fc .fc-toolbar > * > :not(:first-child) {\n  margin-left: 0rem;\n}\n[dir=rtl] .fc .fc-toolbar > * > :not(:first-child) {\n  margin-right: 0rem;\n}\n[dir=ltr] .fc .fc-toolbar .fc-toolbar-title {\n  margin-left: 0.25rem;\n}\n[dir=rtl] .fc .fc-toolbar .fc-toolbar-title {\n  margin-right: 0.25rem;\n}\n.fc .fc-toolbar .fc--button:empty,\n.fc .fc-toolbar .fc-toolbar-chunk:empty {\n  display: none;\n}\n[dir] .fc tbody td, [dir] .fc thead th {\n  border-color: #ebe9f1;\n}\n[dir=ltr] .fc tbody td.fc-col-header-cell, [dir=ltr] .fc thead th.fc-col-header-cell {\n  border-right: 0;\n  border-left: 0;\n}\n[dir=rtl] .fc tbody td.fc-col-header-cell, [dir=rtl] .fc thead th.fc-col-header-cell {\n  border-left: 0;\n  border-right: 0;\n}\n.fc .fc-view-harness {\n  min-height: 650px;\n}\n[dir] .fc .fc-scrollgrid-section-liquid > td {\n  border-bottom: 0;\n}\n.fc .fc-daygrid-event-harness .fc-event {\n  font-size: 0.8rem;\n  font-weight: 600;\n}\n[dir] .fc .fc-daygrid-event-harness .fc-event {\n  padding: 0.25rem 0.5rem;\n}\n[dir] .fc .fc-daygrid-event-harness + .fc-daygrid-event-harness {\n  margin-top: 0.3rem;\n}\n[dir] .fc .fc-daygrid-day-bottom {\n  margin-top: 0.3rem;\n}\n[dir] .fc .fc-daygrid-day {\n  padding: 5px;\n}\n.fc .fc-daygrid-day .fc-daygrid-day-top {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: row;\n          flex-direction: row;\n}\n.fc .fc-daygrid-day-number,\n.fc .fc-timegrid-slot-label-cushion,\n.fc .fc-list-event-time {\n  color: #6e6b7b;\n}\n[dir] .fc .fc-day-today {\n  background: #f8f8f8 !important;\n  background-color: #f8f8f8 !important;\n}\n[dir] .fc .fc-timegrid .fc-scrollgrid-section .fc-col-header-cell, [dir] .fc .fc-timegrid .fc-scrollgrid-section .fc-timegrid-axis {\n  border-color: #ebe9f1;\n}\n[dir=ltr] .fc .fc-timegrid .fc-scrollgrid-section .fc-col-header-cell, [dir=ltr] .fc .fc-timegrid .fc-scrollgrid-section .fc-timegrid-axis {\n  border-left: 0;\n  border-right: 0;\n}\n[dir=rtl] .fc .fc-timegrid .fc-scrollgrid-section .fc-col-header-cell, [dir=rtl] .fc .fc-timegrid .fc-scrollgrid-section .fc-timegrid-axis {\n  border-right: 0;\n  border-left: 0;\n}\n[dir] .fc .fc-timegrid .fc-scrollgrid-section .fc-timegrid-axis {\n  border-color: #ebe9f1;\n}\n.fc .fc-timegrid .fc-timegrid-axis.fc-scrollgrid-shrink .fc-timegrid-axis-cushion {\n  text-transform: capitalize;\n  color: #b9b9c3;\n}\n.fc .fc-timegrid .fc-timegrid-slots .fc-timegrid-slot {\n  height: 3rem;\n}\n[dir] .fc .fc-timegrid .fc-timegrid-slots .fc-timegrid-slot .fc-timegrid-slot-label-frame {\n  text-align: center;\n}\n.fc .fc-timegrid .fc-timegrid-slots .fc-timegrid-slot .fc-timegrid-slot-label-frame .fc-timegrid-slot-label-cushion {\n  text-transform: uppercase;\n}\n.fc .fc-timegrid .fc-timegrid-divider {\n  display: none;\n}\n[dir] .fc .fc-list {\n  border-color: #ebe9f1;\n}\n[dir] .fc .fc-list .fc-list-day-cushion {\n  background: #f8f8f8;\n}\n[dir] .fc .fc-list .fc-list-event:hover td {\n  background-color: #f8f8f8;\n}\n[dir] .fc .fc-list .fc-list-event td {\n  border-color: #ebe9f1;\n}\n.app-calendar {\n  position: relative;\n}\n[dir] .app-calendar {\n  border-radius: 0.428rem;\n}\n.app-calendar .app-calendar-sidebar {\n  position: absolute;\n  width: 18rem;\n  height: 100%;\n  z-index: 5;\n  -ms-flex-preferred-size: 18rem;\n      flex-basis: 18rem;\n  -webkit-transition: all 0.2s, background 0s, border 0s;\n  transition: all 0.2s, background 0s, border 0s;\n}\n[dir] .app-calendar .app-calendar-sidebar {\n  background-color: #fff;\n  -webkit-transition: all 0.2s, background 0s, border 0s;\n}\n[dir=ltr] .app-calendar .app-calendar-sidebar {\n  left: calc(-18rem - 1.2rem);\n  border-right: 1px solid #ebe9f1;\n}\n[dir=rtl] .app-calendar .app-calendar-sidebar {\n  right: calc(-18rem - 1.2rem);\n  border-left: 1px solid #ebe9f1;\n}\n[dir=ltr] .app-calendar .app-calendar-sidebar.show {\n  left: 0;\n}\n[dir=rtl] .app-calendar .app-calendar-sidebar.show {\n  right: 0;\n}\n.app-calendar .app-calendar-sidebar .sidebar-content-title {\n  font-size: 0.85rem;\n  color: #b9b9c3;\n  text-transform: uppercase;\n  letter-spacing: 0.6px;\n}\n.app-calendar .app-calendar-sidebar .select-all ~ label,\n.app-calendar .app-calendar-sidebar .input-filter ~ label {\n  color: #5e5873;\n  font-weight: 500;\n  letter-spacing: 0.4px;\n}\n.app-calendar .event-sidebar {\n  position: absolute;\n  top: 0;\n  width: 400px;\n  z-index: 15;\n  -webkit-transition: all 0.3s ease-in-out;\n  transition: all 0.3s ease-in-out;\n}\n[dir] .app-calendar .event-sidebar {\n  -webkit-transition: all 0.3s ease-in-out;\n}\n[dir=ltr] .app-calendar .event-sidebar {\n  right: 0;\n  -webkit-transform: translateX(120%);\n  transform: translateX(120%);\n}\n[dir=rtl] .app-calendar .event-sidebar {\n  left: 0;\n  -webkit-transform: translateX(-120%);\n          transform: translateX(-120%);\n}\n.app-calendar .event-sidebar .card {\n  height: calc(100vh - 12.96rem);\n  height: calc(var(--vh, 1vh) * 100 - 12.96rem);\n}\n[dir=ltr] .app-calendar .event-sidebar .card {\n  border-radius: 0 0.25rem 0.25rem 0;\n}\n[dir=rtl] .app-calendar .event-sidebar .card {\n  border-radius: 0.25rem 0 0 0.25rem;\n}\n[dir] .app-calendar .event-sidebar .card .close-bar {\n  cursor: pointer;\n}\n.app-calendar .event-sidebar .card .todo-item-action {\n  width: 6rem;\n}\n.app-calendar .event-sidebar .card .todo-item-action .todo-item-info,\n.app-calendar .event-sidebar .card .todo-item-action .todo-item-favorite,\n.app-calendar .event-sidebar .card .todo-item-action .dropdown {\n  line-height: 1.5;\n}\n[dir] .app-calendar .event-sidebar .card .todo-item-action .todo-item-info, [dir] .app-calendar .event-sidebar .card .todo-item-action .todo-item-favorite, [dir] .app-calendar .event-sidebar .card .todo-item-action .dropdown {\n  cursor: pointer;\n}\n[dir] .app-calendar .event-sidebar .card .todo-item-action .dropdown .dropdown-menu .dropdown-item {\n  padding: 0.14rem 1.428rem;\n}\n.app-calendar .event-sidebar .card .todo-item-action .dropdown-toggle::after {\n  display: none;\n}\n.app-calendar .event-sidebar.show {\n  -webkit-transform: translateX(0);\n}\n[dir] .app-calendar .event-sidebar.show {\n          -webkit-transform: translateX(0);\n                  transform: translateX(0);\n}\n.app-calendar .fc-toolbar h2 {\n  font-size: 1.45rem;\n}\n[dir] .app-calendar .fc-header-toolbar {\n  margin-bottom: 1.75rem !important;\n}\n[dir] .app-calendar .fc-view-harness {\n  margin: 0 -1.6rem;\n}\n[dir] .app-calendar .fc-scrollgrid {\n  border-color: #ebe9f1;\n}\n.app-calendar .fc-day-past .fc-daygrid-day-number,\n.app-calendar .fc-day-future .fc-daygrid-day-number {\n  color: #b9b9c3;\n}\n.app-calendar .fc-popover {\n  -webkit-box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);\n}\n[dir] .app-calendar .fc-popover {\n          -webkit-box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);\n                  box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);\n}\n[dir] .app-calendar .fc-popover .fc-popover-header {\n  background: transparent;\n  padding: 0.5rem;\n}\n.app-calendar .fc-popover .fc-popover-header .fc-popover-title,\n.app-calendar .fc-popover .fc-popover-header .fc-popover-close {\n  color: #5e5873;\n}\n[dir] .app-calendar .fc-popover .fc-popover-body *:not(:last-of-type) {\n  margin-bottom: 0.3rem;\n}\n.app-calendar .fc .fc-event .fc-event-main {\n  color: inherit;\n}\n[dir] .app-calendar .fc-list-event {\n  background: transparent !important;\n}\n@media (min-width: 992px) {\n.app-calendar .app-calendar-sidebar {\n    position: static;\n    height: auto;\n    -webkit-box-shadow: none !important;\n}\n[dir] .app-calendar .app-calendar-sidebar {\n            -webkit-box-shadow: none !important;\n                    box-shadow: none !important;\n}\n[dir] .app-calendar .app-calendar-sidebar .flatpickr-days {\n    background-color: transparent;\n}\n}\n.event-sidebar .select2-selection__choice__remove:before {\n  top: 40% !important;\n}\n[dir] .horizontal-layout .app-calendar {\n  margin-bottom: 1rem;\n}\n@media (max-width: 992px) {\n.fc .fc-sidebarToggle-button {\n    font-size: 0;\n}\n}\n@media (min-width: 992px) {\n.fc .fc-sidebarToggle-button {\n    display: none;\n}\n}\n@media (max-width: 700px) {\n[dir] .app-calendar .fc .fc-header-toolbar .fc-toolbar-chunk:last-of-type {\n    margin-top: 1rem;\n}\n}\n.fc-sidebarToggle-button {\n  width: 25px;\n  height: 25px;\n  display: block;\n}\n[dir] .fc-sidebarToggle-button {\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' stroke='%236e6b7b' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round' class='css-i6dzq1'%3E%3Cline x1='3' y1='12' x2='21' y2='12'%3E%3C/line%3E%3Cline x1='3' y1='6' x2='21' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='18' x2='21' y2='18'%3E%3C/line%3E%3C/svg%3E\");\n  background-position: center;\n  background-repeat: no-repeat;\n}\n[dir=ltr] .fc-sidebarToggle-button {\n  margin-right: 0.7rem !important;\n}\n[dir=rtl] .fc-sidebarToggle-button {\n  margin-left: 0.7rem !important;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+exports.i(__webpack_require__(/*! -!../../../../../node_modules/css-loader!flatpickr/dist/flatpickr.css */ "./node_modules/css-loader/index.js!./frontend/node_modules/flatpickr/dist/flatpickr.css"), "");
+
+// module
+exports.push([module.i, ".v-select {\n  position: relative;\n  font-family: inherit;\n}\n.v-select,\n.v-select * {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n\n/* KeyFrames */\n@-webkit-keyframes vSelectSpinner-ltr {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@-webkit-keyframes vSelectSpinner-rtl {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(-360deg);\n            transform: rotate(-360deg);\n}\n}\n@keyframes vSelectSpinner-ltr {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(360deg);\n            transform: rotate(360deg);\n}\n}\n@keyframes vSelectSpinner-rtl {\n0% {\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n}\n100% {\n    -webkit-transform: rotate(-360deg);\n            transform: rotate(-360deg);\n}\n}\n/* Dropdown Default Transition */\n.vs__fade-enter-active,\n.vs__fade-leave-active {\n  pointer-events: none;\n  -webkit-transition: opacity 0.15s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: opacity 0.15s cubic-bezier(1, 0.5, 0.8, 1);\n}\n[dir] .vs__fade-enter-active, [dir] .vs__fade-leave-active {\n  -webkit-transition: opacity 0.15s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.vs__fade-enter,\n.vs__fade-leave-to {\n  opacity: 0;\n}\n\n/** Component States */\n/*\n * Disabled\n *\n * When the component is disabled, all interaction\n * should be prevented. Here we modify the bg color,\n * and change the cursor displayed on the interactive\n * components.\n */\n[dir] .vs--disabled .vs__dropdown-toggle, [dir] .vs--disabled .vs__clear, [dir] .vs--disabled .vs__search, [dir] .vs--disabled .vs__selected, [dir] .vs--disabled .vs__open-indicator {\n  cursor: not-allowed;\n  background-color: #f8f8f8;\n}\n\n/*\n *  RTL - Right to Left Support\n *\n *  Because we're using a flexbox layout, the `dir=\"rtl\"`\n *  HTML attribute does most of the work for us by\n *  rearranging the child elements visually.\n */\n.v-select[dir=rtl] .vs__actions {\n  padding: 0 3px 0 6px;\n}\n.v-select[dir=rtl] .vs__clear {\n  margin-left: 6px;\n  margin-right: 0;\n}\n.v-select[dir=rtl] .vs__deselect {\n  margin-left: 0;\n  margin-right: 2px;\n}\n.v-select[dir=rtl] .vs__dropdown-menu {\n  text-align: right;\n}\n\n/**\n    Dropdown Toggle\n\n    The dropdown toggle is the primary wrapper of the component. It\n    has two direct descendants: .vs__selected-options, and .vs__actions.\n\n    .vs__selected-options holds the .vs__selected's as well as the\n    main search input.\n\n    .vs__actions holds the clear button and dropdown toggle.\n */\n.vs__dropdown-toggle {\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  white-space: normal;\n}\n[dir] .vs__dropdown-toggle {\n  padding: 0 0 4px 0;\n  background: none;\n  border: 1px solid #d8d6de;\n  border-radius: 0.357rem;\n}\n.vs__selected-options {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-preferred-size: 100%;\n      flex-basis: 100%;\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  position: relative;\n}\n[dir] .vs__selected-options {\n  padding: 0 2px;\n}\n.vs__actions {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n}\n[dir=ltr] .vs__actions {\n  padding: 4px 6px 0 3px;\n}\n[dir=rtl] .vs__actions {\n  padding: 4px 3px 0 6px;\n}\n\n/* Dropdown Toggle States */\n[dir] .vs--searchable .vs__dropdown-toggle {\n  cursor: text;\n}\n[dir] .vs--unsearchable .vs__dropdown-toggle {\n  cursor: pointer;\n}\n[dir] .vs--open .vs__dropdown-toggle {\n  border-bottom-color: transparent;\n}\n[dir=ltr] .vs--open .vs__dropdown-toggle {\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n}\n[dir=rtl] .vs--open .vs__dropdown-toggle {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.vs__open-indicator {\n  fill: rgba(60, 60, 60, 0.5);\n  -webkit-transform: scale(1);\n  transition: -webkit-transform 150ms cubic-bezier(1, -0.115, 0.975, 0.855);\n  -webkit-transition: -webkit-transform 150ms cubic-bezier(1, -0.115, 0.975, 0.855);\n  transition: transform 150ms cubic-bezier(1, -0.115, 0.975, 0.855);\n  transition: transform 150ms cubic-bezier(1, -0.115, 0.975, 0.855), -webkit-transform 150ms cubic-bezier(1, -0.115, 0.975, 0.855);\n  -webkit-transition-timing-function: cubic-bezier(1, -0.115, 0.975, 0.855);\n}\n[dir] .vs__open-indicator {\n          -webkit-transform: scale(1);\n                  transform: scale(1);\n  -webkit-transition: -webkit-transform 150ms cubic-bezier(1, -0.115, 0.975, 0.855);\n          -webkit-transition-timing-function: cubic-bezier(1, -0.115, 0.975, 0.855);\n                  transition-timing-function: cubic-bezier(1, -0.115, 0.975, 0.855);\n}\n[dir=ltr] .vs--open .vs__open-indicator {\n  -webkit-transform: rotate(180deg) scale(1);\n  transform: rotate(180deg) scale(1);\n}\n[dir=rtl] .vs--open .vs__open-indicator {\n  -webkit-transform: rotate(-180deg) scale(1);\n          transform: rotate(-180deg) scale(1);\n}\n.vs--loading .vs__open-indicator {\n  opacity: 0;\n}\n\n/* Clear Button */\n.vs__clear {\n  fill: rgba(60, 60, 60, 0.5);\n}\n[dir] .vs__clear {\n  padding: 0;\n  border: 0;\n  background-color: transparent;\n  cursor: pointer;\n}\n[dir=ltr] .vs__clear {\n  margin-right: 8px;\n}\n[dir=rtl] .vs__clear {\n  margin-left: 8px;\n}\n\n/* Dropdown Menu */\n.vs__dropdown-menu {\n  display: block;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  position: absolute;\n  top: calc(100% - 1px);\n  z-index: 1000;\n  width: 100%;\n  max-height: 350px;\n  min-width: 160px;\n  overflow-y: auto;\n  -webkit-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);\n  list-style: none;\n}\n[dir] .vs__dropdown-menu {\n  padding: 5px 0;\n  margin: 0;\n          -webkit-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);\n                  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);\n  border: 1px solid #d8d6de;\n  border-top-style: none;\n  border-radius: 0 0 0.357rem 0.357rem;\n  background: #fff;\n}\n[dir=ltr] .vs__dropdown-menu {\n  left: 0;\n  text-align: left;\n}\n[dir=rtl] .vs__dropdown-menu {\n  right: 0;\n  text-align: right;\n}\n[dir] .vs__no-options {\n  text-align: center;\n}\n\n/* List Items */\n.vs__dropdown-option {\n  line-height: 1.42857143;\n  /* Normalize line height */\n  display: block;\n  color: #333;\n  /* Overrides most CSS frameworks */\n  white-space: nowrap;\n}\n[dir] .vs__dropdown-option {\n  padding: 3px 20px;\n  clear: both;\n}\n[dir] .vs__dropdown-option:hover {\n  cursor: pointer;\n}\n.vs__dropdown-option--highlight {\n  color: #9b8666 !important;\n}\n[dir] .vs__dropdown-option--highlight {\n  background: rgba(155, 134, 102, 0.12);\n}\n.vs__dropdown-option--disabled {\n  color: rgba(60, 60, 60, 0.5);\n}\n[dir] .vs__dropdown-option--disabled {\n  background: inherit;\n}\n[dir] .vs__dropdown-option--disabled:hover {\n  cursor: inherit;\n}\n\n/* Selected Tags */\n.vs__selected {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  color: #333;\n  line-height: 1.8;\n  z-index: 0;\n}\n[dir] .vs__selected {\n  background-color: #9b8666;\n  border: 0 solid rgba(60, 60, 60, 0.26);\n  border-radius: 0.357rem;\n  margin: 4px 2px 0px 2px;\n  padding: 0 0.25em;\n}\n.vs__deselect {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  fill: rgba(60, 60, 60, 0.5);\n}\n[dir] .vs__deselect {\n  padding: 0;\n  border: 0;\n  cursor: pointer;\n  background: none;\n  text-shadow: 0 1px 0 #fff;\n}\n[dir=ltr] .vs__deselect {\n  margin-left: 4px;\n}\n[dir=rtl] .vs__deselect {\n  margin-right: 4px;\n}\n\n/* States */\n[dir] .vs--single .vs__selected {\n  background-color: transparent;\n  border-color: transparent;\n}\n.vs--single.vs--open .vs__selected {\n  position: absolute;\n  opacity: 0.4;\n}\n.vs--single.vs--searching .vs__selected {\n  display: none;\n}\n\n/* Search Input */\n/**\n * Super weird bug... If this declaration is grouped\n * below, the cancel button will still appear in chrome.\n * If it's up here on it's own, it'll hide it.\n */\n.vs__search::-webkit-search-cancel-button {\n  display: none;\n}\n.vs__search::-webkit-search-decoration,\n.vs__search::-webkit-search-results-button,\n.vs__search::-webkit-search-results-decoration,\n.vs__search::-ms-clear {\n  display: none;\n}\n.vs__search,\n.vs__search:focus {\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  line-height: 1.8;\n  font-size: 1em;\n  outline: none;\n  -webkit-box-shadow: none;\n  width: 0;\n  max-width: 100%;\n  -webkit-box-flex: 1;\n      -ms-flex-positive: 1;\n          flex-grow: 1;\n  z-index: 1;\n}\n[dir] .vs__search, [dir] .vs__search:focus {\n  border: 1px solid transparent;\n  margin: 4px 0 0 0;\n  padding: 0 7px;\n  background: none;\n          -webkit-box-shadow: none;\n                  box-shadow: none;\n}\n[dir=ltr] .vs__search, [dir=ltr] .vs__search:focus {\n  border-left: none;\n}\n[dir=rtl] .vs__search, [dir=rtl] .vs__search:focus {\n  border-right: none;\n}\n.vs__search::-webkit-input-placeholder {\n  color: #6e6b7b;\n}\n.vs__search::-moz-placeholder {\n  color: #6e6b7b;\n}\n.vs__search:-ms-input-placeholder {\n  color: #6e6b7b;\n}\n.vs__search::-ms-input-placeholder {\n  color: #6e6b7b;\n}\n.vs__search::placeholder {\n  color: #6e6b7b;\n}\n\n/**\n    States\n */\n.vs--unsearchable .vs__search {\n  opacity: 1;\n}\n[dir] .vs--unsearchable:not(.vs--disabled) .vs__search:hover {\n  cursor: pointer;\n}\n.vs--single.vs--searching:not(.vs--open):not(.vs--loading) .vs__search {\n  opacity: 0.2;\n}\n\n/* Loading Spinner */\n.vs__spinner {\n  -ms-flex-item-align: center;\n      align-self: center;\n  opacity: 0;\n  font-size: 5px;\n  text-indent: -9999em;\n  overflow: hidden;\n  -webkit-transform: translateZ(0);\n  -webkit-transition: opacity 0.1s;\n  transition: opacity 0.1s;\n}\n[dir] .vs__spinner {\n  border-top: 0.9em solid rgba(100, 100, 100, 0.1);\n  border-bottom: 0.9em solid rgba(100, 100, 100, 0.1);\n          -webkit-transform: translateZ(0);\n                  transform: translateZ(0);\n  -webkit-transition: opacity 0.1s;\n}\n[dir=ltr] .vs__spinner {\n  border-right: 0.9em solid rgba(100, 100, 100, 0.1);\n  border-left: 0.9em solid rgba(60, 60, 60, 0.45);\n  -webkit-animation:  vSelectSpinner-ltr 1.1s infinite linear;\n  animation:  vSelectSpinner-ltr 1.1s infinite linear;\n}\n[dir=rtl] .vs__spinner {\n  border-left: 0.9em solid rgba(100, 100, 100, 0.1);\n  border-right: 0.9em solid rgba(60, 60, 60, 0.45);\n  -webkit-animation:  vSelectSpinner-rtl 1.1s infinite linear;\n          animation:  vSelectSpinner-rtl 1.1s infinite linear;\n}\n.vs__spinner,\n.vs__spinner:after {\n  width: 5em;\n  height: 5em;\n}\n[dir] .vs__spinner, [dir] .vs__spinner:after {\n  border-radius: 50%;\n}\n\n/* Loading Spinner States */\n.vs--loading .vs__spinner {\n  opacity: 1;\n}\n.vs__open-indicator {\n  fill: none;\n}\n[dir] .vs__open-indicator {\n  margin-top: 0.15rem;\n}\n.vs__dropdown-toggle {\n  -webkit-transition: all 0.25s ease-in-out;\n  transition: all 0.25s ease-in-out;\n}\n[dir] .vs__dropdown-toggle {\n  padding: 0.59px 0 4px 0;\n  -webkit-transition: all 0.25s ease-in-out;\n}\n[dir=ltr] .vs--single .vs__dropdown-toggle {\n  padding-left: 6px;\n}\n[dir=rtl] .vs--single .vs__dropdown-toggle {\n  padding-right: 6px;\n}\n.vs__dropdown-option--disabled {\n  opacity: 0.5;\n}\n[dir] .vs__dropdown-option--disabled.vs__dropdown-option--selected {\n  background: #9b8666 !important;\n}\n.vs__dropdown-option {\n  color: #6e6b7b;\n}\n[dir] .vs__dropdown-option, [dir] .vs__no-options {\n  padding: 7px 20px;\n}\n.vs__dropdown-option--selected {\n  background-color: #9b8666;\n  color: #fff;\n  position: relative;\n}\n.vs__dropdown-option--selected::after {\n  content: \"\";\n  height: 1.1rem;\n  width: 1.1rem;\n  display: inline-block;\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  right: 20px;\n  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E\");\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: 1.1rem;\n}\n[dir=rtl] .vs__dropdown-option--selected::after {\n  left: 20px;\n  right: unset;\n}\n.vs__dropdown-option--selected.vs__dropdown-option--highlight {\n  color: #fff !important;\n  background-color: #9b8666 !important;\n}\n.vs__clear svg {\n  color: #6e6b7b;\n}\n.vs__selected {\n  color: #fff;\n}\n.v-select.vs--single .vs__selected {\n  color: #6e6b7b;\n  transition: -webkit-transform 0.2s ease;\n  -webkit-transition: -webkit-transform 0.2s ease;\n  transition: transform 0.2s ease;\n  transition: transform 0.2s ease, -webkit-transform 0.2s ease;\n}\n[dir] .v-select.vs--single .vs__selected {\n  margin-top: 5px;\n  -webkit-transition: -webkit-transform 0.2s ease;\n}\n[dir=ltr] .v-select.vs--single .vs__selected input {\n  padding-left: 0;\n}\n[dir=rtl] .v-select.vs--single .vs__selected input {\n  padding-right: 0;\n}\n[dir=ltr] .vs--single.vs--open .vs__selected {\n  -webkit-transform: translateX(5px);\n  transform: translateX(5px);\n}\n[dir=rtl] .vs--single.vs--open .vs__selected {\n  -webkit-transform: translateX(-5px);\n          transform: translateX(-5px);\n}\n.vs__selected .vs__deselect {\n  color: inherit;\n}\n.v-select:not(.vs--single) .vs__selected {\n  font-size: 0.9rem;\n}\n[dir] .v-select:not(.vs--single) .vs__selected {\n  border-radius: 3px;\n  padding: 0 0.6em;\n}\n[dir=ltr] .v-select:not(.vs--single) .vs__selected {\n  margin: 5px 2px 2px 5px;\n}\n[dir=rtl] .v-select:not(.vs--single) .vs__selected {\n  margin: 5px 5px 2px 2px;\n}\n.v-select:not(.vs--single) .vs__deselect svg {\n  -webkit-transform: scale(0.8);\n  vertical-align: text-top;\n}\n[dir] .v-select:not(.vs--single) .vs__deselect svg {\n          -webkit-transform: scale(0.8);\n                  transform: scale(0.8);\n}\n.vs__dropdown-menu {\n  top: calc(100% + 1rem);\n}\n[dir] .vs__dropdown-menu {\n  border: none;\n  border-radius: 6px;\n  padding: 0;\n}\n.vs--open .vs__dropdown-toggle {\n  -webkit-box-shadow: 0 3px 10px 0 rgba(34, 41, 47, 0.1);\n}\n[dir] .vs--open .vs__dropdown-toggle {\n  border-color: #9b8666;\n  border-bottom-color: #9b8666;\n          -webkit-box-shadow: 0 3px 10px 0 rgba(34, 41, 47, 0.1);\n                  box-shadow: 0 3px 10px 0 rgba(34, 41, 47, 0.1);\n}\n[dir=ltr] .vs--open .vs__dropdown-toggle {\n  border-bottom-left-radius: 0.357rem;\n  border-bottom-right-radius: 0.357rem;\n}\n[dir=rtl] .vs--open .vs__dropdown-toggle {\n  border-bottom-right-radius: 0.357rem;\n  border-bottom-left-radius: 0.357rem;\n}\n.select-size-lg .vs__selected {\n  font-size: 1rem !important;\n}\n[dir] .select-size-lg.vs--single.vs--open .vs__selected {\n  margin-top: 6px;\n}\n.select-size-lg .vs__dropdown-toggle,\n.select-size-lg .vs__selected {\n  font-size: 1.25rem;\n}\n[dir] .select-size-lg .vs__dropdown-toggle {\n  padding: 5px;\n}\n[dir] .select-size-lg .vs__dropdown-toggle input {\n  margin-top: 0;\n}\n.select-size-lg .vs__deselect svg {\n  -webkit-transform: scale(1) !important;\n  vertical-align: middle !important;\n}\n[dir] .select-size-lg .vs__deselect svg {\n          -webkit-transform: scale(1) !important;\n                  transform: scale(1) !important;\n}\n[dir] .select-size-sm .vs__dropdown-toggle {\n  padding-bottom: 0;\n  padding: 1px;\n}\n[dir] .select-size-sm.vs--single .vs__dropdown-toggle {\n  padding: 2px;\n}\n.select-size-sm .vs__dropdown-toggle,\n.select-size-sm .vs__selected {\n  font-size: 0.9rem;\n}\n[dir] .select-size-sm .vs__actions {\n  padding-top: 2px;\n  padding-bottom: 2px;\n}\n.select-size-sm .vs__deselect svg {\n  vertical-align: middle !important;\n}\n[dir] .select-size-sm .vs__search {\n  margin-top: 0;\n}\n.select-size-sm.v-select .vs__selected {\n  font-size: 0.75rem;\n}\n[dir] .select-size-sm.v-select .vs__selected {\n  padding: 0 0.3rem;\n}\n[dir] .select-size-sm.v-select:not(.vs--single) .vs__selected {\n  margin: 4px 5px;\n}\n[dir] .select-size-sm.v-select.vs--single .vs__selected {\n  margin-top: 1px;\n}\n[dir] .select-size-sm.vs--single.vs--open .vs__selected {\n  margin-top: 4px;\n}\n.dark-layout .vs__dropdown-toggle {\n  color: #ffffff;\n}\n[dir] .dark-layout .vs__dropdown-toggle {\n  background: #283046;\n  border-color: #404656;\n}\n.dark-layout .vs__selected-options input {\n  color: #ffffff;\n}\n.dark-layout .vs__selected-options input::-webkit-input-placeholder {\n  color: #676d7d;\n}\n.dark-layout .vs__selected-options input::-moz-placeholder {\n  color: #676d7d;\n}\n.dark-layout .vs__selected-options input:-ms-input-placeholder {\n  color: #676d7d;\n}\n.dark-layout .vs__selected-options input::-ms-input-placeholder {\n  color: #676d7d;\n}\n.dark-layout .vs__selected-options input::placeholder {\n  color: #676d7d;\n}\n.dark-layout .vs__actions svg {\n  fill: #404656;\n}\n[dir] .dark-layout .vs__dropdown-menu {\n  background: #283046;\n}\n.dark-layout .vs__dropdown-menu li {\n  color: #ffffff;\n}\n.dark-layout .v-select:not(.vs--single) .vs__selected {\n  color: #9b8666;\n}\n[dir] .dark-layout .v-select:not(.vs--single) .vs__selected {\n  background-color: rgba(155, 134, 102, 0.12);\n}\n.dark-layout .v-select.vs--single .vs__selected {\n  color: #ffffff !important;\n}\n.dark-layout .vs--disabled .vs__dropdown-toggle,\n.dark-layout .vs--disabled .vs__clear,\n.dark-layout .vs--disabled .vs__search,\n.dark-layout .vs--disabled .vs__selected,\n.dark-layout .vs--disabled .vs__open-indicator {\n  opacity: 0.5;\n}\n[dir] .dark-layout .vs--disabled .vs__dropdown-toggle, [dir] .dark-layout .vs--disabled .vs__clear, [dir] .dark-layout .vs--disabled .vs__search, [dir] .dark-layout .vs--disabled .vs__selected, [dir] .dark-layout .vs--disabled .vs__open-indicator {\n  background-color: #283046;\n}\n.flatpickr-calendar .flatpickr-day {\n  color: #6e6b7b;\n}\n[dir] .flatpickr-calendar .flatpickr-day.today {\n  border-color: #9b8666;\n}\n.flatpickr-calendar .flatpickr-day.today:hover {\n  color: #6e6b7b;\n}\n[dir] .flatpickr-calendar .flatpickr-day.today:hover {\n  background: transparent;\n}\n.flatpickr-calendar .flatpickr-day.selected, .flatpickr-calendar .flatpickr-day.selected:hover {\n  color: #fff;\n}\n[dir] .flatpickr-calendar .flatpickr-day.selected, [dir] .flatpickr-calendar .flatpickr-day.selected:hover {\n  background: #9b8666;\n  border-color: #9b8666;\n}\n[dir] .flatpickr-calendar .flatpickr-day.inRange, [dir] .flatpickr-calendar .flatpickr-day.inRange:hover {\n  background: #d7cfc3;\n  border-color: #d7cfc3;\n}\n[dir=ltr] .flatpickr-calendar .flatpickr-day.inRange, [dir=ltr] .flatpickr-calendar .flatpickr-day.inRange:hover {\n  -webkit-box-shadow: -5px 0 0 #d7cfc3, 5px 0 0 #d7cfc3;\n  box-shadow: -5px 0 0 #d7cfc3, 5px 0 0 #d7cfc3;\n}\n[dir=rtl] .flatpickr-calendar .flatpickr-day.inRange, [dir=rtl] .flatpickr-calendar .flatpickr-day.inRange:hover {\n  -webkit-box-shadow: 5px 0 0 #d7cfc3, -5px 0 0 #d7cfc3;\n          box-shadow: 5px 0 0 #d7cfc3, -5px 0 0 #d7cfc3;\n}\n.flatpickr-calendar .flatpickr-day.startRange, .flatpickr-calendar .flatpickr-day.endRange, .flatpickr-calendar .flatpickr-day.startRange:hover, .flatpickr-calendar .flatpickr-day.endRange:hover {\n  color: #fff;\n}\n[dir] .flatpickr-calendar .flatpickr-day.startRange, [dir] .flatpickr-calendar .flatpickr-day.endRange, [dir] .flatpickr-calendar .flatpickr-day.startRange:hover, [dir] .flatpickr-calendar .flatpickr-day.endRange:hover {\n  background: #9b8666;\n  border-color: #9b8666;\n}\n[dir=ltr] .flatpickr-calendar .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)), [dir=ltr] .flatpickr-calendar .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)), [dir=ltr] .flatpickr-calendar .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {\n  -webkit-box-shadow: -10px 0 0 #9b8666;\n  box-shadow: -10px 0 0 #9b8666;\n}\n[dir=rtl] .flatpickr-calendar .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)), [dir=rtl] .flatpickr-calendar .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)), [dir=rtl] .flatpickr-calendar .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {\n  -webkit-box-shadow: 10px 0 0 #9b8666;\n          box-shadow: 10px 0 0 #9b8666;\n}\n.flatpickr-calendar .flatpickr-day.flatpickr-disabled, .flatpickr-calendar .flatpickr-day.prevMonthDay, .flatpickr-calendar .flatpickr-day.nextMonthDay {\n  color: #dae1e7;\n}\n[dir] .flatpickr-calendar .flatpickr-day:hover {\n  background: #f6f6f6;\n}\n.flatpickr-calendar:after, .flatpickr-calendar:before {\n  display: none;\n}\n.flatpickr-calendar .flatpickr-months .flatpickr-prev-month,\n.flatpickr-calendar .flatpickr-months .flatpickr-next-month {\n  top: -5px;\n}\n.flatpickr-calendar .flatpickr-months .flatpickr-prev-month:hover i, .flatpickr-calendar .flatpickr-months .flatpickr-prev-month:hover svg,\n.flatpickr-calendar .flatpickr-months .flatpickr-next-month:hover i,\n.flatpickr-calendar .flatpickr-months .flatpickr-next-month:hover svg {\n  fill: #9b8666;\n}\n.flatpickr-calendar .flatpickr-current-month span.cur-month {\n  font-weight: 300;\n}\n[dir] .flatpickr-time input:hover, [dir] .flatpickr-time .flatpickr-am-pm:hover, [dir] .flatpickr-time input:focus, [dir] .flatpickr-time .flatpickr-am-pm:focus {\n  background: #fff;\n}\n.dark-layout .flatpickr-calendar {\n  -webkit-box-shadow: none;\n}\n[dir] .dark-layout .flatpickr-calendar {\n  background: #161d31;\n  border-color: #161d31;\n          -webkit-box-shadow: none;\n                  box-shadow: none;\n}\n.dark-layout .flatpickr-calendar .flatpickr-months i,\n.dark-layout .flatpickr-calendar .flatpickr-months svg {\n  fill: #ffffff;\n}\n.dark-layout .flatpickr-calendar .flatpickr-month {\n  color: #ffffff;\n}\n[dir=ltr] .dark-layout .flatpickr-calendar .flatpickr-weekwrapper .flatpickr-weeks {\n  -webkit-box-shadow: 1px 0 0 #3b4253;\n  box-shadow: 1px 0 0 #3b4253;\n}\n[dir=rtl] .dark-layout .flatpickr-calendar .flatpickr-weekwrapper .flatpickr-weeks {\n  -webkit-box-shadow: -1px 0 0 #3b4253;\n          box-shadow: -1px 0 0 #3b4253;\n}\n.dark-layout .flatpickr-calendar .flatpickr-weekday {\n  color: #ffffff;\n}\n.dark-layout .flatpickr-calendar .flatpickr-day, .dark-layout .flatpickr-calendar .flatpickr-day.today:hover {\n  color: #ffffff;\n}\n.dark-layout .flatpickr-calendar .flatpickr-day.selected {\n  color: #fff;\n}\n.dark-layout .flatpickr-calendar .flatpickr-day.prevMonthDay, .dark-layout .flatpickr-calendar .flatpickr-day.nextMonthDay, .dark-layout .flatpickr-calendar .flatpickr-day.flatpickr-disabled {\n  color: #4e5154 !important;\n}\n[dir] .dark-layout .flatpickr-calendar .flatpickr-day.inRange, [dir] .dark-layout .flatpickr-calendar .flatpickr-day.inRange:hover {\n  background: #283046;\n  border-color: #283046;\n}\n[dir=ltr] .dark-layout .flatpickr-calendar .flatpickr-day.inRange, [dir=ltr] .dark-layout .flatpickr-calendar .flatpickr-day.inRange:hover {\n  -webkit-box-shadow: -5px 0 0 #283046, 5px 0 0 #283046;\n  box-shadow: -5px 0 0 #283046, 5px 0 0 #283046;\n}\n[dir=rtl] .dark-layout .flatpickr-calendar .flatpickr-day.inRange, [dir=rtl] .dark-layout .flatpickr-calendar .flatpickr-day.inRange:hover {\n  -webkit-box-shadow: 5px 0 0 #283046, -5px 0 0 #283046;\n          box-shadow: 5px 0 0 #283046, -5px 0 0 #283046;\n}\n.dark-layout .flatpickr-calendar .flatpickr-day:hover:not(.selected):not(.today):not(.startRange):not(.endRange) {\n  color: #ffffff;\n}\n[dir] .dark-layout .flatpickr-calendar .flatpickr-day:hover:not(.selected):not(.today):not(.startRange):not(.endRange) {\n  border-color: #283046;\n}\n[dir] .dark-layout .flatpickr-calendar .flatpickr-days .flatpickr-day:hover:not(.selected):not(.today):not(.startRange):not(.endRange) {\n  background: #283046;\n}\n[dir] .dark-layout .flatpickr-calendar .flatpickr-time {\n  border-color: #161d31 !important;\n}\n.dark-layout .flatpickr-calendar .flatpickr-time .numInput,\n.dark-layout .flatpickr-calendar .flatpickr-time .flatpickr-am-pm {\n  color: #ffffff;\n}\n[dir] .dark-layout .flatpickr-calendar .flatpickr-time .numInput:hover, [dir] .dark-layout .flatpickr-calendar .flatpickr-time .flatpickr-am-pm:hover {\n  background: #161d31;\n}\n[dir] .dark-layout .flatpickr-calendar .flatpickr-time .arrowUp:after {\n  border-bottom-color: #ffffff;\n}\n[dir] .dark-layout .flatpickr-calendar .flatpickr-time .arrowDown:after {\n  border-top-color: #ffffff;\n}\n[dir] .dark-layout .flatpickr-time input:hover, [dir] .dark-layout .flatpickr-time .flatpickr-am-pm:hover, [dir] .dark-layout .flatpickr-time input:focus, [dir] .dark-layout .flatpickr-time .flatpickr-am-pm:focus {\n  background: #161d31;\n}\n.flatpickr-input[readonly],\n.flatpickr-input ~ .form-control[readonly],\n.flatpickr-human-friendly[readonly] {\n  opacity: 1 !important;\n}\n[dir] .flatpickr-input[readonly], [dir] .flatpickr-input ~ .form-control[readonly], [dir] .flatpickr-human-friendly[readonly] {\n  background-color: inherit;\n}\n[dir] .flatpickr-weekdays {\n  margin-top: 8px;\n}\n.flatpickr-current-month .flatpickr-monthDropdown-months {\n  -webkit-appearance: none;\n}\n.flatpickr-current-month .flatpickr-monthDropdown-months,\n.flatpickr-current-month .numInputWrapper {\n  font-size: 1.1rem;\n  -webkit-transition: all 0.15s ease-out;\n  transition: all 0.15s ease-out;\n}\n[dir] .flatpickr-current-month .flatpickr-monthDropdown-months, [dir] .flatpickr-current-month .numInputWrapper {\n  border-radius: 4px;\n  padding: 2px;\n  -webkit-transition: all 0.15s ease-out;\n}\n.flatpickr-current-month .flatpickr-monthDropdown-months span,\n.flatpickr-current-month .numInputWrapper span {\n  display: none;\n}\nhtml[dir=rtl] .flatpickr-calendar .flatpickr-prev-month svg,\nhtml[dir=rtl] .flatpickr-calendar .flatpickr-next-month svg {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/Calendar.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/calendar/Calendar.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/sass-loader/dist/cjs.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Calendar.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/Calendar.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CalendarEventHandler.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "toastification" }, [
+    _c(
+      "div",
+      { staticClass: "d-flex align-items-start" },
+      [
+        _c(
+          "b-avatar",
+          {
+            staticClass: "mr-75 flex-shrink-0",
+            attrs: { variant: _vm.variant, size: "1.8rem" }
+          },
+          [_c("feather-icon", { attrs: { icon: _vm.icon, size: "15" } })],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex flex-grow-1" }, [
+          _c("div", [
+            _vm.title
+              ? _c("h5", {
+                  staticClass: "mb-0 font-weight-bolder toastification-title",
+                  class: "text-" + _vm.variant,
+                  domProps: { textContent: _vm._s(_vm.title) }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.text
+              ? _c("small", {
+                  staticClass: "d-inline-block text-body",
+                  domProps: { textContent: _vm._s(_vm.text) }
+                })
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "cursor-pointer toastification-close-icon ml-auto ",
+              on: {
+                click: function($event) {
+                  return _vm.$emit("close-toast")
+                }
+              }
+            },
+            [
+              !_vm.hideClose
+                ? _c("feather-icon", {
+                    staticClass: "text-body",
+                    attrs: { icon: "XIcon" }
+                  })
+                : _vm._e()
+            ],
+            1
+          )
+        ])
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/Calendar.vue?vue&type=template&id=84ed64d8&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/calendar/Calendar.vue?vue&type=template&id=84ed64d8& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "app-calendar overflow-hidden border" }, [
+    _c(
+      "div",
+      { staticClass: "row no-gutters" },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "col app-calendar-sidebar flex-grow-0 overflow-hidden d-flex flex-column",
+            class: { show: _vm.isCalendarOverlaySidebarActive }
+          },
+          [
+            _c("calendar-sidebar", {
+              attrs: {
+                "is-event-handler-sidebar-active":
+                  _vm.isEventHandlerSidebarActive
+              },
+              on: {
+                "update:isEventHandlerSidebarActive": function($event) {
+                  _vm.isEventHandlerSidebarActive = $event
+                },
+                "update:is-event-handler-sidebar-active": function($event) {
+                  _vm.isEventHandlerSidebarActive = $event
+                }
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col position-relative" }, [
+          _c(
+            "div",
+            { staticClass: "card shadow-none border-0 mb-0 rounded-0" },
+            [
+              _c(
+                "div",
+                { staticClass: "card-body pb-0" },
+                [
+                  _c("full-calendar", {
+                    ref: "refCalendar",
+                    staticClass: "full-calendar",
+                    attrs: { options: _vm.calendarOptions }
+                  })
+                ],
+                1
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "body-content-overlay",
+          class: { show: _vm.isCalendarOverlaySidebarActive },
+          on: {
+            click: function($event) {
+              _vm.isCalendarOverlaySidebarActive = false
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("calendar-event-handler", {
+          attrs: { event: _vm.event, "clear-event-data": _vm.clearEventData },
+          on: {
+            "remove-event": _vm.removeEvent,
+            "add-event": _vm.addEvent,
+            "update-event": _vm.updateEvent
+          },
+          model: {
+            value: _vm.isEventHandlerSidebarActive,
+            callback: function($$v) {
+              _vm.isEventHandlerSidebarActive = $$v
+            },
+            expression: "isEventHandlerSidebarActive"
+          }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=template&id=1f55576f&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/calendar/calendar-event-handler/CalendarEventHandler.vue?vue&type=template&id=1f55576f& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("b-sidebar", {
+        attrs: {
+          id: "sidebar-add-new-event",
+          "sidebar-class": "sidebar-lg",
+          visible: _vm.isEventHandlerSidebarActive,
+          "bg-variant": "white",
+          shadow: "",
+          backdrop: "",
+          "no-header": "",
+          right: ""
+        },
+        on: {
+          change: function(val) {
+            return _vm.$emit("update:is-event-handler-sidebar-active", val)
+          }
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "default",
+            fn: function(ref) {
+              var hide = ref.hide
+              return [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-between align-items-center content-sidebar-header px-2 py-1"
+                  },
+                  [
+                    _c("h5", { staticClass: "mb-0" }, [
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(
+                            _vm.eventLocal.id ? "Edit Visit" : "Add Visit"
+                          ) +
+                          "\n        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      [
+                        _vm.eventLocal.id
+                          ? _c("feather-icon", {
+                              staticClass: "cursor-pointer",
+                              attrs: { icon: "TrashIcon" },
+                              on: {
+                                click: function($event) {
+                                  _vm.$emit("remove-event")
+                                  hide()
+                                }
+                              }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("feather-icon", {
+                          staticClass: "ml-1 cursor-pointer",
+                          attrs: { icon: "XIcon", size: "16" },
+                          on: { click: hide }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-tabs",
+                  { attrs: { "content-class": "mt-2", justified: "" } },
+                  [
+                    !_vm.eventLocal.id
+                      ? _c("validation-observer", {
+                          ref: "refFormObserver",
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "default",
+                                fn: function(ref) {
+                                  var handleSubmit = ref.handleSubmit
+                                  return [
+                                    _c(
+                                      "b-form",
+                                      {
+                                        staticClass: "p-2",
+                                        on: {
+                                          submit: function($event) {
+                                            $event.preventDefault()
+                                            return handleSubmit(_vm.onSubmit)
+                                          },
+                                          reset: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.resetForm.apply(
+                                              null,
+                                              arguments
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "b-form-group",
+                                          {
+                                            attrs: {
+                                              label: "Customer",
+                                              "label-for": "customer"
+                                            }
+                                          },
+                                          [
+                                            _c("validation-provider", {
+                                              attrs: {
+                                                rules: "required",
+                                                name: "Customer",
+                                                vid: "customer"
+                                              },
+                                              scopedSlots: _vm._u(
+                                                [
+                                                  {
+                                                    key: "default",
+                                                    fn: function(ref) {
+                                                      var errors = ref.errors
+                                                      return [
+                                                        _c("v-select", {
+                                                          attrs: {
+                                                            dir: _vm.$store
+                                                              .state.appConfig
+                                                              .isRTL
+                                                              ? "rtl"
+                                                              : "ltr",
+                                                            options:
+                                                              _vm.eventLocal
+                                                                .customers,
+                                                            label: "text",
+                                                            state:
+                                                              errors.length > 0
+                                                                ? false
+                                                                : null
+                                                          },
+                                                          on: {
+                                                            search:
+                                                              _vm.browseCustomers,
+                                                            change:
+                                                              _vm.browseCustomerOrders
+                                                          },
+                                                          model: {
+                                                            value:
+                                                              _vm.selectedCustomer,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.selectedCustomer = $$v
+                                                            },
+                                                            expression:
+                                                              "selectedCustomer"
+                                                          }
+                                                        }),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "small",
+                                                          {
+                                                            staticClass:
+                                                              "text-danger"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(errors[0])
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    }
+                                                  }
+                                                ],
+                                                null,
+                                                true
+                                              )
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "b-form-group",
+                                          {
+                                            attrs: {
+                                              label: "Available Orders",
+                                              "label-for": "customer"
+                                            }
+                                          },
+                                          [
+                                            _c("validation-provider", {
+                                              attrs: {
+                                                rules: "required",
+                                                name: "Order",
+                                                vid: "order"
+                                              },
+                                              scopedSlots: _vm._u(
+                                                [
+                                                  {
+                                                    key: "default",
+                                                    fn: function(ref) {
+                                                      var errors = ref.errors
+                                                      return [
+                                                        _c("v-select", {
+                                                          attrs: {
+                                                            dir: _vm.$store
+                                                              .state.appConfig
+                                                              .isRTL
+                                                              ? "rtl"
+                                                              : "ltr",
+                                                            options:
+                                                              _vm.eventLocal
+                                                                .orders,
+                                                            label: "text",
+                                                            state:
+                                                              errors.length > 0
+                                                                ? false
+                                                                : null
+                                                          },
+                                                          model: {
+                                                            value:
+                                                              _vm.eventLocal
+                                                                .order,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.$set(
+                                                                _vm.eventLocal,
+                                                                "order",
+                                                                $$v
+                                                              )
+                                                            },
+                                                            expression:
+                                                              "eventLocal.order"
+                                                          }
+                                                        }),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "small",
+                                                          {
+                                                            staticClass:
+                                                              "text-danger"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(errors[0])
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    }
+                                                  }
+                                                ],
+                                                null,
+                                                true
+                                              )
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _vm.eventLocal.order &&
+                                        _vm.eventLocal.order.package
+                                          ? _c(
+                                              "b-form-group",
+                                              {
+                                                attrs: {
+                                                  label: "Room",
+                                                  "label-for": "room"
+                                                }
+                                              },
+                                              [
+                                                _c("validation-provider", {
+                                                  attrs: {
+                                                    rules: "required",
+                                                    name: "Room",
+                                                    vid: "room"
+                                                  },
+                                                  scopedSlots: _vm._u(
+                                                    [
+                                                      {
+                                                        key: "default",
+                                                        fn: function(ref) {
+                                                          var errors =
+                                                            ref.errors
+                                                          return [
+                                                            _c("v-select", {
+                                                              attrs: {
+                                                                dir: _vm.$store
+                                                                  .state
+                                                                  .appConfig
+                                                                  .isRTL
+                                                                  ? "rtl"
+                                                                  : "ltr",
+                                                                options:
+                                                                  _vm.eventLocal
+                                                                    .order
+                                                                    .package
+                                                                    .rooms,
+                                                                label: "name",
+                                                                state:
+                                                                  errors.length >
+                                                                  0
+                                                                    ? false
+                                                                    : null
+                                                              },
+                                                              model: {
+                                                                value:
+                                                                  _vm.eventLocal
+                                                                    .room,
+                                                                callback: function(
+                                                                  $$v
+                                                                ) {
+                                                                  _vm.$set(
+                                                                    _vm.eventLocal,
+                                                                    "room",
+                                                                    $$v
+                                                                  )
+                                                                },
+                                                                expression:
+                                                                  "eventLocal.room"
+                                                              }
+                                                            }),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "small",
+                                                              {
+                                                                staticClass:
+                                                                  "text-danger"
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    errors[0]
+                                                                  )
+                                                                )
+                                                              ]
+                                                            )
+                                                          ]
+                                                        }
+                                                      }
+                                                    ],
+                                                    null,
+                                                    true
+                                                  )
+                                                })
+                                              ],
+                                              1
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _c("validation-provider", {
+                                          attrs: {
+                                            name: "Date",
+                                            rules: "required"
+                                          },
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "default",
+                                                fn: function(
+                                                  validationContext
+                                                ) {
+                                                  return [
+                                                    _c(
+                                                      "b-form-group",
+                                                      {
+                                                        attrs: {
+                                                          label: "Date",
+                                                          "label-for": "date",
+                                                          state: _vm.getValidationState(
+                                                            validationContext
+                                                          )
+                                                        }
+                                                      },
+                                                      [
+                                                        _c("flat-pickr", {
+                                                          staticClass:
+                                                            "form-control",
+                                                          attrs: {
+                                                            config: {
+                                                              enableTime: false,
+                                                              dateFormat:
+                                                                "Y-m-d"
+                                                            }
+                                                          },
+                                                          model: {
+                                                            value:
+                                                              _vm.eventLocal
+                                                                .date,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.$set(
+                                                                _vm.eventLocal,
+                                                                "date",
+                                                                $$v
+                                                              )
+                                                            },
+                                                            expression:
+                                                              "eventLocal.date"
+                                                          }
+                                                        }),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "b-form-invalid-feedback",
+                                                          {
+                                                            attrs: {
+                                                              state: _vm.getValidationState(
+                                                                validationContext
+                                                              )
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                  " +
+                                                                _vm._s(
+                                                                  validationContext
+                                                                    .errors[0]
+                                                                ) +
+                                                                "\n                "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c("validation-provider", {
+                                          attrs: {
+                                            name: "Start Time",
+                                            rules: "required"
+                                          },
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "default",
+                                                fn: function(
+                                                  validationContext
+                                                ) {
+                                                  return [
+                                                    _c(
+                                                      "b-form-group",
+                                                      {
+                                                        attrs: {
+                                                          label: "Start Time",
+                                                          "label-for":
+                                                            "start-time",
+                                                          state: _vm.getValidationState(
+                                                            validationContext
+                                                          )
+                                                        }
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "b-form-timepicker",
+                                                          {
+                                                            attrs: {
+                                                              locale: "en"
+                                                            },
+                                                            model: {
+                                                              value:
+                                                                _vm.eventLocal
+                                                                  .start_time,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  _vm.eventLocal,
+                                                                  "start_time",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "eventLocal.start_time"
+                                                            }
+                                                          }
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "b-form-invalid-feedback",
+                                                          {
+                                                            attrs: {
+                                                              state: _vm.getValidationState(
+                                                                validationContext
+                                                              )
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                  " +
+                                                                _vm._s(
+                                                                  validationContext
+                                                                    .errors[0]
+                                                                ) +
+                                                                "\n                "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c("validation-provider", {
+                                          attrs: {
+                                            name: "End Time",
+                                            rules: "required"
+                                          },
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "default",
+                                                fn: function(
+                                                  validationContext
+                                                ) {
+                                                  return [
+                                                    _c(
+                                                      "b-form-group",
+                                                      {
+                                                        attrs: {
+                                                          label: "End Time",
+                                                          "label-for":
+                                                            "end-date",
+                                                          state: _vm.getValidationState(
+                                                            validationContext
+                                                          )
+                                                        }
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "b-form-timepicker",
+                                                          {
+                                                            attrs: {
+                                                              locale: "en"
+                                                            },
+                                                            model: {
+                                                              value:
+                                                                _vm.eventLocal
+                                                                  .end_time,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  _vm.eventLocal,
+                                                                  "end_time",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "eventLocal.end_time"
+                                                            }
+                                                          }
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "b-form-invalid-feedback",
+                                                          {
+                                                            attrs: {
+                                                              state: _vm.getValidationState(
+                                                                validationContext
+                                                              )
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                  " +
+                                                                _vm._s(
+                                                                  validationContext
+                                                                    .errors[0]
+                                                                ) +
+                                                                "\n                "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c("validation-provider", {
+                                          attrs: {
+                                            name: "Calendar",
+                                            rules: "required"
+                                          },
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "default",
+                                                fn: function(
+                                                  validationContext
+                                                ) {
+                                                  return [
+                                                    _c(
+                                                      "b-form-group",
+                                                      {
+                                                        attrs: {
+                                                          label: "Status",
+                                                          "label-for":
+                                                            "calendar",
+                                                          state: _vm.getValidationState(
+                                                            validationContext
+                                                          )
+                                                        }
+                                                      },
+                                                      [
+                                                        _c("v-select", {
+                                                          attrs: {
+                                                            dir: _vm.$store
+                                                              .state.appConfig
+                                                              .isRTL
+                                                              ? "rtl"
+                                                              : "ltr",
+                                                            options: [
+                                                              {
+                                                                id: 1,
+                                                                label:
+                                                                  "Booking",
+                                                                color: "primary"
+                                                              },
+                                                              {
+                                                                id: 2,
+                                                                label:
+                                                                  "Completed",
+                                                                color: "success"
+                                                              }
+                                                            ],
+                                                            label: "label",
+                                                            reduce: function(
+                                                              calendar
+                                                            ) {
+                                                              return calendar.id
+                                                            },
+                                                            "input-id":
+                                                              "calendar"
+                                                          },
+                                                          scopedSlots: _vm._u(
+                                                            [
+                                                              {
+                                                                key: "option",
+                                                                fn: function(
+                                                                  ref
+                                                                ) {
+                                                                  var color =
+                                                                    ref.color
+                                                                  var label =
+                                                                    ref.label
+                                                                  return [
+                                                                    _c("div", {
+                                                                      staticClass:
+                                                                        "rounded-circle d-inline-block mr-50",
+                                                                      class:
+                                                                        "bg-" +
+                                                                        color,
+                                                                      staticStyle: {
+                                                                        height:
+                                                                          "10px",
+                                                                        width:
+                                                                          "10px"
+                                                                      }
+                                                                    }),
+                                                                    _vm._v(" "),
+                                                                    _c("span", [
+                                                                      _vm._v(
+                                                                        " " +
+                                                                          _vm._s(
+                                                                            label
+                                                                          )
+                                                                      )
+                                                                    ])
+                                                                  ]
+                                                                }
+                                                              },
+                                                              {
+                                                                key:
+                                                                  "selected-option",
+                                                                fn: function(
+                                                                  ref
+                                                                ) {
+                                                                  var color =
+                                                                    ref.color
+                                                                  var label =
+                                                                    ref.label
+                                                                  return [
+                                                                    _c("div", {
+                                                                      staticClass:
+                                                                        "rounded-circle d-inline-block mr-50",
+                                                                      class:
+                                                                        "bg-" +
+                                                                        color,
+                                                                      staticStyle: {
+                                                                        height:
+                                                                          "10px",
+                                                                        width:
+                                                                          "10px"
+                                                                      }
+                                                                    }),
+                                                                    _vm._v(" "),
+                                                                    _c("span", [
+                                                                      _vm._v(
+                                                                        " " +
+                                                                          _vm._s(
+                                                                            label
+                                                                          )
+                                                                      )
+                                                                    ])
+                                                                  ]
+                                                                }
+                                                              }
+                                                            ],
+                                                            null,
+                                                            true
+                                                          ),
+                                                          model: {
+                                                            value:
+                                                              _vm.eventLocal
+                                                                .visit_status_id,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.$set(
+                                                                _vm.eventLocal,
+                                                                "visit_status_id",
+                                                                $$v
+                                                              )
+                                                            },
+                                                            expression:
+                                                              "eventLocal.visit_status_id"
+                                                          }
+                                                        }),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "b-form-invalid-feedback",
+                                                          {
+                                                            attrs: {
+                                                              state: _vm.getValidationState(
+                                                                validationContext
+                                                              )
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                  " +
+                                                                _vm._s(
+                                                                  validationContext
+                                                                    .errors[0]
+                                                                ) +
+                                                                "\n                "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "d-flex mt-2" },
+                                          [
+                                            _c(
+                                              "b-button",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "ripple",
+                                                    rawName: "v-ripple.400",
+                                                    value:
+                                                      "rgba(255, 255, 255, 0.15)",
+                                                    expression:
+                                                      "'rgba(255, 255, 255, 0.15)'",
+                                                    modifiers: { "400": true }
+                                                  }
+                                                ],
+                                                staticClass: "mr-2",
+                                                attrs: {
+                                                  variant: "primary",
+                                                  type: "submit"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                " +
+                                                    _vm._s(
+                                                      _vm.eventLocal.id
+                                                        ? "Update"
+                                                        : "Add "
+                                                    ) +
+                                                    "\n              "
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-button",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "ripple",
+                                                    rawName: "v-ripple.400",
+                                                    value:
+                                                      "rgba(186, 191, 199, 0.15)",
+                                                    expression:
+                                                      "'rgba(186, 191, 199, 0.15)'",
+                                                    modifiers: { "400": true }
+                                                  }
+                                                ],
+                                                attrs: {
+                                                  type: "reset",
+                                                  variant: "outline-secondary"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                Reset\n              "
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                }
+                              }
+                            ],
+                            null,
+                            true
+                          )
+                        })
+                      : _c("validation-observer", {
+                          ref: "refUpdateFormObserver",
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "default",
+                                fn: function(ref) {
+                                  var handleSubmit = ref.handleSubmit
+                                  return [
+                                    _c(
+                                      "b-form",
+                                      {
+                                        staticClass: "p-2",
+                                        on: {
+                                          submit: function($event) {
+                                            $event.preventDefault()
+                                            return handleSubmit(_vm.updateVisit)
+                                          },
+                                          reset: function($event) {
+                                            $event.preventDefault()
+                                            return _vm.resetForm.apply(
+                                              null,
+                                              arguments
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("b", [_vm._v("Customers:")]),
+                                        _vm._v(" "),
+                                        _vm.eventLocal.order
+                                          ? _c(
+                                              "p",
+                                              _vm._l(
+                                                _vm.eventLocal.order.customers,
+                                                function(customer, index) {
+                                                  return _c(
+                                                    "router-link",
+                                                    {
+                                                      key: index,
+                                                      attrs: {
+                                                        to:
+                                                          "/customers/" +
+                                                          customer.id
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "b-badge",
+                                                        {
+                                                          staticClass: "mr-1",
+                                                          attrs: {
+                                                            variant: "primary"
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                  #TKB" +
+                                                              _vm._s(
+                                                                customer.id
+                                                              ) +
+                                                              " - " +
+                                                              _vm._s(
+                                                                customer.name
+                                                              ) +
+                                                              "\n                "
+                                                          )
+                                                        ]
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                }
+                                              ),
+                                              1
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _vm.eventLocal.order &&
+                                        _vm.eventLocal.order.package
+                                          ? _c(
+                                              "b-form-group",
+                                              {
+                                                attrs: {
+                                                  label: "Room",
+                                                  "label-for": "room"
+                                                }
+                                              },
+                                              [
+                                                _c("validation-provider", {
+                                                  attrs: {
+                                                    rules: "required",
+                                                    name: "Room",
+                                                    vid: "room"
+                                                  },
+                                                  scopedSlots: _vm._u(
+                                                    [
+                                                      {
+                                                        key: "default",
+                                                        fn: function(ref) {
+                                                          var errors =
+                                                            ref.errors
+                                                          return [
+                                                            _c("v-select", {
+                                                              attrs: {
+                                                                dir: _vm.$store
+                                                                  .state
+                                                                  .appConfig
+                                                                  .isRTL
+                                                                  ? "rtl"
+                                                                  : "ltr",
+                                                                options:
+                                                                  _vm.eventLocal
+                                                                    .order
+                                                                    .package
+                                                                    .rooms,
+                                                                label: "name",
+                                                                state:
+                                                                  errors.length >
+                                                                  0
+                                                                    ? false
+                                                                    : null
+                                                              },
+                                                              model: {
+                                                                value:
+                                                                  _vm.eventLocal
+                                                                    .room,
+                                                                callback: function(
+                                                                  $$v
+                                                                ) {
+                                                                  _vm.$set(
+                                                                    _vm.eventLocal,
+                                                                    "room",
+                                                                    $$v
+                                                                  )
+                                                                },
+                                                                expression:
+                                                                  "eventLocal.room"
+                                                              }
+                                                            }),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "small",
+                                                              {
+                                                                staticClass:
+                                                                  "text-danger"
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    errors[0]
+                                                                  )
+                                                                )
+                                                              ]
+                                                            )
+                                                          ]
+                                                        }
+                                                      }
+                                                    ],
+                                                    null,
+                                                    true
+                                                  )
+                                                })
+                                              ],
+                                              1
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        _c("validation-provider", {
+                                          attrs: {
+                                            name: "Date",
+                                            rules: "required"
+                                          },
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "default",
+                                                fn: function(
+                                                  validationContext
+                                                ) {
+                                                  return [
+                                                    _c(
+                                                      "b-form-group",
+                                                      {
+                                                        attrs: {
+                                                          label: "Date",
+                                                          "label-for": "date",
+                                                          state: _vm.getValidationState(
+                                                            validationContext
+                                                          )
+                                                        }
+                                                      },
+                                                      [
+                                                        _c("flat-pickr", {
+                                                          staticClass:
+                                                            "form-control",
+                                                          attrs: {
+                                                            config: {
+                                                              enableTime: false,
+                                                              dateFormat:
+                                                                "Y-m-d"
+                                                            }
+                                                          },
+                                                          model: {
+                                                            value:
+                                                              _vm.eventLocal
+                                                                .date,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.$set(
+                                                                _vm.eventLocal,
+                                                                "date",
+                                                                $$v
+                                                              )
+                                                            },
+                                                            expression:
+                                                              "eventLocal.date"
+                                                          }
+                                                        }),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "b-form-invalid-feedback",
+                                                          {
+                                                            attrs: {
+                                                              state: _vm.getValidationState(
+                                                                validationContext
+                                                              )
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                  " +
+                                                                _vm._s(
+                                                                  validationContext
+                                                                    .errors[0]
+                                                                ) +
+                                                                "\n                "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c("validation-provider", {
+                                          attrs: {
+                                            name: "Start Time",
+                                            rules: "required"
+                                          },
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "default",
+                                                fn: function(
+                                                  validationContext
+                                                ) {
+                                                  return [
+                                                    _c(
+                                                      "b-form-group",
+                                                      {
+                                                        attrs: {
+                                                          label: "Start Time",
+                                                          "label-for":
+                                                            "start-time",
+                                                          state: _vm.getValidationState(
+                                                            validationContext
+                                                          )
+                                                        }
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "b-form-timepicker",
+                                                          {
+                                                            attrs: {
+                                                              locale: "en"
+                                                            },
+                                                            model: {
+                                                              value:
+                                                                _vm.eventLocal
+                                                                  .start_time,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  _vm.eventLocal,
+                                                                  "start_time",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "eventLocal.start_time"
+                                                            }
+                                                          }
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "b-form-invalid-feedback",
+                                                          {
+                                                            attrs: {
+                                                              state: _vm.getValidationState(
+                                                                validationContext
+                                                              )
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                  " +
+                                                                _vm._s(
+                                                                  validationContext
+                                                                    .errors[0]
+                                                                ) +
+                                                                "\n                "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c("validation-provider", {
+                                          attrs: {
+                                            name: "End Time",
+                                            rules: "required"
+                                          },
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "default",
+                                                fn: function(
+                                                  validationContext
+                                                ) {
+                                                  return [
+                                                    _c(
+                                                      "b-form-group",
+                                                      {
+                                                        attrs: {
+                                                          label: "End Time",
+                                                          "label-for":
+                                                            "end-date",
+                                                          state: _vm.getValidationState(
+                                                            validationContext
+                                                          )
+                                                        }
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "b-form-timepicker",
+                                                          {
+                                                            attrs: {
+                                                              locale: "en"
+                                                            },
+                                                            model: {
+                                                              value:
+                                                                _vm.eventLocal
+                                                                  .end_time,
+                                                              callback: function(
+                                                                $$v
+                                                              ) {
+                                                                _vm.$set(
+                                                                  _vm.eventLocal,
+                                                                  "end_time",
+                                                                  $$v
+                                                                )
+                                                              },
+                                                              expression:
+                                                                "eventLocal.end_time"
+                                                            }
+                                                          }
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "b-form-invalid-feedback",
+                                                          {
+                                                            attrs: {
+                                                              state: _vm.getValidationState(
+                                                                validationContext
+                                                              )
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                  " +
+                                                                _vm._s(
+                                                                  validationContext
+                                                                    .errors[0]
+                                                                ) +
+                                                                "\n                "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c("validation-provider", {
+                                          attrs: {
+                                            name: "Calendar",
+                                            rules: "required"
+                                          },
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "default",
+                                                fn: function(
+                                                  validationContext
+                                                ) {
+                                                  return [
+                                                    _c(
+                                                      "b-form-group",
+                                                      {
+                                                        attrs: {
+                                                          label: "Status",
+                                                          "label-for":
+                                                            "calendar",
+                                                          state: _vm.getValidationState(
+                                                            validationContext
+                                                          )
+                                                        }
+                                                      },
+                                                      [
+                                                        _c("v-select", {
+                                                          attrs: {
+                                                            dir: _vm.$store
+                                                              .state.appConfig
+                                                              .isRTL
+                                                              ? "rtl"
+                                                              : "ltr",
+                                                            options: [
+                                                              {
+                                                                id: 1,
+                                                                label:
+                                                                  "Booking",
+                                                                color: "primary"
+                                                              },
+                                                              {
+                                                                id: 2,
+                                                                label:
+                                                                  "Completed",
+                                                                color: "success"
+                                                              },
+                                                              {
+                                                                id: 3,
+                                                                label:
+                                                                  "Canceled",
+                                                                color: "danger"
+                                                              }
+                                                            ],
+                                                            label: "label",
+                                                            reduce: function(
+                                                              calendar
+                                                            ) {
+                                                              return calendar.id
+                                                            },
+                                                            "input-id":
+                                                              "calendar"
+                                                          },
+                                                          scopedSlots: _vm._u(
+                                                            [
+                                                              {
+                                                                key: "option",
+                                                                fn: function(
+                                                                  ref
+                                                                ) {
+                                                                  var color =
+                                                                    ref.color
+                                                                  var label =
+                                                                    ref.label
+                                                                  return [
+                                                                    _c("div", {
+                                                                      staticClass:
+                                                                        "rounded-circle d-inline-block mr-50",
+                                                                      class:
+                                                                        "bg-" +
+                                                                        color,
+                                                                      staticStyle: {
+                                                                        height:
+                                                                          "10px",
+                                                                        width:
+                                                                          "10px"
+                                                                      }
+                                                                    }),
+                                                                    _vm._v(" "),
+                                                                    _c("span", [
+                                                                      _vm._v(
+                                                                        " " +
+                                                                          _vm._s(
+                                                                            label
+                                                                          )
+                                                                      )
+                                                                    ])
+                                                                  ]
+                                                                }
+                                                              },
+                                                              {
+                                                                key:
+                                                                  "selected-option",
+                                                                fn: function(
+                                                                  ref
+                                                                ) {
+                                                                  var color =
+                                                                    ref.color
+                                                                  var label =
+                                                                    ref.label
+                                                                  return [
+                                                                    _c("div", {
+                                                                      staticClass:
+                                                                        "rounded-circle d-inline-block mr-50",
+                                                                      class:
+                                                                        "bg-" +
+                                                                        color,
+                                                                      staticStyle: {
+                                                                        height:
+                                                                          "10px",
+                                                                        width:
+                                                                          "10px"
+                                                                      }
+                                                                    }),
+                                                                    _vm._v(" "),
+                                                                    _c("span", [
+                                                                      _vm._v(
+                                                                        " " +
+                                                                          _vm._s(
+                                                                            label
+                                                                          )
+                                                                      )
+                                                                    ])
+                                                                  ]
+                                                                }
+                                                              }
+                                                            ],
+                                                            null,
+                                                            true
+                                                          ),
+                                                          model: {
+                                                            value:
+                                                              _vm.eventLocal
+                                                                .visit_status_id,
+                                                            callback: function(
+                                                              $$v
+                                                            ) {
+                                                              _vm.$set(
+                                                                _vm.eventLocal,
+                                                                "visit_status_id",
+                                                                $$v
+                                                              )
+                                                            },
+                                                            expression:
+                                                              "eventLocal.visit_status_id"
+                                                          }
+                                                        }),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "b-form-invalid-feedback",
+                                                          {
+                                                            attrs: {
+                                                              state: _vm.getValidationState(
+                                                                validationContext
+                                                              )
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              "\n                  " +
+                                                                _vm._s(
+                                                                  validationContext
+                                                                    .errors[0]
+                                                                ) +
+                                                                "\n                "
+                                                            )
+                                                          ]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                }
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "d-flex mt-2" },
+                                          [
+                                            _c(
+                                              "b-button",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "ripple",
+                                                    rawName: "v-ripple.400",
+                                                    value:
+                                                      "rgba(255, 255, 255, 0.15)",
+                                                    expression:
+                                                      "'rgba(255, 255, 255, 0.15)'",
+                                                    modifiers: { "400": true }
+                                                  }
+                                                ],
+                                                staticClass: "mr-2",
+                                                attrs: {
+                                                  variant: "primary",
+                                                  type: "submit"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                " +
+                                                    _vm._s(
+                                                      _vm.eventLocal.id
+                                                        ? "Update"
+                                                        : "Add "
+                                                    ) +
+                                                    "\n              "
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-button",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "ripple",
+                                                    rawName: "v-ripple.400",
+                                                    value:
+                                                      "rgba(186, 191, 199, 0.15)",
+                                                    expression:
+                                                      "'rgba(186, 191, 199, 0.15)'",
+                                                    modifiers: { "400": true }
+                                                  }
+                                                ],
+                                                attrs: {
+                                                  type: "reset",
+                                                  variant: "outline-secondary"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                Reset\n              "
+                                                )
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                }
+                              }
+                            ],
+                            null,
+                            true
+                          )
+                        })
+                  ],
+                  1
+                )
+              ]
+            }
+          }
+        ])
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=template&id=69183112&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/calendar/calendar-sidebar/CalendarSidebar.vue?vue&type=template&id=69183112& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass:
+        "sidebar-wrapper d-flex justify-content-between flex-column flex-grow-1"
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "p-2" },
+        [
+          _c(
+            "b-button",
+            {
+              directives: [
+                {
+                  name: "ripple",
+                  rawName: "v-ripple.400",
+                  value: "rgba(255, 255, 255, 0.15)",
+                  expression: "'rgba(255, 255, 255, 0.15)'",
+                  modifiers: { "400": true }
+                }
+              ],
+              attrs: {
+                "aria-controls": "sidebar-add-new-event",
+                "aria-expanded": String(_vm.isEventHandlerSidebarActive),
+                variant: "primary",
+                block: ""
+              },
+              on: {
+                click: function($event) {
+                  return _vm.$emit("update:isEventHandlerSidebarActive", true)
+                }
+              }
+            },
+            [_vm._v("\n      New Visit\n    ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-3" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "b-form-checkbox",
+                {
+                  staticClass: "mb-1",
+                  model: {
+                    value: _vm.checkAll,
+                    callback: function($$v) {
+                      _vm.checkAll = $$v
+                    },
+                    expression: "checkAll"
+                  }
+                },
+                [_vm._v("\n        View All\n      ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                [
+                  _c(
+                    "b-form-checkbox-group",
+                    {
+                      attrs: { name: "event-filter", stacked: "" },
+                      model: {
+                        value: _vm.selectedCalendars,
+                        callback: function($$v) {
+                          _vm.selectedCalendars = $$v
+                        },
+                        expression: "selectedCalendars"
+                      }
+                    },
+                    _vm._l(_vm.calendarOptions, function(item) {
+                      return _c(
+                        "b-form-checkbox",
+                        {
+                          key: item.label,
+                          staticClass: "mb-1",
+                          class: "custom-control-" + item.color,
+                          attrs: { name: "event-filter", value: item.label }
+                        },
+                        [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(item.label) +
+                              "\n          "
+                          )
+                        ]
+                      )
+                    }),
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("b-img", {
+        attrs: {
+          src: __webpack_require__(/*! @/assets/images/pages/calendar-illustration.png */ "./frontend/src/assets/images/pages/calendar-illustration.png")
+        }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", { staticClass: "app-label section-label mb-1" }, [
+      _c("span", { staticClass: "align-middle" }, [_vm._v("Calendars")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ })
+
+}]);

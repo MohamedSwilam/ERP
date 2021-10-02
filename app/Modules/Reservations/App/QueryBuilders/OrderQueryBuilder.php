@@ -21,7 +21,7 @@ class OrderQueryBuilder extends QueryBuilder
 
         if ($request->input('customer')) {
             $query->whereHas('customers', function($q) use($request) {
-                $q->where('customer_id', $request->input('customer'));
+                $q->where('id', $request->input('customer'));
             })->get();
         }
 
@@ -31,11 +31,6 @@ class OrderQueryBuilder extends QueryBuilder
 
         if ($request->input('lastComment')) {
             $query->with('lastComment')->get();
-        }
-
-        if ($request->input('filter[search]')) {
-            $query->orWhere('customers.id', 'LIKE', "%{$request->input('filter[search]')}%")->get();
-            $query->orWhere('customers.name', 'LIKE', "%{$request->input('filter[search]')}%")->get();
         }
 
         $this
@@ -50,6 +45,9 @@ class OrderQueryBuilder extends QueryBuilder
                     'created_by',
                 )),
                 AllowedFilter::scope('customer_filter'),
+                AllowedFilter::scope('package_type'),
+                AllowedFilter::scope('from'),
+                AllowedFilter::scope('to'),
             ])
             ->allowedSorts(['total_hours', 'remaining_hours', 'starts_at', 'expires_at', 'discount', 'seller', 'created_by']);
     }

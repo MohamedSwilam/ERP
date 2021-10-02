@@ -216,7 +216,7 @@
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
                             <b-input-group-prepend is-text>
-                              <feather-icon icon="DollarSignIcon" />
+                              <feather-icon icon="PercentIcon" />
                             </b-input-group-prepend>
                             <b-form-input
                               v-model.number="order.form.discount"
@@ -230,6 +230,46 @@
                           <small class="text-danger">{{ errors[0] }}</small>
                         </validation-provider>
                       </b-form-group>
+                    </b-col>
+
+                    <!-- Paid -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Paid"
+                        label-for="paid"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          name="Paid"
+                          rules="required"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="DollarSignIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              v-model.number="order.form.paid"
+                              type="number"
+                              min="0"
+                              max="100"
+                              :state="errors.length > 0 ? false:null"
+                              placeholder="Paid"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
+                    <b-col cols="6">
+                      <h1><b>Total</b></h1>
+                      <span v-if="order.form.package_id">{{ totalPrice }} EGP</span>
+                      <span v-else>0 EGP</span>
                     </b-col>
 
                     <!-- submit and reset -->
@@ -313,10 +353,21 @@ export default {
         package_id: null,
         starts_at: null,
         discount: 0,
+        paid: 0,
         seller: '',
       },
     },
   }),
+  computed: {
+    totalPrice() {
+      if (this.order.form.package_id) {
+        const { price } = this.order.packages.filter(packageInfo => packageInfo.id === this.order.form.package_id)[0]
+        // eslint-disable-next-line no-mixed-operators
+        return price - price * this.order.form.discount / 100
+      }
+      return 0
+    },
+  },
   mounted() {
     this.browseRooms()
   },
@@ -450,6 +501,7 @@ export default {
       this.order.form.customers = []
       this.order.form.seller = ''
       this.order.form.discount = 0
+      this.order.form.paid = 0
       this.order.form.package_id = null
       this.order.form.starts_at = null
       console.log(this.order)

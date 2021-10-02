@@ -93,7 +93,7 @@
                         <feather-icon icon="EditIcon" />
                       </b-button>
                       <b-button
-                        v-if="can('delete_role')"
+                        v-if="can('delete_role') && !data.item.core"
                         v-b-tooltip.hover.v-danger
                         v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                         title="Delete Role"
@@ -252,11 +252,4 @@ export default {
 </script>
 
 <style>
-.table .thead-dark th {
-    background-color: #195cff !important;
-    border-color: #195cff !important;
-}
-.dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
-    color: white !important;
-}
 </style>

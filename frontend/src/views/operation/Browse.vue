@@ -2,6 +2,133 @@
   <section>
     <b-row>
       <b-col cols="12">
+        <b-card-actions
+          ref="filterCard"
+          title="Filters"
+          no-actions
+        >
+          <b-row>
+            <b-col
+              lg="4"
+              md="4"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Search Order"
+                label-for="search_order"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="SearchIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="search_order"
+                    v-model="orders.search"
+                    placeholder="Search Order"
+                    @change="browseOrders(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <b-col
+              lg="4"
+              md="4"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Search Customer"
+                label-for="search_customer"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="SearchIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="search_customer"
+                    v-model="orders.search_customer"
+                    placeholder="Search customer id, name"
+                    @change="browseOrders(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <!-- Package Type -->
+            <b-col
+              lg="4"
+              md="4"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Filter Package Types"
+                label-for="filter_package_types"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="BoxIcon" />
+                  </b-input-group-prepend>
+                  <b-select
+                    v-model="orders.package_type"
+                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :options="orders.package_types"
+                    label="text"
+                    @change="browseOrders(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="From"
+                label-for="from"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="ClockIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="from"
+                    v-model="orders.from"
+                    type="date"
+                    @change="browseOrders(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="To"
+                label-for="to"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="ClockIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="to"
+                    v-model="orders.to"
+                    type="date"
+                    @change="browseOrders(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+          </b-row>
+        </b-card-actions>
+      </b-col>
+      <b-col cols="12">
         <b-overlay
           :show="orders.isLoading"
           rounded="sm"
@@ -14,13 +141,55 @@
             <b-row>
               <b-col
                 cols="6"
+                class="mb-2"
+              >
+                <b-form-group
+                  label="Sort"
+                  label-size="sm"
+                  label-for="sortBySelect"
+                  class="mb-0"
+                >
+                  <b-input-group size="sm">
+                    <b-form-select
+                      id="sortBySelect"
+                      v-model="orders.sort.by"
+                      :options="orders.sort.options"
+                      class="w-75"
+                      @change="browseOrders(1)"
+                    >
+                      <template v-slot:first>
+                        <option value="">
+                          -- none --
+                        </option>
+                      </template>
+                    </b-form-select>
+                    <b-form-select
+                      v-model="orders.sort.desc"
+                      size="sm"
+                      :disabled="!orders.sort.by"
+                      class="w-25"
+                      @change="browseOrders(1)"
+                    >
+                      <option :value="false">
+                        Asc
+                      </option>
+                      <option :value="true">
+                        Desc
+                      </option>
+                    </b-form-select>
+                  </b-input-group>
+                </b-form-group>
+              </b-col>
+              <b-col
+                cols="6"
+                class="pt-2 text-right"
                 align-h="center"
               >
                 <b-button
                   v-ripple.400="'rgba(255,255,255,0.15)'"
                   size="sm"
                   variant="primary"
-                  to="/orders/create"
+                  @click="exportCsv"
                 >
                   <feather-icon
                     icon="FileIcon"
@@ -28,24 +197,6 @@
                   />
                   <span class="align-middle">Export CSV</span>
                 </b-button>
-              </b-col>
-              <b-col
-                cols="6"
-                align-h="center"
-                class="text-right mb-2"
-              >
-                <b-input-group style="position: relative;top: 13px;">
-                  <b-input-group-prepend is-text>
-                    <feather-icon icon="SearchIcon" />
-                  </b-input-group-prepend>
-                  <b-form-input
-                    id="search"
-                    v-model="orders.search"
-                    size="sm"
-                    placeholder="Search"
-                    @change="browseOrders"
-                  />
-                </b-input-group>
               </b-col>
               <b-col cols="12">
                 <b-table
@@ -167,6 +318,7 @@
 <script>
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import Ripple from 'vue-ripple-directive'
+import { ExportToCsv } from 'export-to-csv'
 
 export default {
   name: 'BrowseOrders',
@@ -177,8 +329,23 @@ export default {
     orders: {
       isLoading: false,
       search: '',
+      search_customer: '',
+      from: '',
+      to: '',
+      package_type: '',
+      package_types: [{ text: 'All', value: '' }],
       paginateOptions: [5, 10, 25, 50, 100, 250],
       recordsPerPage: 50,
+      sort: {
+        by: '',
+        desc: false,
+        options: [
+          { text: 'Total Hours', value: 'total_hours' },
+          { text: 'Remaining Hours', value: 'remaining_hours' },
+          { text: 'Expiration Date', value: 'expires_at' },
+          { text: 'Price', value: 'total' },
+        ],
+      },
       fields: [
         { key: 'id', label: 'ID' },
         { key: 'customers', label: 'Customer(s)' },
@@ -204,18 +371,34 @@ export default {
   }),
   mounted() {
     this.browseOrders(this.orders.meta.current_page)
+    this.browsePackageTypes()
   },
   methods: {
-    browseOrders(page = 0) {
-      this.orders.isLoading = true
-      this.$store.dispatch('orders/browse', `?paginate=${this.orders.recordsPerPage}&page=${page}&filter[customer_filter]=${this.orders.search}&lastVisit=true&lastComment=true`).then(response => {
-        this.orders.data = response.data.data
-        this.orders.meta = response.data.meta.pagination
-        this.orders.isLoading = false
+    browsePackageTypes() {
+      this.$store.dispatch('seed/browsePackageTypes', '').then(response => {
+        this.orders.package_types = [
+          { text: 'All', value: '' },
+          ...response.data.data.map(record => ({
+            text: record.name,
+            value: record.id,
+          })),
+        ]
       }).catch(error => {
         console.error(error)
-        this.orders.isLoading = false
       })
+    },
+    browseOrders(page = 0) {
+      this.orders.isLoading = true
+      this.$store
+        .dispatch('orders/browse', `?paginate=${this.orders.recordsPerPage}&page=${page}&filter[customer_filter]=${this.orders.search}&filter[customer_filter]=${this.orders.search_customer}&filter[package_type]=${this.orders.package_type}&filter[from]=${this.orders.from}&filter[to]=${this.orders.to}&sort=${this.orders.sort.desc ? '-' : ''}${this.orders.sort.by}&lastVisit=true&lastComment=true`)
+        .then(response => {
+          this.orders.data = response.data.data
+          this.orders.meta = response.data.meta.pagination
+          this.orders.isLoading = false
+        }).catch(error => {
+          console.error(error)
+          this.orders.isLoading = false
+        })
     },
 
     deleteOrder(data) {
@@ -250,19 +433,38 @@ export default {
         }
       })
     },
+
+    exportCsv() {
+      const csvExporter = new ExportToCsv({
+        fieldSeparator: ',',
+        quoteStrings: '"',
+        decimalSeparator: '.',
+        showLabels: true,
+        showTitle: true,
+        title: 'Operations List',
+        useTextFile: false,
+        useBom: true,
+        useKeysAsHeaders: true,
+      })
+
+      csvExporter.generateCsv(this.orders.data.map(order => ({
+        Id: order.id,
+        Customers: order.customers.map(customer => customer.name).join(', '),
+        Package: order.package.name,
+        price: order.total,
+        'Total Hours': order.total_hours,
+        'Remaining Hours': order.remaining_hours,
+        Seller: order.seller,
+        'Created At': order.created_at,
+        'Last Visit': order.last_visit.length > 0 ? order.last_visit[0].date : 'No Visits',
+        'Last Comment': order.last_comment.length > 0 ? order.last_comment[0].created_at : 'No Comments',
+      })))
+    },
   },
 }
 </script>
 
 <style lang="scss">
-@import '~@/assets/scss/variables/_variables.scss';
-.table .thead-dark th {
-    background-color: $primary !important;
-    border-color: #195cff !important;
-}
-.dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
-    color: white !important;
-}
 .mb-5-px {
     margin-bottom: 5px;
 }

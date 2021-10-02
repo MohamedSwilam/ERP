@@ -3,6 +3,7 @@
 namespace App\Modules\Reservations\Domain\Models;
 
 use App\Modules\Customers\Domain\Models\CustomerType;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -62,5 +63,24 @@ class Package extends Model
      */
     public function rooms(): belongsToMany {
         return $this->belongsToMany(Room::class, 'package_rooms', 'package_id', 'room_id');
+    }
+
+    public function scopePackageType(Builder $query, string $value) {
+        return $query
+            ->whereHas('packageType', function (Builder $q) use ($value) {
+                $q->where('id', $value);
+            });
+    }
+
+    public function scopeRoom(Builder $query, string $value) {
+        return $query->whereHas('rooms', function (Builder $q) use ($value) {
+            $q->where('room_id', $value);
+        });
+    }
+
+    public function scopeCustomerType(Builder $query, string $value) {
+        return $query->whereHas('customerType', function (Builder $q) use ($value) {
+            $q->where('id', $value);
+        });
     }
 }

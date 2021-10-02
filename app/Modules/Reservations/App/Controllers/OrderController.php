@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Responses\Facades\ApiResponse;
 use App\Modules\Reservations\App\QueryBuilders\OrderQueryBuilder;
 use App\Modules\Reservations\App\Requests\CreateOrderRequest;
+use App\Modules\Reservations\App\Requests\UpdateOrderRequest;
 use App\Modules\Reservations\App\Transformers\OrderTransformer;
 use App\Modules\Reservations\Domain\Actions\CreateOrderAction;
 use App\Modules\Reservations\Domain\Actions\DeleteOrderAction;
+use App\Modules\Reservations\Domain\Actions\UpdateOrderAction;
 use App\Modules\Reservations\Domain\DataTransferObjects\CreateOrderDto;
+use App\Modules\Reservations\Domain\DataTransferObjects\UpdateOrderDto;
 use App\Modules\Reservations\Domain\Models\Order;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
@@ -57,6 +60,22 @@ class OrderController extends Controller
         $order = $createOrderAction(CreateOrderDto::fromRequest($request));
 
         return ApiResponse::createResponse($order, OrderTransformer::class);
+    }
+
+    /**
+     * @param UpdateOrderAction $updateOrderAction
+     * @param UpdateOrderRequest $request
+     * @param Order $order
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function update(UpdateOrderAction $updateOrderAction, UpdateOrderRequest $request, Order $order): JsonResponse
+    {
+        $this->authorize('update', Order::class);
+
+        $updateOrderAction($order, UpdateOrderDto::fromRequest($request));
+
+        return ApiResponse::updateResponse(Order::find($order->id), OrderTransformer::class);
     }
 
     /**

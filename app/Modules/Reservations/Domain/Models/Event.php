@@ -2,6 +2,7 @@
 
 namespace App\Modules\Reservations\Domain\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -46,5 +47,19 @@ class Event extends Model
     public function room(): BelongsTo
     {
         return $this->belongsTo(Room::class);
+    }
+
+    public function scopeRoom(Builder $query, string $value) {
+        return $query->whereHas('room', function (Builder $q) use ($value) {
+            $q->where('id', $value);
+        });
+    }
+
+    public function scopeFrom(Builder $query, string $value) {
+        return $query->where('created_at', '>=', $value);
+    }
+
+    public function scopeTo(Builder $query, string $value) {
+        return $query->where('created_at', '<=', $value);
     }
 }

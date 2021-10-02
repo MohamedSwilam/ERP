@@ -2,6 +2,110 @@
   <section>
     <b-row>
       <b-col cols="12">
+        <b-card-actions
+          ref="filterCard"
+          title="Filters"
+          no-actions
+        >
+          <b-row>
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Search"
+                label-for="search"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="SearchIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="search"
+                    v-model="customers.search"
+                    placeholder="Search"
+                    @change="browseCustomers(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <!-- Customer Type -->
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Filter Customer Types"
+                label-for="filter_customer_types"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="UsersIcon" />
+                  </b-input-group-prepend>
+                  <b-select
+                    v-model="customers.customer_type"
+                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :options="customers.customer_types"
+                    label="text"
+                    @change="browseCustomers(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Next Follow Up From"
+                label-for="from"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="CalendarIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="from"
+                    v-model="customers.from"
+                    type="date"
+                    @change="browseCustomers(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Next Follow Up To"
+                label-for="to"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="CalendarIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="to"
+                    v-model="customers.to"
+                    type="date"
+                    @change="browseCustomers(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+          </b-row>
+        </b-card-actions>
+      </b-col>
+      <b-col cols="12">
         <b-overlay
           :show="customers.isLoading"
           rounded="sm"
@@ -11,20 +115,6 @@
             title="Customers List"
             action-collapse
           >
-            <b-modal
-              id="delete-customer-modal"
-              title="Are you sure?"
-              ok-only
-              ok-variant="danger"
-              ok-title="Yes, Delete"
-              modal-class="modal-danger"
-              centered
-              no-close-on-backdrop
-            >
-              <b-card-text>
-                You will not be able to retrieve this again!
-              </b-card-text>
-            </b-modal>
             <b-row>
               <b-col
                 cols="6"
@@ -47,21 +137,22 @@
               </b-col>
               <b-col
                 cols="6"
-                align-h="center"
                 class="text-right"
+                align-h="center"
               >
-                <b-input-group style="position: relative;top: 13px;">
-                  <b-input-group-prepend is-text>
-                    <feather-icon icon="SearchIcon" />
-                  </b-input-group-prepend>
-                  <b-form-input
-                    id="search"
-                    v-model="customers.search"
-                    size="sm"
-                    placeholder="Search"
-                    @change="browseCustomers(1)"
+                <b-button
+                  v-ripple.400="'rgba(255,255,255,0.15)'"
+                  class="my-1"
+                  size="sm"
+                  variant="primary"
+                  @click="exportCsv"
+                >
+                  <feather-icon
+                    icon="FileIcon"
+                    class="mr-50"
                   />
-                </b-input-group>
+                  <span class="align-middle">Export CSV</span>
+                </b-button>
               </b-col>
               <b-col cols="12">
                 <b-table
@@ -181,6 +272,8 @@
 <script>
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import Ripple from 'vue-ripple-directive'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ExportToCsv } from 'export-to-csv'
 
 export default {
   name: 'BrowseCustomers',
@@ -191,6 +284,10 @@ export default {
     customers: {
       isLoading: false,
       search: '',
+      from: '',
+      to: '',
+      customer_type: '',
+      customer_types: [{ text: 'All', value: '' }],
       paginateOptions: [5, 10, 25, 50, 100, 250],
       recordsPerPage: 50,
       fields: [
@@ -215,11 +312,26 @@ export default {
   }),
   mounted() {
     this.browseCustomers(this.customers.meta.current_page)
+    this.browseCustomerTypes(1)
   },
   methods: {
+    browseCustomerTypes() {
+      this.$store.dispatch('seed/browseCustomerTypes', '').then(response => {
+        this.customers.customer_types = [
+          { text: 'All', value: '' },
+          ...response.data.data.map(record => ({
+            text: record.type,
+            value: record.id,
+          })),
+        ]
+      }).catch(error => {
+        console.error(error)
+      })
+    },
+
     browseCustomers(page = 0) {
       this.customers.isLoading = true
-      this.$store.dispatch('customer/browse', `?paginate=${this.customers.recordsPerPage}&page=${page}&filter[search]=${this.customers.search}`).then(response => {
+      this.$store.dispatch('customer/browse', `?paginate=${this.customers.recordsPerPage}&page=${page}&filter[search]=${this.customers.search}&filter[customer_type]=${this.customers.customer_type}&filter[next_follow_up_from]=${this.customers.from}&filter[next_follow_up_to]=${this.customers.to}`).then(response => {
         this.customers.data = response.data.data
         this.customers.meta = response.data.meta.pagination
         this.customers.isLoading = false
@@ -261,17 +373,34 @@ export default {
         }
       })
     },
+
+    exportCsv() {
+      const csvExporter = new ExportToCsv({
+        fieldSeparator: ',',
+        quoteStrings: '"',
+        decimalSeparator: '.',
+        showLabels: true,
+        showTitle: true,
+        title: 'Customers List',
+        useTextFile: false,
+        useBom: true,
+        useKeysAsHeaders: true,
+      })
+
+      csvExporter.generateCsv(this.customers.data.map(customer => ({
+        Id: `#TKB${customer.id}`,
+        Name: customer.name,
+        Email: customer.email,
+        Phone: customer.phone,
+        'Birth Date': customer.date_of_birth,
+        'National ID': customer.national_id,
+        Address: customer.address,
+        'Created At': customer.created_at,
+      })))
+    },
   },
 }
 </script>
 
-<style lang="scss">
-@import '~@/assets/scss/variables/_variables.scss';
-.table .thead-dark th {
-    background-color: $primary !important;
-    border-color: #195cff !important;
-}
-.dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
-    color: white !important;
-}
+<style>
 </style>

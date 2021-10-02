@@ -26,9 +26,10 @@ class CustomerQueryBuilder extends QueryBuilder
                     'phone',
                     'email',
                     'national_id',
-                    'date_of_birth',
-                    'next_follow_up',
                 )),
+                AllowedFilter::scope('customer_type'),
+                AllowedFilter::scope('next_follow_up_from'),
+                AllowedFilter::scope('next_follow_up_to'),
             ])
             ->allowedSorts(['name', 'email', 'phone', 'date_of_birth', 'created_at']);
     }

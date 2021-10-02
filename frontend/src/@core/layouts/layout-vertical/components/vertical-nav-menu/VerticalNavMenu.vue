@@ -30,9 +30,6 @@
                   alt="logo"
                 />
               </span>
-              <h2 class="brand-text">
-                {{ appName }}
-              </h2>
             </b-link>
           </li>
 
@@ -159,4 +156,10 @@ export default {
 
 <style lang="scss">
 @import "~@core/scss/base/core/menu/menu-types/vertical-menu.scss";
+.main-menu .navbar-header .navbar-brand {
+    margin-top: -10px;
+}
+.main-menu .navbar-header .navbar-brand .brand-logo img {
+    max-width: 160px;
+}
 </style>

@@ -4,7 +4,7 @@ namespace App\Modules\Authentication\Domain\Models;
 
 use App\Modules\Comments\Domain\Models\Comment;
 use App\Modules\Reservations\Domain\Models\Order;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -60,5 +60,12 @@ class User extends Authenticatable
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function scopeRole(Builder $query, string $value) {
+        return $query->with('roles')
+            ->whereHas('roles', function (Builder $q) use ($value) {
+                $q->whereIn('id', [$value]);
+            });
     }
 }

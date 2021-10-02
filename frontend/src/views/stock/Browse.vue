@@ -13,7 +13,7 @@
           >
             <b-row>
               <b-col
-                cols="6"
+                cols="12"
                 align-h="center"
               >
                 <b-button
@@ -33,21 +33,68 @@
               </b-col>
               <b-col
                 cols="6"
-                align-h="center"
-                class="text-right"
+                class="mb-2"
               >
-                <b-input-group style="position: relative;top: 13px;">
-                  <b-input-group-prepend is-text>
-                    <feather-icon icon="SearchIcon" />
-                  </b-input-group-prepend>
-                  <b-form-input
-                    id="search"
-                    v-model="stocks.search"
-                    size="sm"
-                    placeholder="Search"
-                    @change="browseStocks"
-                  />
-                </b-input-group>
+                <b-form-group
+                  label="Sort"
+                  label-size="sm"
+                  label-for="sortBySelect"
+                  class="mb-0"
+                >
+                  <b-input-group size="sm">
+                    <b-form-select
+                      id="sortBySelect"
+                      v-model="stocks.sort.by"
+                      :options="stocks.sort.options"
+                      class="w-75"
+                      @change="browseStocks(1)"
+                    >
+                      <template v-slot:first>
+                        <option value="">
+                          -- none --
+                        </option>
+                      </template>
+                    </b-form-select>
+                    <b-form-select
+                      v-model="stocks.sort.desc"
+                      size="sm"
+                      :disabled="!stocks.sort.by"
+                      class="w-25"
+                      @change="browseStocks(1)"
+                    >
+                      <option :value="false">
+                        Asc
+                      </option>
+                      <option :value="true">
+                        Desc
+                      </option>
+                    </b-form-select>
+                  </b-input-group>
+                </b-form-group>
+              </b-col>
+              <b-col
+                cols="6"
+                align-h="center"
+              >
+                <b-form-group
+                  label="Search"
+                  label-size="sm"
+                  label-for="search"
+                  class="mb-0"
+                >
+                  <b-input-group>
+                    <b-input-group-prepend is-text>
+                      <feather-icon icon="SearchIcon" />
+                    </b-input-group-prepend>
+                    <b-form-input
+                      id="search"
+                      v-model="stocks.search"
+                      size="sm"
+                      placeholder="Search name"
+                      @change="browseStocks"
+                    />
+                  </b-input-group>
+                </b-form-group>
               </b-col>
               <b-col cols="12">
                 <b-table
@@ -176,6 +223,20 @@ export default {
       search: '',
       paginateOptions: [5, 10, 25, 50, 100, 250],
       recordsPerPage: 50,
+      sort: {
+        by: '',
+        desc: false,
+        options: [
+          { text: 'Name', value: 'name' },
+          { text: 'Quantity', value: 'quantity' },
+          { text: 'Price Per Piece', value: 'price_per_piece' },
+          { text: 'Sale Price', value: 'sale_price' },
+          { text: 'Payment Type', value: 'payment_type' },
+          { text: 'Total', value: 'total' },
+          { text: 'Paid', value: 'paid' },
+          { text: 'Created At', value: 'created_at' },
+        ],
+      },
       fields: [
         { key: 'index', label: '#' },
         { key: 'name', label: 'Name' },
@@ -203,7 +264,7 @@ export default {
   methods: {
     browseStocks(page = 0) {
       this.stocks.isLoading = true
-      this.$store.dispatch('stock/browse', `?paginate=${this.stocks.recordsPerPage}&page=${page}&filter[search]=${this.stocks.search}`).then(response => {
+      this.$store.dispatch('stock/browse', `?paginate=${this.stocks.recordsPerPage}&page=${page}&filter[search]=${this.stocks.search}&sort=${this.stocks.sort.desc ? '-' : ''}${this.stocks.sort.by}`).then(response => {
         this.stocks.data = response.data.data
         this.stocks.meta = response.data.meta.pagination
         this.stocks.isLoading = false
@@ -249,13 +310,5 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '~@/assets/scss/variables/_variables.scss';
-.table .thead-dark th {
-    background-color: $primary !important;
-    border-color: #195cff !important;
-}
-.dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
-    color: white !important;
-}
+<style>
 </style>

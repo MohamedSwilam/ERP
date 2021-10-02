@@ -1,1 +1,2382 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[25],{"/fgq":function(t,e,r){"use strict";r("jAk/")},"1w2d":function(t,e,r){"use strict";var o={components:{BAvatar:r("G/QR").a},props:{variant:{type:String,default:"primary"},icon:{type:String,default:null},title:{type:String,default:null},text:{type:String,default:null},hideClose:{type:Boolean,default:!1}}},s=(r("MOdh"),r("KHd+")),a=Object(s.a)(o,(function(){var t=this,e=t.$createElement,r=t._self._c||e;return r("div",{staticClass:"toastification"},[r("div",{staticClass:"d-flex align-items-start"},[r("b-avatar",{staticClass:"mr-75 flex-shrink-0",attrs:{variant:t.variant,size:"1.8rem"}},[r("feather-icon",{attrs:{icon:t.icon,size:"15"}})],1),t._v(" "),r("div",{staticClass:"d-flex flex-grow-1"},[r("div",[t.title?r("h5",{staticClass:"mb-0 font-weight-bolder toastification-title",class:"text-"+t.variant,domProps:{textContent:t._s(t.title)}}):t._e(),t._v(" "),t.text?r("small",{staticClass:"d-inline-block text-body",domProps:{textContent:t._s(t.text)}}):t._e()]),t._v(" "),r("span",{staticClass:"cursor-pointer toastification-close-icon ml-auto ",on:{click:function(e){return t.$emit("close-toast")}}},[t.hideClose?t._e():r("feather-icon",{staticClass:"text-body",attrs:{icon:"XIcon"}})],1)])],1)])}),[],!1,null,"13ed5408",null);e.a=a.exports},"4cv3":function(t,e,r){"use strict";var o={bind:function(t,e){var r={event:"mousedown",transition:600};!function(t,e){t.forEach((function(t){isNaN(Number(t))?e.event=t:e.transition=t}))}(Object.keys(e.modifiers),r),t.addEventListener(r.event,(function(o){!function(t,e){var o=e,n=parseInt(getComputedStyle(o).borderWidth.replace("px","")),i=o.getBoundingClientRect(),l=i.left,u=i.top,c=o.offsetWidth,d=o.offsetHeight,p=t.clientX-l,m=t.clientY-u,f=Math.max(p,c-p),v=Math.max(m,d-m),b=window.getComputedStyle(o),h=Math.sqrt(f*f+v*v),g=n>0?n:0,_=document.createElement("div"),y=document.createElement("div");y.className="ripple-container",_.className="ripple",_.style.marginTop="0px",_.style.marginLeft="0px",_.style.width="1px",_.style.height="1px",_.style.transition="all "+r.transition+"ms cubic-bezier(0.4, 0, 0.2, 1)",_.style.borderRadius="50%",_.style.pointerEvents="none",_.style.position="relative",_.style.zIndex=a,_.style.backgroundColor=s,y.style.position="absolute",y.style.left=0-g+"px",y.style.top=0-g+"px",y.style.height="0",y.style.width="0",y.style.pointerEvents="none",y.style.overflow="hidden";var x=o.style.position.length>0?o.style.position:getComputedStyle(o).position;"relative"!==x&&(o.style.position="relative");function C(){setTimeout((function(){_.style.backgroundColor="rgba(0, 0, 0, 0)"}),250),setTimeout((function(){y.parentNode.removeChild(y)}),850),e.removeEventListener("mouseup",C,!1),setTimeout((function(){for(var t=!0,e=0;e<o.childNodes.length;e++)"ripple-container"===o.childNodes[e].className&&(t=!1);t&&(o.style.position="static"!==x?x:"")}),r.transition+250)}y.appendChild(_),o.appendChild(y),_.style.marginLeft=p+"px",_.style.marginTop=m+"px",y.style.width=c+"px",y.style.height=d+"px",y.style.borderTopLeftRadius=b.borderTopLeftRadius,y.style.borderTopRightRadius=b.borderTopRightRadius,y.style.borderBottomLeftRadius=b.borderBottomLeftRadius,y.style.borderBottomRightRadius=b.borderBottomRightRadius,y.style.direction="ltr",setTimeout((function(){_.style.width=2*h+"px",_.style.height=2*h+"px",_.style.marginLeft=p-h+"px",_.style.marginTop=m-h+"px"}),0),"mousedown"===t.type?e.addEventListener("mouseup",C,!1):C()}(o,t,e.value)}));var s=e.value||o.color||"rgba(0, 0, 0, 0.35)",a=o.zIndex||"9999"}};e.a=o},DEUr:function(t,e,r){var o=r("o1KL");"string"==typeof o&&(o=[[t.i,o,""]]);var s={hmr:!0,transform:void 0,insertInto:void 0};r("aET+")(o,s);o.locals&&(t.exports=o.locals)},GIXw:function(t,e,r){(t.exports=r("I1BE")(!1)).push([t.i,"#customer-form li,#customer-form ul{list-style-type:none;text-decoration:none}",""])},MOdh:function(t,e,r){"use strict";r("DEUr")},"jAk/":function(t,e,r){var o=r("GIXw");"string"==typeof o&&(o=[[t.i,o,""]]);var s={hmr:!0,transform:void 0,insertInto:void 0};r("aET+")(o,s);o.locals&&(t.exports=o.locals)},o1KL:function(t,e,r){(t.exports=r("I1BE")(!1)).push([t.i,".toastification-close-icon[data-v-13ed5408],.toastification-title[data-v-13ed5408]{line-height:26px}.toastification-title[data-v-13ed5408]{color:inherit}",""])},onMI:function(t,e,r){"use strict";r.r(e);var o=r("4cv3"),s=r("1w2d");function a(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(t);e&&(o=o.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,o)}return r}function n(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?a(Object(r),!0).forEach((function(e){i(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):a(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}function i(t,e,r){return e in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t}var l={name:"EditCustomer",directives:{Ripple:o.a},data:function(){return{customer:{isCardLoading:!1,isLoading:!1,customer_types:[],form:{name:"",email:"",phone:"",national_id:"",date_of_birth:"",address:"",customer_type_id:null,last_follow_up:null,next_follow_up:null}}}},mounted:function(){this.browseCustomerTypes()},methods:{browseCustomerTypes:function(){var t=this;this.customer.isCardLoading=!0,this.$store.dispatch("seed/browseCustomerTypes","").then((function(e){t.customer.customer_types=t.reformatCustomerTypesData(e.data.data),t.viewCustomer()})).catch((function(e){console.error(e),t.customer.isCardLoading=!1}))},reformatCustomerTypesData:function(t){var e=[{value:null,text:"Select customer type"}];return t.forEach((function(t){e.push({value:t.id,text:t.type})})),e},viewCustomer:function(){var t=this;this.customer.isCardLoading=!0,this.$store.dispatch("customer/view",this.$route.params.id).then((function(e){t.customer.form=n(n({},e.data.data),{},{last_follow_up:e.data.data.last_follow_up?new Date("".concat(new Date(e.data.data.last_follow_up).toString().split("GMT")[0]," UTC")).toISOString().split(".")[0]:"",next_follow_up:e.data.data.next_follow_up?new Date("".concat(new Date(e.data.data.next_follow_up).toString().split("GMT")[0]," UTC")).toISOString().split(".")[0]:""}),t.customer.isCardLoading=!1})).catch((function(e){console.error(e),t.customer.isCardLoading=!1}))},editCustomer:function(){var t=this;this.customer.isLoading=!0,this.$store.dispatch("customer/update",{id:this.$route.params.id,data:this.customer.form}).then((function(e){t.customer.isLoading=!1,t.$toast({component:s.a,props:{title:"Success",icon:"CheckCircleIcon",text:e.data.message,variant:"success"}},{position:"bottom-right",timeout:5e3}),t.$router.push("/customers/".concat(e.data.data.id))})).catch((function(e){t.$refs.editCustomerForm.setErrors(e.response.data.errors),t.customer.isLoading=!1}))},reset:function(){this.viewCustomer()}}},u=(r("/fgq"),r("KHd+")),c=Object(u.a)(l,(function(){var t=this,e=t.$createElement,r=t._self._c||e;return r("section",{attrs:{id:"customer-form"}},[r("b-container",[r("b-row",[r("b-col",{attrs:{cols:"12"}},[r("b-overlay",{attrs:{show:t.customer.isCardLoading,rounded:"sm"}},[r("b-card-actions",{ref:"editCustomer",attrs:{title:"Edit Customer","action-collapse":""}},[r("validation-observer",{ref:"editCustomerForm",scopedSlots:t._u([{key:"default",fn:function(e){var o=e.handleSubmit;return[r("b-form",{on:{submit:function(e){return e.preventDefault(),o(t.editCustomer)}}},[r("b-row",[r("b-col",{attrs:{cols:"12"}},[r("b-form-group",{attrs:{label:"Customer Type","label-for":"customer_type_id"}},[r("validation-provider",{attrs:{rules:"required",name:"Customer Type",vid:"customer_type_id"},scopedSlots:t._u([{key:"default",fn:function(e){var o=e.errors;return[r("b-input-group",{class:0===o.length?"":"is-invalid"},[r("b-input-group-prepend",{attrs:{"is-text":""}},[r("feather-icon",{attrs:{icon:"UsersIcon"}})],1),t._v(" "),r("b-form-select",{attrs:{options:t.customer.customer_types,state:!(o.length>0)&&null},model:{value:t.customer.form.customer_type_id,callback:function(e){t.$set(t.customer.form,"customer_type_id",e)},expression:"customer.form.customer_type_id"}})],1),t._v(" "),r("small",{staticClass:"text-danger"},[t._v(t._s(o[0]))])]}}],null,!0)})],1)],1),t._v(" "),r("b-col",{attrs:{lg:"6",md:"6",sm:"12",xs:"12"}},[r("b-form-group",{attrs:{label:"Name","label-for":"name"}},[r("validation-provider",{attrs:{rules:"required",name:"Name",vid:"name"},scopedSlots:t._u([{key:"default",fn:function(e){var o=e.errors;return[r("b-input-group",{class:0===o.length?"":"is-invalid"},[r("b-input-group-prepend",{attrs:{"is-text":""}},[r("feather-icon",{attrs:{icon:"UsersIcon"}})],1),t._v(" "),r("b-form-input",{attrs:{id:"name",state:!(o.length>0)&&null,placeholder:"Name"},model:{value:t.customer.form.name,callback:function(e){t.$set(t.customer.form,"name",e)},expression:"customer.form.name"}})],1),t._v(" "),r("small",{staticClass:"text-danger"},[t._v(t._s(o[0]))])]}}],null,!0)})],1)],1),t._v(" "),r("b-col",{attrs:{lg:"6",md:"6",sm:"12",xs:"12"}},[r("b-form-group",{attrs:{label:"Email","label-for":"email"}},[r("validation-provider",{attrs:{rules:"required|email",name:"Email",vid:"email"},scopedSlots:t._u([{key:"default",fn:function(e){var o=e.errors;return[r("b-input-group",{class:0===o.length?"":"is-invalid"},[r("b-input-group-prepend",{attrs:{"is-text":""}},[r("feather-icon",{attrs:{icon:"MailIcon"}})],1),t._v(" "),r("b-form-input",{attrs:{id:"code",state:!(o.length>0)&&null,placeholder:"Email"},model:{value:t.customer.form.email,callback:function(e){t.$set(t.customer.form,"email",e)},expression:"customer.form.email"}})],1),t._v(" "),r("small",{staticClass:"text-danger"},[t._v(t._s(o[0]))])]}}],null,!0)})],1)],1),t._v(" "),r("b-col",{attrs:{lg:"6",md:"6",sm:"12",xs:"12"}},[r("b-form-group",{attrs:{label:"Phone","label-for":"phone"}},[r("validation-provider",{attrs:{name:"Phone",rules:"required"},scopedSlots:t._u([{key:"default",fn:function(e){var o=e.errors;return[r("b-input-group",{class:0===o.length?"":"is-invalid"},[r("b-input-group-prepend",{attrs:{"is-text":""}},[r("feather-icon",{attrs:{icon:"PhoneIcon"}})],1),t._v(" "),r("b-form-input",{attrs:{type:"number",state:!(o.length>0)&&null,placeholder:"Phone"},model:{value:t.customer.form.phone,callback:function(e){t.$set(t.customer.form,"phone",e)},expression:"customer.form.phone"}})],1),t._v(" "),r("small",{staticClass:"text-danger"},[t._v(t._s(o[0]))])]}}],null,!0)})],1)],1),t._v(" "),r("b-col",{attrs:{lg:"6",md:"6",sm:"12",xs:"12"}},[r("b-form-group",{attrs:{label:"Birth Date","label-for":"date_of_birth"}},[r("validation-provider",{attrs:{name:"Birth Date",rules:"required"},scopedSlots:t._u([{key:"default",fn:function(e){var o=e.errors;return[r("b-input-group",{class:0===o.length?"":"is-invalid"},[r("b-input-group-prepend",{attrs:{"is-text":""}},[r("feather-icon",{attrs:{icon:"CalendarIcon"}})],1),t._v(" "),r("b-form-input",{attrs:{type:"date",state:!(o.length>0)&&null,placeholder:"Birth Date"},model:{value:t.customer.form.date_of_birth,callback:function(e){t.$set(t.customer.form,"date_of_birth",e)},expression:"customer.form.date_of_birth"}})],1),t._v(" "),r("small",{staticClass:"text-danger"},[t._v(t._s(o[0]))])]}}],null,!0)})],1)],1),t._v(" "),r("b-col",{attrs:{lg:"6",md:"6",sm:"12",xs:"12"}},[r("b-form-group",{attrs:{label:"National ID","label-for":"national_id"}},[r("validation-provider",{attrs:{name:"National ID",rules:"required|length:16"},scopedSlots:t._u([{key:"default",fn:function(e){var o=e.errors;return[r("b-input-group",{class:0===o.length?"":"is-invalid"},[r("b-input-group-prepend",{attrs:{"is-text":""}},[r("feather-icon",{attrs:{icon:"CreditCardIcon"}})],1),t._v(" "),r("b-form-input",{attrs:{state:!(o.length>0)&&null,placeholder:"National ID"},model:{value:t.customer.form.national_id,callback:function(e){t.$set(t.customer.form,"national_id",e)},expression:"customer.form.national_id"}})],1),t._v(" "),r("small",{staticClass:"text-danger"},[t._v(t._s(o[0]))])]}}],null,!0)})],1)],1),t._v(" "),r("b-col",{attrs:{lg:"6",md:"6",sm:"12",xs:"12"}},[r("b-form-group",{attrs:{label:"Address","label-for":"address"}},[r("validation-provider",{attrs:{name:"Address",rules:"required"},scopedSlots:t._u([{key:"default",fn:function(e){var o=e.errors;return[r("b-input-group",{class:0===o.length?"":"is-invalid"},[r("b-input-group-prepend",{attrs:{"is-text":""}},[r("feather-icon",{attrs:{icon:"HomeIcon"}})],1),t._v(" "),r("b-form-input",{attrs:{state:!(o.length>0)&&null,placeholder:"Address"},model:{value:t.customer.form.address,callback:function(e){t.$set(t.customer.form,"address",e)},expression:"customer.form.address"}})],1),t._v(" "),r("small",{staticClass:"text-danger"},[t._v(t._s(o[0]))])]}}],null,!0)})],1)],1),t._v(" "),r("b-col",{attrs:{lg:"6",md:"6",sm:"12",xs:"12"}},[r("b-form-group",{attrs:{label:"Last Follow Up","label-for":"last_follow_up"}},[r("validation-provider",{attrs:{name:"Last Follow Up",rules:""},scopedSlots:t._u([{key:"default",fn:function(e){var o=e.errors;return[r("b-input-group",{class:0===o.length?"":"is-invalid"},[r("b-input-group-prepend",{attrs:{"is-text":""}},[r("feather-icon",{attrs:{icon:"UserCheckIcon"}})],1),t._v(" "),r("b-form-input",{attrs:{state:!(o.length>0)&&null,type:"datetime-local",placeholder:"Last follow up"},model:{value:t.customer.form.last_follow_up,callback:function(e){t.$set(t.customer.form,"last_follow_up",e)},expression:"customer.form.last_follow_up"}})],1),t._v(" "),r("small",{staticClass:"text-danger"},[t._v(t._s(o[0]))])]}}],null,!0)})],1)],1),t._v(" "),r("b-col",{attrs:{lg:"6",md:"6",sm:"12",xs:"12"}},[r("b-form-group",{attrs:{label:"Next Follow Up","label-for":"next_follow_up"}},[r("validation-provider",{attrs:{name:"Next Follow Up",rules:""},scopedSlots:t._u([{key:"default",fn:function(e){var o=e.errors;return[r("b-input-group",{class:0===o.length?"":"is-invalid"},[r("b-input-group-prepend",{attrs:{"is-text":""}},[r("feather-icon",{attrs:{icon:"UserCheckIcon"}})],1),t._v(" "),r("b-form-input",{attrs:{state:!(o.length>0)&&null,type:"datetime-local",placeholder:"Next follow up"},model:{value:t.customer.form.next_follow_up,callback:function(e){t.$set(t.customer.form,"next_follow_up",e)},expression:"customer.form.next_follow_up"}})],1),t._v(" "),r("small",{staticClass:"text-danger"},[t._v(t._s(o[0]))])]}}],null,!0)})],1)],1),t._v(" "),r("b-col",{attrs:{cols:"12"}},[r("b-container",[r("b-row",{staticClass:"mt-1",attrs:{"align-h":"center"}},[r("b-button",{directives:[{name:"ripple",rawName:"v-ripple.400",value:"rgba(255, 255, 255, 0.15)",expression:"'rgba(255, 255, 255, 0.15)'",modifiers:{400:!0}}],staticClass:"mr-1",attrs:{type:"submit",disabled:t.customer.isLoading,variant:"primary"}},[t.customer.isLoading?[r("b-spinner",{attrs:{small:""}}),t._v("\n                            Loading...\n                          ")]:[r("feather-icon",{staticClass:"mr-50",attrs:{icon:"SaveIcon"}}),t._v(" "),r("span",{staticClass:"align-middle"},[t._v("Submit")])]],2),t._v(" "),r("b-button",{directives:[{name:"ripple",rawName:"v-ripple.400",value:"rgba(186, 191, 199, 0.15)",expression:"'rgba(186, 191, 199, 0.15)'",modifiers:{400:!0}}],attrs:{variant:"warning"}},[r("feather-icon",{staticClass:"mr-50",attrs:{icon:"RefreshCcwIcon"}}),t._v(" "),r("span",{staticClass:"align-middle"},[t._v("Reset")])],1)],1)],1)],1)],1)],1)]}}])})],1)],1)],1)],1)],1)],1)}),[],!1,null,null,null);e.default=c.exports}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[25],{
+
+/***/ "./frontend/node_modules/vue-ripple-directive/src/ripple.js":
+/*!******************************************************************!*\
+  !*** ./frontend/node_modules/vue-ripple-directive/src/ripple.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var Ripple = {
+    bind: function(el, binding){
+
+        // Default values.
+        var props = {
+            event: 'mousedown',
+            transition: 600
+        };
+
+        setProps(Object.keys(binding.modifiers),props);
+
+        el.addEventListener(props.event, function(event) {
+            rippler(event, el, binding.value);
+        });
+
+        var bg = binding.value || Ripple.color || 'rgba(0, 0, 0, 0.35)';
+        var zIndex = Ripple.zIndex || '9999';
+
+        function rippler(event, el) {
+            var target = el;
+            // Get border to avoid offsetting on ripple container position
+            var targetBorder = parseInt((getComputedStyle(target).borderWidth).replace('px', ''));
+
+            // Get necessary variables
+            var rect        = target.getBoundingClientRect(),
+                left        = rect.left,
+                top         = rect.top,
+                width       = target.offsetWidth,
+                height      = target.offsetHeight,
+                dx          = event.clientX - left,
+                dy          = event.clientY - top,
+                maxX        = Math.max(dx, width - dx),
+                maxY        = Math.max(dy, height - dy),
+                style       = window.getComputedStyle(target),
+                radius      = Math.sqrt((maxX * maxX) + (maxY * maxY)),
+                border      = (targetBorder > 0 ) ? targetBorder : 0;
+
+            // Create the ripple and its container
+            var ripple = document.createElement("div"),
+                rippleContainer = document.createElement("div");
+                rippleContainer.className = 'ripple-container';
+                ripple.className = 'ripple';
+
+            //Styles for ripple
+            ripple.style.marginTop= '0px';
+            ripple.style.marginLeft= '0px';
+            ripple.style.width= '1px';
+            ripple.style.height= '1px';
+            ripple.style.transition= 'all ' + props.transition + 'ms cubic-bezier(0.4, 0, 0.2, 1)';
+            ripple.style.borderRadius= '50%';
+            ripple.style.pointerEvents= 'none';
+            ripple.style.position= 'relative';
+            ripple.style.zIndex= zIndex;
+            ripple.style.backgroundColor  = bg;
+
+            //Styles for rippleContainer
+            rippleContainer.style.position= 'absolute';
+            rippleContainer.style.left = 0 - border + 'px';
+            rippleContainer.style.top = 0 - border + 'px';
+            rippleContainer.style.height = '0';
+            rippleContainer.style.width = '0';
+            rippleContainer.style.pointerEvents = 'none';
+            rippleContainer.style.overflow = 'hidden';
+
+            // Store target position to change it after
+            var storedTargetPosition =  ((target.style.position).length > 0) ? target.style.position : getComputedStyle(target).position;
+            // Change target position to relative to guarantee ripples correct positioning
+            if (storedTargetPosition !== 'relative') {
+                target.style.position = 'relative';
+            }
+
+            rippleContainer.appendChild(ripple);
+            target.appendChild(rippleContainer);
+
+            ripple.style.marginLeft   = dx + "px";
+            ripple.style.marginTop    = dy + "px";
+
+            // No need to set positioning because ripple should be child of target and to it's relative position.
+            // rippleContainer.style.left    = left + (((window.pageXOffset || document.scrollLeft) - (document.clientLeft || 0)) || 0) + "px";
+            // rippleContainer.style.top     = top + (((window.pageYOffset || document.scrollTop) - (document.clientTop || 0)) || 0) + "px";
+            rippleContainer.style.width   = width + "px";
+            rippleContainer.style.height  = height + "px";
+            rippleContainer.style.borderTopLeftRadius  = style.borderTopLeftRadius;
+            rippleContainer.style.borderTopRightRadius  = style.borderTopRightRadius;
+            rippleContainer.style.borderBottomLeftRadius  = style.borderBottomLeftRadius;
+            rippleContainer.style.borderBottomRightRadius  = style.borderBottomRightRadius;
+
+            rippleContainer.style.direction = 'ltr';
+
+            setTimeout(function() {
+                ripple.style.width  = radius * 2 + "px";
+                ripple.style.height = radius * 2 + "px";
+                ripple.style.marginLeft   = dx - radius + "px";
+                ripple.style.marginTop    = dy - radius + "px";
+            }, 0);
+
+            function clearRipple() {
+                setTimeout(function() {
+                    ripple.style.backgroundColor = "rgba(0, 0, 0, 0)";
+                }, 250);
+
+                // Timeout set to get a smooth removal of the ripple
+                setTimeout(function() {
+                    rippleContainer.parentNode.removeChild(rippleContainer);
+                }, 850);
+
+                el.removeEventListener('mouseup', clearRipple, false);
+
+                // After removing event set position to target to it's original one
+                // Timeout it's needed to avoid jerky effect of ripple jumping out parent target
+                setTimeout(function () {
+
+                    var clearPosition = true;
+                    for(var i = 0; i < target.childNodes.length; i++) {
+                        if(target.childNodes[i].className === 'ripple-container') {
+                            clearPosition = false;
+                        }
+                    }
+
+                    if(clearPosition) {
+                        if(storedTargetPosition !== 'static') {
+                            target.style.position = storedTargetPosition;
+                        } else {
+                            target.style.position = '';
+                        }
+                    }
+
+                }, props.transition + 250)
+            }
+
+            if(event.type === 'mousedown') {
+                el.addEventListener('mouseup', clearRipple, false);
+            } else {
+                clearRipple();
+            }
+        }
+    }
+};
+
+function setProps(modifiers,props) {
+    modifiers.forEach(function(item) {
+        if(isNaN(Number(item)))
+            props.event = item;
+        else
+            props.transition = item;
+    });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Ripple);
+
+/***/ }),
+
+/***/ "./frontend/src/@core/components/toastification/ToastificationContent.vue":
+/*!********************************************************************************!*\
+  !*** ./frontend/src/@core/components/toastification/ToastificationContent.vue ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true& */ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true&");
+/* harmony import */ var _ToastificationContent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ToastificationContent.vue?vue&type=script&lang=js& */ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& */ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ToastificationContent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "2fedfe59",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "frontend/src/@core/components/toastification/ToastificationContent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************!*\
+  !*** ./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ToastificationContent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&":
+/*!******************************************************************************************************************************************!*\
+  !*** ./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& ***!
+  \******************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_sass_loader_dist_cjs_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_style_index_0_id_2fedfe59_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true&":
+/*!***************************************************************************************************************************!*\
+  !*** ./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true& ***!
+  \***************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ToastificationContent_vue_vue_type_template_id_2fedfe59_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./frontend/src/views/report/Edit.vue":
+/*!********************************************!*\
+  !*** ./frontend/src/views/report/Edit.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Edit_vue_vue_type_template_id_76029b6a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=76029b6a& */ "./frontend/src/views/report/Edit.vue?vue&type=template&id=76029b6a&");
+/* harmony import */ var _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js& */ "./frontend/src/views/report/Edit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Edit_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Edit.vue?vue&type=style&index=0&lang=css& */ "./frontend/src/views/report/Edit.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Edit_vue_vue_type_template_id_76029b6a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Edit_vue_vue_type_template_id_76029b6a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "frontend/src/views/report/Edit.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./frontend/src/views/report/Edit.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./frontend/src/views/report/Edit.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/report/Edit.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./frontend/src/views/report/Edit.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************!*\
+  !*** ./frontend/src/views/report/Edit.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/report/Edit.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./frontend/src/views/report/Edit.vue?vue&type=template&id=76029b6a&":
+/*!***************************************************************************!*\
+  !*** ./frontend/src/views/report/Edit.vue?vue&type=template&id=76029b6a& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_76029b6a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=template&id=76029b6a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/report/Edit.vue?vue&type=template&id=76029b6a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_76029b6a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Edit_vue_vue_type_template_id_76029b6a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./frontend/node_modules/bootstrap-vue/esm/index.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    BAvatar: bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["BAvatar"]
+  },
+  props: {
+    variant: {
+      type: String,
+      "default": 'primary'
+    },
+    icon: {
+      type: String,
+      "default": null
+    },
+    title: {
+      type: String,
+      "default": null
+    },
+    text: {
+      type: String,
+      "default": null
+    },
+    hideClose: {
+      type: Boolean,
+      "default": false
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/report/Edit.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/report/Edit.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_ripple_directive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-ripple-directive */ "./frontend/node_modules/vue-ripple-directive/src/ripple.js");
+/* harmony import */ var _core_components_toastification_ToastificationContent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @core/components/toastification/ToastificationContent.vue */ "./frontend/src/@core/components/toastification/ToastificationContent.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'EditReport',
+  directives: {
+    Ripple: vue_ripple_directive__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      report: {
+        isCardLoading: false,
+        isLoading: false,
+        report_types: [],
+        form: {
+          start_date: '',
+          end_date: '',
+          total_messages: 0,
+          customer_numbers: '',
+          follow_up: '',
+          results: '',
+          audience_description: '',
+          title: ''
+        }
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.viewReport();
+  },
+  methods: {
+    viewReport: function viewReport() {
+      var _this = this;
+
+      this.report.isCardLoading = true;
+      this.$store.dispatch('reports/view', this.$route.params.id).then(function (response) {
+        _this.report.form = response.data.data; // eslint-disable-next-line prefer-destructuring
+
+        _this.report.form.start_date = new Date("".concat(new Date(response.data.data.start_date).toString().split('GMT')[0], " UTC")).toISOString().split('.')[0]; // eslint-disable-next-line prefer-destructuring
+
+        _this.report.form.end_date = new Date("".concat(new Date(response.data.data.end_date).toString().split('GMT')[0], " UTC")).toISOString().split('.')[0];
+        _this.report.isCardLoading = false;
+      })["catch"](function (error) {
+        console.error(error);
+        _this.report.isCardLoading = false;
+      });
+    },
+    editReport: function editReport() {
+      var _this2 = this;
+
+      this.report.isLoading = true;
+      this.$store.dispatch('reports/update', {
+        id: this.$route.params.id,
+        data: this.report.form
+      }).then(function (response) {
+        _this2.report.isLoading = false;
+
+        _this2.$toast({
+          component: _core_components_toastification_ToastificationContent_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+          props: {
+            title: 'Success',
+            icon: 'CheckCircleIcon',
+            text: response.data.message,
+            variant: 'success'
+          }
+        }, {
+          position: 'bottom-right',
+          timeout: 5000
+        });
+
+        _this2.$router.push("/reports/".concat(response.data.data.id));
+      })["catch"](function (error) {
+        _this2.$refs.editReportForm.setErrors(error.response.data.errors);
+
+        _this2.report.isLoading = false;
+      });
+    },
+    reset: function reset() {
+      this.viewReport();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".toastification-close-icon[data-v-2fedfe59],\n.toastification-title[data-v-2fedfe59] {\n  line-height: 26px;\n}\n.toastification-title[data-v-2fedfe59] {\n  color: inherit;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/report/Edit.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/report/Edit.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#report-form ul,\n#report-form li {\n    list-style-type: none;\n    text-decoration: none;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/sass-loader/dist/cjs.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--7-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../../node_modules/sass-loader/dist/cjs.js??ref--11-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=style&index=0&id=2fedfe59&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/report/Edit.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/report/Edit.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Edit.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/report/Edit.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/@core/components/toastification/ToastificationContent.vue?vue&type=template&id=2fedfe59&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "toastification" }, [
+    _c(
+      "div",
+      { staticClass: "d-flex align-items-start" },
+      [
+        _c(
+          "b-avatar",
+          {
+            staticClass: "mr-75 flex-shrink-0",
+            attrs: { variant: _vm.variant, size: "1.8rem" }
+          },
+          [_c("feather-icon", { attrs: { icon: _vm.icon, size: "15" } })],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "d-flex flex-grow-1" }, [
+          _c("div", [
+            _vm.title
+              ? _c("h5", {
+                  staticClass: "mb-0 font-weight-bolder toastification-title",
+                  class: "text-" + _vm.variant,
+                  domProps: { textContent: _vm._s(_vm.title) }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.text
+              ? _c("small", {
+                  staticClass: "d-inline-block text-body",
+                  domProps: { textContent: _vm._s(_vm.text) }
+                })
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "cursor-pointer toastification-close-icon ml-auto ",
+              on: {
+                click: function($event) {
+                  return _vm.$emit("close-toast")
+                }
+              }
+            },
+            [
+              !_vm.hideClose
+                ? _c("feather-icon", {
+                    staticClass: "text-body",
+                    attrs: { icon: "XIcon" }
+                  })
+                : _vm._e()
+            ],
+            1
+          )
+        ])
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./frontend/src/views/report/Edit.vue?vue&type=template&id=76029b6a&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./frontend/src/views/report/Edit.vue?vue&type=template&id=76029b6a& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "section",
+    { attrs: { id: "report-form" } },
+    [
+      _c(
+        "b-container",
+        [
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                { attrs: { cols: "12" } },
+                [
+                  _c(
+                    "b-overlay",
+                    {
+                      attrs: { show: _vm.report.isCardLoading, rounded: "sm" }
+                    },
+                    [
+                      _c(
+                        "b-card-actions",
+                        {
+                          ref: "editReport",
+                          attrs: { title: "Edit Report", "action-collapse": "" }
+                        },
+                        [
+                          _c("validation-observer", {
+                            ref: "editReportForm",
+                            scopedSlots: _vm._u([
+                              {
+                                key: "default",
+                                fn: function(ref) {
+                                  var handleSubmit = ref.handleSubmit
+                                  return [
+                                    _c(
+                                      "b-form",
+                                      {
+                                        on: {
+                                          submit: function($event) {
+                                            $event.preventDefault()
+                                            return handleSubmit(_vm.editReport)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "b-row",
+                                          [
+                                            _c(
+                                              "b-col",
+                                              {
+                                                attrs: {
+                                                  lg: "6",
+                                                  md: "6",
+                                                  sm: "12",
+                                                  xs: "12"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "b-form-group",
+                                                  {
+                                                    attrs: {
+                                                      label: "Title",
+                                                      "label-for": "title"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("validation-provider", {
+                                                      attrs: {
+                                                        rules: "required",
+                                                        name: "Title",
+                                                        vid: "title"
+                                                      },
+                                                      scopedSlots: _vm._u(
+                                                        [
+                                                          {
+                                                            key: "default",
+                                                            fn: function(ref) {
+                                                              var errors =
+                                                                ref.errors
+                                                              return [
+                                                                _c(
+                                                                  "b-input-group",
+                                                                  {
+                                                                    class:
+                                                                      errors.length ===
+                                                                      0
+                                                                        ? ""
+                                                                        : "is-invalid"
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "b-input-group-prepend",
+                                                                      {
+                                                                        attrs: {
+                                                                          "is-text":
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "feather-icon",
+                                                                          {
+                                                                            attrs: {
+                                                                              icon:
+                                                                                "FileIcon"
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "b-form-input",
+                                                                      {
+                                                                        attrs: {
+                                                                          id:
+                                                                            "title",
+                                                                          state:
+                                                                            errors.length >
+                                                                            0
+                                                                              ? false
+                                                                              : null,
+                                                                          placeholder:
+                                                                            "Title"
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .report
+                                                                              .form
+                                                                              .title,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .report
+                                                                                .form,
+                                                                              "title",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "report.form.title"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "small",
+                                                                  {
+                                                                    staticClass:
+                                                                      "text-danger"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        errors[0]
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        null,
+                                                        true
+                                                      )
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-col",
+                                              {
+                                                attrs: {
+                                                  lg: "6",
+                                                  md: "6",
+                                                  sm: "12",
+                                                  xs: "12"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "b-form-group",
+                                                  {
+                                                    attrs: {
+                                                      label: "Start Date",
+                                                      "label-for": "start_date"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("validation-provider", {
+                                                      attrs: {
+                                                        rules: "required",
+                                                        name: "Start Date",
+                                                        vid: "start_date"
+                                                      },
+                                                      scopedSlots: _vm._u(
+                                                        [
+                                                          {
+                                                            key: "default",
+                                                            fn: function(ref) {
+                                                              var errors =
+                                                                ref.errors
+                                                              return [
+                                                                _c(
+                                                                  "b-input-group",
+                                                                  {
+                                                                    class:
+                                                                      errors.length ===
+                                                                      0
+                                                                        ? ""
+                                                                        : "is-invalid"
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "b-input-group-prepend",
+                                                                      {
+                                                                        attrs: {
+                                                                          "is-text":
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "feather-icon",
+                                                                          {
+                                                                            attrs: {
+                                                                              icon:
+                                                                                "ClockIcon"
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "b-form-input",
+                                                                      {
+                                                                        attrs: {
+                                                                          id:
+                                                                            "start_date",
+                                                                          type:
+                                                                            "datetime-local",
+                                                                          state:
+                                                                            errors.length >
+                                                                            0
+                                                                              ? false
+                                                                              : null,
+                                                                          placeholder:
+                                                                            "Start date"
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .report
+                                                                              .form
+                                                                              .start_date,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .report
+                                                                                .form,
+                                                                              "start_date",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "report.form.start_date"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "small",
+                                                                  {
+                                                                    staticClass:
+                                                                      "text-danger"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        errors[0]
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        null,
+                                                        true
+                                                      )
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-col",
+                                              {
+                                                attrs: {
+                                                  lg: "6",
+                                                  md: "6",
+                                                  sm: "12",
+                                                  xs: "12"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "b-form-group",
+                                                  {
+                                                    attrs: {
+                                                      label: "End Date",
+                                                      "label-for": "end_date"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("validation-provider", {
+                                                      attrs: {
+                                                        rules: "required",
+                                                        name: "End Date",
+                                                        vid: "end_date"
+                                                      },
+                                                      scopedSlots: _vm._u(
+                                                        [
+                                                          {
+                                                            key: "default",
+                                                            fn: function(ref) {
+                                                              var errors =
+                                                                ref.errors
+                                                              return [
+                                                                _c(
+                                                                  "b-input-group",
+                                                                  {
+                                                                    class:
+                                                                      errors.length ===
+                                                                      0
+                                                                        ? ""
+                                                                        : "is-invalid"
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "b-input-group-prepend",
+                                                                      {
+                                                                        attrs: {
+                                                                          "is-text":
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "feather-icon",
+                                                                          {
+                                                                            attrs: {
+                                                                              icon:
+                                                                                "ClockIcon"
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "b-form-input",
+                                                                      {
+                                                                        attrs: {
+                                                                          id:
+                                                                            "end_date",
+                                                                          type:
+                                                                            "datetime-local",
+                                                                          state:
+                                                                            errors.length >
+                                                                            0
+                                                                              ? false
+                                                                              : null,
+                                                                          placeholder:
+                                                                            "End date"
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .report
+                                                                              .form
+                                                                              .end_date,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .report
+                                                                                .form,
+                                                                              "end_date",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "report.form.end_date"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "small",
+                                                                  {
+                                                                    staticClass:
+                                                                      "text-danger"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        errors[0]
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        null,
+                                                        true
+                                                      )
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-col",
+                                              {
+                                                attrs: {
+                                                  lg: "6",
+                                                  md: "6",
+                                                  sm: "12",
+                                                  xs: "12"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "b-form-group",
+                                                  {
+                                                    attrs: {
+                                                      label: "Total Messages",
+                                                      "label-for":
+                                                        "total_messages"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("validation-provider", {
+                                                      attrs: {
+                                                        rules: "required",
+                                                        name: "Total Messages",
+                                                        vid: "total_messages"
+                                                      },
+                                                      scopedSlots: _vm._u(
+                                                        [
+                                                          {
+                                                            key: "default",
+                                                            fn: function(ref) {
+                                                              var errors =
+                                                                ref.errors
+                                                              return [
+                                                                _c(
+                                                                  "b-input-group",
+                                                                  {
+                                                                    class:
+                                                                      errors.length ===
+                                                                      0
+                                                                        ? ""
+                                                                        : "is-invalid"
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "b-input-group-prepend",
+                                                                      {
+                                                                        attrs: {
+                                                                          "is-text":
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "feather-icon",
+                                                                          {
+                                                                            attrs: {
+                                                                              icon:
+                                                                                "MessageCircleIcon"
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "b-form-input",
+                                                                      {
+                                                                        attrs: {
+                                                                          id:
+                                                                            "total_messages",
+                                                                          type:
+                                                                            "number",
+                                                                          state:
+                                                                            errors.length >
+                                                                            0
+                                                                              ? false
+                                                                              : null,
+                                                                          placeholder:
+                                                                            "Total messages"
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .report
+                                                                              .form
+                                                                              .total_messages,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .report
+                                                                                .form,
+                                                                              "total_messages",
+                                                                              _vm._n(
+                                                                                $$v
+                                                                              )
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "report.form.total_messages"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "small",
+                                                                  {
+                                                                    staticClass:
+                                                                      "text-danger"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        errors[0]
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        null,
+                                                        true
+                                                      )
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-col",
+                                              {
+                                                attrs: {
+                                                  lg: "6",
+                                                  md: "6",
+                                                  sm: "12",
+                                                  xs: "12"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "b-form-group",
+                                                  {
+                                                    attrs: {
+                                                      label: "Customer Numbers",
+                                                      "label-for":
+                                                        "customer_numbers"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("validation-provider", {
+                                                      attrs: {
+                                                        rules: "required",
+                                                        name:
+                                                          "Customer Numbers",
+                                                        vid: "customer_numbers"
+                                                      },
+                                                      scopedSlots: _vm._u(
+                                                        [
+                                                          {
+                                                            key: "default",
+                                                            fn: function(ref) {
+                                                              var errors =
+                                                                ref.errors
+                                                              return [
+                                                                _c(
+                                                                  "b-input-group",
+                                                                  {
+                                                                    class:
+                                                                      errors.length ===
+                                                                      0
+                                                                        ? ""
+                                                                        : "is-invalid"
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "b-input-group-prepend",
+                                                                      {
+                                                                        attrs: {
+                                                                          "is-text":
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "feather-icon",
+                                                                          {
+                                                                            attrs: {
+                                                                              icon:
+                                                                                "UsersIcon"
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "b-form-textarea",
+                                                                      {
+                                                                        attrs: {
+                                                                          id:
+                                                                            "customer_numbers",
+                                                                          placeholder:
+                                                                            "Customer numbers",
+                                                                          state:
+                                                                            errors.length >
+                                                                            0
+                                                                              ? false
+                                                                              : null,
+                                                                          rows:
+                                                                            "3"
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .report
+                                                                              .form
+                                                                              .customer_numbers,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .report
+                                                                                .form,
+                                                                              "customer_numbers",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "report.form.customer_numbers"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "small",
+                                                                  {
+                                                                    staticClass:
+                                                                      "text-danger"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        errors[0]
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        null,
+                                                        true
+                                                      )
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-col",
+                                              {
+                                                attrs: {
+                                                  lg: "6",
+                                                  md: "6",
+                                                  sm: "12",
+                                                  xs: "12"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "b-form-group",
+                                                  {
+                                                    attrs: {
+                                                      label: "Follow Up",
+                                                      "label-for": "follow_up"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("validation-provider", {
+                                                      attrs: {
+                                                        rules: "required",
+                                                        name: "Follow Up",
+                                                        vid: "follow_up"
+                                                      },
+                                                      scopedSlots: _vm._u(
+                                                        [
+                                                          {
+                                                            key: "default",
+                                                            fn: function(ref) {
+                                                              var errors =
+                                                                ref.errors
+                                                              return [
+                                                                _c(
+                                                                  "b-input-group",
+                                                                  {
+                                                                    class:
+                                                                      errors.length ===
+                                                                      0
+                                                                        ? ""
+                                                                        : "is-invalid"
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "b-input-group-prepend",
+                                                                      {
+                                                                        attrs: {
+                                                                          "is-text":
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "feather-icon",
+                                                                          {
+                                                                            attrs: {
+                                                                              icon:
+                                                                                "RefreshCcwIcon"
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "b-form-textarea",
+                                                                      {
+                                                                        attrs: {
+                                                                          id:
+                                                                            "follow_up",
+                                                                          placeholder:
+                                                                            "Follow up",
+                                                                          state:
+                                                                            errors.length >
+                                                                            0
+                                                                              ? false
+                                                                              : null,
+                                                                          rows:
+                                                                            "3"
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .report
+                                                                              .form
+                                                                              .follow_up,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .report
+                                                                                .form,
+                                                                              "follow_up",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "report.form.follow_up"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "small",
+                                                                  {
+                                                                    staticClass:
+                                                                      "text-danger"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        errors[0]
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        null,
+                                                        true
+                                                      )
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-col",
+                                              {
+                                                attrs: {
+                                                  lg: "6",
+                                                  md: "6",
+                                                  sm: "12",
+                                                  xs: "12"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "b-form-group",
+                                                  {
+                                                    attrs: {
+                                                      label: "Results",
+                                                      "label-for": "results"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("validation-provider", {
+                                                      attrs: {
+                                                        rules: "required",
+                                                        name: "Results",
+                                                        vid: "results"
+                                                      },
+                                                      scopedSlots: _vm._u(
+                                                        [
+                                                          {
+                                                            key: "default",
+                                                            fn: function(ref) {
+                                                              var errors =
+                                                                ref.errors
+                                                              return [
+                                                                _c(
+                                                                  "b-input-group",
+                                                                  {
+                                                                    class:
+                                                                      errors.length ===
+                                                                      0
+                                                                        ? ""
+                                                                        : "is-invalid"
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "b-input-group-prepend",
+                                                                      {
+                                                                        attrs: {
+                                                                          "is-text":
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "feather-icon",
+                                                                          {
+                                                                            attrs: {
+                                                                              icon:
+                                                                                "ClipboardIcon"
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "b-form-textarea",
+                                                                      {
+                                                                        attrs: {
+                                                                          id:
+                                                                            "results",
+                                                                          placeholder:
+                                                                            "Results",
+                                                                          state:
+                                                                            errors.length >
+                                                                            0
+                                                                              ? false
+                                                                              : null,
+                                                                          rows:
+                                                                            "3"
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .report
+                                                                              .form
+                                                                              .results,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .report
+                                                                                .form,
+                                                                              "results",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "report.form.results"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "small",
+                                                                  {
+                                                                    staticClass:
+                                                                      "text-danger"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        errors[0]
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        null,
+                                                        true
+                                                      )
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-col",
+                                              {
+                                                attrs: {
+                                                  lg: "6",
+                                                  md: "6",
+                                                  sm: "12",
+                                                  xs: "12"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "b-form-group",
+                                                  {
+                                                    attrs: {
+                                                      label:
+                                                        "Audience Description",
+                                                      "label-for":
+                                                        "audience_description"
+                                                    }
+                                                  },
+                                                  [
+                                                    _c("validation-provider", {
+                                                      attrs: {
+                                                        rules: "required",
+                                                        name:
+                                                          "Audience Description",
+                                                        vid:
+                                                          "audience_description"
+                                                      },
+                                                      scopedSlots: _vm._u(
+                                                        [
+                                                          {
+                                                            key: "default",
+                                                            fn: function(ref) {
+                                                              var errors =
+                                                                ref.errors
+                                                              return [
+                                                                _c(
+                                                                  "b-input-group",
+                                                                  {
+                                                                    class:
+                                                                      errors.length ===
+                                                                      0
+                                                                        ? ""
+                                                                        : "is-invalid"
+                                                                  },
+                                                                  [
+                                                                    _c(
+                                                                      "b-input-group-prepend",
+                                                                      {
+                                                                        attrs: {
+                                                                          "is-text":
+                                                                            ""
+                                                                        }
+                                                                      },
+                                                                      [
+                                                                        _c(
+                                                                          "feather-icon",
+                                                                          {
+                                                                            attrs: {
+                                                                              icon:
+                                                                                "ClipboardIcon"
+                                                                            }
+                                                                          }
+                                                                        )
+                                                                      ],
+                                                                      1
+                                                                    ),
+                                                                    _vm._v(" "),
+                                                                    _c(
+                                                                      "b-form-textarea",
+                                                                      {
+                                                                        attrs: {
+                                                                          id:
+                                                                            "audience_description",
+                                                                          placeholder:
+                                                                            "Audience Description",
+                                                                          state:
+                                                                            errors.length >
+                                                                            0
+                                                                              ? false
+                                                                              : null,
+                                                                          rows:
+                                                                            "3"
+                                                                        },
+                                                                        model: {
+                                                                          value:
+                                                                            _vm
+                                                                              .report
+                                                                              .form
+                                                                              .audience_description,
+                                                                          callback: function(
+                                                                            $$v
+                                                                          ) {
+                                                                            _vm.$set(
+                                                                              _vm
+                                                                                .report
+                                                                                .form,
+                                                                              "audience_description",
+                                                                              $$v
+                                                                            )
+                                                                          },
+                                                                          expression:
+                                                                            "report.form.audience_description"
+                                                                        }
+                                                                      }
+                                                                    )
+                                                                  ],
+                                                                  1
+                                                                ),
+                                                                _vm._v(" "),
+                                                                _c(
+                                                                  "small",
+                                                                  {
+                                                                    staticClass:
+                                                                      "text-danger"
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        errors[0]
+                                                                      )
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ]
+                                                            }
+                                                          }
+                                                        ],
+                                                        null,
+                                                        true
+                                                      )
+                                                    })
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "b-col",
+                                              { attrs: { cols: "12" } },
+                                              [
+                                                _c(
+                                                  "b-container",
+                                                  [
+                                                    _c(
+                                                      "b-row",
+                                                      {
+                                                        staticClass: "mt-1",
+                                                        attrs: {
+                                                          "align-h": "center"
+                                                        }
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "b-button",
+                                                          {
+                                                            directives: [
+                                                              {
+                                                                name: "ripple",
+                                                                rawName:
+                                                                  "v-ripple.400",
+                                                                value:
+                                                                  "rgba(255, 255, 255, 0.15)",
+                                                                expression:
+                                                                  "'rgba(255, 255, 255, 0.15)'",
+                                                                modifiers: {
+                                                                  "400": true
+                                                                }
+                                                              }
+                                                            ],
+                                                            staticClass: "mr-1",
+                                                            attrs: {
+                                                              type: "submit",
+                                                              disabled:
+                                                                _vm.report
+                                                                  .isLoading,
+                                                              variant: "primary"
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm.report.isLoading
+                                                              ? [
+                                                                  _c(
+                                                                    "b-spinner",
+                                                                    {
+                                                                      attrs: {
+                                                                        small:
+                                                                          ""
+                                                                      }
+                                                                    }
+                                                                  ),
+                                                                  _vm._v(
+                                                                    "\n                            Loading...\n                          "
+                                                                  )
+                                                                ]
+                                                              : [
+                                                                  _c(
+                                                                    "feather-icon",
+                                                                    {
+                                                                      staticClass:
+                                                                        "mr-50",
+                                                                      attrs: {
+                                                                        icon:
+                                                                          "SaveIcon"
+                                                                      }
+                                                                    }
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "span",
+                                                                    {
+                                                                      staticClass:
+                                                                        "align-middle"
+                                                                    },
+                                                                    [
+                                                                      _vm._v(
+                                                                        "Submit"
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ]
+                                                          ],
+                                                          2
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "b-button",
+                                                          {
+                                                            directives: [
+                                                              {
+                                                                name: "ripple",
+                                                                rawName:
+                                                                  "v-ripple.400",
+                                                                value:
+                                                                  "rgba(186, 191, 199, 0.15)",
+                                                                expression:
+                                                                  "'rgba(186, 191, 199, 0.15)'",
+                                                                modifiers: {
+                                                                  "400": true
+                                                                }
+                                                              }
+                                                            ],
+                                                            attrs: {
+                                                              variant: "warning"
+                                                            },
+                                                            on: {
+                                                              click: _vm.reset
+                                                            }
+                                                          },
+                                                          [
+                                                            _c("feather-icon", {
+                                                              staticClass:
+                                                                "mr-50",
+                                                              attrs: {
+                                                                icon:
+                                                                  "RefreshCcwIcon"
+                                                              }
+                                                            }),
+                                                            _vm._v(" "),
+                                                            _c(
+                                                              "span",
+                                                              {
+                                                                staticClass:
+                                                                  "align-middle"
+                                                              },
+                                                              [_vm._v("Reset")]
+                                                            )
+                                                          ],
+                                                          1
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                }
+                              }
+                            ])
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ })
+
+}]);

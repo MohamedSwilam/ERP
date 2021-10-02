@@ -189,7 +189,7 @@
                         <validation-provider
                           v-slot="{ errors }"
                           name="National ID"
-                          rules="required|length:16"
+                          rules="required|length:14"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
                             <b-input-group-prepend is-text>

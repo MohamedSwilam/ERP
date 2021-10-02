@@ -2,7 +2,6 @@
 
 namespace App\Modules\Stocks\App\Transformers;
 
-use App\Modules\Statistics\Domain\Models\Report;
 use App\Modules\Stocks\Domain\Models\Stock;
 use League\Fractal\TransformerAbstract;
 

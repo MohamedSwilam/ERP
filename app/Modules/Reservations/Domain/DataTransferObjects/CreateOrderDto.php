@@ -29,6 +29,10 @@ class CreateOrderDto extends DataTransferObject
 
     public array $customers;
 
+    public float $paid;
+
+    public ?float $total;
+
     /**
      * @param CreateOrderRequest $request
      * @return CreateOrderDto
@@ -37,10 +41,13 @@ class CreateOrderDto extends DataTransferObject
     {
         $data = $request->validated();
 
+        $package = Package::find($data['package_id']);
+
         $data['package_id'] = (int) $data['package_id'];
         $data['discount'] = (float) $data['discount'];
 
-        $package = Package::find($data['package_id']);
+        $data['paid'] = (float) $data['paid'];
+        $data['total'] = $package['price'] - $package['price'] * $data['discount'] / 100;
 
         $data['total_hours'] = $package['hours'];
         $data['remaining_hours'] = $package['hours'];

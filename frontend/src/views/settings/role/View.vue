@@ -147,7 +147,7 @@
                     <span class="align-middle">Edit Role</span>
                   </b-button>
                   <b-button
-                    v-if="can('delete_role')"
+                    v-if="can('delete_role') && !role.data.core"
                     v-ripple.400="'rgba(255, 255, 255, 0.15)'"
                     class="ml-1"
                     :disabled="role.isLoadingDelete"

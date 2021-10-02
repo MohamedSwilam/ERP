@@ -9,10 +9,9 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 
 .table .thead-dark th {
     background-color: $primary !important;
-    border-color: #195cff !important;
+    border-color: $primary !important;
 }
-
-.dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
+.dark-layout .table thead.thead-dark th, .dark-layout .table tfoot.thead-dark th {
     color: white !important;
 }
 

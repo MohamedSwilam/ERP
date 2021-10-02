@@ -86,4 +86,14 @@ return [
         'update_stock',
         'delete_stock',
     ],
+    'buffet_order' => [
+        'browse_buffet_order',
+        'view_buffet_order',
+        'create_buffet_order',
+        'update_buffet_order',
+        'delete_buffet_order',
+    ],
+    'statistics' => [
+        'browse_statistics',
+    ],
 ];

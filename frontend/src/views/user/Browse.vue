@@ -2,6 +2,64 @@
   <section>
     <b-row>
       <b-col cols="12">
+        <b-card-actions
+          ref="filterCard"
+          title="Filters"
+          no-actions
+        >
+          <b-row>
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Search"
+                label-for="search"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="SearchIcon" />
+                  </b-input-group-prepend>
+                  <b-form-input
+                    id="search"
+                    v-model="users.search"
+                    placeholder="Search name, email"
+                    @change="browseUsers"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+            <!-- Roles -->
+            <b-col
+              lg="6"
+              md="6"
+              sm="12"
+              xs="12"
+            >
+              <b-form-group
+                label="Filter Roles"
+                label-for="filter_roles"
+              >
+                <b-input-group>
+                  <b-input-group-prepend is-text>
+                    <feather-icon icon="ShieldIcon" />
+                  </b-input-group-prepend>
+                  <b-select
+                    v-model="users.role"
+                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :options="users.roles"
+                    label="text"
+                    @change="browseUsers(1)"
+                  />
+                </b-input-group>
+              </b-form-group>
+            </b-col>
+          </b-row>
+        </b-card-actions>
+      </b-col>
+      <b-col cols="12">
         <b-overlay
           :show="users.isLoading"
           rounded="sm"
@@ -11,20 +69,6 @@
             title="Users List"
             action-collapse
           >
-            <b-modal
-              id="delete-user-modal"
-              title="Are you sure?"
-              ok-only
-              ok-variant="danger"
-              ok-title="Yes, Delete"
-              modal-class="modal-danger"
-              centered
-              no-close-on-backdrop
-            >
-              <b-card-text>
-                You will not be able to retrieve this again!
-              </b-card-text>
-            </b-modal>
             <b-row>
               <b-col
                 cols="6"
@@ -44,24 +88,6 @@
                   />
                   <span class="align-middle">Create User</span>
                 </b-button>
-              </b-col>
-              <b-col
-                cols="6"
-                align-h="center"
-                class="text-right"
-              >
-                <b-input-group style="position: relative;top: 13px;">
-                  <b-input-group-prepend is-text>
-                    <feather-icon icon="SearchIcon" />
-                  </b-input-group-prepend>
-                  <b-form-input
-                    id="search"
-                    v-model="users.search"
-                    size="sm"
-                    placeholder="Search"
-                    @change="browseUsers"
-                  />
-                </b-input-group>
               </b-col>
               <b-col cols="12">
                 <b-table
@@ -188,6 +214,10 @@ export default {
     users: {
       isLoading: false,
       search: '',
+      role: '',
+      roles: [
+        { text: 'All', value: '' },
+      ],
       paginateOptions: [5, 10, 25, 50, 100, 250],
       recordsPerPage: 50,
       fields: [
@@ -210,11 +240,25 @@ export default {
   }),
   mounted() {
     this.browseUsers(this.users.meta.current_page)
+    this.browseRoles()
   },
   methods: {
+    browseRoles() {
+      this.$store.dispatch('rolesAndPermissions/browse', '').then(response => {
+        this.users.roles = [
+          { text: 'All', value: '' },
+          ...response.data.data.map(role => ({
+            text: role.name,
+            value: role.id,
+          })),
+        ]
+      }).catch(error => {
+        console.error(error)
+      })
+    },
     browseUsers(page = 0) {
       this.users.isLoading = true
-      this.$store.dispatch('user/browse', `?paginate=${this.users.recordsPerPage}&page=${page}&filter[search]=${this.users.search}`).then(response => {
+      this.$store.dispatch('user/browse', `?paginate=${this.users.recordsPerPage}&page=${page}&filter[search]=${this.users.search}&filter[role]=${this.users.role}`).then(response => {
         this.users.data = response.data.data
         this.users.meta = response.data.meta.pagination
         this.users.isLoading = false
@@ -260,13 +304,5 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '~@/assets/scss/variables/_variables.scss';
-.table .thead-dark th {
-    background-color: $primary !important;
-    border-color: #195cff !important;
-}
-.dark-layout .table thead.thead-dark th, [dir] .dark-layout .table tfoot.thead-dark th {
-    color: white !important;
-}
+<style>
 </style>

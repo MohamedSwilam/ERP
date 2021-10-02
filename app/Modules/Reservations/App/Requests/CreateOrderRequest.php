@@ -35,7 +35,8 @@ class CreateOrderRequest extends FormRequest
             'customers.*' => [
                 'required',
                 'exists:customers,id'
-            ]
+            ],
+            'paid' => 'required|numeric',
         ];
     }
 }
