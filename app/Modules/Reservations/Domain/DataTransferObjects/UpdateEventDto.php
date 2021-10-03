@@ -7,6 +7,7 @@ namespace App\Modules\Reservations\Domain\DataTransferObjects;
 use App\Modules\Reservations\App\Requests\CreateEventRequest;
 use App\Modules\Reservations\App\Requests\UpdateEventRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Spatie\DataTransferObject\DataTransferObject;
 
 class UpdateEventDto extends DataTransferObject
@@ -27,6 +28,8 @@ class UpdateEventDto extends DataTransferObject
 
     public float $revenue;
 
+    public ?string $marketing_plan;
+
     /**
      * @param UpdateEventRequest $request
      * @return UpdateEventDto
@@ -39,6 +42,8 @@ class UpdateEventDto extends DataTransferObject
         $data['budget'] = (float) $data['budget'];
         $data['expenses'] = (float) $data['expenses'];
         $data['revenue'] = (float) $data['revenue'];
+
+        unset($data['marketing_plan']);
 
         return new self($data);
     }

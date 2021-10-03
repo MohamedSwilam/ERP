@@ -15,7 +15,7 @@ export default {
   },
 
   update(id, data) {
-    return axios.put(`/api/events/${id}`, data)
+    return axios.post(`/api/events/${id}`, data)
   },
 
   delete(id) {

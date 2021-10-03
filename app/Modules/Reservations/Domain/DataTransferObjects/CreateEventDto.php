@@ -38,6 +38,8 @@ class CreateEventDto extends DataTransferObject
 
     public ?string $other_room;
 
+    public ?string $marketing_plan;
+
     /**
      * @param CreateEventRequest $request
      * @return CreateEventDto
@@ -53,6 +55,8 @@ class CreateEventDto extends DataTransferObject
         $data['visit_status_id'] = (int) $data['visit_status_id'];
         if (isset($data['room_id']))
             $data['room_id'] = (int) $data['room_id'];
+
+        unset($data['marketing_plan']);
 
         return new self($data);
     }

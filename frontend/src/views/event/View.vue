@@ -23,8 +23,8 @@
               </b-col>
               <b-col
                 cols="8"
-                lg="4"
-                md="4"
+                lg="10"
+                md="10"
                 sm="10"
                 class="mb-1"
               >
@@ -191,6 +191,27 @@
                 class="mb-1"
               >
                 {{ events.data.room ? events.data.room.name : '-' }}
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
+                <b>Marketing Plan</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                <span v-if="events.data.marketing_plan">
+                  <a :href="events.data.marketing_plan" target="_blank">Click Here To View Marketing Plan</a>
+                </span>
+                <span v-else>-</span>
               </b-col>
               <b-col
                 cols="4"

@@ -3,6 +3,7 @@
 namespace App\Modules\Reservations\App\Transformers;
 
 use App\Modules\Reservations\Domain\Models\Event;
+use Illuminate\Support\Facades\Storage;
 use League\Fractal\TransformerAbstract;
 
 class EventTransformer extends TransformerAbstract
@@ -33,6 +34,8 @@ class EventTransformer extends TransformerAbstract
      */
     public function transform(Event $event)
     {
-        return $event->toArray();
+        $data = $event->toArray();
+        $data['marketing_plan'] = $data['marketing_plan']? Storage::url($event->marketing_plan) : $data['marketing_plan'];
+        return $data;
     }
 }

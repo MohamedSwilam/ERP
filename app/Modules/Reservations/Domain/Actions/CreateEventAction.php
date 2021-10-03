@@ -14,12 +14,16 @@ class CreateEventAction
 
     private CreateEventVisitAction $createEventVisitAction;
 
+    private SaveMarketingPlanFileAction $saveMarketingPlanFileAction;
+
     public function __construct(
         SaveEventAction $saveEventAction,
-        CreateEventVisitAction $createEventVisitAction
+        CreateEventVisitAction $createEventVisitAction,
+        SaveMarketingPlanFileAction $saveMarketingPlanFileAction
     ){
         $this->saveEventAction = $saveEventAction;
         $this->createEventVisitAction = $createEventVisitAction;
+        $this->saveMarketingPlanFileAction = $saveMarketingPlanFileAction;
     }
 
     /**
@@ -28,7 +32,13 @@ class CreateEventAction
      */
     public function __invoke(CreateEventRequest $createEventRequest): Event
     {
-        $event = ($this->saveEventAction)(CreateEventDto::fromRequest($createEventRequest));
+        $data = CreateEventDto::fromRequest($createEventRequest);
+
+        if ($createEventRequest->hasFile('marketing_plan')) {
+            $data->marketing_plan = ($this->saveMarketingPlanFileAction)($createEventRequest->file('marketing_plan'));
+        }
+
+        $event = ($this->saveEventAction)($data);
 
         ($this->createEventVisitAction)($event, (CreateEventDto::fromRequest($createEventRequest)));
 

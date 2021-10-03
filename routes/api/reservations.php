@@ -31,7 +31,10 @@ Route::post('orders/{order}/comments', [OrderCommentController::class, 'store'])
     ->middleware('auth:api');
 
 Route::resource('events', EventController::class)
-    ->except(['edit', 'create'])
+    ->except(['edit', 'update', 'create'])
+    ->middleware('auth:api');
+
+Route::post('events/{event}',[EventController::class, 'update'])
     ->middleware('auth:api');
 
 Route::resource('visits', CustomerVisitController::class)

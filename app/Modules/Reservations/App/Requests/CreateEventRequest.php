@@ -49,6 +49,10 @@ class CreateEventRequest extends FormRequest
             'revenue' => 'required|numeric',
             'other_room' => 'nullable|string|max:255',
             'visit_status_id' => 'required|exists:visit_statuses,id',
+            'marketing_plan' => [
+                'nullable',
+                'max:8192'
+            ],
         ];
     }
 }

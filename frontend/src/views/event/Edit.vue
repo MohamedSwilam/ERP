@@ -286,6 +286,34 @@
                       </b-form-group>
                     </b-col>
 
+                    <!-- Marketing Plan File -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Marketing Plan"
+                        label-for="marketing_plan"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules=""
+                          name="Marketing Plan"
+                          vid="marketing_plan"
+                        >
+                          <!-- Styled -->
+                          <b-form-file
+                            v-model="event.form.marketing_plan"
+                            placeholder="Choose a file or drop it here..."
+                            drop-placeholder="Drop file here..."
+                          />
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
                     <!-- submit and reset -->
                     <b-col cols="12">
                       <b-container>
@@ -370,6 +398,7 @@ export default {
         room_id: null,
         visit_status_id: 1,
         other_room: '',
+        marketing_plan: null,
       },
     },
   }),
@@ -398,6 +427,7 @@ export default {
       this.event.isCardLoading = true
       this.$store.dispatch('events/view', this.$route.params.id).then(response => {
         this.event.form = response.data.data
+        this.event.form.marketing_plan = null
         this.event.isCardLoading = false
       }).catch(error => {
         console.error(error)
@@ -406,9 +436,13 @@ export default {
     },
     editEvent() {
       this.event.isLoading = true
+      const formData = new FormData()
+      Object.keys(this.event.form).forEach(key => {
+        formData.append(key, this.event.form[key])
+      })
       this.$store.dispatch('events/update', {
         id: this.$route.params.id,
-        data: this.event.form,
+        data: formData,
       }).then(response => {
         this.event.isLoading = false
         this.$toast({

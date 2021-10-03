@@ -32,6 +32,10 @@ class UpdateEventRequest extends FormRequest
             'budget' => 'required|numeric',
             'expenses' => 'required|numeric',
             'revenue' => 'required|numeric',
+            'marketing_plan' => [
+                'nullable',
+                'max:8192'
+            ],
         ];
     }
 }

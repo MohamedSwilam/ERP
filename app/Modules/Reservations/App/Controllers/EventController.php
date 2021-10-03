@@ -73,7 +73,7 @@ class EventController extends Controller
     {
         $this->authorize('update', Event::class);
 
-        $updateEventAction($event, UpdateEventDto::fromRequest($request));
+        $updateEventAction($event, UpdateEventDto::fromRequest($request), $request);
 
         return ApiResponse::updateResponse(Event::find($event->id), EventTransformer::class);
     }

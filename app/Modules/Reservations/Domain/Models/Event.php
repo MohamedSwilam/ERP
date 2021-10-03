@@ -29,6 +29,7 @@ class Event extends Model
         'expenses',
         'revenue',
         'room_id',
+        'marketing_plan',
     ];
 
     protected $with = ['room'];
