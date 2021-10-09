@@ -29,13 +29,22 @@ class RoomAvailableRule implements Rule
     public function passes($attribute, $value)
     {
         if (!$value) return true;
-        $visit = CustomerVisit::where([
-          ['room_id', '=', $value],
-          ['date', '=', request()->input('date')],
-          ['start_time', '<=', request()->input('start_time')],
-          ['end_time', '>=', request()->input('end_time')],
-        ])->first();
-
+        if (request()->method() == 'PUT') {
+            $visit = CustomerVisit::where([
+                ['room_id', '=', $value],
+                ['date', '=', request()->input('date')],
+                ['start_time', '<=', request()->input('start_time')],
+                ['end_time', '>=', request()->input('end_time')],
+                ['id', '!=', request()->visit->id]
+            ])->first();
+        } else {
+            $visit = CustomerVisit::where([
+                ['room_id', '=', $value],
+                ['date', '=', request()->input('date')],
+                ['start_time', '<=', request()->input('start_time')],
+                ['end_time', '>=', request()->input('end_time')],
+            ])->first();
+        }
         return !$visit;
     }
 
