@@ -324,7 +324,7 @@
                     v-model="orders.search"
                     size="sm"
                     placeholder="Search"
-                    @change="browseOrders"
+                    @change="browseOrders(1)"
                   />
                 </b-input-group>
               </b-col>
@@ -339,6 +339,10 @@
                   <!-- A virtual column -->
                   <template #cell(index)="data">
                     {{ orders.meta.current_page * orders.recordsPerPage - orders.recordsPerPage + data.index + 1 }}
+                  </template>
+                  <!-- A virtual column -->
+                  <template #cell(id)="data">
+                    #TKB{{ data.item.id }}
                   </template>
                   <template #cell(customers)="data">
                     <router-link
@@ -887,6 +891,7 @@ export default {
       recordsPerPage: 50,
       fields: [
         { key: 'index', label: '#' },
+        { key: 'id', label: 'ID' },
         { key: 'total_hours', label: 'Total Hours' },
         { key: 'remaining_hours', label: 'Remaining Hours' },
         { key: 'customers', label: 'Customer(s)' },

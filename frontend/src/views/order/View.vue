@@ -23,8 +23,8 @@
               </b-col>
               <b-col
                 cols="8"
-                lg="4"
-                md="4"
+                lg="10"
+                md="10"
                 sm="10"
                 class="mb-1"
               >
@@ -188,6 +188,24 @@
                 class="mb-1"
               >
                 {{ orders.data.seller }}
+              </b-col>
+              <b-col
+                cols="4"
+                lg="2"
+                md="2"
+                sm="2"
+                class="mb-1"
+              >
+                <b>Payment Type</b>
+              </b-col>
+              <b-col
+                cols="8"
+                lg="4"
+                md="4"
+                sm="10"
+                class="mb-1"
+              >
+                {{ orders.data.payment_type ? orders.data.payment_type : '-' }}
               </b-col>
               <b-col
                 cols="4"

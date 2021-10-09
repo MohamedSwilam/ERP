@@ -27,7 +27,7 @@
             </b-modal>
             <b-row>
               <b-col
-                cols="6"
+                cols="12"
                 align-h="center"
               >
                 <b-button
@@ -47,7 +47,7 @@
               <b-col
                 cols="6"
                 align-h="center"
-                class="text-right mb-2"
+                class="mb-2"
               >
                 <b-input-group style="position: relative;top: 13px;">
                   <b-input-group-prepend is-text>
@@ -61,6 +61,24 @@
                     @change="browseBuffetOrders"
                   />
                 </b-input-group>
+              </b-col>
+              <b-col
+                cols="6"
+                class="text-right"
+                align-h="center"
+              >
+                <b-button
+                  v-ripple.400="'rgba(255,255,255,0.15)'"
+                  size="sm"
+                  variant="primary"
+                  @click="exportCsv"
+                >
+                  <feather-icon
+                    icon="FileIcon"
+                    class="mr-50"
+                  />
+                  <span class="align-middle">Export CSV</span>
+                </b-button>
               </b-col>
               <b-col cols="12">
                 <b-table
@@ -202,6 +220,8 @@
 <script>
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import Ripple from 'vue-ripple-directive'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ExportToCsv } from 'export-to-csv'
 
 export default {
   name: 'BrowseOrders',
@@ -287,6 +307,28 @@ export default {
       const total = order.stocks.reduce((a, b) => +a + +(b.sale_price * b.pivot.quantity), 0)
       // eslint-disable-next-line no-mixed-operators
       return total - total * order.discount / 100
+    },
+    exportCsv() {
+      const csvExporter = new ExportToCsv({
+        fieldSeparator: ',',
+        quoteStrings: '"',
+        decimalSeparator: '.',
+        showLabels: true,
+        showTitle: true,
+        title: 'Buffet Orders List',
+        useTextFile: false,
+        useBom: true,
+        useKeysAsHeaders: true,
+      })
+
+      csvExporter.generateCsv(this.buffetOrders.data.map(order => ({
+        Id: order.id,
+        Customer: `#TKB${order.customer.id} - ${order.customer.name}`,
+        Stocks: order.stocks.map(stock => `${stock.name} x ${stock.pivot.quantity}`).join(', '),
+        Discount: order.discount,
+        Total: order.total,
+        'Created At': new Date(order.created_at).toDateString(),
+      })))
     },
   },
 }

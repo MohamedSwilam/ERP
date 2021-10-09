@@ -11,6 +11,8 @@ class UpdateOrderDto extends DataTransferObject
 {
     public string $seller;
 
+    public ?string $payment_type;
+
     public float $paid;
 
     /**

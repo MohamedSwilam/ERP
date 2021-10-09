@@ -28,6 +28,7 @@ class CreateOrderRequest extends FormRequest
             'starts_at' => 'required|date',
             'discount' => 'required|numeric|between:0,100',
             'seller' => 'required|string|max:255',
+            'payment_type' => 'required|string|max:255',
             'customers' => [
                 'required',
                 'array'

@@ -25,6 +25,8 @@ class CreateOrderDto extends DataTransferObject
 
     public string $seller;
 
+    public ?string $payment_type;
+
     public int $created_by;
 
     public array $customers;

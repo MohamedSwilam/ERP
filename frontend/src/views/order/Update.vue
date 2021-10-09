@@ -85,6 +85,38 @@
                       </b-form-group>
                     </b-col>
 
+                    <!-- Payment Type -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Payment Type"
+                        label-for="payment_type"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          name="Payment Type"
+                          rules="required"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="CreditCardIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              v-model="order.form.payment_type"
+                              min="0"
+                              :state="errors.length > 0 ? false:null"
+                              placeholder="Payment type"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
                     <b-col cols="6">
                       <h1><b>Total</b></h1>
                       {{ order.total }} EGP
@@ -158,6 +190,7 @@ export default {
       form: {
         paid: 0,
         seller: '',
+        payment_type: '',
       },
     },
   }),
@@ -170,6 +203,7 @@ export default {
       this.$store.dispatch('orders/view', this.$route.params.id).then(response => {
         this.order.form.seller = response.data.data.seller
         this.order.form.paid = response.data.data.paid
+        this.order.form.payment_type = response.data.data.payment_type
         this.order.total = response.data.data.total
         this.order.isCardLoading = false
       }).catch(error => {

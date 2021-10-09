@@ -4,10 +4,11 @@
 
       <!-- Brand logo-->
       <b-link class="brand-logo">
-        <vuexy-logo />
-        <h2 class="brand-text text-primary ml-1">
-          Tktbosherp
-        </h2>
+        <b-img
+          alt="logo"
+          :src="require('@/assets/images/logo/logo.png')"
+          style="position:relative;top:-50px;max-width: 300px;"
+        />
       </b-link>
       <!-- /Brand logo-->
 

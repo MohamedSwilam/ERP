@@ -31,6 +31,7 @@ class Order extends Model
         'seller',
         'paid',
         'total',
+        'payment_type',
         'created_by',
     ];
 

@@ -235,6 +235,12 @@
                   <template #cell(price)="data">
                     {{ data.item.package.price }}
                   </template>
+                  <template #cell(discount)="data">
+                    {{ data.item.discount }}%
+                  </template>
+                  <template #cell(remaining)="data">
+                    {{ data.item.total - data.item.paid }}
+                  </template>
                   <template #cell(created_at)="data">
                     {{ data.item.created_at | date(true) }}
                     <br>
@@ -318,6 +324,7 @@
 <script>
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import Ripple from 'vue-ripple-directive'
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ExportToCsv } from 'export-to-csv'
 
 export default {
@@ -351,6 +358,9 @@ export default {
         { key: 'customers', label: 'Customer(s)' },
         { key: 'package', label: 'Package' },
         { key: 'price', label: 'Price' },
+        { key: 'discount', label: 'Discount' },
+        { key: 'total', label: 'Total' },
+        { key: 'remaining', label: 'Remaining' },
         { key: 'total_hours', label: 'Total Hours' },
         { key: 'remaining_hours', label: 'Remaining Hours' },
         { key: 'seller', label: 'Sales' },

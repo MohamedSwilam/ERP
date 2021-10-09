@@ -7,7 +7,7 @@
         </h1>
       </b-col>
     </b-row>
-    <b-row v-if="can('browse_statistics')">
+    <b-row v-if="can('browse_statistics') && can('browse_home')">
       <b-col
         lg="4"
         md="4"
@@ -108,7 +108,7 @@
         />
       </b-col>
     </b-row>
-    <b-row>
+    <b-row v-if="can('browse_home')">
       <b-col
         lg="6"
         md="12"
@@ -308,7 +308,7 @@
         </b-overlay>
       </b-col>
     </b-row>
-    <b-row>
+    <b-row v-if="can('browse_home')">
       <b-col cols="12">
         <div class="app-calendar overflow-hidden border">
           <full-calendar
@@ -381,10 +381,12 @@ export default {
     },
   },
   mounted() {
-    this.browseCustomers(this.customers.meta.current_page)
-    this.fetchEvents()
-    if (this.can('browse_statistics')) {
-      this.browseStatistics()
+    if (this.can('browse_home')) {
+      this.browseCustomers(this.customers.meta.current_page)
+      this.fetchEvents()
+      if (this.can('browse_statistics')) {
+        this.browseStatistics()
+      }
     }
   },
   methods: {

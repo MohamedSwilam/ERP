@@ -21,7 +21,7 @@ class OrderQueryBuilder extends QueryBuilder
 
         if ($request->input('customer')) {
             $query->whereHas('customers', function($q) use($request) {
-                $q->where('id', $request->input('customer'));
+                $q->where('customer_id', $request->input('customer'));
             })->get();
         }
 
@@ -36,6 +36,7 @@ class OrderQueryBuilder extends QueryBuilder
         $this
             ->allowedFilters([
                 AllowedFilter::custom('search', new FuzzyFilter(
+                    'id',
                     'total_hours',
                     'remaining_hours',
                     'starts_at',

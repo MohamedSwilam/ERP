@@ -26,6 +26,7 @@ class UpdateOrderRequest extends FormRequest
         return [
             'seller' => 'required|string|max:255',
             'paid' => 'required|numeric',
+            'payment_type' => 'required|string|max:255',
         ];
     }
 }

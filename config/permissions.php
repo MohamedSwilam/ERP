@@ -96,4 +96,7 @@ return [
     'statistics' => [
         'browse_statistics',
     ],
+    'home' => [
+        'browse_home',
+    ],
 ];
