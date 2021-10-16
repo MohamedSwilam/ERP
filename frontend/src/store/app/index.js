@@ -36,6 +36,9 @@ export default {
         case 403:
           await router.push('/error-403')
           break
+        case 404:
+          await router.push('/error-404')
+          break
         default:
           payload.reject(payload.error)
       }

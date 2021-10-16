@@ -48,7 +48,7 @@
                   <b-form-input
                     id="search_customer"
                     v-model="orders.search_customer"
-                    placeholder="Search customer id, name"
+                    placeholder="Search customer id, name, phone"
                     @change="browseOrders(1)"
                   />
                 </b-input-group>

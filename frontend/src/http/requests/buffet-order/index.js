@@ -20,4 +20,8 @@ export default {
   delete(id) {
     return axios.delete(`/api/buffet-orders/${id}`)
   },
+
+  statistics(filters) {
+    return axios.get(`/api/buffet-orders/statistics${filters}`)
+  },
 }

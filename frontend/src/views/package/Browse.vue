@@ -25,7 +25,7 @@
                   <b-form-input
                     id="search_order"
                     v-model="packages.search"
-                    placeholder="Search title, host"
+                    placeholder="Search name, price"
                     @change="browsePackages(1)"
                   />
                 </b-input-group>
@@ -194,6 +194,9 @@
                   </template>
                   <template #cell(type)="data">
                     {{ data.item.package_type ? data.item.package_type.name : '-' }}
+                  </template>
+                  <template #cell(price)="data">
+                    {{ data.item.price }} {{ data.item.is_flexible ? ' / hour' : '' }}
                   </template>
                   <template #cell(membership)="data">
                     <b-badge :variant="data.item.membership ? 'success' : 'danger'">

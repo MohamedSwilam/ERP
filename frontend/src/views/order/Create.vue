@@ -84,6 +84,7 @@
                               :options="order.package_types"
                               label="text"
                               :state="errors.length > 0 ? false:null"
+                              @change="order.form.package_id = null"
                             />
                           </b-input-group>
                           <small class="text-danger">{{ errors[0] }}</small>
@@ -124,6 +125,42 @@
                               label="text"
                               :state="errors.length > 0 ? false:null"
                               @change="packageSelected"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+
+                    <!-- Hours -->
+                    <b-col
+                      v-if="order.form.package_id && order.packages.filter(pack => pack.id === order.form.package_id)[0].is_flexible"
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Hours"
+                        label-for="hours"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules="required"
+                          name="Hours"
+                          vid="hours"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="ClockIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              id="hours"
+                              v-model.number="order.form.total_hours"
+                              type="number"
+                              min="1"
+                              :state="errors.length > 0 ? false:null"
+                              placeholder="Hours"
                             />
                           </b-input-group>
                           <small class="text-danger">{{ errors[0] }}</small>
@@ -387,15 +424,18 @@ export default {
         paid: 0,
         seller: '',
         payment_type: '',
+        total_hours: 1,
       },
     },
   }),
   computed: {
     totalPrice() {
       if (this.order.form.package_id) {
-        const { price } = this.order.packages.filter(packageInfo => packageInfo.id === this.order.form.package_id)[0]
+        const { price, is_flexible } = this.order.packages.filter(packageInfo => packageInfo.id === this.order.form.package_id)[0]
+        // eslint-disable-next-line camelcase
+        const hoursMultiplication = is_flexible === 1 ? this.order.form.total_hours : 1
         // eslint-disable-next-line no-mixed-operators
-        return price - price * this.order.form.discount / 100
+        return (price - price * this.order.form.discount / 100) * hoursMultiplication
       }
       return 0
     },

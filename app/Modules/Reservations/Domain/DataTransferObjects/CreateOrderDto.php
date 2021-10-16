@@ -49,10 +49,13 @@ class CreateOrderDto extends DataTransferObject
         $data['discount'] = (float) $data['discount'];
 
         $data['paid'] = (float) $data['paid'];
-        $data['total'] = $package['price'] - $package['price'] * $data['discount'] / 100;
 
-        $data['total_hours'] = $package['hours'];
-        $data['remaining_hours'] = $package['hours'];
+        $multiplicationAmount = $package['is_flexible'] ? (int)$data['total_hours'] : 1;
+
+        $data['total'] = ($package['price'] - $package['price'] * $data['discount'] / 100) * $multiplicationAmount;
+
+        $data['total_hours'] = $package['is_flexible'] ? (int)$data['total_hours'] : $package['hours'];
+        $data['remaining_hours'] = $package['is_flexible'] ? (int)$data['total_hours'] : $package['hours'];
 
         $data['starts_at'] = Carbon::make($data['starts_at'])->toDateTimeString();
         $data['expires_at'] = Carbon::make($data['starts_at'])->addHours($package['expiration_in_hours'])->toDateTimeString();

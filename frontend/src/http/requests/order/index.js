@@ -34,4 +34,8 @@ export default {
   createComment(id, data) {
     return axios.post(`/api/orders/${id}/comments`, data)
   },
+
+  statistics(filters) {
+    return axios.get(`/api/orders/statistics${filters}`)
+  },
 }

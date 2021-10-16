@@ -28,6 +28,7 @@ class UpdatePackageRequest extends FormRequest
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'membership' => 'bool',
+            'is_flexible' => 'bool',
             'price' => [
                 'required',
                 'numeric'

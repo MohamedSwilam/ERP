@@ -17,6 +17,8 @@ class CreatePackageDto extends DataTransferObject
 
     public ?bool $membership;
 
+    public ?bool $is_flexible;
+
     public float $price;
 
     public float $tax;
@@ -41,6 +43,7 @@ class CreatePackageDto extends DataTransferObject
 
         $data['package_type_id'] = (int) $data['package_type_id'];
         $data['membership'] = (bool) $data['membership'];
+        $data['is_flexible'] = (bool) $data['is_flexible'];
         $data['price'] = (float) $data['price'];
         $data['tax'] = (float) $data['tax'];
         $data['hours'] = (int) $data['hours'];

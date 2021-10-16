@@ -128,5 +128,18 @@ export default {
           .catch(error => dispatch('app/handleError', { reject, error }, { root: true }))
       })
     },
+
+    /**
+       *
+       * @param store
+       * @return {Promise<unknown>}
+       */
+    statistics({ dispatch }, payload) {
+      return new Promise((resolve, reject) => {
+        httpResource.statistics(payload)
+          .then(response => resolve(response))
+          .catch(error => dispatch('app/handleError', { reject, error }, { root: true }))
+      })
+    },
   },
 }

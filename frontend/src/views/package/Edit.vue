@@ -149,7 +149,7 @@
                       xs="12"
                     >
                       <b-form-group
-                        label="Price"
+                        :label="packages.form.is_flexible ? 'Price per hour' : 'Price'"
                         label-for="price"
                       >
                         <validation-provider
@@ -229,9 +229,17 @@
                               v-model="packages.form.hours"
                               type="number"
                               :state="errors.length > 0 ? false:null"
+                              :disabled="packages.form.is_flexible"
                               placeholder="Hours"
                             />
                           </b-input-group>
+                          <b-form-checkbox
+                            v-model="packages.form.is_flexible"
+                            class="mt-1"
+                            @change="packages.form.hours = 0"
+                          >
+                            Flexible Hours
+                          </b-form-checkbox><br>
                           <small class="text-danger">{{ errors[0] }}</small>
                         </validation-provider>
                       </b-form-group>
@@ -442,6 +450,7 @@ export default {
         customer_type_id: null,
         customers_to_reserve: 1,
         package_type_id: null,
+        is_flexible: false,
       },
     },
   }),
@@ -508,6 +517,8 @@ export default {
       this.$store.dispatch('packages/view', this.$route.params.id).then(response => {
         this.packages.form = response.data.data
         this.packages.selectedRooms = response.data.data.rooms.map(room => ({ value: room.id, text: room.name }))
+        this.packages.form.membership = !!response.data.data.membership
+        this.packages.form.is_flexible = !!response.data.data.is_flexible
         this.packages.isCardLoading = false
       }).catch(error => {
         console.error(error)

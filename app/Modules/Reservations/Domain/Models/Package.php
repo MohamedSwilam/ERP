@@ -30,6 +30,7 @@ class Package extends Model
         'expiration_in_hours',
         'customers_to_reserve',
         'customer_type_id',
+        'is_flexible',
     ];
 
     protected $with = ['rooms', 'packageType', 'customerType'];

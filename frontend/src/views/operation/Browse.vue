@@ -48,7 +48,7 @@
                   <b-form-input
                     id="search_customer"
                     v-model="orders.search_customer"
-                    placeholder="Search customer id, name"
+                    placeholder="Search customer id, name, phone"
                     @change="browseOrders(1)"
                   />
                 </b-input-group>
@@ -127,6 +127,78 @@
             </b-col>
           </b-row>
         </b-card-actions>
+      </b-col>
+      <b-col cols-12>
+        <b-row>
+          <b-col
+            lg="3"
+            md="3"
+            sm="6"
+            xs="6"
+          >
+            <b-overlay
+              :show="statistics.isLoading"
+              rounded="sm"
+            >
+              <statistic-card-horizontal
+                icon="ShoppingBagIcon"
+                :statistic="statistics.data.count"
+                statistic-title="Orders"
+              />
+            </b-overlay>
+          </b-col>
+          <b-col
+            lg="3"
+            md="3"
+            sm="6"
+            xs="6"
+          >
+            <b-overlay
+              :show="statistics.isLoading"
+              rounded="sm"
+            >
+              <statistic-card-horizontal
+                icon="DollarSignIcon"
+                :statistic="statistics.data.totalSales"
+                statistic-title="Total Sales"
+              />
+            </b-overlay>
+          </b-col>
+          <b-col
+            lg="3"
+            md="3"
+            sm="6"
+            xs="6"
+          >
+            <b-overlay
+              :show="statistics.isLoading"
+              rounded="sm"
+            >
+              <statistic-card-horizontal
+                icon="DollarSignIcon"
+                :statistic="statistics.data.totalPaid"
+                statistic-title="Total Paid"
+              />
+            </b-overlay>
+          </b-col>
+          <b-col
+            lg="3"
+            md="3"
+            sm="6"
+            xs="6"
+          >
+            <b-overlay
+              :show="statistics.isLoading"
+              rounded="sm"
+            >
+              <statistic-card-horizontal
+                icon="DollarSignIcon"
+                :statistic="statistics.data.totalSales - statistics.data.totalPaid"
+                statistic-title="Total Remaining"
+              />
+            </b-overlay>
+          </b-col>
+        </b-row>
       </b-col>
       <b-col cols="12">
         <b-overlay
@@ -326,13 +398,25 @@ import ToastificationContent from '@core/components/toastification/Toastificatio
 import Ripple from 'vue-ripple-directive'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ExportToCsv } from 'export-to-csv'
+import StatisticCardHorizontal from '@core/components/statistics-cards/StatisticCardHorizontal.vue'
 
 export default {
   name: 'BrowseOrders',
+  components: {
+    StatisticCardHorizontal,
+  },
   directives: {
     Ripple,
   },
   data: () => ({
+    statistics: {
+      isLoading: false,
+      data: {
+        count: 0,
+        totalSales: 0,
+        totalPaid: 0,
+      },
+    },
     orders: {
       isLoading: false,
       search: '',
@@ -384,6 +468,17 @@ export default {
     this.browsePackageTypes()
   },
   methods: {
+    browseStatistics() {
+      this.statistics.isLoading = true
+      this.$store.dispatch('orders/statistics', `?paginate=${this.orders.recordsPerPage}&page=${this.orders.meta.current_page}&filter[customer_filter]=${this.orders.search}&filter[customer_filter]=${this.orders.search_customer}&filter[package_type]=${this.orders.package_type}&filter[from]=${this.orders.from}&filter[to]=${this.orders.to}&sort=${this.orders.sort.desc ? '-' : ''}${this.orders.sort.by}&lastVisit=true&lastComment=true`)
+        .then(response => {
+          this.statistics.data = response.data.data
+          this.statistics.isLoading = false
+        }).catch(error => {
+          console.error(error)
+          this.statistics.isLoading = false
+        })
+    },
     browsePackageTypes() {
       this.$store.dispatch('seed/browsePackageTypes', '').then(response => {
         this.orders.package_types = [
@@ -405,6 +500,7 @@ export default {
           this.orders.data = response.data.data
           this.orders.meta = response.data.meta.pagination
           this.orders.isLoading = false
+          this.browseStatistics()
         }).catch(error => {
           console.error(error)
           this.orders.isLoading = false

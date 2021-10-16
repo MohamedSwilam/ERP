@@ -2,10 +2,10 @@
   <!-- Error page-->
   <div class="misc-wrapper">
     <b-link class="brand-logo">
-      <vuexy-logo />
-      <h2 class="brand-text text-primary ml-1">
-        Vuexy
-      </h2>
+      <img
+        alt="Tktbosh Logo"
+        :src="require('@/assets/images/logo/logo.png')"
+      >
     </b-link>
 
     <div class="misc-inner p-2 p-sm-3">
@@ -40,12 +40,10 @@
 <script>
 /* eslint-disable global-require */
 import { BLink, BButton, BImg } from 'bootstrap-vue'
-import VuexyLogo from '@core/layouts/components/Logo.vue'
 import store from '@/store/index'
 
 export default {
   components: {
-    VuexyLogo,
     BLink,
     BButton,
     BImg,
@@ -69,5 +67,15 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@core/scss/vue/pages/page-misc.scss';
+@import '~@core/scss/vue/pages/page-misc.scss';
+
+//.misc-wrapper .brand-logo {
+//    position: relative;
+//    top: unset;
+//    left: unset;
+//}
+
+.misc-wrapper .brand-logo img {
+    max-width: 200px;
+}
 </style>

@@ -223,7 +223,7 @@
                 sm="10"
                 class="mb-1"
               >
-                {{ orders.data.discount }}
+                {{ orders.data.discount }}%
               </b-col>
               <b-col
                 cols="4"
@@ -958,9 +958,10 @@ export default {
       doc.text('CUSTOMER ID', 10, 63)
       doc.text('Mr/Mrs', 10, 69)
       doc.setFontSize(10)
-      doc.text('1', 70, 45)
+      const invoiceNo = `${order.id - 999}`
+      doc.text('0000'.substring(0, 4 - invoiceNo.length) + invoiceNo, 70, 45)
       doc.text(`#TK${order.id}`, 70, 51)
-      doc.text(new Date(order.created_at).toDateString(), 70, 57)
+      doc.text(new Date().toDateString(), 70, 57)
       doc.text(order.customers.map(customer => `#TKB${customer.id}`).join(', '), 70, 63)
       doc.text(order.customers.map(customer => customer.name).join(', '), 70, 69)
       doc.autoTableSetDefaults({
@@ -985,19 +986,20 @@ export default {
         showHead: 'everyPage',
       })
       doc.autoTable({
-        head: [['Description', 'Quantity', 'Unit Price', 'Discount', 'Total']],
+        head: [['Description', 'Quantity', 'Unit Price', 'Discount', 'Total Amount', 'Total Paid']],
         body: [
           [
             `${order.package.name} (${order.package.package_type.name})`,
             1,
             // eslint-disable-next-line no-mixed-operators
-            order.total * 100 / order.discount,
+            order.total / (1 - (order.discount / 100)),
             `${order.discount}%`,
             `${order.total} EGP`,
+            `${order.paid} EGP`,
           ],
           [
-            '', '', '', 'Total',
-            `${order.total} EGP`,
+            '', '', '', '', 'Total',
+            `${order.paid} EGP`,
           ],
         ],
         startY: 85,

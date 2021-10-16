@@ -26,6 +26,7 @@ class CreateOrderRequest extends FormRequest
         return [
             'package_id' => 'required|exists:packages,id',
             'starts_at' => 'required|date',
+            'total_hours' => 'required',
             'discount' => 'required|numeric|between:0,100',
             'seller' => 'required|string|max:255',
             'payment_type' => 'required|string|max:255',

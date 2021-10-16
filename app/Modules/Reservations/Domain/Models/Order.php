@@ -11,10 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -63,7 +64,7 @@ class Order extends Model
      */
     public function customers(): BelongsToMany
     {
-        return $this->belongsToMany(Customer::class, 'order_customers', 'order_id', 'customer_id');
+        return $this->belongsToMany(Customer::class, 'order_customers', 'order_id', 'customer_id')->withTrashed();
     }
 
     /**
@@ -93,6 +94,7 @@ class Order extends Model
             ->whereHas('customers', function (Builder $q) use ($value) {
                 $q->where('customer_id', $value);
                 $q->orWhere('name', 'LIKE', "%$value%");
+                $q->orWhere('phone', 'LIKE', "%$value%");
             });
     }
 

@@ -102,7 +102,7 @@
                 sm="10"
                 class="mb-1"
               >
-                {{ packages.data.price }}
+                {{ packages.data.price }} <span v-if="packages.data.is_flexible">/ hour</span>
               </b-col>
               <b-col
                 cols="4"
@@ -181,7 +181,8 @@
                 sm="10"
                 class="mb-1"
               >
-                {{ packages.data.hours }}
+                <span v-if="packages.data.is_flexible">Flexible Hours</span>
+                <span v-else>{{ packages.data.hours }}</span>
               </b-col>
               <b-col
                 cols="4"

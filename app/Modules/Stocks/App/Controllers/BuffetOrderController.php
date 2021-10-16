@@ -92,4 +92,20 @@ class BuffetOrderController extends Controller
 
         return ApiResponse::deleteResponse();
     }
+
+    /**
+     * @param Request $request
+     * @param BuffetOrderQueryBuilder $buffetOrderQueryBuilder
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function statistics(Request $request, BuffetOrderQueryBuilder $buffetOrderQueryBuilder): JsonResponse
+    {
+        $this->authorize('browse', BuffetOrder::class);
+
+        return ApiResponse::setData([
+            'count' => $buffetOrderQueryBuilder->count(),
+            'totalAmount' => $buffetOrderQueryBuilder->sum('total'),
+        ])->execute();
+    }
 }

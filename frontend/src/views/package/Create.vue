@@ -18,7 +18,6 @@
               >
                 <b-form @submit.prevent="handleSubmit(createPackage)">
                   <b-row>
-
                     <!-- Package Types -->
                     <b-col
                       lg="6"
@@ -149,7 +148,7 @@
                       xs="12"
                     >
                       <b-form-group
-                        label="Price"
+                        :label="packages.form.is_flexible ? 'Price per hour' : 'Price'"
                         label-for="price"
                       >
                         <validation-provider
@@ -229,9 +228,17 @@
                               v-model="packages.form.hours"
                               type="number"
                               :state="errors.length > 0 ? false:null"
+                              :disabled="packages.form.is_flexible"
                               placeholder="Hours"
                             />
                           </b-input-group>
+                          <b-form-checkbox
+                            v-model="packages.form.is_flexible"
+                            class="mt-1"
+                            @change="packages.form.hours = 0"
+                          >
+                            Flexible Hours
+                          </b-form-checkbox><br>
                           <small class="text-danger">{{ errors[0] }}</small>
                         </validation-provider>
                       </b-form-group>
@@ -442,6 +449,7 @@ export default {
         customer_type_id: null,
         customers_to_reserve: 1,
         package_type_id: null,
+        is_flexible: false,
       },
     },
   }),

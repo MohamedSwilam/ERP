@@ -92,4 +92,21 @@ class OrderController extends Controller
 
         return ApiResponse::deleteResponse();
     }
+
+    /**
+     * @param Request $request
+     * @param OrderQueryBuilder $orderQueryBuilder
+     * @return JsonResponse
+     * @throws AuthorizationException
+     */
+    public function statistics(Request $request, OrderQueryBuilder $orderQueryBuilder): JsonResponse
+    {
+        $this->authorize('browse', Order::class);
+
+        return ApiResponse::setData([
+            'count' => $orderQueryBuilder->count(),
+            'totalSales' => $orderQueryBuilder->sum('total'),
+            'totalPaid' => $orderQueryBuilder->sum('paid'),
+        ])->execute();
+    }
 }

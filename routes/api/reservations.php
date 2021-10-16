@@ -20,6 +20,9 @@ Route::get('package-types', [PackageTypeController::class, 'index'])
 Route::get('rooms', [RoomController::class, 'index'])
     ->middleware('auth:api');
 
+Route::get('orders/statistics', [OrderController::class, 'statistics'])
+    ->middleware('auth:api');
+
 Route::resource('orders', OrderController::class)
     ->except(['edit', 'create'])
     ->middleware('auth:api');

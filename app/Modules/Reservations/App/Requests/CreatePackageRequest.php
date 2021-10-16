@@ -50,6 +50,7 @@ class CreatePackageRequest extends FormRequest
             ],
             'customer_type_id' => 'nullable|exists:customer_types,id',
             'rooms' => 'required',
+            'is_flexible' => 'required|bool',
             'rooms.*' => [
                 'required',
                 'exists:rooms,id'
