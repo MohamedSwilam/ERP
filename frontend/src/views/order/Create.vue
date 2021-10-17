@@ -524,7 +524,7 @@ export default {
 
     browsePackages() {
       this.order.isCardLoading = true
-      this.$store.dispatch('packages/browse', '')
+      this.$store.dispatch('packages/browse', '?paginate=10000&page=1')
         .then(response => {
           this.order.packages = this.reformatPackagesData(response.data.data)
           console.log(response.data.data)

@@ -601,7 +601,7 @@ export default {
     },
 
     browseCustomerOrders() {
-      this.$store.dispatch('orders/browse', `?customer=${this.eventLocal.selectedCustomer.id}`)
+      this.$store.dispatch('orders/browse', `?customer=${this.eventLocal.selectedCustomer.id}&paginate=10000&page=1`)
         .then(response => {
           this.eventLocal.orders = this.reformatOrdersData(response.data.data)
         }).catch(error => {
