@@ -24,6 +24,8 @@ class CustomerQueryBuilder extends QueryBuilder
                     'id',
                     'name',
                     'phone',
+                    'date_of_birth',
+                    'next_follow_up',
                     'email',
                     'national_id',
                 )),

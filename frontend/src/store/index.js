@@ -19,6 +19,8 @@ import events from './event'
 import visits from './visit'
 import reports from './report'
 import accounting from './accounting'
+import employers from './employer'
+import suppliers from './supplier'
 import stock from './stock'
 import buffetOrder from './buffet-order'
 import comment from './comment'
@@ -46,6 +48,8 @@ export default new Vuex.Store({
     visits,
     reports,
     accounting,
+    employers,
+    suppliers,
     stock,
     buffetOrder,
     comment,

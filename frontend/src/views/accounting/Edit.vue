@@ -320,7 +320,6 @@ export default {
     accounting: {
       isCardLoading: false,
       isLoading: false,
-      accounting_types: [],
       form: {
         utilities: 0,
         monthly_rent: 0,

@@ -614,6 +614,102 @@ const router = new VueRouter({
       },
     },
     // =============================================================================
+    // EMPLOYER ROUTES
+    // =============================================================================
+    {
+      path: '/employers',
+      name: 'browse-employer',
+      component: () => import('../views/accounting/employer/Browse.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Employer', to: '/employers', active: true },
+        ],
+        pageTitle: 'Employer',
+        permission: 'browse_employer',
+      },
+    },
+    {
+      path: '/employers/create',
+      name: 'create-employer',
+      component: () => import('../views/accounting/employer/Create.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Employer', to: '/employers', active: false },
+          { text: 'Create Employer', to: '/employers/create', active: true },
+        ],
+        pageTitle: 'Create Employer',
+        permission: 'create_employer',
+      },
+    },
+    {
+      path: '/employers/:id/edit',
+      name: 'edit-employer',
+      component: () => import('../views/accounting/employer/Update.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Employer', to: '/employers', active: false },
+          { text: 'Details', to: '/employers/:id', active: false },
+          { text: 'Edit', active: true },
+        ],
+        pageTitle: 'Edit Employer',
+        permission: 'update_employer',
+      },
+    },
+    // =============================================================================
+    // SUPPLIER ROUTES
+    // =============================================================================
+    {
+      path: '/suppliers',
+      name: 'browse-supplier',
+      component: () => import('../views/accounting/supplier/Browse.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Supplier', to: '/suppliers', active: true },
+        ],
+        pageTitle: 'Supplier',
+        permission: 'browse_supplier',
+      },
+    },
+    {
+      path: '/suppliers/create',
+      name: 'create-supplier',
+      component: () => import('../views/accounting/supplier/Create.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Supplier', to: '/suppliers', active: false },
+          { text: 'Create Supplier', to: '/suppliers/create', active: true },
+        ],
+        pageTitle: 'Create Supplier',
+        permission: 'create_supplier',
+      },
+    },
+    {
+      path: '/suppliers/:id/edit',
+      name: 'edit-supplier',
+      component: () => import('../views/accounting/supplier/Update.vue'),
+      beforeEnter: guard,
+      meta: {
+        breadcrumb: [
+          { text: 'Home', to: '/', active: false },
+          { text: 'Supplier', to: '/suppliers', active: false },
+          { text: 'Details', to: '/suppliers/:id', active: false },
+          { text: 'Edit', active: true },
+        ],
+        pageTitle: 'Edit Supplier',
+        permission: 'update_supplier',
+      },
+    },
+    // =============================================================================
     // OPERATIONS ROUTES
     // =============================================================================
     {
@@ -627,7 +723,7 @@ const router = new VueRouter({
           { text: 'Operations', to: '/operations', active: true },
         ],
         pageTitle: 'Operations',
-        permission: 'browse_order',
+        permission: 'browse_operation',
       },
     },
     // =============================================================================

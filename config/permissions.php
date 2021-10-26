@@ -99,4 +99,25 @@ return [
     'home' => [
         'browse_home',
     ],
+    'suppliers' => [
+        'browse_supplier',
+        'view_supplier',
+        'create_supplier',
+        'update_supplier',
+        'delete_supplier',
+    ],
+    'employers' => [
+        'browse_employer',
+        'view_employer',
+        'create_employer',
+        'update_employer',
+        'delete_employer',
+    ],
+    'operations' => [
+        'browse_operation',
+        'view_employer',
+        'create_employer',
+        'update_employer',
+        'delete_employer',
+    ],
 ];

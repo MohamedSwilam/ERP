@@ -13,7 +13,7 @@
           >
             <b-row>
               <b-col
-                cols="12"
+                cols="6"
                 align-h="center"
               >
                 <b-button
@@ -29,6 +29,24 @@
                     class="mr-50"
                   />
                   <span class="align-middle">Create Stock</span>
+                </b-button>
+              </b-col>
+              <b-col
+                cols="6"
+                class="text-right"
+                align-h="center"
+              >
+                <b-button
+                  v-ripple.400="'rgba(255,255,255,0.15)'"
+                  size="sm"
+                  variant="primary"
+                  @click="exportCsv"
+                >
+                  <feather-icon
+                    icon="FileIcon"
+                    class="mr-50"
+                  />
+                  <span class="align-middle">Export CSV</span>
                 </b-button>
               </b-col>
               <b-col
@@ -211,6 +229,8 @@
 <script>
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import Ripple from 'vue-ripple-directive'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ExportToCsv } from 'export-to-csv'
 
 export default {
   name: 'BrowseStocks',
@@ -305,6 +325,30 @@ export default {
           })
         }
       })
+    },
+    exportCsv() {
+      const csvExporter = new ExportToCsv({
+        fieldSeparator: ',',
+        quoteStrings: '"',
+        decimalSeparator: '.',
+        showLabels: true,
+        showTitle: true,
+        title: 'Stocks List',
+        useTextFile: false,
+        useBom: true,
+        useKeysAsHeaders: true,
+      })
+      csvExporter.generateCsv(this.stocks.data.map((stock, index) => ({
+        '#': index + 1,
+        Name: stock.name,
+        Quantity: stock.quantity,
+        'Price Per Piece': stock.price_per_piece,
+        'Sale Price': stock.sale_price,
+        'Payment Type': stock.payment_type,
+        Total: stock.total,
+        Paid: stock.paid,
+        'Created At': new Date(stock.created_at).toDateString(),
+      })))
     },
   },
 }

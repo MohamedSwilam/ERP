@@ -57,9 +57,9 @@ class AccountingController extends Controller
     {
         $this->authorize('store', Accounting::class);
 
-        $event = $createAccountingAction(CreateAccountingDto::fromRequest($request));
+        $accounting = $createAccountingAction(CreateAccountingDto::fromRequest($request));
 
-        return ApiResponse::createResponse($event, AccountingTransformer::class);
+        return ApiResponse::createResponse($accounting, AccountingTransformer::class);
     }
 
     /**

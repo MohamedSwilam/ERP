@@ -13,7 +13,7 @@
           >
             <b-row>
               <b-col
-                cols="6"
+                cols="12"
                 align-h="center"
               >
                 <b-button
@@ -34,9 +34,9 @@
               <b-col
                 cols="6"
                 align-h="center"
-                class="text-right"
+                class="mb-1"
               >
-                <b-input-group style="position: relative;top: 13px;">
+                <b-input-group>
                   <b-input-group-prepend is-text>
                     <feather-icon icon="SearchIcon" />
                   </b-input-group-prepend>
@@ -48,6 +48,24 @@
                     @change="browseAccounting"
                   />
                 </b-input-group>
+              </b-col>
+              <b-col
+                cols="6"
+                class="text-right mb-1"
+                align-h="center"
+              >
+                <b-button
+                  v-ripple.400="'rgba(255,255,255,0.15)'"
+                  size="sm"
+                  variant="primary"
+                  @click="exportCsv"
+                >
+                  <feather-icon
+                    icon="FileIcon"
+                    class="mr-50"
+                  />
+                  <span class="align-middle">Export CSV</span>
+                </b-button>
               </b-col>
               <b-col cols="12">
                 <b-table
@@ -156,6 +174,8 @@
 <script>
 import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import Ripple from 'vue-ripple-directive'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ExportToCsv } from 'export-to-csv'
 
 export default {
   name: 'BrowseAccounting',
@@ -239,6 +259,32 @@ export default {
           })
         }
       })
+    },
+
+    exportCsv() {
+      const csvExporter = new ExportToCsv({
+        fieldSeparator: ',',
+        quoteStrings: '"',
+        decimalSeparator: '.',
+        showLabels: true,
+        showTitle: true,
+        title: 'Accounting List',
+        useTextFile: false,
+        useBom: true,
+        useKeysAsHeaders: true,
+      })
+      csvExporter.generateCsv(this.accounting.data.map((accounting, index) => ({
+        '#': index + 1,
+        Utilities: accounting.utilities,
+        'Monthly Rent': accounting.monthly_rent,
+        'Advertising Budget': accounting.fixes,
+        Fixes: accounting.advertising_budget,
+        'Employees Data': accounting.employees_data,
+        'Suppliers Data': accounting.suppliers_data,
+        Revenue: accounting.revenue,
+        Profit: accounting.revenue - (accounting.utilities + accounting.monthly_rent + accounting.advertising_budget + accounting.fixes + accounting.employees_data + accounting.suppliers_data),
+        'Created At': new Date(accounting.created_at).toDateString(),
+      })))
     },
   },
 }

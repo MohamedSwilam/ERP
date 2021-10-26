@@ -43,7 +43,7 @@ export default [
     title: 'Operations',
     route: 'browse-operations',
     icon: 'ActivityIcon',
-    permission: 'browse_order',
+    permission: 'browse_operation',
   },
   {
     title: 'Ads Reports',
@@ -53,9 +53,26 @@ export default [
   },
   {
     title: 'Accounting',
-    route: 'browse-accounting',
     icon: 'DollarSignIcon',
-    permission: 'browse_accounting',
+    children: [
+      // This is array of menu items or menu groups
+      // NOTE: You can't use menu header as children
+      {
+        title: 'Accounting',
+        route: 'browse-accounting',
+        permission: 'browse_accounting',
+      },
+      {
+        title: 'Employers',
+        route: 'browse-employer',
+        permission: 'browse_employer',
+      },
+      {
+        title: 'Suppliers',
+        route: 'browse-supplier',
+        permission: 'browse_supplier',
+      },
+    ],
   },
   {
     title: 'Stocks',

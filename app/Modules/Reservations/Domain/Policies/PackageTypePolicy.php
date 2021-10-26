@@ -21,6 +21,10 @@ class PackageTypePolicy
 
     public function browse(User $user): bool
     {
-        return $user->hasPermissionTo('create_package') || $user->hasPermissionTo('update_package');
+        return $user->hasPermissionTo('create_package')
+            || $user->hasPermissionTo('update_package')
+            || $user->hasPermissionTo('browse_order')
+            || $user->hasPermissionTo('browse_package')
+            || $user->hasPermissionTo('browse_operation');
     }
 }

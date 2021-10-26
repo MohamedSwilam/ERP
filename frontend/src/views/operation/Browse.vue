@@ -305,13 +305,16 @@
                     <br> ({{ data.item.package.package_type.name }})
                   </template>
                   <template #cell(price)="data">
-                    {{ data.item.package.price }}
+                    {{ data.item.package.price }} L.E
                   </template>
                   <template #cell(discount)="data">
                     {{ data.item.discount }}%
                   </template>
+                  <template #cell(total)="data">
+                    {{ data.item.total }} L.E
+                  </template>
                   <template #cell(remaining)="data">
-                    {{ data.item.total - data.item.paid }}
+                    {{ data.item.total - data.item.paid }} L.E
                   </template>
                   <template #cell(created_at)="data">
                     {{ data.item.created_at | date(true) }}

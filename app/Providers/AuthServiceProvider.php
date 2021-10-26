@@ -23,9 +23,13 @@ use App\Modules\Reservations\Domain\Policies\PackagePolicy;
 use App\Modules\Reservations\Domain\Policies\RoomPolicy;
 use App\Modules\Reservations\Domain\Policies\VisitPolicy;
 use App\Modules\Statistics\Domain\Models\Accounting;
+use App\Modules\Statistics\Domain\Models\Employer;
 use App\Modules\Statistics\Domain\Models\Report;
+use App\Modules\Statistics\Domain\Models\Supplier;
 use App\Modules\Statistics\Domain\Policies\AccountingPolicy;
+use App\Modules\Statistics\Domain\Policies\EmployerPolicy;
 use App\Modules\Statistics\Domain\Policies\ReportPolicy;
+use App\Modules\Statistics\Domain\Policies\SupplierPolicy;
 use App\Modules\Stocks\Domain\Models\BuffetOrder;
 use App\Modules\Stocks\Domain\Models\Stock;
 use App\Modules\Stocks\Domain\Policies\BuffetOrderPolicy;
@@ -59,6 +63,8 @@ class AuthServiceProvider extends ServiceProvider
         Accounting::class => AccountingPolicy::class,
         Stock::class => StockPolicy::class,
         BuffetOrder::class => BuffetOrderPolicy::class,
+        Supplier::class => SupplierPolicy::class,
+        Employer::class => EmployerPolicy::class,
         'statistics' => StatisticsPolicy::class
     ];
 

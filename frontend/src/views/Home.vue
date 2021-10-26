@@ -392,14 +392,16 @@ export default {
   methods: {
     browseCustomers(page = 0) {
       this.customers.isLoading = true
-      this.$store.dispatch('customer/browse', `?paginate=${this.customers.recordsPerPage}&page=${page}&filter[search]=${new Date().toISOString().split('T')[0]}`).then(response => {
-        this.customers.data = response.data.data
-        this.customers.meta = response.data.meta.pagination
-        this.customers.isLoading = false
-      }).catch(error => {
-        console.error(error)
-        this.customers.isLoading = false
-      })
+      this.$store
+        .dispatch('customer/browse', `?paginate=${this.customers.recordsPerPage}&page=${page}&filter[search]=${new Date().getUTCMonth() + 1}-${new Date().getDate()}`)
+        .then(response => {
+          this.customers.data = response.data.data
+          this.customers.meta = response.data.meta.pagination
+          this.customers.isLoading = false
+        }).catch(error => {
+          console.error(error)
+          this.customers.isLoading = false
+        })
     },
     browseStatistics() {
       this.statistics.isLoading = true

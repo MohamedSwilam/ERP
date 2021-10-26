@@ -376,7 +376,20 @@
               <b-col
                 cols="6"
                 align-h="center"
-              />
+              >
+                <b-button
+                  v-ripple.400="'rgba(255,255,255,0.15)'"
+                  size="sm"
+                  variant="primary"
+                  @click="exportCsv"
+                >
+                  <feather-icon
+                    icon="FileIcon"
+                    class="mr-50"
+                  />
+                  <span class="align-middle">Export CSV</span>
+                </b-button>
+              </b-col>
               <b-col
                 cols="6"
                 align-h="center"
@@ -684,6 +697,8 @@ import AppTimelineItem from '@core/components/app-timeline/AppTimelineItem.vue'
 import jsPDF from 'jspdf'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'jspdf-autotable'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ExportToCsv } from 'export-to-csv'
 
 export default {
   name: 'ViewOrder',
@@ -944,6 +959,28 @@ export default {
         this.$refs.editCommentForm.setErrors(error.response.data.errors)
         this.comments.editForm.isLoading = false
       })
+    },
+    exportCsv() {
+      const csvExporter = new ExportToCsv({
+        fieldSeparator: ',',
+        quoteStrings: '"',
+        decimalSeparator: '.',
+        showLabels: true,
+        showTitle: true,
+        title: 'Visits List',
+        useTextFile: false,
+        useBom: true,
+        useKeysAsHeaders: true,
+      })
+      csvExporter.generateCsv(this.visits.data.map((visit, index) => ({
+        '#': index + 1,
+        Date: visit.date,
+        'Start Time': visit.start_time,
+        'End Time': visit.end_time,
+        room: visit.room ? visit.room.name : '-',
+        Status: visit.visit_status.name,
+        'Created At': new Date(visit.created_at).toDateString(),
+      })))
     },
 
     exportInvoicePdf(order) {
