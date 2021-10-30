@@ -30,6 +30,10 @@ class UpdateUserRequest extends FormRequest
                 'email',
                 'unique:users,email,' . $this->user->id,
             ],
+            'password' => [
+                'nullable',
+                'confirmed'
+            ],
             'roles' => [
                 'required',
                 'array'

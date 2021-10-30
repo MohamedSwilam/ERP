@@ -2,6 +2,7 @@
 
 namespace App\Modules\Stocks\App\Requests;
 
+use App\Modules\Stocks\Domain\Models\Stock;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateBuffetOrderRequest extends FormRequest
@@ -33,7 +34,16 @@ class CreateBuffetOrderRequest extends FormRequest
             ],
             'stocks.*.quantity' => [
                 'required',
-                'numeric'
+                'numeric',
+                'min:1',
+            ],
+            'stocks.*' => [
+                function($attribute, $value, $fail) {
+                    $validQty = Stock::find($value['stock_id'])->quantity;
+                    if ($value['quantity'] > $validQty) {
+                        return $fail($attribute.' quantity is invalid');
+                    }
+                }
             ]
         ];
     }

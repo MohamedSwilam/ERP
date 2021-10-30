@@ -155,6 +155,72 @@
                         </validation-provider>
                       </b-form-group>
                     </b-col>
+                    <!-- Password -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Password"
+                        label-for="password"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules="password"
+                          name="Password"
+                          vid="password"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="LockIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              id="password"
+                              v-model="user.form.password"
+                              type="password"
+                              :state="errors.length > 0 ? false:null"
+                              placeholder="Password"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
+                    <!-- Confirm Password -->
+                    <b-col
+                      lg="6"
+                      md="6"
+                      sm="12"
+                      xs="12"
+                    >
+                      <b-form-group
+                        label="Confirm Password"
+                        label-for="confirm-password"
+                      >
+                        <validation-provider
+                          v-slot="{ errors }"
+                          rules="confirmed:password"
+                          name="Confirm Password"
+                          vid="confirm-password"
+                        >
+                          <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
+                            <b-input-group-prepend is-text>
+                              <feather-icon icon="LockIcon" />
+                            </b-input-group-prepend>
+                            <b-form-input
+                              id="confirm-password"
+                              v-model="user.form.password_confirmation"
+                              type="password"
+                              :state="errors.length > 0 ? false:null"
+                              placeholder="Confirm Password"
+                            />
+                          </b-input-group>
+                          <small class="text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                      </b-form-group>
+                    </b-col>
                     <!-- submit and reset -->
                     <b-col cols="12">
                       <b-container>
@@ -227,6 +293,8 @@ export default {
         permissions: [],
         name: '',
         email: '',
+        password: '',
+        password_confirmation: '',
       },
     },
   }),

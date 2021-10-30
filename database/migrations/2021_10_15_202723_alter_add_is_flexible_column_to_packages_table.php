@@ -26,7 +26,7 @@ class AlterAddIsFlexibleColumnToPackagesTable extends Migration
     public function down()
     {
         Schema::table('packages', function (Blueprint $table) {
-            //
+            $table->dropColumn('is_flexible');
         });
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Modules\Reservations\App\Rules;
 
 use App\Modules\Reservations\Domain\Models\CustomerVisit;
+use App\Modules\Reservations\Domain\Models\Room;
 use Carbon\Carbon;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Date;
@@ -29,6 +30,8 @@ class RoomAvailableRule implements Rule
     public function passes($attribute, $value)
     {
         if (!$value) return true;
+        $room = Room::find($value);
+        if ($room->multiple_to_reserve === 1) return true;
         if (request()->method() == 'PUT') {
             $visit = CustomerVisit::where([
                 ['room_id', '=', $value],

@@ -369,7 +369,12 @@ export default {
     },
     createUser() {
       this.user.isLoading = true
-      this.$store.dispatch('user/create', this.user.form).then(response => {
+      const { form } = this.user
+      if (!form.password) {
+        delete form.password
+        delete form.password_confirmation
+      }
+      this.$store.dispatch('user/create', form).then(response => {
         this.user.isLoading = false
         this.$toast({
           component: ToastificationContent,
