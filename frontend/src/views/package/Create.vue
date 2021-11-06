@@ -252,17 +252,30 @@
                       xs="12"
                     >
                       <b-form-group
-                        label="Days To Expire"
+                        :label="`${packages.expiration_in} To Expire`"
                         label-for="expiration_in_hours"
                       >
                         <validation-provider
                           v-slot="{ errors }"
-                          name="Days To Expire"
+                          :name="`${packages.expiration_in} To Expire`"
                           rules="required"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
-                            <b-input-group-prepend is-text>
-                              <feather-icon icon="ClockIcon" />
+                            <b-input-group-prepend>
+                              <b-dropdown
+                                :text="packages.expiration_in"
+                                variant="outline-primary"
+                              >
+                                <b-dropdown-item @click="packages.expiration_in = 'Hours'">
+                                  Hours
+                                </b-dropdown-item>
+                                <b-dropdown-item @click="packages.expiration_in = 'Days'">
+                                  Days
+                                </b-dropdown-item>
+                                <b-dropdown-item @click="packages.expiration_in = 'Months'">
+                                  Months
+                                </b-dropdown-item>
+                              </b-dropdown>
                             </b-input-group-prepend>
                             <b-form-input
                               v-model="packages.form.expiration_in_hours"
@@ -437,6 +450,12 @@ export default {
       package_types: [],
       customer_types: [],
       selectedRooms: [],
+      expiration_in: 'Hours',
+      expirationCalculation: {
+        Hours: 1,
+        Days: 24,
+        Months: 24 * 30,
+      },
       form: {
         name: '',
         description: '',
@@ -514,7 +533,7 @@ export default {
     createPackage() {
       this.packages.isLoading = true
       this.packages.form.rooms = this.packages.selectedRooms.map(room => (room.value))
-      this.packages.form.expiration_in_hours *= 24
+      this.packages.form.expiration_in_hours *= this.packages.expirationCalculation[this.packages.expiration_in]
       this.$store.dispatch('packages/create', this.packages.form).then(response => {
         this.packages.isLoading = false
         this.$toast({

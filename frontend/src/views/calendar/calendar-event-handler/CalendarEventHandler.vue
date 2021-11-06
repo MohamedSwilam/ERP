@@ -458,8 +458,8 @@
 
 <script>
 import vSelect from 'vue-select'
-import flatPickr from 'vue-flatpickr-component'
 import Ripple from 'vue-ripple-directive'
+import flatPickr from 'vue-flatpickr-component'
 import { ValidationProvider, ValidationObserver } from 'vee-validate'
 import { required, email, url } from '@validations'
 import formValidation from '@core/comp-functions/forms/form-validation'

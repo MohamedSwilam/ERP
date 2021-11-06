@@ -18,7 +18,6 @@
               >
                 <b-form @submit.prevent="handleSubmit(createOrder)">
                   <b-row>
-
                     <!-- Customer -->
                     <b-col
                       lg="6"

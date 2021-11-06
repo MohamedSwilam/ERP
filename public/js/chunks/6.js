@@ -1,2 +1,2633 @@
-/*! For license information please see 6.js.LICENSE.txt */
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{"/GqU":function(t,e,r){var i=r("RK3t"),n=r("HYAF");t.exports=function(t){return i(n(t))}},"/OPJ":function(t,e,r){var i=r("0Dky"),n=r("2oRo").RegExp;t.exports=i((function(){var t=n(".","s");return!(t.dotAll&&t.exec("\n")&&"s"===t.flags)}))},"/b8u":function(t,e,r){var i=r("STAE");t.exports=i&&!Symbol.sham&&"symbol"==typeof Symbol.iterator},"/byt":function(t,e){t.exports={CSSRuleList:0,CSSStyleDeclaration:0,CSSValueList:0,ClientRectList:0,DOMRectList:0,DOMStringList:0,DOMTokenList:1,DataTransferItemList:0,FileList:0,HTMLAllCollection:0,HTMLCollection:0,HTMLFormElement:0,HTMLSelectElement:0,MediaList:0,MimeTypeArray:0,NamedNodeMap:0,NodeList:1,PaintRequestList:0,Plugin:0,PluginArray:0,SVGLengthList:0,SVGNumberList:0,SVGPathSegList:0,SVGPointList:0,SVGStringList:0,SVGTransformList:0,SourceBufferList:0,StyleSheetList:0,TextTrackCueList:0,TextTrackList:0,TouchList:0}},"/qmn":function(t,e,r){var i=r("2oRo");t.exports=i.Promise},"0B/8":function(t,e,r){"use strict";r.d(e,"a",(function(){return S}));var i=function(t,e){return(i=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var r in e)e.hasOwnProperty(r)&&(t[r]=e[r])})(t,e)};function n(t,e){function r(){this.constructor=t}i(t,e),t.prototype=null===e?Object.create(e):(r.prototype=e.prototype,new r)}function a(t,e){var r=t[0],i=t[1];return[r*Math.cos(e)-i*Math.sin(e),r*Math.sin(e)+i*Math.cos(e)]}function s(){for(var t=[],e=0;e<arguments.length;e++)t[e]=arguments[e];for(var r=0;r<t.length;r++)if("number"!=typeof t[r])throw new Error("assertNumbers arguments["+r+"] is not a number. "+typeof t[r]+" == typeof "+t[r]);return!0}var o=Math.PI;function u(t,e,r){t.lArcFlag=0===t.lArcFlag?0:1,t.sweepFlag=0===t.sweepFlag?0:1;var i=t.rX,n=t.rY,s=t.x,u=t.y;i=Math.abs(t.rX),n=Math.abs(t.rY);var h=a([(e-s)/2,(r-u)/2],-t.xRot/180*o),c=h[0],l=h[1],f=Math.pow(c,2)/Math.pow(i,2)+Math.pow(l,2)/Math.pow(n,2);1<f&&(i*=Math.sqrt(f),n*=Math.sqrt(f)),t.rX=i,t.rY=n;var g=Math.pow(i,2)*Math.pow(l,2)+Math.pow(n,2)*Math.pow(c,2),p=(t.lArcFlag!==t.sweepFlag?1:-1)*Math.sqrt(Math.max(0,(Math.pow(i,2)*Math.pow(n,2)-g)/g)),d=i*l/n*p,v=-n*c/i*p,y=a([d,v],t.xRot/180*o);t.cX=y[0]+(e+s)/2,t.cY=y[1]+(r+u)/2,t.phi1=Math.atan2((l-v)/n,(c-d)/i),t.phi2=Math.atan2((-l-v)/n,(-c-d)/i),0===t.sweepFlag&&t.phi2>t.phi1&&(t.phi2-=2*o),1===t.sweepFlag&&t.phi2<t.phi1&&(t.phi2+=2*o),t.phi1*=180/o,t.phi2*=180/o}function h(t,e,r){s(t,e,r);var i=t*t+e*e-r*r;if(0>i)return[];if(0===i)return[[t*r/(t*t+e*e),e*r/(t*t+e*e)]];var n=Math.sqrt(i);return[[(t*r+e*n)/(t*t+e*e),(e*r-t*n)/(t*t+e*e)],[(t*r-e*n)/(t*t+e*e),(e*r+t*n)/(t*t+e*e)]]}var c,l=Math.PI/180;function f(t,e,r){return(1-r)*t+r*e}function g(t,e,r,i){return t+Math.cos(i/180*o)*e+Math.sin(i/180*o)*r}function p(t,e,r,i){var n=e-t,a=r-e,s=3*n+3*(i-r)-6*a,o=6*(a-n),u=3*n;return Math.abs(s)<1e-6?[-u/o]:function(t,e,r){void 0===r&&(r=1e-6);var i=t*t/4-e;if(i<-r)return[];if(i<=r)return[-t/2];var n=Math.sqrt(i);return[-t/2-n,-t/2+n]}(o/s,u/s,1e-6)}function d(t,e,r,i,n){var a=1-n;return t*(a*a*a)+e*(3*a*a*n)+r*(3*a*n*n)+i*(n*n*n)}!function(t){function e(){return n((function(t,e,r){return t.relative&&(void 0!==t.x1&&(t.x1+=e),void 0!==t.y1&&(t.y1+=r),void 0!==t.x2&&(t.x2+=e),void 0!==t.y2&&(t.y2+=r),void 0!==t.x&&(t.x+=e),void 0!==t.y&&(t.y+=r),t.relative=!1),t}))}function r(){var t=NaN,e=NaN,r=NaN,i=NaN;return n((function(n,a,s){return n.type&S.SMOOTH_CURVE_TO&&(n.type=S.CURVE_TO,t=isNaN(t)?a:t,e=isNaN(e)?s:e,n.x1=n.relative?a-t:2*a-t,n.y1=n.relative?s-e:2*s-e),n.type&S.CURVE_TO?(t=n.relative?a+n.x2:n.x2,e=n.relative?s+n.y2:n.y2):(t=NaN,e=NaN),n.type&S.SMOOTH_QUAD_TO&&(n.type=S.QUAD_TO,r=isNaN(r)?a:r,i=isNaN(i)?s:i,n.x1=n.relative?a-r:2*a-r,n.y1=n.relative?s-i:2*s-i),n.type&S.QUAD_TO?(r=n.relative?a+n.x1:n.x1,i=n.relative?s+n.y1:n.y1):(r=NaN,i=NaN),n}))}function i(){var t=NaN,e=NaN;return n((function(r,i,n){if(r.type&S.SMOOTH_QUAD_TO&&(r.type=S.QUAD_TO,t=isNaN(t)?i:t,e=isNaN(e)?n:e,r.x1=r.relative?i-t:2*i-t,r.y1=r.relative?n-e:2*n-e),r.type&S.QUAD_TO){t=r.relative?i+r.x1:r.x1,e=r.relative?n+r.y1:r.y1;var a=r.x1,s=r.y1;r.type=S.CURVE_TO,r.x1=((r.relative?0:i)+2*a)/3,r.y1=((r.relative?0:n)+2*s)/3,r.x2=(r.x+2*a)/3,r.y2=(r.y+2*s)/3}else t=NaN,e=NaN;return r}))}function n(t){var e=0,r=0,i=NaN,n=NaN;return function(a){if(isNaN(i)&&!(a.type&S.MOVE_TO))throw new Error("path must start with moveto");var s=t(a,e,r,i,n);return a.type&S.CLOSE_PATH&&(e=i,r=n),void 0!==a.x&&(e=a.relative?e+a.x:a.x),void 0!==a.y&&(r=a.relative?r+a.y:a.y),a.type&S.MOVE_TO&&(i=e,n=r),s}}function o(t,e,r,i,a,o){return s(t,e,r,i,a,o),n((function(n,s,u,h){var c=n.x1,l=n.x2,f=n.relative&&!isNaN(h),g=void 0!==n.x?n.x:f?0:s,p=void 0!==n.y?n.y:f?0:u;function d(t){return t*t}n.type&S.HORIZ_LINE_TO&&0!==e&&(n.type=S.LINE_TO,n.y=n.relative?0:u),n.type&S.VERT_LINE_TO&&0!==r&&(n.type=S.LINE_TO,n.x=n.relative?0:s),void 0!==n.x&&(n.x=n.x*t+p*r+(f?0:a)),void 0!==n.y&&(n.y=g*e+n.y*i+(f?0:o)),void 0!==n.x1&&(n.x1=n.x1*t+n.y1*r+(f?0:a)),void 0!==n.y1&&(n.y1=c*e+n.y1*i+(f?0:o)),void 0!==n.x2&&(n.x2=n.x2*t+n.y2*r+(f?0:a)),void 0!==n.y2&&(n.y2=l*e+n.y2*i+(f?0:o));var v=t*i-e*r;if(void 0!==n.xRot&&(1!==t||0!==e||0!==r||1!==i))if(0===v)delete n.rX,delete n.rY,delete n.xRot,delete n.lArcFlag,delete n.sweepFlag,n.type=S.LINE_TO;else{var y=n.xRot*Math.PI/180,m=Math.sin(y),x=Math.cos(y),b=1/d(n.rX),w=1/d(n.rY),A=d(x)*b+d(m)*w,T=2*m*x*(b-w),O=d(m)*b+d(x)*w,E=A*i*i-T*e*i+O*e*e,P=T*(t*i+e*r)-2*(A*r*i+O*t*e),C=A*r*r-T*t*r+O*t*t,M=(Math.atan2(P,E-C)+Math.PI)%Math.PI/2,N=Math.sin(M),R=Math.cos(M);n.rX=Math.abs(v)/Math.sqrt(E*d(R)+P*N*R+C*d(N)),n.rY=Math.abs(v)/Math.sqrt(E*d(N)-P*N*R+C*d(R)),n.xRot=180*M/Math.PI}return void 0!==n.sweepFlag&&0>v&&(n.sweepFlag=+!n.sweepFlag),n}))}t.ROUND=function(t){function e(e){return Math.round(e*t)/t}return void 0===t&&(t=1e13),s(t),function(t){return void 0!==t.x1&&(t.x1=e(t.x1)),void 0!==t.y1&&(t.y1=e(t.y1)),void 0!==t.x2&&(t.x2=e(t.x2)),void 0!==t.y2&&(t.y2=e(t.y2)),void 0!==t.x&&(t.x=e(t.x)),void 0!==t.y&&(t.y=e(t.y)),void 0!==t.rX&&(t.rX=e(t.rX)),void 0!==t.rY&&(t.rY=e(t.rY)),t}},t.TO_ABS=e,t.TO_REL=function(){return n((function(t,e,r){return t.relative||(void 0!==t.x1&&(t.x1-=e),void 0!==t.y1&&(t.y1-=r),void 0!==t.x2&&(t.x2-=e),void 0!==t.y2&&(t.y2-=r),void 0!==t.x&&(t.x-=e),void 0!==t.y&&(t.y-=r),t.relative=!0),t}))},t.NORMALIZE_HVZ=function(t,e,r){return void 0===t&&(t=!0),void 0===e&&(e=!0),void 0===r&&(r=!0),n((function(i,n,a,s,o){if(isNaN(s)&&!(i.type&S.MOVE_TO))throw new Error("path must start with moveto");return e&&i.type&S.HORIZ_LINE_TO&&(i.type=S.LINE_TO,i.y=i.relative?0:a),r&&i.type&S.VERT_LINE_TO&&(i.type=S.LINE_TO,i.x=i.relative?0:n),t&&i.type&S.CLOSE_PATH&&(i.type=S.LINE_TO,i.x=i.relative?s-n:s,i.y=i.relative?o-a:o),i.type&S.ARC&&(0===i.rX||0===i.rY)&&(i.type=S.LINE_TO,delete i.rX,delete i.rY,delete i.xRot,delete i.lArcFlag,delete i.sweepFlag),i}))},t.NORMALIZE_ST=r,t.QT_TO_C=i,t.INFO=n,t.SANITIZE=function(t){void 0===t&&(t=0),s(t);var e=NaN,r=NaN,i=NaN,a=NaN;return n((function(n,s,o,u,h){var c=Math.abs,l=!1,f=0,g=0;if(n.type&S.SMOOTH_CURVE_TO&&(f=isNaN(e)?0:s-e,g=isNaN(r)?0:o-r),n.type&(S.CURVE_TO|S.SMOOTH_CURVE_TO)?(e=n.relative?s+n.x2:n.x2,r=n.relative?o+n.y2:n.y2):(e=NaN,r=NaN),n.type&S.SMOOTH_QUAD_TO?(i=isNaN(i)?s:2*s-i,a=isNaN(a)?o:2*o-a):n.type&S.QUAD_TO?(i=n.relative?s+n.x1:n.x1,a=n.relative?o+n.y1:n.y2):(i=NaN,a=NaN),n.type&S.LINE_COMMANDS||n.type&S.ARC&&(0===n.rX||0===n.rY||!n.lArcFlag)||n.type&S.CURVE_TO||n.type&S.SMOOTH_CURVE_TO||n.type&S.QUAD_TO||n.type&S.SMOOTH_QUAD_TO){var p=void 0===n.x?0:n.relative?n.x:n.x-s,d=void 0===n.y?0:n.relative?n.y:n.y-o;f=isNaN(i)?void 0===n.x1?f:n.relative?n.x:n.x1-s:i-s,g=isNaN(a)?void 0===n.y1?g:n.relative?n.y:n.y1-o:a-o;var v=void 0===n.x2?0:n.relative?n.x:n.x2-s,y=void 0===n.y2?0:n.relative?n.y:n.y2-o;c(p)<=t&&c(d)<=t&&c(f)<=t&&c(g)<=t&&c(v)<=t&&c(y)<=t&&(l=!0)}return n.type&S.CLOSE_PATH&&c(s-u)<=t&&c(o-h)<=t&&(l=!0),l?[]:n}))},t.MATRIX=o,t.ROTATE=function(t,e,r){void 0===e&&(e=0),void 0===r&&(r=0),s(t,e,r);var i=Math.sin(t),n=Math.cos(t);return o(n,i,-i,n,e-e*n+r*i,r-e*i-r*n)},t.TRANSLATE=function(t,e){return void 0===e&&(e=0),s(t,e),o(1,0,0,1,t,e)},t.SCALE=function(t,e){return void 0===e&&(e=t),s(t,e),o(t,0,0,e,0,0)},t.SKEW_X=function(t){return s(t),o(1,0,Math.atan(t),1,0,0)},t.SKEW_Y=function(t){return s(t),o(1,Math.atan(t),0,1,0,0)},t.X_AXIS_SYMMETRY=function(t){return void 0===t&&(t=0),s(t),o(-1,0,0,1,t,0)},t.Y_AXIS_SYMMETRY=function(t){return void 0===t&&(t=0),s(t),o(1,0,0,-1,0,t)},t.A_TO_C=function(){return n((function(t,e,r){return S.ARC===t.type?function(t,e,r){var i,n,s,o;t.cX||u(t,e,r);for(var h=Math.min(t.phi1,t.phi2),c=Math.max(t.phi1,t.phi2)-h,g=Math.ceil(c/90),p=new Array(g),d=e,v=r,y=0;y<g;y++){var m=f(t.phi1,t.phi2,y/g),x=f(t.phi1,t.phi2,(y+1)/g),b=x-m,w=4/3*Math.tan(b*l/4),A=[Math.cos(m*l)-w*Math.sin(m*l),Math.sin(m*l)+w*Math.cos(m*l)],T=A[0],O=A[1],E=[Math.cos(x*l),Math.sin(x*l)],P=E[0],C=E[1],M=[P+w*Math.sin(x*l),C-w*Math.cos(x*l)],N=M[0],R=M[1];p[y]={relative:t.relative,type:S.CURVE_TO};var V=function(e,r){var i=a([e*t.rX,r*t.rY],t.xRot),n=i[0],s=i[1];return[t.cX+n,t.cY+s]};i=V(T,O),p[y].x1=i[0],p[y].y1=i[1],n=V(N,R),p[y].x2=n[0],p[y].y2=n[1],s=V(P,C),p[y].x=s[0],p[y].y=s[1],t.relative&&(p[y].x1-=d,p[y].y1-=v,p[y].x2-=d,p[y].y2-=v,p[y].x-=d,p[y].y-=v),d=(o=[p[y].x,p[y].y])[0],v=o[1]}return p}(t,t.relative?0:e,t.relative?0:r):t}))},t.ANNOTATE_ARCS=function(){return n((function(t,e,r){return t.relative&&(e=0,r=0),S.ARC===t.type&&u(t,e,r),t}))},t.CLONE=function(){return function(t){var e={};for(var r in t)e[r]=t[r];return e}},t.CALCULATE_BOUNDS=function(){var t=e(),a=i(),s=r(),o=n((function(e,r,i){var n=s(a(t(function(t){var e={};for(var r in t)e[r]=t[r];return e}(e))));function c(t){t>o.maxX&&(o.maxX=t),t<o.minX&&(o.minX=t)}function l(t){t>o.maxY&&(o.maxY=t),t<o.minY&&(o.minY=t)}if(n.type&S.DRAWING_COMMANDS&&(c(r),l(i)),n.type&S.HORIZ_LINE_TO&&c(n.x),n.type&S.VERT_LINE_TO&&l(n.y),n.type&S.LINE_TO&&(c(n.x),l(n.y)),n.type&S.CURVE_TO){c(n.x),l(n.y);for(var f=0,v=p(r,n.x1,n.x2,n.x);f<v.length;f++)0<(k=v[f])&&1>k&&c(d(r,n.x1,n.x2,n.x,k));for(var y=0,m=p(i,n.y1,n.y2,n.y);y<m.length;y++)0<(k=m[y])&&1>k&&l(d(i,n.y1,n.y2,n.y,k))}if(n.type&S.ARC){c(n.x),l(n.y),u(n,r,i);for(var x=n.xRot/180*Math.PI,b=Math.cos(x)*n.rX,w=Math.sin(x)*n.rX,A=-Math.sin(x)*n.rY,T=Math.cos(x)*n.rY,O=n.phi1<n.phi2?[n.phi1,n.phi2]:-180>n.phi2?[n.phi2+360,n.phi1+360]:[n.phi2,n.phi1],E=O[0],P=O[1],C=function(t){var e=t[0],r=t[1],i=180*Math.atan2(r,e)/Math.PI;return i<E?i+360:i},M=0,N=h(A,-b,0).map(C);M<N.length;M++)(k=N[M])>E&&k<P&&c(g(n.cX,b,A,k));for(var R=0,V=h(T,-w,0).map(C);R<V.length;R++){var k;(k=V[R])>E&&k<P&&l(g(n.cY,w,T,k))}}return e}));return o.minX=1/0,o.maxX=-1/0,o.minY=1/0,o.maxY=-1/0,o}}(c||(c={}));var v,y=function(){function t(){}return t.prototype.round=function(t){return this.transform(c.ROUND(t))},t.prototype.toAbs=function(){return this.transform(c.TO_ABS())},t.prototype.toRel=function(){return this.transform(c.TO_REL())},t.prototype.normalizeHVZ=function(t,e,r){return this.transform(c.NORMALIZE_HVZ(t,e,r))},t.prototype.normalizeST=function(){return this.transform(c.NORMALIZE_ST())},t.prototype.qtToC=function(){return this.transform(c.QT_TO_C())},t.prototype.aToC=function(){return this.transform(c.A_TO_C())},t.prototype.sanitize=function(t){return this.transform(c.SANITIZE(t))},t.prototype.translate=function(t,e){return this.transform(c.TRANSLATE(t,e))},t.prototype.scale=function(t,e){return this.transform(c.SCALE(t,e))},t.prototype.rotate=function(t,e,r){return this.transform(c.ROTATE(t,e,r))},t.prototype.matrix=function(t,e,r,i,n,a){return this.transform(c.MATRIX(t,e,r,i,n,a))},t.prototype.skewX=function(t){return this.transform(c.SKEW_X(t))},t.prototype.skewY=function(t){return this.transform(c.SKEW_Y(t))},t.prototype.xSymmetry=function(t){return this.transform(c.X_AXIS_SYMMETRY(t))},t.prototype.ySymmetry=function(t){return this.transform(c.Y_AXIS_SYMMETRY(t))},t.prototype.annotateArcs=function(){return this.transform(c.ANNOTATE_ARCS())},t}(),m=function(t){return" "===t||"\t"===t||"\r"===t||"\n"===t},x=function(t){return"0".charCodeAt(0)<=t.charCodeAt(0)&&t.charCodeAt(0)<="9".charCodeAt(0)},b=function(t){function e(){var e=t.call(this)||this;return e.curNumber="",e.curCommandType=-1,e.curCommandRelative=!1,e.canParseCommandOrComma=!0,e.curNumberHasExp=!1,e.curNumberHasExpDigits=!1,e.curNumberHasDecimal=!1,e.curArgs=[],e}return n(e,t),e.prototype.finish=function(t){if(void 0===t&&(t=[]),this.parse(" ",t),0!==this.curArgs.length||!this.canParseCommandOrComma)throw new SyntaxError("Unterminated command at the path end.");return t},e.prototype.parse=function(t,e){var r=this;void 0===e&&(e=[]);for(var i=function(t){e.push(t),r.curArgs.length=0,r.canParseCommandOrComma=!0},n=0;n<t.length;n++){var a=t[n],s=!(this.curCommandType!==S.ARC||3!==this.curArgs.length&&4!==this.curArgs.length||1!==this.curNumber.length||"0"!==this.curNumber&&"1"!==this.curNumber),o=x(a)&&("0"===this.curNumber&&"0"===a||s);if(!x(a)||o)if("e"!==a&&"E"!==a)if("-"!==a&&"+"!==a||!this.curNumberHasExp||this.curNumberHasExpDigits)if("."!==a||this.curNumberHasExp||this.curNumberHasDecimal||s){if(this.curNumber&&-1!==this.curCommandType){var u=Number(this.curNumber);if(isNaN(u))throw new SyntaxError("Invalid number ending at "+n);if(this.curCommandType===S.ARC)if(0===this.curArgs.length||1===this.curArgs.length){if(0>u)throw new SyntaxError('Expected positive number, got "'+u+'" at index "'+n+'"')}else if((3===this.curArgs.length||4===this.curArgs.length)&&"0"!==this.curNumber&&"1"!==this.curNumber)throw new SyntaxError('Expected a flag, got "'+this.curNumber+'" at index "'+n+'"');this.curArgs.push(u),this.curArgs.length===w[this.curCommandType]&&(S.HORIZ_LINE_TO===this.curCommandType?i({type:S.HORIZ_LINE_TO,relative:this.curCommandRelative,x:u}):S.VERT_LINE_TO===this.curCommandType?i({type:S.VERT_LINE_TO,relative:this.curCommandRelative,y:u}):this.curCommandType===S.MOVE_TO||this.curCommandType===S.LINE_TO||this.curCommandType===S.SMOOTH_QUAD_TO?(i({type:this.curCommandType,relative:this.curCommandRelative,x:this.curArgs[0],y:this.curArgs[1]}),S.MOVE_TO===this.curCommandType&&(this.curCommandType=S.LINE_TO)):this.curCommandType===S.CURVE_TO?i({type:S.CURVE_TO,relative:this.curCommandRelative,x1:this.curArgs[0],y1:this.curArgs[1],x2:this.curArgs[2],y2:this.curArgs[3],x:this.curArgs[4],y:this.curArgs[5]}):this.curCommandType===S.SMOOTH_CURVE_TO?i({type:S.SMOOTH_CURVE_TO,relative:this.curCommandRelative,x2:this.curArgs[0],y2:this.curArgs[1],x:this.curArgs[2],y:this.curArgs[3]}):this.curCommandType===S.QUAD_TO?i({type:S.QUAD_TO,relative:this.curCommandRelative,x1:this.curArgs[0],y1:this.curArgs[1],x:this.curArgs[2],y:this.curArgs[3]}):this.curCommandType===S.ARC&&i({type:S.ARC,relative:this.curCommandRelative,rX:this.curArgs[0],rY:this.curArgs[1],xRot:this.curArgs[2],lArcFlag:this.curArgs[3],sweepFlag:this.curArgs[4],x:this.curArgs[5],y:this.curArgs[6]})),this.curNumber="",this.curNumberHasExpDigits=!1,this.curNumberHasExp=!1,this.curNumberHasDecimal=!1,this.canParseCommandOrComma=!0}if(!m(a))if(","===a&&this.canParseCommandOrComma)this.canParseCommandOrComma=!1;else if("+"!==a&&"-"!==a&&"."!==a)if(o)this.curNumber=a,this.curNumberHasDecimal=!1;else{if(0!==this.curArgs.length)throw new SyntaxError("Unterminated command at index "+n+".");if(!this.canParseCommandOrComma)throw new SyntaxError('Unexpected character "'+a+'" at index '+n+". Command cannot follow comma");if(this.canParseCommandOrComma=!1,"z"!==a&&"Z"!==a)if("h"===a||"H"===a)this.curCommandType=S.HORIZ_LINE_TO,this.curCommandRelative="h"===a;else if("v"===a||"V"===a)this.curCommandType=S.VERT_LINE_TO,this.curCommandRelative="v"===a;else if("m"===a||"M"===a)this.curCommandType=S.MOVE_TO,this.curCommandRelative="m"===a;else if("l"===a||"L"===a)this.curCommandType=S.LINE_TO,this.curCommandRelative="l"===a;else if("c"===a||"C"===a)this.curCommandType=S.CURVE_TO,this.curCommandRelative="c"===a;else if("s"===a||"S"===a)this.curCommandType=S.SMOOTH_CURVE_TO,this.curCommandRelative="s"===a;else if("q"===a||"Q"===a)this.curCommandType=S.QUAD_TO,this.curCommandRelative="q"===a;else if("t"===a||"T"===a)this.curCommandType=S.SMOOTH_QUAD_TO,this.curCommandRelative="t"===a;else{if("a"!==a&&"A"!==a)throw new SyntaxError('Unexpected character "'+a+'" at index '+n+".");this.curCommandType=S.ARC,this.curCommandRelative="a"===a}else e.push({type:S.CLOSE_PATH}),this.canParseCommandOrComma=!0,this.curCommandType=-1}else this.curNumber=a,this.curNumberHasDecimal="."===a}else this.curNumber+=a,this.curNumberHasDecimal=!0;else this.curNumber+=a;else this.curNumber+=a,this.curNumberHasExp=!0;else this.curNumber+=a,this.curNumberHasExpDigits=this.curNumberHasExp}return e},e.prototype.transform=function(t){return Object.create(this,{parse:{value:function(e,r){void 0===r&&(r=[]);for(var i=0,n=Object.getPrototypeOf(this).parse.call(this,e);i<n.length;i++){var a=n[i],s=t(a);Array.isArray(s)?r.push.apply(r,s):r.push(s)}return r}}})},e}(y),S=function(t){function e(r){var i=t.call(this)||this;return i.commands="string"==typeof r?e.parse(r):r,i}return n(e,t),e.prototype.encode=function(){return e.encode(this.commands)},e.prototype.getBounds=function(){var t=c.CALCULATE_BOUNDS();return this.transform(t),t},e.prototype.transform=function(t){for(var e=[],r=0,i=this.commands;r<i.length;r++){var n=t(i[r]);Array.isArray(n)?e.push.apply(e,n):e.push(n)}return this.commands=e,this},e.encode=function(t){return function(t){var e="";Array.isArray(t)||(t=[t]);for(var r=0;r<t.length;r++){var i=t[r];if(i.type===S.CLOSE_PATH)e+="z";else if(i.type===S.HORIZ_LINE_TO)e+=(i.relative?"h":"H")+i.x;else if(i.type===S.VERT_LINE_TO)e+=(i.relative?"v":"V")+i.y;else if(i.type===S.MOVE_TO)e+=(i.relative?"m":"M")+i.x+" "+i.y;else if(i.type===S.LINE_TO)e+=(i.relative?"l":"L")+i.x+" "+i.y;else if(i.type===S.CURVE_TO)e+=(i.relative?"c":"C")+i.x1+" "+i.y1+" "+i.x2+" "+i.y2+" "+i.x+" "+i.y;else if(i.type===S.SMOOTH_CURVE_TO)e+=(i.relative?"s":"S")+i.x2+" "+i.y2+" "+i.x+" "+i.y;else if(i.type===S.QUAD_TO)e+=(i.relative?"q":"Q")+i.x1+" "+i.y1+" "+i.x+" "+i.y;else if(i.type===S.SMOOTH_QUAD_TO)e+=(i.relative?"t":"T")+i.x+" "+i.y;else{if(i.type!==S.ARC)throw new Error('Unexpected command type "'+i.type+'" at index '+r+".");e+=(i.relative?"a":"A")+i.rX+" "+i.rY+" "+i.xRot+" "+ +i.lArcFlag+" "+ +i.sweepFlag+" "+i.x+" "+i.y}}return e}(t)},e.parse=function(t){var e=new b,r=[];return e.parse(t,r),e.finish(r),r},e.CLOSE_PATH=1,e.MOVE_TO=2,e.HORIZ_LINE_TO=4,e.VERT_LINE_TO=8,e.LINE_TO=16,e.CURVE_TO=32,e.SMOOTH_CURVE_TO=64,e.QUAD_TO=128,e.SMOOTH_QUAD_TO=256,e.ARC=512,e.LINE_COMMANDS=e.LINE_TO|e.HORIZ_LINE_TO|e.VERT_LINE_TO,e.DRAWING_COMMANDS=e.HORIZ_LINE_TO|e.VERT_LINE_TO|e.LINE_TO|e.CURVE_TO|e.SMOOTH_CURVE_TO|e.QUAD_TO|e.SMOOTH_QUAD_TO|e.ARC,e}(y),w=((v={})[S.MOVE_TO]=2,v[S.LINE_TO]=2,v[S.HORIZ_LINE_TO]=1,v[S.VERT_LINE_TO]=1,v[S.CLOSE_PATH]=0,v[S.QUAD_TO]=4,v[S.SMOOTH_QUAD_TO]=2,v[S.CURVE_TO]=6,v[S.SMOOTH_CURVE_TO]=4,v[S.ARC]=7,v)},"0BK2":function(t,e){t.exports={}},"0Dky":function(t,e){t.exports=function(t){try{return!!t()}catch(t){return!0}}},"0GbY":function(t,e,r){var i=r("2oRo"),n=r("Fib7"),a=function(t){return n(t)?t:void 0};t.exports=function(t,e){return arguments.length<2?a(i[t]):i[t]&&i[t][e]}},"0eef":function(t,e,r){"use strict";var i={}.propertyIsEnumerable,n=Object.getOwnPropertyDescriptor,a=n&&!i.call({1:2},1);e.f=a?function(t){var e=n(this,t);return!!e&&e.enumerable}:i},"0rvr":function(t,e,r){var i=r("glrk"),n=r("O741");t.exports=Object.setPrototypeOf||("__proto__"in{}?function(){var t,e=!1,r={};try{(t=Object.getOwnPropertyDescriptor(Object.prototype,"__proto__").set).call(r,[]),e=r instanceof Array}catch(t){}return function(r,a){return i(r),n(a),e?t.call(r,a):r.__proto__=a,r}}():void 0)},"14Sl":function(t,e,r){"use strict";r("rB9j");var i=r("busE"),n=r("kmMV"),a=r("0Dky"),s=r("tiKp"),o=r("kRJp"),u=s("species"),h=RegExp.prototype;t.exports=function(t,e,r,c){var l=s(t),f=!a((function(){var e={};return e[l]=function(){return 7},7!=""[t](e)})),g=f&&!a((function(){var e=!1,r=/a/;return"split"===t&&((r={}).constructor={},r.constructor[u]=function(){return r},r.flags="",r[l]=/./[l]),r.exec=function(){return e=!0,null},r[l](""),!e}));if(!f||!g||r){var p=/./[l],d=e(l,""[t],(function(t,e,r,i,a){var s=e.exec;return s===n||s===h.exec?f&&!a?{done:!0,value:p.call(e,r,i)}:{done:!0,value:t.call(r,e,i)}:{done:!1}}));i(String.prototype,t,d[0]),i(h,l,d[1])}c&&o(h[l],"sham",!0)}},"1E5z":function(t,e,r){var i=r("m/L8").f,n=r("UTVS"),a=r("tiKp")("toStringTag");t.exports=function(t,e,r){t&&!n(t=r?t:t.prototype,a)&&i(t,a,{configurable:!0,value:e})}},"1MNl":function(t,e,r){var i=r("NC/Y"),n=r("2oRo");t.exports=/ipad|iphone|ipod/i.test(i)&&void 0!==n.Pebble},"1Y/n":function(t,e,r){var i=r("We1y"),n=r("ewvW"),a=r("RK3t"),s=r("UMSQ"),o=function(t){return function(e,r,o,u){i(r);var h=n(e),c=a(h),l=s(h.length),f=t?l-1:0,g=t?-1:1;if(o<2)for(;;){if(f in c){u=c[f],f+=g;break}if(f+=g,t?f<0:l<=f)throw TypeError("Reduce of empty array with no initial value")}for(;t?f>=0:l>f;f+=g)f in c&&(u=r(u,c[f],f,h));return u}};t.exports={left:o(!1),right:o(!0)}},"2bX/":function(t,e,r){var i=r("Fib7"),n=r("0GbY"),a=r("/b8u");t.exports=a?function(t){return"symbol"==typeof t}:function(t){var e=n("Symbol");return i(e)&&Object(t)instanceof e}},"2oRo":function(t,e,r){(function(e){var r=function(t){return t&&t.Math==Math&&t};t.exports=r("object"==typeof globalThis&&globalThis)||r("object"==typeof window&&window)||r("object"==typeof self&&self)||r("object"==typeof e&&e)||function(){return this}()||Function("return this")()}).call(this,r("yLpj"))},"33Wh":function(t,e,r){var i=r("yoRg"),n=r("eDl+");t.exports=Object.keys||function(t){return i(t,n)}},"3Eq5":function(t,e,r){var i=r("We1y");t.exports=function(t,e){var r=t[e];return null==r?void 0:i(r)}},"3bBZ":function(t,e,r){var i=r("2oRo"),n=r("/byt"),a=r("eFrH"),s=r("4mDm"),o=r("kRJp"),u=r("tiKp"),h=u("iterator"),c=u("toStringTag"),l=s.values,f=function(t,e){if(t){if(t[h]!==l)try{o(t,h,l)}catch(e){t[h]=l}if(t[c]||o(t,c,e),n[e])for(var r in s)if(t[r]!==s[r])try{o(t,r,s[r])}catch(e){t[r]=s[r]}}};for(var g in n)f(i[g]&&i[g].prototype,g);f(a,"DOMTokenList")},"4WOD":function(t,e,r){var i=r("UTVS"),n=r("Fib7"),a=r("ewvW"),s=r("93I0"),o=r("4Xet"),u=s("IE_PROTO"),h=Object.prototype;t.exports=o?Object.getPrototypeOf:function(t){var e=a(t);if(i(e,u))return e[u];var r=e.constructor;return n(r)&&e instanceof r?r.prototype:e instanceof Object?h:null}},"4Xet":function(t,e,r){var i=r("0Dky");t.exports=!i((function(){function t(){}return t.prototype.constructor=null,Object.getPrototypeOf(new t)!==t.prototype}))},"4mDm":function(t,e,r){"use strict";var i=r("/GqU"),n=r("RNIs"),a=r("P4y1"),s=r("afO8"),o=r("fdAy"),u=s.set,h=s.getterFor("Array Iterator");t.exports=o(Array,"Array",(function(t,e){u(this,{type:"Array Iterator",target:i(t),index:0,kind:e})}),(function(){var t=h(this),e=t.target,r=t.kind,i=t.index++;return!e||i>=e.length?(t.target=void 0,{value:void 0,done:!0}):"keys"==r?{value:i,done:!1}:"values"==r?{value:e[i],done:!1}:{value:[i,e[i]],done:!1}}),"values"),a.Arguments=a.Array,n("keys"),n("values"),n("entries")},"4syw":function(t,e,r){var i=r("busE");t.exports=function(t,e,r){for(var n in e)i(t,n,e[n],r);return t}},"5mdu":function(t,e){t.exports=function(t){try{return{error:!1,value:t()}}catch(t){return{error:!0,value:t}}}},"5s+n":function(t,e,r){"use strict";var i,n,a,s,o=r("I+eb"),u=r("xDBR"),h=r("2oRo"),c=r("0GbY"),l=r("/qmn"),f=r("busE"),g=r("4syw"),p=r("0rvr"),d=r("1E5z"),v=r("JiZb"),y=r("We1y"),m=r("Fib7"),x=r("hh1v"),b=r("GarU"),S=r("iSVu"),w=r("ImZN"),A=r("HH4o"),T=r("SEBh"),O=r("LPSS").set,E=r("tXUg"),P=r("zfnd"),C=r("RN6c"),M=r("8GlL"),N=r("5mdu"),R=r("afO8"),V=r("lMq5"),k=r("tiKp"),_=r("YGnB"),I=r("YF1G"),L=r("LQDL"),D=k("species"),B="Promise",F=R.get,U=R.set,z=R.getterFor(B),H=l&&l.prototype,j=l,Y=H,X=h.TypeError,W=h.document,G=h.process,q=M.f,Q=q,K=!!(W&&W.createEvent&&h.dispatchEvent),$=m(h.PromiseRejectionEvent),Z=!1,J=V(B,(function(){var t=S(j),e=t!==String(j);if(!e&&66===L)return!0;if(u&&!Y.finally)return!0;if(L>=51&&/native code/.test(t))return!1;var r=new j((function(t){t(1)})),i=function(t){t((function(){}),(function(){}))};return(r.constructor={})[D]=i,!(Z=r.then((function(){}))instanceof i)||!e&&_&&!$})),tt=J||!A((function(t){j.all(t).catch((function(){}))})),et=function(t){var e;return!(!x(t)||!m(e=t.then))&&e},rt=function(t,e){if(!t.notified){t.notified=!0;var r=t.reactions;E((function(){for(var i=t.value,n=1==t.state,a=0;r.length>a;){var s,o,u,h=r[a++],c=n?h.ok:h.fail,l=h.resolve,f=h.reject,g=h.domain;try{c?(n||(2===t.rejection&&st(t),t.rejection=1),!0===c?s=i:(g&&g.enter(),s=c(i),g&&(g.exit(),u=!0)),s===h.promise?f(X("Promise-chain cycle")):(o=et(s))?o.call(s,l,f):l(s)):f(i)}catch(t){g&&!u&&g.exit(),f(t)}}t.reactions=[],t.notified=!1,e&&!t.rejection&&nt(t)}))}},it=function(t,e,r){var i,n;K?((i=W.createEvent("Event")).promise=e,i.reason=r,i.initEvent(t,!1,!0),h.dispatchEvent(i)):i={promise:e,reason:r},!$&&(n=h["on"+t])?n(i):"unhandledrejection"===t&&C("Unhandled promise rejection",r)},nt=function(t){O.call(h,(function(){var e,r=t.facade,i=t.value;if(at(t)&&(e=N((function(){I?G.emit("unhandledRejection",i,r):it("unhandledrejection",r,i)})),t.rejection=I||at(t)?2:1,e.error))throw e.value}))},at=function(t){return 1!==t.rejection&&!t.parent},st=function(t){O.call(h,(function(){var e=t.facade;I?G.emit("rejectionHandled",e):it("rejectionhandled",e,t.value)}))},ot=function(t,e,r){return function(i){t(e,i,r)}},ut=function(t,e,r){t.done||(t.done=!0,r&&(t=r),t.value=e,t.state=2,rt(t,!0))},ht=function(t,e,r){if(!t.done){t.done=!0,r&&(t=r);try{if(t.facade===e)throw X("Promise can't be resolved itself");var i=et(e);i?E((function(){var r={done:!1};try{i.call(e,ot(ht,r,t),ot(ut,r,t))}catch(e){ut(r,e,t)}})):(t.value=e,t.state=1,rt(t,!1))}catch(e){ut({done:!1},e,t)}}};if(J&&(Y=(j=function(t){b(this,j,B),y(t),i.call(this);var e=F(this);try{t(ot(ht,e),ot(ut,e))}catch(t){ut(e,t)}}).prototype,(i=function(t){U(this,{type:B,done:!1,notified:!1,parent:!1,reactions:[],rejection:!1,state:0,value:void 0})}).prototype=g(Y,{then:function(t,e){var r=z(this),i=q(T(this,j));return i.ok=!m(t)||t,i.fail=m(e)&&e,i.domain=I?G.domain:void 0,r.parent=!0,r.reactions.push(i),0!=r.state&&rt(r,!1),i.promise},catch:function(t){return this.then(void 0,t)}}),n=function(){var t=new i,e=F(t);this.promise=t,this.resolve=ot(ht,e),this.reject=ot(ut,e)},M.f=q=function(t){return t===j||t===a?new n(t):Q(t)},!u&&m(l)&&H!==Object.prototype)){s=H.then,Z||(f(H,"then",(function(t,e){var r=this;return new j((function(t,e){s.call(r,t,e)})).then(t,e)}),{unsafe:!0}),f(H,"catch",Y.catch,{unsafe:!0}));try{delete H.constructor}catch(t){}p&&p(H,Y)}o({global:!0,wrap:!0,forced:J},{Promise:j}),d(j,B,!1,!0),v(B),a=c(B),o({target:B,stat:!0,forced:J},{reject:function(t){var e=q(this);return e.reject.call(void 0,t),e.promise}}),o({target:B,stat:!0,forced:u||J},{resolve:function(t){return P(u&&this===a?j:this,t)}}),o({target:B,stat:!0,forced:tt},{all:function(t){var e=this,r=q(e),i=r.resolve,n=r.reject,a=N((function(){var r=y(e.resolve),a=[],s=0,o=1;w(t,(function(t){var u=s++,h=!1;a.push(void 0),o++,r.call(e,t).then((function(t){h||(h=!0,a[u]=t,--o||i(a))}),n)})),--o||i(a)}));return a.error&&n(a.value),r.promise},race:function(t){var e=this,r=q(e),i=r.reject,n=N((function(){var n=y(e.resolve);w(t,(function(t){n.call(e,t).then(r.resolve,i)}))}));return n.error&&i(n.value),r.promise}})},"6JNq":function(t,e,r){var i=r("UTVS"),n=r("Vu81"),a=r("Bs8V"),s=r("m/L8");t.exports=function(t,e){for(var r=n(e),o=s.f,u=a.f,h=0;h<r.length;h++){var c=r[h];i(t,c)||o(t,c,u(e,c))}}},"6LWA":function(t,e,r){var i=r("xrYK");t.exports=Array.isArray||function(t){return"Array"==i(t)}},"6VoE":function(t,e,r){var i=r("tiKp"),n=r("P4y1"),a=i("iterator"),s=Array.prototype;t.exports=function(t){return void 0!==t&&(n.Array===t||s[a]===t)}},"8GlL":function(t,e,r){"use strict";var i=r("We1y"),n=function(t){var e,r;this.promise=new t((function(t,i){if(void 0!==e||void 0!==r)throw TypeError("Bad Promise constructor");e=t,r=i})),this.resolve=i(e),this.reject=i(r)};t.exports.f=function(t){return new n(t)}},"93I0":function(t,e,r){var i=r("VpIT"),n=r("kOOl"),a=i("keys");t.exports=function(t){return a[t]||(a[t]=n(t))}},"9d/t":function(t,e,r){var i=r("AO7/"),n=r("Fib7"),a=r("xrYK"),s=r("tiKp")("toStringTag"),o="Arguments"==a(function(){return arguments}());t.exports=i?a:function(t){var e,r,i;return void 0===t?"Undefined":null===t?"Null":"string"==typeof(r=function(t,e){try{return t[e]}catch(t){}}(e=Object(t),s))?r:o?a(e):"Object"==(i=a(e))&&n(e.callee)?"Arguments":i}},A2ZE:function(t,e,r){var i=r("We1y");t.exports=function(t,e,r){if(i(t),void 0===e)return t;switch(r){case 0:return function(){return t.call(e)};case 1:return function(r){return t.call(e,r)};case 2:return function(r,i){return t.call(e,r,i)};case 3:return function(r,i,n){return t.call(e,r,i,n)}}return function(){return t.apply(e,arguments)}}},"AO7/":function(t,e,r){var i={};i[r("tiKp")("toStringTag")]="z",t.exports="[object z]"===String(i)},Bs8V:function(t,e,r){var i=r("g6v/"),n=r("0eef"),a=r("XGwC"),s=r("/GqU"),o=r("oEtG"),u=r("UTVS"),h=r("DPsx"),c=Object.getOwnPropertyDescriptor;e.f=i?c:function(t,e){if(t=s(t),e=o(e),h)try{return c(t,e)}catch(t){}if(u(t,e))return a(!n.f.call(t,e),t[e])}},DLK6:function(t,e,r){var i=r("ewvW"),n=Math.floor,a="".replace,s=/\$([$&'`]|\d{1,2}|<[^>]*>)/g,o=/\$([$&'`]|\d{1,2})/g;t.exports=function(t,e,r,u,h,c){var l=r+t.length,f=u.length,g=o;return void 0!==h&&(h=i(h),g=s),a.call(c,g,(function(i,a){var s;switch(a.charAt(0)){case"$":return"$";case"&":return t;case"`":return e.slice(0,r);case"'":return e.slice(l);case"<":s=h[a.slice(1,-1)];break;default:var o=+a;if(0===o)return i;if(o>f){var c=n(o/10);return 0===c?i:c<=f?void 0===u[c-1]?a.charAt(1):u[c-1]+a.charAt(1):i}s=u[o-1]}return void 0===s?"":s}))}},DPsx:function(t,e,r){var i=r("g6v/"),n=r("0Dky"),a=r("zBJ4");t.exports=!i&&!n((function(){return 7!=Object.defineProperty(a("div"),"a",{get:function(){return 7}}).a}))},DVFp:function(t,e){t.exports=function(t){try{return String(t)}catch(t){return"Object"}}},DXPr:function(t,e,r){"use strict";r.r(e),function(t){r.d(e,"AElement",(function(){return Ht})),r.d(e,"AnimateColorElement",(function(){return Lt})),r.d(e,"AnimateElement",(function(){return It})),r.d(e,"AnimateTransformElement",(function(){return Dt})),r.d(e,"BoundingBox",(function(){return ft})),r.d(e,"CB1",(function(){return I})),r.d(e,"CB2",(function(){return L})),r.d(e,"CB3",(function(){return D})),r.d(e,"CB4",(function(){return B})),r.d(e,"Canvg",(function(){return xe})),r.d(e,"CircleElement",(function(){return wt})),r.d(e,"ClipPathElement",(function(){return ae})),r.d(e,"DefsElement",(function(){return Mt})),r.d(e,"DescElement",(function(){return fe})),r.d(e,"Document",(function(){return ve})),r.d(e,"Element",(function(){return st})),r.d(e,"EllipseElement",(function(){return At})),r.d(e,"FeColorMatrixElement",(function(){return re})),r.d(e,"FeCompositeElement",(function(){return he})),r.d(e,"FeDropShadowElement",(function(){return oe})),r.d(e,"FeGaussianBlurElement",(function(){return ce})),r.d(e,"FeMorphologyElement",(function(){return ue})),r.d(e,"FilterElement",(function(){return se})),r.d(e,"Font",(function(){return lt})),r.d(e,"FontElement",(function(){return Bt})),r.d(e,"FontFaceElement",(function(){return Ft})),r.d(e,"GElement",(function(){return Nt})),r.d(e,"GlyphElement",(function(){return vt})),r.d(e,"GradientElement",(function(){return Rt})),r.d(e,"ImageElement",(function(){return Gt})),r.d(e,"LineElement",(function(){return Tt})),r.d(e,"LinearGradientElement",(function(){return Vt})),r.d(e,"MarkerElement",(function(){return Ct})),r.d(e,"MaskElement",(function(){return ie})),r.d(e,"Matrix",(function(){return et})),r.d(e,"MissingGlyphElement",(function(){return Ut})),r.d(e,"Mouse",(function(){return X})),r.d(e,"PSEUDO_ZERO",(function(){return R})),r.d(e,"Parser",(function(){return $})),r.d(e,"PathElement",(function(){return dt})),r.d(e,"PathParser",(function(){return gt})),r.d(e,"PatternElement",(function(){return Pt})),r.d(e,"Point",(function(){return Y})),r.d(e,"PolygonElement",(function(){return Et})),r.d(e,"PolylineElement",(function(){return Ot})),r.d(e,"Property",(function(){return H})),r.d(e,"QB1",(function(){return F})),r.d(e,"QB2",(function(){return U})),r.d(e,"QB3",(function(){return z})),r.d(e,"RadialGradientElement",(function(){return kt})),r.d(e,"RectElement",(function(){return St})),r.d(e,"RenderedElement",(function(){return pt})),r.d(e,"Rotate",(function(){return J})),r.d(e,"SVGElement",(function(){return bt})),r.d(e,"SVGFontLoader",(function(){return Qt})),r.d(e,"Scale",(function(){return tt})),r.d(e,"Screen",(function(){return q})),r.d(e,"Skew",(function(){return rt})),r.d(e,"SkewX",(function(){return it})),r.d(e,"SkewY",(function(){return nt})),r.d(e,"StopElement",(function(){return _t})),r.d(e,"StyleElement",(function(){return Kt})),r.d(e,"SymbolElement",(function(){return qt})),r.d(e,"TRefElement",(function(){return zt})),r.d(e,"TSpanElement",(function(){return mt})),r.d(e,"TextElement",(function(){return yt})),r.d(e,"TextPathElement",(function(){return Xt})),r.d(e,"TitleElement",(function(){return le})),r.d(e,"Transform",(function(){return at})),r.d(e,"Translate",(function(){return Z})),r.d(e,"UnknownElement",(function(){return ot})),r.d(e,"UseElement",(function(){return $t})),r.d(e,"ViewPort",(function(){return j})),r.d(e,"compressSpaces",(function(){return p})),r.d(e,"getSelectorSpecificity",(function(){return N})),r.d(e,"normalizeAttributeName",(function(){return x})),r.d(e,"normalizeColor",(function(){return S})),r.d(e,"parseExternalUrl",(function(){return b})),r.d(e,"presets",(function(){return g})),r.d(e,"toNumbers",(function(){return y})),r.d(e,"trimLeft",(function(){return d})),r.d(e,"trimRight",(function(){return v})),r.d(e,"vectorMagnitude",(function(){return V})),r.d(e,"vectorsAngle",(function(){return _})),r.d(e,"vectorsRatio",(function(){return k}));r("5s+n");var i=r("yXPU"),n=r.n(i),a=(r("Rm1S"),r("UxlC"),r("LKBx"),r("4mDm"),r("3bBZ"),r("lSNA")),s=r.n(a),o=(r("E9XD"),r("inlA"),r("EnZy"),r("xEkU")),u=r.n(o),h=(r("SYor"),r("WOGj")),c=r.n(h),l=(r("JTJg"),r("yXV3"),r("Junv"),r("0B/8")),f=(r("JfAA"),r("Xp4B"));var g=Object.freeze({__proto__:null,offscreen:function(){var{DOMParser:t}=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},e={window:null,ignoreAnimation:!0,ignoreMouse:!0,DOMParser:t,createCanvas:(t,e)=>new OffscreenCanvas(t,e),createImage:t=>n()((function*(){var e=yield fetch(t),r=yield e.blob();return yield createImageBitmap(r)}))()};return"undefined"==typeof DOMParser&&void 0!==t||Reflect.deleteProperty(e,"DOMParser"),e},node:function(t){var{DOMParser:e,canvas:r,fetch:i}=t;return{window:null,ignoreAnimation:!0,ignoreMouse:!0,DOMParser:e,fetch:i,createCanvas:r.createCanvas,createImage:r.loadImage}}});function p(t){return t.replace(/(?!\u3000)\s+/gm," ")}function d(t){return t.replace(/^[\n \t]+/,"")}function v(t){return t.replace(/[\n \t]+$/,"")}function y(t){return((t||"").match(/-?(\d+(?:\.\d*(?:[eE][+-]?\d+)?)?|\.\d+)(?=\D|$)/gm)||[]).map(parseFloat)}var m=/^[A-Z-]+$/;function x(t){return m.test(t)?t.toLowerCase():t}function b(t){var e=/url\(('([^']+)'|"([^"]+)"|([^'")]+))\)/.exec(t)||[];return e[2]||e[3]||e[4]}function S(t){if(!t.startsWith("rgb"))return t;var e=3;return t.replace(/\d+(\.\d+)?/g,(t,r)=>e--&&r?String(Math.round(parseFloat(t))):t)}var w=/(\[[^\]]+\])/g,A=/(#[^\s+>~.[:]+)/g,T=/(\.[^\s+>~.[:]+)/g,O=/(::[^\s+>~.[:]+|:first-line|:first-letter|:before|:after)/gi,E=/(:[\w-]+\([^)]*\))/gi,P=/(:[^\s+>~.[:]+)/g,C=/([^\s+>~.[:]+)/g;function M(t,e){var r=e.exec(t);return r?[t.replace(e," "),r.length]:[t,0]}function N(t){var e=[0,0,0],r=t.replace(/:not\(([^)]*)\)/g,"     $1 ").replace(/{[\s\S]*/gm," "),i=0;return[r,i]=M(r,w),e[1]+=i,[r,i]=M(r,A),e[0]+=i,[r,i]=M(r,T),e[1]+=i,[r,i]=M(r,O),e[2]+=i,[r,i]=M(r,E),e[1]+=i,[r,i]=M(r,P),e[1]+=i,r=r.replace(/[*\s+>~]/g," ").replace(/[#.]/g," "),[r,i]=M(r,C),e[2]+=i,e.join("")}var R=1e-8;function V(t){return Math.sqrt(Math.pow(t[0],2)+Math.pow(t[1],2))}function k(t,e){return(t[0]*e[0]+t[1]*e[1])/(V(t)*V(e))}function _(t,e){return(t[0]*e[1]<t[1]*e[0]?-1:1)*Math.acos(k(t,e))}function I(t){return t*t*t}function L(t){return 3*t*t*(1-t)}function D(t){return 3*t*(1-t)*(1-t)}function B(t){return(1-t)*(1-t)*(1-t)}function F(t){return t*t}function U(t){return 2*t*(1-t)}function z(t){return(1-t)*(1-t)}class H{constructor(t,e,r){this.document=t,this.name=e,this.value=r,this.isNormalizedColor=!1}static empty(t){return new H(t,"EMPTY","")}split(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:" ",{document:e,name:r}=this;return p(this.getString()).trim().split(t).map(t=>new H(e,r,t))}hasValue(t){var{value:e}=this;return null!==e&&""!==e&&(t||0!==e)&&void 0!==e}isString(t){var{value:e}=this,r="string"==typeof e;return r&&t?t.test(e):r}isUrlDefinition(){return this.isString(/^url\(/)}isPixels(){if(!this.hasValue())return!1;var t=this.getString();switch(!0){case t.endsWith("px"):case/^[0-9]+$/.test(t):return!0;default:return!1}}setValue(t){return this.value=t,this}getValue(t){return void 0===t||this.hasValue()?this.value:t}getNumber(t){if(!this.hasValue())return void 0===t?0:parseFloat(t);var{value:e}=this,r=parseFloat(e);return this.isString(/%$/)&&(r/=100),r}getString(t){return void 0===t||this.hasValue()?void 0===this.value?"":String(this.value):String(t)}getColor(t){var e=this.getString(t);return this.isNormalizedColor||(this.isNormalizedColor=!0,e=S(e),this.value=e),e}getDpi(){return 96}getRem(){return this.document.rootEmSize}getEm(){return this.document.emSize}getUnits(){return this.getString().replace(/[0-9.-]/g,"")}getPixels(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1];if(!this.hasValue())return 0;var[r,i]="boolean"==typeof t?[void 0,t]:[t],{viewPort:n}=this.document.screen;switch(!0){case this.isString(/vmin$/):return this.getNumber()/100*Math.min(n.computeSize("x"),n.computeSize("y"));case this.isString(/vmax$/):return this.getNumber()/100*Math.max(n.computeSize("x"),n.computeSize("y"));case this.isString(/vw$/):return this.getNumber()/100*n.computeSize("x");case this.isString(/vh$/):return this.getNumber()/100*n.computeSize("y");case this.isString(/rem$/):return this.getNumber()*this.getRem();case this.isString(/em$/):return this.getNumber()*this.getEm();case this.isString(/ex$/):return this.getNumber()*this.getEm()/2;case this.isString(/px$/):return this.getNumber();case this.isString(/pt$/):return this.getNumber()*this.getDpi()*(1/72);case this.isString(/pc$/):return 15*this.getNumber();case this.isString(/cm$/):return this.getNumber()*this.getDpi()/2.54;case this.isString(/mm$/):return this.getNumber()*this.getDpi()/25.4;case this.isString(/in$/):return this.getNumber()*this.getDpi();case this.isString(/%$/)&&i:return this.getNumber()*this.getEm();case this.isString(/%$/):return this.getNumber()*n.computeSize(r);default:var a=this.getNumber();return e&&a<1?a*n.computeSize(r):a}}getMilliseconds(){return this.hasValue()?this.isString(/ms$/)?this.getNumber():1e3*this.getNumber():0}getRadians(){if(!this.hasValue())return 0;switch(!0){case this.isString(/deg$/):return this.getNumber()*(Math.PI/180);case this.isString(/grad$/):return this.getNumber()*(Math.PI/200);case this.isString(/rad$/):return this.getNumber();default:return this.getNumber()*(Math.PI/180)}}getDefinition(){var t=this.getString(),e=/#([^)'"]+)/.exec(t);return e&&(e=e[1]),e||(e=t),this.document.definitions[e]}getFillStyleDefinition(t,e){var r=this.getDefinition();if(!r)return null;if("function"==typeof r.createGradient)return r.createGradient(this.document.ctx,t,e);if("function"==typeof r.createPattern){if(r.getHrefAttribute().hasValue()){var i=r.getAttribute("patternTransform");r=r.getHrefAttribute().getDefinition(),i.hasValue()&&r.getAttribute("patternTransform",!0).setValue(i.value)}return r.createPattern(this.document.ctx,t,e)}return null}getTextBaseline(){return this.hasValue()?H.textBaselineMapping[this.getString()]:null}addOpacity(t){for(var e=this.getColor(),r=e.length,i=0,n=0;n<r&&(","===e[n]&&i++,3!==i);n++);if(t.hasValue()&&this.isString()&&3!==i){var a=new c.a(e);a.ok&&(a.alpha=t.getNumber(),e=a.toRGBA())}return new H(this.document,this.name,e)}}H.textBaselineMapping={baseline:"alphabetic","before-edge":"top","text-before-edge":"top",middle:"middle",central:"middle","after-edge":"bottom","text-after-edge":"bottom",ideographic:"ideographic",alphabetic:"alphabetic",hanging:"hanging",mathematical:"alphabetic"};class j{constructor(){this.viewPorts=[]}clear(){this.viewPorts=[]}setCurrent(t,e){this.viewPorts.push({width:t,height:e})}removeCurrent(){this.viewPorts.pop()}getCurrent(){var{viewPorts:t}=this;return t[t.length-1]}get width(){return this.getCurrent().width}get height(){return this.getCurrent().height}computeSize(t){return"number"==typeof t?t:"x"===t?this.width:"y"===t?this.height:Math.sqrt(Math.pow(this.width,2)+Math.pow(this.height,2))/Math.sqrt(2)}}class Y{constructor(t,e){this.x=t,this.y=e}static parse(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0,[r=e,i=e]=y(t);return new Y(r,i)}static parseScale(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:1,[r=e,i=r]=y(t);return new Y(r,i)}static parsePath(t){for(var e=y(t),r=e.length,i=[],n=0;n<r;n+=2)i.push(new Y(e[n],e[n+1]));return i}angleTo(t){return Math.atan2(t.y-this.y,t.x-this.x)}applyTransform(t){var{x:e,y:r}=this,i=e*t[0]+r*t[2]+t[4],n=e*t[1]+r*t[3]+t[5];this.x=i,this.y=n}}class X{constructor(t){this.screen=t,this.working=!1,this.events=[],this.eventElements=[],this.onClick=this.onClick.bind(this),this.onMouseMove=this.onMouseMove.bind(this)}isWorking(){return this.working}start(){if(!this.working){var{screen:t,onClick:e,onMouseMove:r}=this,i=t.ctx.canvas;i.onclick=e,i.onmousemove=r,this.working=!0}}stop(){if(this.working){var t=this.screen.ctx.canvas;this.working=!1,t.onclick=null,t.onmousemove=null}}hasEvents(){return this.working&&this.events.length>0}runEvents(){if(this.working){var{screen:t,events:e,eventElements:r}=this,{style:i}=t.ctx.canvas;i&&(i.cursor=""),e.forEach((t,e)=>{for(var{run:i}=t,n=r[e];n;)i(n),n=n.parent}),this.events=[],this.eventElements=[]}}checkPath(t,e){if(this.working&&e){var{events:r,eventElements:i}=this;r.forEach((r,n)=>{var{x:a,y:s}=r;!i[n]&&e.isPointInPath&&e.isPointInPath(a,s)&&(i[n]=t)})}}checkBoundingBox(t,e){if(this.working&&e){var{events:r,eventElements:i}=this;r.forEach((r,n)=>{var{x:a,y:s}=r;!i[n]&&e.isPointInBox(a,s)&&(i[n]=t)})}}mapXY(t,e){for(var{window:r,ctx:i}=this.screen,n=new Y(t,e),a=i.canvas;a;)n.x-=a.offsetLeft,n.y-=a.offsetTop,a=a.offsetParent;return r.scrollX&&(n.x+=r.scrollX),r.scrollY&&(n.y+=r.scrollY),n}onClick(t){var{x:e,y:r}=this.mapXY(t.clientX,t.clientY);this.events.push({type:"onclick",x:e,y:r,run(t){t.onClick&&t.onClick()}})}onMouseMove(t){var{x:e,y:r}=this.mapXY(t.clientX,t.clientY);this.events.push({type:"onmousemove",x:e,y:r,run(t){t.onMouseMove&&t.onMouseMove()}})}}var W="undefined"!=typeof window?window:null,G="undefined"!=typeof fetch?fetch.bind(void 0):null;class q{constructor(t){var{fetch:e=G,window:r=W}=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this.ctx=t,this.FRAMERATE=30,this.MAX_VIRTUAL_PIXELS=3e4,this.CLIENT_WIDTH=800,this.CLIENT_HEIGHT=600,this.viewPort=new j,this.mouse=new X(this),this.animations=[],this.waits=[],this.frameDuration=0,this.isReadyLock=!1,this.isFirstRender=!0,this.intervalId=null,this.window=r,this.fetch=e}wait(t){this.waits.push(t)}ready(){return this.readyPromise?this.readyPromise:Promise.resolve()}isReady(){if(this.isReadyLock)return!0;var t=this.waits.every(t=>t());return t&&(this.waits=[],this.resolveReady&&this.resolveReady()),this.isReadyLock=t,t}setDefaults(t){t.strokeStyle="rgba(0,0,0,0)",t.lineCap="butt",t.lineJoin="miter",t.miterLimit=4}setViewBox(t){var{document:e,ctx:r,aspectRatio:i,width:n,desiredWidth:a,height:s,desiredHeight:o,minX:u=0,minY:h=0,refX:c,refY:l,clip:f=!1,clipX:g=0,clipY:d=0}=t,v=p(i).replace(/^defer\s/,""),[y,m]=v.split(" "),x=y||"xMidYMid",b=m||"meet",S=n/a,w=s/o,A=Math.min(S,w),T=Math.max(S,w),O=a,E=o;"meet"===b&&(O*=A,E*=A),"slice"===b&&(O*=T,E*=T);var P=new H(e,"refX",c),C=new H(e,"refY",l),M=P.hasValue()&&C.hasValue();if(M&&r.translate(-A*P.getPixels("x"),-A*C.getPixels("y")),f){var N=A*g,R=A*d;r.beginPath(),r.moveTo(N,R),r.lineTo(n,R),r.lineTo(n,s),r.lineTo(N,s),r.closePath(),r.clip()}if(!M){var V="meet"===b&&A===w,k="slice"===b&&T===w,_="meet"===b&&A===S,I="slice"===b&&T===S;x.startsWith("xMid")&&(V||k)&&r.translate(n/2-O/2,0),x.endsWith("YMid")&&(_||I)&&r.translate(0,s/2-E/2),x.startsWith("xMax")&&(V||k)&&r.translate(n-O,0),x.endsWith("YMax")&&(_||I)&&r.translate(0,s-E)}switch(!0){case"none"===x:r.scale(S,w);break;case"meet"===b:r.scale(A,A);break;case"slice"===b:r.scale(T,T)}r.translate(-u,-h)}start(t){var{enableRedraw:e=!1,ignoreMouse:r=!1,ignoreAnimation:i=!1,ignoreDimensions:n=!1,ignoreClear:a=!1,forceRedraw:s,scaleWidth:o,scaleHeight:h,offsetX:c,offsetY:l}=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},{FRAMERATE:f,mouse:g}=this,p=1e3/f;if(this.frameDuration=p,this.readyPromise=new Promise(t=>{this.resolveReady=t}),this.isReady()&&this.render(t,n,a,o,h,c,l),e){var d=Date.now(),v=d,y=0,m=()=>{d=Date.now(),(y=d-v)>=p&&(v=d-y%p,this.shouldUpdate(i,s)&&(this.render(t,n,a,o,h,c,l),g.runEvents())),this.intervalId=u()(m)};r||g.start(),this.intervalId=u()(m)}}stop(){this.intervalId&&(u.a.cancel(this.intervalId),this.intervalId=null),this.mouse.stop()}shouldUpdate(t,e){if(!t){var{frameDuration:r}=this;if(this.animations.reduce((t,e)=>e.update(r)||t,!1))return!0}return!("function"!=typeof e||!e())||(!(this.isReadyLock||!this.isReady())||!!this.mouse.hasEvents())}render(t,e,r,i,n,a,s){var{CLIENT_WIDTH:o,CLIENT_HEIGHT:u,viewPort:h,ctx:c,isFirstRender:l}=this,f=c.canvas;h.clear(),f.width&&f.height?h.setCurrent(f.width,f.height):h.setCurrent(o,u);var g=t.getStyle("width"),p=t.getStyle("height");!e&&(l||"number"!=typeof i&&"number"!=typeof n)&&(g.hasValue()&&(f.width=g.getPixels("x"),f.style&&(f.style.width="".concat(f.width,"px"))),p.hasValue()&&(f.height=p.getPixels("y"),f.style&&(f.style.height="".concat(f.height,"px"))));var d=f.clientWidth||f.width,v=f.clientHeight||f.height;if(e&&g.hasValue()&&p.hasValue()&&(d=g.getPixels("x"),v=p.getPixels("y")),h.setCurrent(d,v),"number"==typeof a&&t.getAttribute("x",!0).setValue(a),"number"==typeof s&&t.getAttribute("y",!0).setValue(s),"number"==typeof i||"number"==typeof n){var m=y(t.getAttribute("viewBox").getString()),x=0,b=0;if("number"==typeof i){var S=t.getStyle("width");S.hasValue()?x=S.getPixels("x")/i:isNaN(m[2])||(x=m[2]/i)}if("number"==typeof n){var w=t.getStyle("height");w.hasValue()?b=w.getPixels("y")/n:isNaN(m[3])||(b=m[3]/n)}x||(x=b),b||(b=x),t.getAttribute("width",!0).setValue(i),t.getAttribute("height",!0).setValue(n);var A=t.getStyle("transform",!0,!0);A.setValue("".concat(A.getString()," scale(").concat(1/x,", ").concat(1/b,")"))}r||c.clearRect(0,0,d,v),t.render(c),l&&(this.isFirstRender=!1)}}q.defaultWindow=W,q.defaultFetch=G;var{defaultFetch:Q}=q,K="undefined"!=typeof DOMParser?DOMParser:null;class ${constructor(){var{fetch:t=Q,DOMParser:e=K}=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.fetch=t,this.DOMParser=e}parse(t){var e=this;return n()((function*(){return t.startsWith("<")?e.parseFromString(t):e.load(t)}))()}parseFromString(t){var e=new this.DOMParser;try{return this.checkDocument(e.parseFromString(t,"image/svg+xml"))}catch(r){return this.checkDocument(e.parseFromString(t,"text/xml"))}}checkDocument(t){var e=t.getElementsByTagName("parsererror")[0];if(e)throw new Error(e.textContent);return t}load(t){var e=this;return n()((function*(){var r=yield e.fetch(t),i=yield r.text();return e.parseFromString(i)}))()}}class Z{constructor(t,e){this.type="translate",this.point=null,this.point=Y.parse(e)}apply(t){var{x:e,y:r}=this.point;t.translate(e||0,r||0)}unapply(t){var{x:e,y:r}=this.point;t.translate(-1*e||0,-1*r||0)}applyToPoint(t){var{x:e,y:r}=this.point;t.applyTransform([1,0,0,1,e||0,r||0])}}class J{constructor(t,e,r){this.type="rotate",this.angle=null,this.originX=null,this.originY=null,this.cx=0,this.cy=0;var i=y(e);this.angle=new H(t,"angle",i[0]),this.originX=r[0],this.originY=r[1],this.cx=i[1]||0,this.cy=i[2]||0}apply(t){var{cx:e,cy:r,originX:i,originY:n,angle:a}=this,s=e+i.getPixels("x"),o=r+n.getPixels("y");t.translate(s,o),t.rotate(a.getRadians()),t.translate(-s,-o)}unapply(t){var{cx:e,cy:r,originX:i,originY:n,angle:a}=this,s=e+i.getPixels("x"),o=r+n.getPixels("y");t.translate(s,o),t.rotate(-1*a.getRadians()),t.translate(-s,-o)}applyToPoint(t){var{cx:e,cy:r,angle:i}=this,n=i.getRadians();t.applyTransform([1,0,0,1,e||0,r||0]),t.applyTransform([Math.cos(n),Math.sin(n),-Math.sin(n),Math.cos(n),0,0]),t.applyTransform([1,0,0,1,-e||0,-r||0])}}class tt{constructor(t,e,r){this.type="scale",this.scale=null,this.originX=null,this.originY=null;var i=Y.parseScale(e);0!==i.x&&0!==i.y||(i.x=R,i.y=R),this.scale=i,this.originX=r[0],this.originY=r[1]}apply(t){var{scale:{x:e,y:r},originX:i,originY:n}=this,a=i.getPixels("x"),s=n.getPixels("y");t.translate(a,s),t.scale(e,r||e),t.translate(-a,-s)}unapply(t){var{scale:{x:e,y:r},originX:i,originY:n}=this,a=i.getPixels("x"),s=n.getPixels("y");t.translate(a,s),t.scale(1/e,1/r||e),t.translate(-a,-s)}applyToPoint(t){var{x:e,y:r}=this.scale;t.applyTransform([e||0,0,0,r||0,0,0])}}class et{constructor(t,e,r){this.type="matrix",this.matrix=[],this.originX=null,this.originY=null,this.matrix=y(e),this.originX=r[0],this.originY=r[1]}apply(t){var{originX:e,originY:r,matrix:i}=this,n=e.getPixels("x"),a=r.getPixels("y");t.translate(n,a),t.transform(i[0],i[1],i[2],i[3],i[4],i[5]),t.translate(-n,-a)}unapply(t){var{originX:e,originY:r,matrix:i}=this,n=i[0],a=i[2],s=i[4],o=i[1],u=i[3],h=i[5],c=1/(n*(1*u-0*h)-a*(1*o-0*h)+s*(0*o-0*u)),l=e.getPixels("x"),f=r.getPixels("y");t.translate(l,f),t.transform(c*(1*u-0*h),c*(0*h-1*o),c*(0*s-1*a),c*(1*n-0*s),c*(a*h-s*u),c*(s*o-n*h)),t.translate(-l,-f)}applyToPoint(t){t.applyTransform(this.matrix)}}class rt extends et{constructor(t,e,r){super(t,e,r),this.type="skew",this.angle=null,this.angle=new H(t,"angle",e)}}class it extends rt{constructor(t,e,r){super(t,e,r),this.type="skewX",this.matrix=[1,0,Math.tan(this.angle.getRadians()),1,0,0]}}class nt extends rt{constructor(t,e,r){super(t,e,r),this.type="skewY",this.matrix=[1,Math.tan(this.angle.getRadians()),0,1,0,0]}}class at{constructor(t,e,r){this.document=t,this.transforms=[],function(t){return p(t).trim().replace(/\)([a-zA-Z])/g,") $1").replace(/\)(\s?,\s?)/g,") ").split(/\s(?=[a-z])/)}(e).forEach(t=>{if("none"!==t){var[e,i]=function(t){var[e,r]=t.split("(");return[e.trim(),r.trim().replace(")","")]}(t),n=at.transformTypes[e];void 0!==n&&this.transforms.push(new n(this.document,i,r))}})}static fromElement(t,e){var r=e.getStyle("transform",!1,!0),[i,n=i]=e.getStyle("transform-origin",!1,!0).split(),a=[i,n];return r.hasValue()?new at(t,r.getString(),a):null}apply(t){for(var{transforms:e}=this,r=e.length,i=0;i<r;i++)e[i].apply(t)}unapply(t){for(var{transforms:e}=this,r=e.length-1;r>=0;r--)e[r].unapply(t)}applyToPoint(t){for(var{transforms:e}=this,r=e.length,i=0;i<r;i++)e[i].applyToPoint(t)}}at.transformTypes={translate:Z,rotate:J,scale:tt,matrix:et,skewX:it,skewY:nt};class st{constructor(t,e){var r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];if(this.document=t,this.node=e,this.captureTextNodes=r,this.attributes={},this.styles={},this.stylesSpecificity={},this.animationFrozen=!1,this.animationFrozenValue="",this.parent=null,this.children=[],e&&1===e.nodeType){if(Array.from(e.attributes).forEach(e=>{var r=x(e.nodeName);this.attributes[r]=new H(t,r,e.value)}),this.addStylesFromStyleDefinition(),this.getAttribute("style").hasValue())this.getAttribute("style").getString().split(";").map(t=>t.trim()).forEach(e=>{if(e){var[r,i]=e.split(":").map(t=>t.trim());this.styles[r]=new H(t,r,i)}});var{definitions:i}=t,n=this.getAttribute("id");n.hasValue()&&(i[n.getString()]||(i[n.getString()]=this)),Array.from(e.childNodes).forEach(e=>{if(1===e.nodeType)this.addChild(e);else if(r&&(3===e.nodeType||4===e.nodeType)){var i=t.createTextNode(e);i.getText().length>0&&this.addChild(i)}})}}getAttribute(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=this.attributes[t];if(!r&&e){var i=new H(this.document,t,"");return this.attributes[t]=i,i}return r||H.empty(this.document)}getHrefAttribute(){for(var t in this.attributes)if("href"===t||t.endsWith(":href"))return this.attributes[t];return H.empty(this.document)}getStyle(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],i=this.styles[t];if(i)return i;var n=this.getAttribute(t);if(null!=n&&n.hasValue())return this.styles[t]=n,n;if(!r){var{parent:a}=this;if(a){var s=a.getStyle(t);if(null!=s&&s.hasValue())return s}}if(e){var o=new H(this.document,t,"");return this.styles[t]=o,o}return i||H.empty(this.document)}render(t){if("none"!==this.getStyle("display").getString()&&"hidden"!==this.getStyle("visibility").getString()){if(t.save(),this.getStyle("mask").hasValue()){var e=this.getStyle("mask").getDefinition();e&&(this.applyEffects(t),e.apply(t,this))}else if("none"!==this.getStyle("filter").getValue("none")){var r=this.getStyle("filter").getDefinition();r&&(this.applyEffects(t),r.apply(t,this))}else this.setContext(t),this.renderChildren(t),this.clearContext(t);t.restore()}}setContext(t){}applyEffects(t){var e=at.fromElement(this.document,this);e&&e.apply(t);var r=this.getStyle("clip-path",!1,!0);if(r.hasValue()){var i=r.getDefinition();i&&i.apply(t)}}clearContext(t){}renderChildren(t){this.children.forEach(e=>{e.render(t)})}addChild(t){var e=t instanceof st?t:this.document.createElement(t);e.parent=this,st.ignoreChildTypes.includes(e.type)||this.children.push(e)}matchesSelector(t){var{node:e}=this;if("function"==typeof e.matches)return e.matches(t);var r=e.getAttribute("class");return!(!r||""===r)&&r.split(" ").some(e=>".".concat(e)===t)}addStylesFromStyleDefinition(){var{styles:t,stylesSpecificity:e}=this.document;for(var r in t)if(!r.startsWith("@")&&this.matchesSelector(r)){var i=t[r],n=e[r];if(i)for(var a in i){var s=this.stylesSpecificity[a];void 0===s&&(s="000"),n>=s&&(this.styles[a]=i[a],this.stylesSpecificity[a]=n)}}}removeStyles(t,e){return e.reduce((e,r)=>{var i=t.getStyle(r);if(!i.hasValue())return e;var n=i.getString();return i.setValue(""),[...e,[r,n]]},[])}restoreStyles(t,e){e.forEach(e=>{var[r,i]=e;t.getStyle(r,!0).setValue(i)})}}st.ignoreChildTypes=["title"];class ot extends st{constructor(t,e,r){super(t,e,r)}}function ut(t){var e=t.trim();return/^('|")/.test(e)?e:'"'.concat(e,'"')}function ht(t){if(!t)return"";var e=t.trim().toLowerCase();switch(e){case"normal":case"italic":case"oblique":case"inherit":case"initial":case"unset":return e;default:return/^oblique\s+(-|)\d+deg$/.test(e)?e:""}}function ct(t){if(!t)return"";var e=t.trim().toLowerCase();switch(e){case"normal":case"bold":case"lighter":case"bolder":case"inherit":case"initial":case"unset":return e;default:return/^[\d.]+$/.test(e)?e:""}}class lt{constructor(t,e,r,i,n,a){var s=a?"string"==typeof a?lt.parse(a):a:{};this.fontFamily=n||s.fontFamily,this.fontSize=i||s.fontSize,this.fontStyle=t||s.fontStyle,this.fontWeight=r||s.fontWeight,this.fontVariant=e||s.fontVariant}static parse(){var t=arguments.length>1?arguments[1]:void 0,e="",r="",i="",n="",a="",s=p(arguments.length>0&&void 0!==arguments[0]?arguments[0]:"").trim().split(" "),o={fontSize:!1,fontStyle:!1,fontWeight:!1,fontVariant:!1};return s.forEach(t=>{switch(!0){case!o.fontStyle&&lt.styles.includes(t):"inherit"!==t&&(e=t),o.fontStyle=!0;break;case!o.fontVariant&&lt.variants.includes(t):"inherit"!==t&&(r=t),o.fontStyle=!0,o.fontVariant=!0;break;case!o.fontWeight&&lt.weights.includes(t):"inherit"!==t&&(i=t),o.fontStyle=!0,o.fontVariant=!0,o.fontWeight=!0;break;case!o.fontSize:"inherit"!==t&&([n]=t.split("/")),o.fontStyle=!0,o.fontVariant=!0,o.fontWeight=!0,o.fontSize=!0;break;default:"inherit"!==t&&(a+=t)}}),new lt(e,r,i,n,a,t)}toString(){return[ht(this.fontStyle),this.fontVariant,ct(this.fontWeight),this.fontSize,(e=this.fontFamily,void 0===t?e:e.trim().split(",").map(ut).join(","))].join(" ").trim();var e}}lt.styles="normal|italic|oblique|inherit",lt.variants="normal|small-caps|inherit",lt.weights="normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900|inherit";class ft{constructor(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:Number.NaN,e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:Number.NaN,r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:Number.NaN,i=arguments.length>3&&void 0!==arguments[3]?arguments[3]:Number.NaN;this.x1=t,this.y1=e,this.x2=r,this.y2=i,this.addPoint(t,e),this.addPoint(r,i)}get x(){return this.x1}get y(){return this.y1}get width(){return this.x2-this.x1}get height(){return this.y2-this.y1}addPoint(t,e){void 0!==t&&((isNaN(this.x1)||isNaN(this.x2))&&(this.x1=t,this.x2=t),t<this.x1&&(this.x1=t),t>this.x2&&(this.x2=t)),void 0!==e&&((isNaN(this.y1)||isNaN(this.y2))&&(this.y1=e,this.y2=e),e<this.y1&&(this.y1=e),e>this.y2&&(this.y2=e))}addX(t){this.addPoint(t,null)}addY(t){this.addPoint(null,t)}addBoundingBox(t){if(t){var{x1:e,y1:r,x2:i,y2:n}=t;this.addPoint(e,r),this.addPoint(i,n)}}sumCubic(t,e,r,i,n){return Math.pow(1-t,3)*e+3*Math.pow(1-t,2)*t*r+3*(1-t)*Math.pow(t,2)*i+Math.pow(t,3)*n}bezierCurveAdd(t,e,r,i,n){var a=6*e-12*r+6*i,s=-3*e+9*r-9*i+3*n,o=3*r-3*e;if(0!==s){var u=Math.pow(a,2)-4*o*s;if(!(u<0)){var h=(-a+Math.sqrt(u))/(2*s);0<h&&h<1&&(t?this.addX(this.sumCubic(h,e,r,i,n)):this.addY(this.sumCubic(h,e,r,i,n)));var c=(-a-Math.sqrt(u))/(2*s);0<c&&c<1&&(t?this.addX(this.sumCubic(c,e,r,i,n)):this.addY(this.sumCubic(c,e,r,i,n)))}}else{if(0===a)return;var l=-o/a;0<l&&l<1&&(t?this.addX(this.sumCubic(l,e,r,i,n)):this.addY(this.sumCubic(l,e,r,i,n)))}}addBezierCurve(t,e,r,i,n,a,s,o){this.addPoint(t,e),this.addPoint(s,o),this.bezierCurveAdd(!0,t,r,n,s),this.bezierCurveAdd(!1,e,i,a,o)}addQuadraticCurve(t,e,r,i,n,a){var s=t+2/3*(r-t),o=e+2/3*(i-e),u=s+1/3*(n-t),h=o+1/3*(a-e);this.addBezierCurve(t,e,s,u,o,h,n,a)}isPointInBox(t,e){var{x1:r,y1:i,x2:n,y2:a}=this;return r<=t&&t<=n&&i<=e&&e<=a}}class gt extends l.a{constructor(t){super(t.replace(/([+\-.])\s+/gm,"$1").replace(/[^MmZzLlHhVvCcSsQqTtAae\d\s.,+-].*/g,"")),this.control=null,this.start=null,this.current=null,this.command=null,this.commands=this.commands,this.i=-1,this.previousCommand=null,this.points=[],this.angles=[]}reset(){this.i=-1,this.command=null,this.previousCommand=null,this.start=new Y(0,0),this.control=new Y(0,0),this.current=new Y(0,0),this.points=[],this.angles=[]}isEnd(){var{i:t,commands:e}=this;return t>=e.length-1}next(){var t=this.commands[++this.i];return this.previousCommand=this.command,this.command=t,t}getPoint(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"x",e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"y",r=new Y(this.command[t],this.command[e]);return this.makeAbsolute(r)}getAsControlPoint(t,e){var r=this.getPoint(t,e);return this.control=r,r}getAsCurrentPoint(t,e){var r=this.getPoint(t,e);return this.current=r,r}getReflectedControlPoint(){var t=this.previousCommand.type;if(t!==l.a.CURVE_TO&&t!==l.a.SMOOTH_CURVE_TO&&t!==l.a.QUAD_TO&&t!==l.a.SMOOTH_QUAD_TO)return this.current;var{current:{x:e,y:r},control:{x:i,y:n}}=this;return new Y(2*e-i,2*r-n)}makeAbsolute(t){if(this.command.relative){var{x:e,y:r}=this.current;t.x+=e,t.y+=r}return t}addMarker(t,e,r){var{points:i,angles:n}=this;r&&n.length>0&&!n[n.length-1]&&(n[n.length-1]=i[i.length-1].angleTo(r)),this.addMarkerAngle(t,e?e.angleTo(t):null)}addMarkerAngle(t,e){this.points.push(t),this.angles.push(e)}getMarkerPoints(){return this.points}getMarkerAngles(){for(var{angles:t}=this,e=t.length,r=0;r<e;r++)if(!t[r])for(var i=r+1;i<e;i++)if(t[i]){t[r]=t[i];break}return t}}class pt extends st{constructor(){super(...arguments),this.modifiedEmSizeStack=!1}calculateOpacity(){for(var t=1,e=this;e;){var r=e.getStyle("opacity",!1,!0);r.hasValue(!0)&&(t*=r.getNumber()),e=e.parent}return t}setContext(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1];if(!e){var r=this.getStyle("fill"),i=this.getStyle("fill-opacity"),n=this.getStyle("stroke"),a=this.getStyle("stroke-opacity");if(r.isUrlDefinition()){var s=r.getFillStyleDefinition(this,i);s&&(t.fillStyle=s)}else if(r.hasValue()){"currentColor"===r.getString()&&r.setValue(this.getStyle("color").getColor());var o=r.getColor();"inherit"!==o&&(t.fillStyle="none"===o?"rgba(0,0,0,0)":o)}if(i.hasValue()){var u=new H(this.document,"fill",t.fillStyle).addOpacity(i).getColor();t.fillStyle=u}if(n.isUrlDefinition()){var h=n.getFillStyleDefinition(this,a);h&&(t.strokeStyle=h)}else if(n.hasValue()){"currentColor"===n.getString()&&n.setValue(this.getStyle("color").getColor());var c=n.getString();"inherit"!==c&&(t.strokeStyle="none"===c?"rgba(0,0,0,0)":c)}if(a.hasValue()){var l=new H(this.document,"stroke",t.strokeStyle).addOpacity(a).getString();t.strokeStyle=l}var f=this.getStyle("stroke-width");if(f.hasValue()){var g=f.getPixels();t.lineWidth=g||R}var p=this.getStyle("stroke-linecap"),d=this.getStyle("stroke-linejoin"),v=this.getStyle("stroke-miterlimit"),m=this.getStyle("stroke-dasharray"),x=this.getStyle("stroke-dashoffset");if(p.hasValue()&&(t.lineCap=p.getString()),d.hasValue()&&(t.lineJoin=d.getString()),v.hasValue()&&(t.miterLimit=v.getNumber()),m.hasValue()&&"none"!==m.getString()){var b=y(m.getString());void 0!==t.setLineDash?t.setLineDash(b):void 0!==t.webkitLineDash?t.webkitLineDash=b:void 0===t.mozDash||1===b.length&&0===b[0]||(t.mozDash=b);var S=x.getPixels();void 0!==t.lineDashOffset?t.lineDashOffset=S:void 0!==t.webkitLineDashOffset?t.webkitLineDashOffset=S:void 0!==t.mozDashOffset&&(t.mozDashOffset=S)}}if(this.modifiedEmSizeStack=!1,void 0!==t.font){var w=this.getStyle("font"),A=this.getStyle("font-style"),T=this.getStyle("font-variant"),O=this.getStyle("font-weight"),E=this.getStyle("font-size"),P=this.getStyle("font-family"),C=new lt(A.getString(),T.getString(),O.getString(),E.hasValue()?"".concat(E.getPixels(!0),"px"):"",P.getString(),lt.parse(w.getString(),t.font));A.setValue(C.fontStyle),T.setValue(C.fontVariant),O.setValue(C.fontWeight),E.setValue(C.fontSize),P.setValue(C.fontFamily),t.font=C.toString(),E.isPixels()&&(this.document.emSize=E.getPixels(),this.modifiedEmSizeStack=!0)}e||(this.applyEffects(t),t.globalAlpha=this.calculateOpacity())}clearContext(t){super.clearContext(t),this.modifiedEmSizeStack&&this.document.popEmSize()}}class dt extends pt{constructor(t,e,r){super(t,e,r),this.type="path",this.pathParser=null,this.pathParser=new gt(this.getAttribute("d").getString())}path(t){var{pathParser:e}=this,r=new ft;for(e.reset(),t&&t.beginPath();!e.isEnd();)switch(e.next().type){case gt.MOVE_TO:this.pathM(t,r);break;case gt.LINE_TO:this.pathL(t,r);break;case gt.HORIZ_LINE_TO:this.pathH(t,r);break;case gt.VERT_LINE_TO:this.pathV(t,r);break;case gt.CURVE_TO:this.pathC(t,r);break;case gt.SMOOTH_CURVE_TO:this.pathS(t,r);break;case gt.QUAD_TO:this.pathQ(t,r);break;case gt.SMOOTH_QUAD_TO:this.pathT(t,r);break;case gt.ARC:this.pathA(t,r);break;case gt.CLOSE_PATH:this.pathZ(t,r)}return r}getBoundingBox(t){return this.path()}getMarkers(){var{pathParser:t}=this,e=t.getMarkerPoints(),r=t.getMarkerAngles();return e.map((t,e)=>[t,r[e]])}renderChildren(t){this.path(t),this.document.screen.mouse.checkPath(this,t);var e=this.getStyle("fill-rule");""!==t.fillStyle&&("inherit"!==e.getString("inherit")?t.fill(e.getString()):t.fill()),""!==t.strokeStyle&&("non-scaling-stroke"===this.getAttribute("vector-effect").getString()?(t.save(),t.setTransform(1,0,0,1,0,0),t.stroke(),t.restore()):t.stroke());var r=this.getMarkers();if(r){var i=r.length-1,n=this.getStyle("marker-start"),a=this.getStyle("marker-mid"),s=this.getStyle("marker-end");if(n.isUrlDefinition()){var o=n.getDefinition(),[u,h]=r[0];o.render(t,u,h)}if(a.isUrlDefinition())for(var c=a.getDefinition(),l=1;l<i;l++){var[f,g]=r[l];c.render(t,f,g)}if(s.isUrlDefinition()){var p=s.getDefinition(),[d,v]=r[i];p.render(t,d,v)}}}static pathM(t){var e=t.getAsCurrentPoint();return t.start=t.current,{point:e}}pathM(t,e){var{pathParser:r}=this,{point:i}=dt.pathM(r),{x:n,y:a}=i;r.addMarker(i),e.addPoint(n,a),t&&t.moveTo(n,a)}static pathL(t){var{current:e}=t;return{current:e,point:t.getAsCurrentPoint()}}pathL(t,e){var{pathParser:r}=this,{current:i,point:n}=dt.pathL(r),{x:a,y:s}=n;r.addMarker(n,i),e.addPoint(a,s),t&&t.lineTo(a,s)}static pathH(t){var{current:e,command:r}=t,i=new Y((r.relative?e.x:0)+r.x,e.y);return t.current=i,{current:e,point:i}}pathH(t,e){var{pathParser:r}=this,{current:i,point:n}=dt.pathH(r),{x:a,y:s}=n;r.addMarker(n,i),e.addPoint(a,s),t&&t.lineTo(a,s)}static pathV(t){var{current:e,command:r}=t,i=new Y(e.x,(r.relative?e.y:0)+r.y);return t.current=i,{current:e,point:i}}pathV(t,e){var{pathParser:r}=this,{current:i,point:n}=dt.pathV(r),{x:a,y:s}=n;r.addMarker(n,i),e.addPoint(a,s),t&&t.lineTo(a,s)}static pathC(t){var{current:e}=t;return{current:e,point:t.getPoint("x1","y1"),controlPoint:t.getAsControlPoint("x2","y2"),currentPoint:t.getAsCurrentPoint()}}pathC(t,e){var{pathParser:r}=this,{current:i,point:n,controlPoint:a,currentPoint:s}=dt.pathC(r);r.addMarker(s,a,n),e.addBezierCurve(i.x,i.y,n.x,n.y,a.x,a.y,s.x,s.y),t&&t.bezierCurveTo(n.x,n.y,a.x,a.y,s.x,s.y)}static pathS(t){var{current:e}=t;return{current:e,point:t.getReflectedControlPoint(),controlPoint:t.getAsControlPoint("x2","y2"),currentPoint:t.getAsCurrentPoint()}}pathS(t,e){var{pathParser:r}=this,{current:i,point:n,controlPoint:a,currentPoint:s}=dt.pathS(r);r.addMarker(s,a,n),e.addBezierCurve(i.x,i.y,n.x,n.y,a.x,a.y,s.x,s.y),t&&t.bezierCurveTo(n.x,n.y,a.x,a.y,s.x,s.y)}static pathQ(t){var{current:e}=t;return{current:e,controlPoint:t.getAsControlPoint("x1","y1"),currentPoint:t.getAsCurrentPoint()}}pathQ(t,e){var{pathParser:r}=this,{current:i,controlPoint:n,currentPoint:a}=dt.pathQ(r);r.addMarker(a,n,n),e.addQuadraticCurve(i.x,i.y,n.x,n.y,a.x,a.y),t&&t.quadraticCurveTo(n.x,n.y,a.x,a.y)}static pathT(t){var{current:e}=t,r=t.getReflectedControlPoint();return t.control=r,{current:e,controlPoint:r,currentPoint:t.getAsCurrentPoint()}}pathT(t,e){var{pathParser:r}=this,{current:i,controlPoint:n,currentPoint:a}=dt.pathT(r);r.addMarker(a,n,n),e.addQuadraticCurve(i.x,i.y,n.x,n.y,a.x,a.y),t&&t.quadraticCurveTo(n.x,n.y,a.x,a.y)}static pathA(t){var{current:e,command:r}=t,{rX:i,rY:n,xRot:a,lArcFlag:s,sweepFlag:o}=r,u=a*(Math.PI/180),h=t.getAsCurrentPoint(),c=new Y(Math.cos(u)*(e.x-h.x)/2+Math.sin(u)*(e.y-h.y)/2,-Math.sin(u)*(e.x-h.x)/2+Math.cos(u)*(e.y-h.y)/2),l=Math.pow(c.x,2)/Math.pow(i,2)+Math.pow(c.y,2)/Math.pow(n,2);l>1&&(i*=Math.sqrt(l),n*=Math.sqrt(l));var f=(s===o?-1:1)*Math.sqrt((Math.pow(i,2)*Math.pow(n,2)-Math.pow(i,2)*Math.pow(c.y,2)-Math.pow(n,2)*Math.pow(c.x,2))/(Math.pow(i,2)*Math.pow(c.y,2)+Math.pow(n,2)*Math.pow(c.x,2)));isNaN(f)&&(f=0);var g=new Y(f*i*c.y/n,f*-n*c.x/i),p=new Y((e.x+h.x)/2+Math.cos(u)*g.x-Math.sin(u)*g.y,(e.y+h.y)/2+Math.sin(u)*g.x+Math.cos(u)*g.y),d=_([1,0],[(c.x-g.x)/i,(c.y-g.y)/n]),v=[(c.x-g.x)/i,(c.y-g.y)/n],y=[(-c.x-g.x)/i,(-c.y-g.y)/n],m=_(v,y);return k(v,y)<=-1&&(m=Math.PI),k(v,y)>=1&&(m=0),{currentPoint:h,rX:i,rY:n,sweepFlag:o,xAxisRotation:u,centp:p,a1:d,ad:m}}pathA(t,e){var{pathParser:r}=this,{currentPoint:i,rX:n,rY:a,sweepFlag:s,xAxisRotation:o,centp:u,a1:h,ad:c}=dt.pathA(r),l=1-s?1:-1,f=h+l*(c/2),g=new Y(u.x+n*Math.cos(f),u.y+a*Math.sin(f));if(r.addMarkerAngle(g,f-l*Math.PI/2),r.addMarkerAngle(i,f-l*Math.PI),e.addPoint(i.x,i.y),t&&!isNaN(h)&&!isNaN(c)){var p=n>a?n:a,d=n>a?1:n/a,v=n>a?a/n:1;t.translate(u.x,u.y),t.rotate(o),t.scale(d,v),t.arc(0,0,p,h,h+c,Boolean(1-s)),t.scale(1/d,1/v),t.rotate(-o),t.translate(-u.x,-u.y)}}static pathZ(t){t.current=t.start}pathZ(t,e){dt.pathZ(this.pathParser),t&&e.x1!==e.x2&&e.y1!==e.y2&&t.closePath()}}class vt extends dt{constructor(t,e,r){super(t,e,r),this.type="glyph",this.horizAdvX=this.getAttribute("horiz-adv-x").getNumber(),this.unicode=this.getAttribute("unicode").getString(),this.arabicForm=this.getAttribute("arabic-form").getString()}}class yt extends pt{constructor(t,e,r){super(t,e,new.target===yt||r),this.type="text",this.x=0,this.y=0,this.measureCache=-1}setContext(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1];super.setContext(t,e);var r=this.getStyle("dominant-baseline").getTextBaseline()||this.getStyle("alignment-baseline").getTextBaseline();r&&(t.textBaseline=r)}initializeCoordinates(t){this.x=this.getAttribute("x").getPixels("x"),this.y=this.getAttribute("y").getPixels("y");var e=this.getAttribute("dx"),r=this.getAttribute("dy");e.hasValue()&&(this.x+=e.getPixels("x")),r.hasValue()&&(this.y+=r.getPixels("y")),this.x+=this.getAnchorDelta(t,this,0)}getBoundingBox(t){if("text"!==this.type)return this.getTElementBoundingBox(t);this.initializeCoordinates(t);var e=null;return this.children.forEach((r,i)=>{var n=this.getChildBoundingBox(t,this,this,i);e?e.addBoundingBox(n):e=n}),e}getFontSize(){var{document:t,parent:e}=this,r=lt.parse(t.ctx.font).fontSize;return e.getStyle("font-size").getNumber(r)}getTElementBoundingBox(t){var e=this.getFontSize();return new ft(this.x,this.y-e,this.x+this.measureText(t),this.y)}getGlyph(t,e,r){var i=e[r],n=null;if(t.isArabic){var a=e.length,s=e[r-1],o=e[r+1],u="isolated";if((0===r||" "===s)&&r<a-2&&" "!==o&&(u="terminal"),r>0&&" "!==s&&r<a-2&&" "!==o&&(u="medial"),r>0&&" "!==s&&(r===a-1||" "===o)&&(u="initial"),void 0!==t.glyphs[i]){var h=t.glyphs[i];n=h instanceof vt?h:h[u]}}else n=t.glyphs[i];return n||(n=t.missingGlyph),n}getText(){return""}getTextFromNode(t){var e=t||this.node,r=Array.from(e.parentNode.childNodes),i=r.indexOf(e),n=r.length-1,a=p(e.textContent||"");return 0===i&&(a=d(a)),i===n&&(a=v(a)),a}renderChildren(t){if("text"===this.type){this.initializeCoordinates(t),this.children.forEach((e,r)=>{this.renderChild(t,this,this,r)});var{mouse:e}=this.document.screen;e.isWorking()&&e.checkBoundingBox(this,this.getBoundingBox(t))}else this.renderTElementChildren(t)}renderTElementChildren(t){var{document:e,parent:r}=this,i=this.getText(),n=r.getStyle("font-family").getDefinition();if(n)for(var{unitsPerEm:a}=n.fontFace,s=lt.parse(e.ctx.font),o=r.getStyle("font-size").getNumber(s.fontSize),u=r.getStyle("font-style").getString(s.fontStyle),h=o/a,c=n.isRTL?i.split("").reverse().join(""):i,l=y(r.getAttribute("dx").getString()),f=c.length,g=0;g<f;g++){var p=this.getGlyph(n,c,g);t.translate(this.x,this.y),t.scale(h,-h);var d=t.lineWidth;t.lineWidth=t.lineWidth*a/o,"italic"===u&&t.transform(1,0,.4,1,0,0),p.render(t),"italic"===u&&t.transform(1,0,-.4,1,0,0),t.lineWidth=d,t.scale(1/h,-1/h),t.translate(-this.x,-this.y),this.x+=o*(p.horizAdvX||n.horizAdvX)/a,void 0===l[g]||isNaN(l[g])||(this.x+=l[g])}else{var{x:v,y:m}=this;t.fillStyle&&t.fillText(i,v,m),t.strokeStyle&&t.strokeText(i,v,m)}}getAnchorDelta(t,e,r){var i=this.getStyle("text-anchor").getString("start");if("start"!==i){for(var{children:n}=e,a=n.length,s=null,o=0,u=r;u<a&&(s=n[u],!(u>r&&s.getAttribute("x").hasValue()||s.getAttribute("text-anchor").hasValue()));u++)o+=s.measureTextRecursive(t);return-1*("end"===i?o:o/2)}return 0}adjustChildCoordinates(t,e,r,i){var n=r.children[i];if("function"!=typeof n.measureText)return n;t.save(),n.setContext(t,!0);var a=n.getAttribute("x"),s=n.getAttribute("y"),o=n.getAttribute("dx"),u=n.getAttribute("dy"),h=n.getAttribute("text-anchor").getString("start");if(0===i&&"textNode"!==n.type&&(a.hasValue()||a.setValue(e.getAttribute("x").getValue("0")),s.hasValue()||s.setValue(e.getAttribute("y").getValue("0")),o.hasValue()||o.setValue(e.getAttribute("dx").getValue("0")),u.hasValue()||u.setValue(e.getAttribute("dy").getValue("0"))),a.hasValue()){if(n.x=a.getPixels("x")+e.getAnchorDelta(t,r,i),"start"!==h){var c=n.measureTextRecursive(t);n.x+=-1*("end"===h?c:c/2)}o.hasValue()&&(n.x+=o.getPixels("x"))}else{if("start"!==h){var l=n.measureTextRecursive(t);e.x+=-1*("end"===h?l:l/2)}o.hasValue()&&(e.x+=o.getPixels("x")),n.x=e.x}return e.x=n.x+n.measureText(t),s.hasValue()?(n.y=s.getPixels("y"),u.hasValue()&&(n.y+=u.getPixels("y"))):(u.hasValue()&&(e.y+=u.getPixels("y")),n.y=e.y),e.y=n.y,n.clearContext(t),t.restore(),n}getChildBoundingBox(t,e,r,i){var n=this.adjustChildCoordinates(t,e,r,i);if("function"!=typeof n.getBoundingBox)return null;var a=n.getBoundingBox(t);return a?(n.children.forEach((r,i)=>{var s=e.getChildBoundingBox(t,e,n,i);a.addBoundingBox(s)}),a):null}renderChild(t,e,r,i){var n=this.adjustChildCoordinates(t,e,r,i);n.render(t),n.children.forEach((r,i)=>{e.renderChild(t,e,n,i)})}measureTextRecursive(t){return this.children.reduce((e,r)=>e+r.measureTextRecursive(t),this.measureText(t))}measureText(t){var{measureCache:e}=this;if(~e)return e;var r=this.getText(),i=this.measureTargetText(t,r);return this.measureCache=i,i}measureTargetText(t,e){if(!e.length)return 0;var{parent:r}=this,i=r.getStyle("font-family").getDefinition();if(i){for(var n=this.getFontSize(),a=i.isRTL?e.split("").reverse().join(""):e,s=y(r.getAttribute("dx").getString()),o=a.length,u=0,h=0;h<o;h++){u+=(this.getGlyph(i,a,h).horizAdvX||i.horizAdvX)*n/i.fontFace.unitsPerEm,void 0===s[h]||isNaN(s[h])||(u+=s[h])}return u}if(!t.measureText)return 10*e.length;t.save(),this.setContext(t,!0);var{width:c}=t.measureText(e);return this.clearContext(t),t.restore(),c}}class mt extends yt{constructor(t,e,r){super(t,e,new.target===mt||r),this.type="tspan",this.text=this.children.length>0?"":this.getTextFromNode()}getText(){return this.text}}class xt extends mt{constructor(){super(...arguments),this.type="textNode"}}class bt extends pt{constructor(){super(...arguments),this.type="svg",this.root=!1}setContext(t){var e,{document:r}=this,{screen:i,window:n}=r,a=t.canvas;if(i.setDefaults(t),a.style&&void 0!==t.font&&n&&void 0!==n.getComputedStyle){t.font=n.getComputedStyle(a).getPropertyValue("font");var s=new H(r,"fontSize",lt.parse(t.font).fontSize);s.hasValue()&&(r.rootEmSize=s.getPixels("y"),r.emSize=r.rootEmSize)}this.getAttribute("x").hasValue()||this.getAttribute("x",!0).setValue(0),this.getAttribute("y").hasValue()||this.getAttribute("y",!0).setValue(0);var{width:o,height:u}=i.viewPort;this.getStyle("width").hasValue()||this.getStyle("width",!0).setValue("100%"),this.getStyle("height").hasValue()||this.getStyle("height",!0).setValue("100%"),this.getStyle("color").hasValue()||this.getStyle("color",!0).setValue("black");var h=this.getAttribute("refX"),c=this.getAttribute("refY"),l=this.getAttribute("viewBox"),f=l.hasValue()?y(l.getString()):null,g=!this.root&&"visible"!==this.getStyle("overflow").getValue("hidden"),p=0,d=0,v=0,m=0;f&&(p=f[0],d=f[1]),this.root||(o=this.getStyle("width").getPixels("x"),u=this.getStyle("height").getPixels("y"),"marker"===this.type&&(v=p,m=d,p=0,d=0)),i.viewPort.setCurrent(o,u),!this.node||this.parent&&"foreignObject"!==(null===(e=this.node.parentNode)||void 0===e?void 0:e.nodeName)||!this.getStyle("transform",!1,!0).hasValue()||this.getStyle("transform-origin",!1,!0).hasValue()||this.getStyle("transform-origin",!0,!0).setValue("50% 50%"),super.setContext(t),t.translate(this.getAttribute("x").getPixels("x"),this.getAttribute("y").getPixels("y")),f&&(o=f[2],u=f[3]),r.setViewBox({ctx:t,aspectRatio:this.getAttribute("preserveAspectRatio").getString(),width:i.viewPort.width,desiredWidth:o,height:i.viewPort.height,desiredHeight:u,minX:p,minY:d,refX:h.getValue(),refY:c.getValue(),clip:g,clipX:v,clipY:m}),f&&(i.viewPort.removeCurrent(),i.viewPort.setCurrent(o,u))}clearContext(t){super.clearContext(t),this.document.screen.viewPort.removeCurrent()}resize(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:t,r=arguments.length>2&&void 0!==arguments[2]&&arguments[2],i=this.getAttribute("width",!0),n=this.getAttribute("height",!0),a=this.getAttribute("viewBox"),s=this.getAttribute("style"),o=i.getNumber(0),u=n.getNumber(0);if(r)if("string"==typeof r)this.getAttribute("preserveAspectRatio",!0).setValue(r);else{var h=this.getAttribute("preserveAspectRatio");h.hasValue()&&h.setValue(h.getString().replace(/^\s*(\S.*\S)\s*$/,"$1"))}if(i.setValue(t),n.setValue(e),a.hasValue()||a.setValue("0 0 ".concat(o||t," ").concat(u||e)),s.hasValue()){var c=this.getStyle("width"),l=this.getStyle("height");c.hasValue()&&c.setValue("".concat(t,"px")),l.hasValue()&&l.setValue("".concat(e,"px"))}}}class St extends dt{constructor(){super(...arguments),this.type="rect"}path(t){var e=this.getAttribute("x").getPixels("x"),r=this.getAttribute("y").getPixels("y"),i=this.getStyle("width",!1,!0).getPixels("x"),n=this.getStyle("height",!1,!0).getPixels("y"),a=this.getAttribute("rx"),s=this.getAttribute("ry"),o=a.getPixels("x"),u=s.getPixels("y");if(a.hasValue()&&!s.hasValue()&&(u=o),s.hasValue()&&!a.hasValue()&&(o=u),o=Math.min(o,i/2),u=Math.min(u,n/2),t){var h=(Math.sqrt(2)-1)/3*4;t.beginPath(),n>0&&i>0&&(t.moveTo(e+o,r),t.lineTo(e+i-o,r),t.bezierCurveTo(e+i-o+h*o,r,e+i,r+u-h*u,e+i,r+u),t.lineTo(e+i,r+n-u),t.bezierCurveTo(e+i,r+n-u+h*u,e+i-o+h*o,r+n,e+i-o,r+n),t.lineTo(e+o,r+n),t.bezierCurveTo(e+o-h*o,r+n,e,r+n-u+h*u,e,r+n-u),t.lineTo(e,r+u),t.bezierCurveTo(e,r+u-h*u,e+o-h*o,r,e+o,r),t.closePath())}return new ft(e,r,e+i,r+n)}getMarkers(){return null}}class wt extends dt{constructor(){super(...arguments),this.type="circle"}path(t){var e=this.getAttribute("cx").getPixels("x"),r=this.getAttribute("cy").getPixels("y"),i=this.getAttribute("r").getPixels();return t&&i>0&&(t.beginPath(),t.arc(e,r,i,0,2*Math.PI,!1),t.closePath()),new ft(e-i,r-i,e+i,r+i)}getMarkers(){return null}}class At extends dt{constructor(){super(...arguments),this.type="ellipse"}path(t){var e=(Math.sqrt(2)-1)/3*4,r=this.getAttribute("rx").getPixels("x"),i=this.getAttribute("ry").getPixels("y"),n=this.getAttribute("cx").getPixels("x"),a=this.getAttribute("cy").getPixels("y");return t&&r>0&&i>0&&(t.beginPath(),t.moveTo(n+r,a),t.bezierCurveTo(n+r,a+e*i,n+e*r,a+i,n,a+i),t.bezierCurveTo(n-e*r,a+i,n-r,a+e*i,n-r,a),t.bezierCurveTo(n-r,a-e*i,n-e*r,a-i,n,a-i),t.bezierCurveTo(n+e*r,a-i,n+r,a-e*i,n+r,a),t.closePath()),new ft(n-r,a-i,n+r,a+i)}getMarkers(){return null}}class Tt extends dt{constructor(){super(...arguments),this.type="line"}getPoints(){return[new Y(this.getAttribute("x1").getPixels("x"),this.getAttribute("y1").getPixels("y")),new Y(this.getAttribute("x2").getPixels("x"),this.getAttribute("y2").getPixels("y"))]}path(t){var[{x:e,y:r},{x:i,y:n}]=this.getPoints();return t&&(t.beginPath(),t.moveTo(e,r),t.lineTo(i,n)),new ft(e,r,i,n)}getMarkers(){var[t,e]=this.getPoints(),r=t.angleTo(e);return[[t,r],[e,r]]}}class Ot extends dt{constructor(t,e,r){super(t,e,r),this.type="polyline",this.points=[],this.points=Y.parsePath(this.getAttribute("points").getString())}path(t){var{points:e}=this,[{x:r,y:i}]=e,n=new ft(r,i);return t&&(t.beginPath(),t.moveTo(r,i)),e.forEach(e=>{var{x:r,y:i}=e;n.addPoint(r,i),t&&t.lineTo(r,i)}),n}getMarkers(){var{points:t}=this,e=t.length-1,r=[];return t.forEach((i,n)=>{n!==e&&r.push([i,i.angleTo(t[n+1])])}),r.length>0&&r.push([t[t.length-1],r[r.length-1][1]]),r}}class Et extends Ot{constructor(){super(...arguments),this.type="polygon"}path(t){var e=super.path(t),[{x:r,y:i}]=this.points;return t&&(t.lineTo(r,i),t.closePath()),e}}class Pt extends st{constructor(){super(...arguments),this.type="pattern"}createPattern(t,e,r){var i=this.getStyle("width").getPixels("x",!0),n=this.getStyle("height").getPixels("y",!0),a=new bt(this.document,null);a.attributes.viewBox=new H(this.document,"viewBox",this.getAttribute("viewBox").getValue()),a.attributes.width=new H(this.document,"width","".concat(i,"px")),a.attributes.height=new H(this.document,"height","".concat(n,"px")),a.attributes.transform=new H(this.document,"transform",this.getAttribute("patternTransform").getValue()),a.children=this.children;var s=this.document.createCanvas(i,n),o=s.getContext("2d"),u=this.getAttribute("x"),h=this.getAttribute("y");u.hasValue()&&h.hasValue()&&o.translate(u.getPixels("x",!0),h.getPixels("y",!0)),r.hasValue()?this.styles["fill-opacity"]=r:Reflect.deleteProperty(this.styles,"fill-opacity");for(var c=-1;c<=1;c++)for(var l=-1;l<=1;l++)o.save(),a.attributes.x=new H(this.document,"x",c*s.width),a.attributes.y=new H(this.document,"y",l*s.height),a.render(o),o.restore();return t.createPattern(s,"repeat")}}class Ct extends st{constructor(){super(...arguments),this.type="marker"}render(t,e,r){if(e){var{x:i,y:n}=e,a=this.getAttribute("orient").getString("auto"),s=this.getAttribute("markerUnits").getString("strokeWidth");t.translate(i,n),"auto"===a&&t.rotate(r),"strokeWidth"===s&&t.scale(t.lineWidth,t.lineWidth),t.save();var o=new bt(this.document,null);o.type=this.type,o.attributes.viewBox=new H(this.document,"viewBox",this.getAttribute("viewBox").getValue()),o.attributes.refX=new H(this.document,"refX",this.getAttribute("refX").getValue()),o.attributes.refY=new H(this.document,"refY",this.getAttribute("refY").getValue()),o.attributes.width=new H(this.document,"width",this.getAttribute("markerWidth").getValue()),o.attributes.height=new H(this.document,"height",this.getAttribute("markerHeight").getValue()),o.attributes.overflow=new H(this.document,"overflow",this.getAttribute("overflow").getValue()),o.attributes.fill=new H(this.document,"fill",this.getAttribute("fill").getColor("black")),o.attributes.stroke=new H(this.document,"stroke",this.getAttribute("stroke").getValue("none")),o.children=this.children,o.render(t),t.restore(),"strokeWidth"===s&&t.scale(1/t.lineWidth,1/t.lineWidth),"auto"===a&&t.rotate(-r),t.translate(-i,-n)}}}class Mt extends st{constructor(){super(...arguments),this.type="defs"}render(){}}class Nt extends pt{constructor(){super(...arguments),this.type="g"}getBoundingBox(t){var e=new ft;return this.children.forEach(r=>{e.addBoundingBox(r.getBoundingBox(t))}),e}}class Rt extends st{constructor(t,e,r){super(t,e,r),this.attributesToInherit=["gradientUnits"],this.stops=[];var{stops:i,children:n}=this;n.forEach(t=>{"stop"===t.type&&i.push(t)})}getGradientUnits(){return this.getAttribute("gradientUnits").getString("objectBoundingBox")}createGradient(t,e,r){var i=this;this.getHrefAttribute().hasValue()&&(i=this.getHrefAttribute().getDefinition(),this.inheritStopContainer(i));var{stops:n}=i,a=this.getGradient(t,e);if(!a)return this.addParentOpacity(r,n[n.length-1].color);if(n.forEach(t=>{a.addColorStop(t.offset,this.addParentOpacity(r,t.color))}),this.getAttribute("gradientTransform").hasValue()){var{document:s}=this,{MAX_VIRTUAL_PIXELS:o,viewPort:u}=s.screen,[h]=u.viewPorts,c=new St(s,null);c.attributes.x=new H(s,"x",-o/3),c.attributes.y=new H(s,"y",-o/3),c.attributes.width=new H(s,"width",o),c.attributes.height=new H(s,"height",o);var l=new Nt(s,null);l.attributes.transform=new H(s,"transform",this.getAttribute("gradientTransform").getValue()),l.children=[c];var f=new bt(s,null);f.attributes.x=new H(s,"x",0),f.attributes.y=new H(s,"y",0),f.attributes.width=new H(s,"width",h.width),f.attributes.height=new H(s,"height",h.height),f.children=[l];var g=s.createCanvas(h.width,h.height),p=g.getContext("2d");return p.fillStyle=a,f.render(p),p.createPattern(g,"no-repeat")}return a}inheritStopContainer(t){this.attributesToInherit.forEach(e=>{!this.getAttribute(e).hasValue()&&t.getAttribute(e).hasValue()&&this.getAttribute(e,!0).setValue(t.getAttribute(e).getValue())})}addParentOpacity(t,e){return t.hasValue()?new H(this.document,"color",e).addOpacity(t).getColor():e}}class Vt extends Rt{constructor(t,e,r){super(t,e,r),this.type="linearGradient",this.attributesToInherit.push("x1","y1","x2","y2")}getGradient(t,e){var r="objectBoundingBox"===this.getGradientUnits(),i=r?e.getBoundingBox(t):null;if(r&&!i)return null;this.getAttribute("x1").hasValue()||this.getAttribute("y1").hasValue()||this.getAttribute("x2").hasValue()||this.getAttribute("y2").hasValue()||(this.getAttribute("x1",!0).setValue(0),this.getAttribute("y1",!0).setValue(0),this.getAttribute("x2",!0).setValue(1),this.getAttribute("y2",!0).setValue(0));var n=r?i.x+i.width*this.getAttribute("x1").getNumber():this.getAttribute("x1").getPixels("x"),a=r?i.y+i.height*this.getAttribute("y1").getNumber():this.getAttribute("y1").getPixels("y"),s=r?i.x+i.width*this.getAttribute("x2").getNumber():this.getAttribute("x2").getPixels("x"),o=r?i.y+i.height*this.getAttribute("y2").getNumber():this.getAttribute("y2").getPixels("y");return n===s&&a===o?null:t.createLinearGradient(n,a,s,o)}}class kt extends Rt{constructor(t,e,r){super(t,e,r),this.type="radialGradient",this.attributesToInherit.push("cx","cy","r","fx","fy","fr")}getGradient(t,e){var r="objectBoundingBox"===this.getGradientUnits(),i=e.getBoundingBox(t);if(r&&!i)return null;this.getAttribute("cx").hasValue()||this.getAttribute("cx",!0).setValue("50%"),this.getAttribute("cy").hasValue()||this.getAttribute("cy",!0).setValue("50%"),this.getAttribute("r").hasValue()||this.getAttribute("r",!0).setValue("50%");var n=r?i.x+i.width*this.getAttribute("cx").getNumber():this.getAttribute("cx").getPixels("x"),a=r?i.y+i.height*this.getAttribute("cy").getNumber():this.getAttribute("cy").getPixels("y"),s=n,o=a;this.getAttribute("fx").hasValue()&&(s=r?i.x+i.width*this.getAttribute("fx").getNumber():this.getAttribute("fx").getPixels("x")),this.getAttribute("fy").hasValue()&&(o=r?i.y+i.height*this.getAttribute("fy").getNumber():this.getAttribute("fy").getPixels("y"));var u=r?(i.width+i.height)/2*this.getAttribute("r").getNumber():this.getAttribute("r").getPixels(),h=this.getAttribute("fr").getPixels();return t.createRadialGradient(s,o,h,n,a,u)}}class _t extends st{constructor(t,e,r){super(t,e,r),this.type="stop";var i=Math.max(0,Math.min(1,this.getAttribute("offset").getNumber())),n=this.getStyle("stop-opacity"),a=this.getStyle("stop-color",!0);""===a.getString()&&a.setValue("#000"),n.hasValue()&&(a=a.addOpacity(n)),this.offset=i,this.color=a.getColor()}}class It extends st{constructor(t,e,r){super(t,e,r),this.type="animate",this.duration=0,this.initialValue=null,this.initialUnits="",this.removed=!1,this.frozen=!1,t.screen.animations.push(this),this.begin=this.getAttribute("begin").getMilliseconds(),this.maxDuration=this.begin+this.getAttribute("dur").getMilliseconds(),this.from=this.getAttribute("from"),this.to=this.getAttribute("to"),this.values=new H(t,"values",null);var i=this.getAttribute("values");i.hasValue()&&this.values.setValue(i.getString().split(";"))}getProperty(){var t=this.getAttribute("attributeType").getString(),e=this.getAttribute("attributeName").getString();return"CSS"===t?this.parent.getStyle(e,!0):this.parent.getAttribute(e,!0)}calcValue(){var{initialUnits:t}=this,{progress:e,from:r,to:i}=this.getProgress(),n=r.getNumber()+(i.getNumber()-r.getNumber())*e;return"%"===t&&(n*=100),"".concat(n).concat(t)}update(t){var{parent:e}=this,r=this.getProperty();if(this.initialValue||(this.initialValue=r.getString(),this.initialUnits=r.getUnits()),this.duration>this.maxDuration){var i=this.getAttribute("fill").getString("remove");if("indefinite"===this.getAttribute("repeatCount").getString()||"indefinite"===this.getAttribute("repeatDur").getString())this.duration=0;else if("freeze"!==i||this.frozen){if("remove"===i&&!this.removed)return this.removed=!0,r.setValue(e.animationFrozen?e.animationFrozenValue:this.initialValue),!0}else this.frozen=!0,e.animationFrozen=!0,e.animationFrozenValue=r.getString();return!1}this.duration+=t;var n=!1;if(this.begin<this.duration){var a=this.calcValue(),s=this.getAttribute("type");if(s.hasValue()){var o=s.getString();a="".concat(o,"(").concat(a,")")}r.setValue(a),n=!0}return n}getProgress(){var{document:t,values:e}=this,r={progress:(this.duration-this.begin)/(this.maxDuration-this.begin)};if(e.hasValue()){var i=r.progress*(e.getValue().length-1),n=Math.floor(i),a=Math.ceil(i);r.from=new H(t,"from",parseFloat(e.getValue()[n])),r.to=new H(t,"to",parseFloat(e.getValue()[a])),r.progress=(i-n)/(a-n)}else r.from=this.from,r.to=this.to;return r}}class Lt extends It{constructor(){super(...arguments),this.type="animateColor"}calcValue(){var{progress:t,from:e,to:r}=this.getProgress(),i=new c.a(e.getColor()),n=new c.a(r.getColor());if(i.ok&&n.ok){var a=i.r+(n.r-i.r)*t,s=i.g+(n.g-i.g)*t,o=i.b+(n.b-i.b)*t;return"rgb(".concat(Math.floor(a),", ").concat(Math.floor(s),", ").concat(Math.floor(o),")")}return this.getAttribute("from").getColor()}}class Dt extends It{constructor(){super(...arguments),this.type="animateTransform"}calcValue(){var{progress:t,from:e,to:r}=this.getProgress(),i=y(e.getString()),n=y(r.getString());return i.map((e,r)=>e+(n[r]-e)*t).join(" ")}}class Bt extends st{constructor(t,e,r){super(t,e,r),this.type="font",this.glyphs={},this.horizAdvX=this.getAttribute("horiz-adv-x").getNumber();var{definitions:i}=t,{children:n}=this;for(var a of n)switch(a.type){case"font-face":this.fontFace=a;var s=a.getStyle("font-family");s.hasValue()&&(i[s.getString()]=this);break;case"missing-glyph":this.missingGlyph=a;break;case"glyph":var o=a;o.arabicForm?(this.isRTL=!0,this.isArabic=!0,void 0===this.glyphs[o.unicode]&&(this.glyphs[o.unicode]={}),this.glyphs[o.unicode][o.arabicForm]=o):this.glyphs[o.unicode]=o}}render(){}}class Ft extends st{constructor(t,e,r){super(t,e,r),this.type="font-face",this.ascent=this.getAttribute("ascent").getNumber(),this.descent=this.getAttribute("descent").getNumber(),this.unitsPerEm=this.getAttribute("units-per-em").getNumber()}}class Ut extends dt{constructor(){super(...arguments),this.type="missing-glyph",this.horizAdvX=0}}class zt extends yt{constructor(){super(...arguments),this.type="tref"}getText(){var t=this.getHrefAttribute().getDefinition();if(t){var e=t.children[0];if(e)return e.getText()}return""}}class Ht extends yt{constructor(t,e,r){super(t,e,r),this.type="a";var{childNodes:i}=e,n=i[0],a=i.length>0&&Array.from(i).every(t=>3===t.nodeType);this.hasText=a,this.text=a?this.getTextFromNode(n):""}getText(){return this.text}renderChildren(t){if(this.hasText){super.renderChildren(t);var{document:e,x:r,y:i}=this,{mouse:n}=e.screen,a=new H(e,"fontSize",lt.parse(e.ctx.font).fontSize);n.isWorking()&&n.checkBoundingBox(this,new ft(r,i-a.getPixels("y"),r+this.measureText(t),i))}else if(this.children.length>0){var s=new Nt(this.document,null);s.children=this.children,s.parent=this,s.render(t)}}onClick(){var{window:t}=this.document;t&&t.open(this.getHrefAttribute().getString())}onMouseMove(){this.document.ctx.canvas.style.cursor="pointer"}}function jt(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var i=Object.getOwnPropertySymbols(t);e&&(i=i.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,i)}return r}function Yt(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?jt(Object(r),!0).forEach((function(e){s()(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):jt(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}class Xt extends yt{constructor(t,e,r){super(t,e,r),this.type="textPath",this.textWidth=0,this.textHeight=0,this.pathLength=-1,this.glyphInfo=null,this.letterSpacingCache=[],this.measuresCache=new Map([["",0]]);var i=this.getHrefAttribute().getDefinition();this.text=this.getTextFromNode(),this.dataArray=this.parsePathData(i)}getText(){return this.text}path(t){var{dataArray:e}=this;t&&t.beginPath(),e.forEach(e=>{var{type:r,points:i}=e;switch(r){case gt.LINE_TO:t&&t.lineTo(i[0],i[1]);break;case gt.MOVE_TO:t&&t.moveTo(i[0],i[1]);break;case gt.CURVE_TO:t&&t.bezierCurveTo(i[0],i[1],i[2],i[3],i[4],i[5]);break;case gt.QUAD_TO:t&&t.quadraticCurveTo(i[0],i[1],i[2],i[3]);break;case gt.ARC:var[n,a,s,o,u,h,c,l]=i,f=s>o?s:o,g=s>o?1:s/o,p=s>o?o/s:1;t&&(t.translate(n,a),t.rotate(c),t.scale(g,p),t.arc(0,0,f,u,u+h,Boolean(1-l)),t.scale(1/g,1/p),t.rotate(-c),t.translate(-n,-a));break;case gt.CLOSE_PATH:t&&t.closePath()}})}renderChildren(t){this.setTextData(t),t.save();var e=this.parent.getStyle("text-decoration").getString(),r=this.getFontSize(),{glyphInfo:i}=this,n=t.fillStyle;"underline"===e&&t.beginPath(),i.forEach((i,n)=>{var{p0:a,p1:s,rotation:o,text:u}=i;t.save(),t.translate(a.x,a.y),t.rotate(o),t.fillStyle&&t.fillText(u,0,0),t.strokeStyle&&t.strokeText(u,0,0),t.restore(),"underline"===e&&(0===n&&t.moveTo(a.x,a.y+r/8),t.lineTo(s.x,s.y+r/5))}),"underline"===e&&(t.lineWidth=r/20,t.strokeStyle=n,t.stroke(),t.closePath()),t.restore()}getLetterSpacingAt(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0;return this.letterSpacingCache[t]||0}findSegmentToFitChar(t,e,r,i,n,a,s,o,u){var h=a,c=this.measureText(t,o);" "===o&&"justify"===e&&r<i&&(c+=(i-r)/n),u>-1&&(h+=this.getLetterSpacingAt(u));var l=this.textHeight/20,f=this.getEquidistantPointOnPath(h,l,0),g=this.getEquidistantPointOnPath(h+c,l,0),p={p0:f,p1:g},d=f&&g?Math.atan2(g.y-f.y,g.x-f.x):0;if(s){var v=Math.cos(Math.PI/2+d)*s,y=Math.cos(-d)*s;p.p0=Yt(Yt({},f),{},{x:f.x+v,y:f.y+y}),p.p1=Yt(Yt({},g),{},{x:g.x+v,y:g.y+y})}return{offset:h+=c,segment:p,rotation:d}}measureText(t,e){var{measuresCache:r}=this,i=e||this.getText();if(r.has(i))return r.get(i);var n=this.measureTargetText(t,i);return r.set(i,n),n}setTextData(t){if(!this.glyphInfo){var e=this.getText(),r=e.split(""),i=e.split(" ").length-1,n=this.parent.getAttribute("dx").split().map(t=>t.getPixels("x")),a=this.parent.getAttribute("dy").getPixels("y"),s=this.parent.getStyle("text-anchor").getString("start"),o=this.getStyle("letter-spacing"),u=this.parent.getStyle("letter-spacing"),h=0;o.hasValue()&&"inherit"!==o.getValue()?o.hasValue()&&"initial"!==o.getValue()&&"unset"!==o.getValue()&&(h=o.getPixels()):h=u.getPixels();var c=[],l=e.length;this.letterSpacingCache=c;for(var f=0;f<l;f++)c.push(void 0!==n[f]?n[f]:h);var g=c.reduce((t,e,r)=>0===r?0:t+e||0,0),p=this.measureText(t),d=Math.max(p+g,0);this.textWidth=p,this.textHeight=this.getFontSize(),this.glyphInfo=[];var v=this.getPathLength(),y=this.getStyle("startOffset").getNumber(0)*v,m=0;"middle"!==s&&"center"!==s||(m=-d/2),"end"!==s&&"right"!==s||(m=-d),m+=y,r.forEach((e,n)=>{var{offset:o,segment:u,rotation:h}=this.findSegmentToFitChar(t,s,d,v,i,m,a,e,n);m=o,u.p0&&u.p1&&this.glyphInfo.push({text:r[n],p0:u.p0,p1:u.p1,rotation:h})})}}parsePathData(t){if(this.pathLength=-1,!t)return[];var e=[],{pathParser:r}=t;for(r.reset();!r.isEnd();){var{current:i}=r,n=i?i.x:0,a=i?i.y:0,s=r.next(),o=s.type,u=[];switch(s.type){case gt.MOVE_TO:this.pathM(r,u);break;case gt.LINE_TO:o=this.pathL(r,u);break;case gt.HORIZ_LINE_TO:o=this.pathH(r,u);break;case gt.VERT_LINE_TO:o=this.pathV(r,u);break;case gt.CURVE_TO:this.pathC(r,u);break;case gt.SMOOTH_CURVE_TO:o=this.pathS(r,u);break;case gt.QUAD_TO:this.pathQ(r,u);break;case gt.SMOOTH_QUAD_TO:o=this.pathT(r,u);break;case gt.ARC:u=this.pathA(r);break;case gt.CLOSE_PATH:dt.pathZ(r)}s.type!==gt.CLOSE_PATH?e.push({type:o,points:u,start:{x:n,y:a},pathLength:this.calcLength(n,a,o,u)}):e.push({type:gt.CLOSE_PATH,points:[],pathLength:0})}return e}pathM(t,e){var{x:r,y:i}=dt.pathM(t).point;e.push(r,i)}pathL(t,e){var{x:r,y:i}=dt.pathL(t).point;return e.push(r,i),gt.LINE_TO}pathH(t,e){var{x:r,y:i}=dt.pathH(t).point;return e.push(r,i),gt.LINE_TO}pathV(t,e){var{x:r,y:i}=dt.pathV(t).point;return e.push(r,i),gt.LINE_TO}pathC(t,e){var{point:r,controlPoint:i,currentPoint:n}=dt.pathC(t);e.push(r.x,r.y,i.x,i.y,n.x,n.y)}pathS(t,e){var{point:r,controlPoint:i,currentPoint:n}=dt.pathS(t);return e.push(r.x,r.y,i.x,i.y,n.x,n.y),gt.CURVE_TO}pathQ(t,e){var{controlPoint:r,currentPoint:i}=dt.pathQ(t);e.push(r.x,r.y,i.x,i.y)}pathT(t,e){var{controlPoint:r,currentPoint:i}=dt.pathT(t);return e.push(r.x,r.y,i.x,i.y),gt.QUAD_TO}pathA(t){var{rX:e,rY:r,sweepFlag:i,xAxisRotation:n,centp:a,a1:s,ad:o}=dt.pathA(t);return 0===i&&o>0&&(o-=2*Math.PI),1===i&&o<0&&(o+=2*Math.PI),[a.x,a.y,e,r,s,o,n,i]}calcLength(t,e,r,i){var n=0,a=null,s=null,o=0;switch(r){case gt.LINE_TO:return this.getLineLength(t,e,i[0],i[1]);case gt.CURVE_TO:for(n=0,a=this.getPointOnCubicBezier(0,t,e,i[0],i[1],i[2],i[3],i[4],i[5]),o=.01;o<=1;o+=.01)s=this.getPointOnCubicBezier(o,t,e,i[0],i[1],i[2],i[3],i[4],i[5]),n+=this.getLineLength(a.x,a.y,s.x,s.y),a=s;return n;case gt.QUAD_TO:for(n=0,a=this.getPointOnQuadraticBezier(0,t,e,i[0],i[1],i[2],i[3]),o=.01;o<=1;o+=.01)s=this.getPointOnQuadraticBezier(o,t,e,i[0],i[1],i[2],i[3]),n+=this.getLineLength(a.x,a.y,s.x,s.y),a=s;return n;case gt.ARC:n=0;var u=i[4],h=i[5],c=i[4]+h,l=Math.PI/180;if(Math.abs(u-c)<l&&(l=Math.abs(u-c)),a=this.getPointOnEllipticalArc(i[0],i[1],i[2],i[3],u,0),h<0)for(o=u-l;o>c;o-=l)s=this.getPointOnEllipticalArc(i[0],i[1],i[2],i[3],o,0),n+=this.getLineLength(a.x,a.y,s.x,s.y),a=s;else for(o=u+l;o<c;o+=l)s=this.getPointOnEllipticalArc(i[0],i[1],i[2],i[3],o,0),n+=this.getLineLength(a.x,a.y,s.x,s.y),a=s;return s=this.getPointOnEllipticalArc(i[0],i[1],i[2],i[3],c,0),n+=this.getLineLength(a.x,a.y,s.x,s.y)}return 0}getPointOnLine(t,e,r,i,n){var a=arguments.length>5&&void 0!==arguments[5]?arguments[5]:e,s=arguments.length>6&&void 0!==arguments[6]?arguments[6]:r,o=(n-r)/(i-e+R),u=Math.sqrt(t*t/(1+o*o));i<e&&(u*=-1);var h=o*u,c=null;if(i===e)c={x:a,y:s+h};else if((s-r)/(a-e+R)===o)c={x:a+u,y:s+h};else{var l,f,g=this.getLineLength(e,r,i,n);if(g<R)return null;var p=(a-e)*(i-e)+(s-r)*(n-r);l=e+(p/=g*g)*(i-e),f=r+p*(n-r);var d=this.getLineLength(a,s,l,f),v=Math.sqrt(t*t-d*d);u=Math.sqrt(v*v/(1+o*o)),i<e&&(u*=-1),c={x:l+u,y:f+(h=o*u)}}return c}getPointOnPath(t){var e=this.getPathLength(),r=0,i=null;if(t<-5e-5||t-5e-5>e)return null;var{dataArray:n}=this;for(var a of n){if(!a||!(a.pathLength<5e-5||r+a.pathLength+5e-5<t)){var s=t-r,o=0;switch(a.type){case gt.LINE_TO:i=this.getPointOnLine(s,a.start.x,a.start.y,a.points[0],a.points[1],a.start.x,a.start.y);break;case gt.ARC:var u=a.points[4],h=a.points[5],c=a.points[4]+h;if(o=u+s/a.pathLength*h,h<0&&o<c||h>=0&&o>c)break;i=this.getPointOnEllipticalArc(a.points[0],a.points[1],a.points[2],a.points[3],o,a.points[6]);break;case gt.CURVE_TO:(o=s/a.pathLength)>1&&(o=1),i=this.getPointOnCubicBezier(o,a.start.x,a.start.y,a.points[0],a.points[1],a.points[2],a.points[3],a.points[4],a.points[5]);break;case gt.QUAD_TO:(o=s/a.pathLength)>1&&(o=1),i=this.getPointOnQuadraticBezier(o,a.start.x,a.start.y,a.points[0],a.points[1],a.points[2],a.points[3])}if(i)return i;break}r+=a.pathLength}return null}getLineLength(t,e,r,i){return Math.sqrt((r-t)*(r-t)+(i-e)*(i-e))}getPathLength(){return-1===this.pathLength&&(this.pathLength=this.dataArray.reduce((t,e)=>e.pathLength>0?t+e.pathLength:t,0)),this.pathLength}getPointOnCubicBezier(t,e,r,i,n,a,s,o,u){return{x:o*I(t)+a*L(t)+i*D(t)+e*B(t),y:u*I(t)+s*L(t)+n*D(t)+r*B(t)}}getPointOnQuadraticBezier(t,e,r,i,n,a,s){return{x:a*F(t)+i*U(t)+e*z(t),y:s*F(t)+n*U(t)+r*z(t)}}getPointOnEllipticalArc(t,e,r,i,n,a){var s=Math.cos(a),o=Math.sin(a),u=r*Math.cos(n),h=i*Math.sin(n);return{x:t+(u*s-h*o),y:e+(u*o+h*s)}}buildEquidistantCache(t,e){var r=this.getPathLength(),i=e||.25,n=t||r/100;if(!this.equidistantCache||this.equidistantCache.step!==n||this.equidistantCache.precision!==i){this.equidistantCache={step:n,precision:i,points:[]};for(var a=0,s=0;s<=r;s+=i){var o=this.getPointOnPath(s),u=this.getPointOnPath(s+i);o&&u&&((a+=this.getLineLength(o.x,o.y,u.x,u.y))>=n&&(this.equidistantCache.points.push({x:o.x,y:o.y,distance:s}),a-=n))}}}getEquidistantPointOnPath(t,e,r){if(this.buildEquidistantCache(e,r),t<0||t-this.getPathLength()>5e-5)return null;var i=Math.round(t/this.getPathLength()*(this.equidistantCache.points.length-1));return this.equidistantCache.points[i]||null}}var Wt=/^\s*data:(([^/,;]+\/[^/,;]+)(?:;([^,;=]+=[^,;=]+))?)?(?:;(base64))?,(.*)$/i;class Gt extends pt{constructor(t,e,r){super(t,e,r),this.type="image",this.loaded=!1;var i=this.getHrefAttribute().getString();if(i){var n=i.endsWith(".svg")||/^\s*data:image\/svg\+xml/i.test(i);t.images.push(this),n?this.loadSvg(i):this.loadImage(i),this.isSvg=n}}loadImage(t){var e=this;return n()((function*(){try{var r=yield e.document.createImage(t);e.image=r}catch(e){console.error('Error while loading image "'.concat(t,'":'),e)}e.loaded=!0}))()}loadSvg(t){var e=this;return n()((function*(){var r=Wt.exec(t);if(r){var i=r[5];"base64"===r[4]?e.image=atob(i):e.image=decodeURIComponent(i)}else try{var n=yield e.document.fetch(t),a=yield n.text();e.image=a}catch(e){console.error('Error while loading image "'.concat(t,'":'),e)}e.loaded=!0}))()}renderChildren(t){var{document:e,image:r,loaded:i}=this,n=this.getAttribute("x").getPixels("x"),a=this.getAttribute("y").getPixels("y"),s=this.getStyle("width").getPixels("x"),o=this.getStyle("height").getPixels("y");if(i&&r&&s&&o){if(t.save(),t.translate(n,a),this.isSvg){var u=e.canvg.forkString(t,this.image,{ignoreMouse:!0,ignoreAnimation:!0,ignoreDimensions:!0,ignoreClear:!0,offsetX:0,offsetY:0,scaleWidth:s,scaleHeight:o});u.document.documentElement.parent=this,u.render()}else{var h=this.image;e.setViewBox({ctx:t,aspectRatio:this.getAttribute("preserveAspectRatio").getString(),width:s,desiredWidth:h.width,height:o,desiredHeight:h.height}),this.loaded&&(void 0===h.complete||h.complete)&&t.drawImage(h,0,0)}t.restore()}}getBoundingBox(){var t=this.getAttribute("x").getPixels("x"),e=this.getAttribute("y").getPixels("y"),r=this.getStyle("width").getPixels("x"),i=this.getStyle("height").getPixels("y");return new ft(t,e,t+r,e+i)}}class qt extends pt{constructor(){super(...arguments),this.type="symbol"}render(t){}}class Qt{constructor(t){this.document=t,this.loaded=!1,t.fonts.push(this)}load(t,e){var r=this;return n()((function*(){try{var{document:i}=r,n=(yield i.canvg.parser.load(e)).getElementsByTagName("font");Array.from(n).forEach(e=>{var r=i.createElement(e);i.definitions[t]=r})}catch(t){console.error('Error while loading font "'.concat(e,'":'),t)}r.loaded=!0}))()}}class Kt extends st{constructor(t,e,r){super(t,e,r),this.type="style",p(Array.from(e.childNodes).map(t=>t.textContent).join("").replace(/(\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/)|(^[\s]*\/\/.*)/gm,"").replace(/@import.*;/g,"")).split("}").forEach(e=>{var r=e.trim();if(r){var i=r.split("{"),n=i[0].split(","),a=i[1].split(";");n.forEach(e=>{var r=e.trim();if(r){var i=t.styles[r]||{};if(a.forEach(e=>{var r=e.indexOf(":"),n=e.substr(0,r).trim(),a=e.substr(r+1,e.length-r).trim();n&&a&&(i[n]=new H(t,n,a))}),t.styles[r]=i,t.stylesSpecificity[r]=N(r),"@font-face"===r){var n=i["font-family"].getString().replace(/"|'/g,"");i.src.getString().split(",").forEach(e=>{if(e.indexOf('format("svg")')>0){var r=b(e);r&&new Qt(t).load(n,r)}})}}})}})}}Kt.parseExternalUrl=b;class $t extends pt{constructor(){super(...arguments),this.type="use"}setContext(t){super.setContext(t);var e=this.getAttribute("x"),r=this.getAttribute("y");e.hasValue()&&t.translate(e.getPixels("x"),0),r.hasValue()&&t.translate(0,r.getPixels("y"))}path(t){var{element:e}=this;e&&e.path(t)}renderChildren(t){var{document:e,element:r}=this;if(r){var i=r;if("symbol"===r.type&&((i=new bt(e,null)).attributes.viewBox=new H(e,"viewBox",r.getAttribute("viewBox").getString()),i.attributes.preserveAspectRatio=new H(e,"preserveAspectRatio",r.getAttribute("preserveAspectRatio").getString()),i.attributes.overflow=new H(e,"overflow",r.getAttribute("overflow").getString()),i.children=r.children,r.styles.opacity=new H(e,"opacity",this.calculateOpacity())),"svg"===i.type){var n=this.getStyle("width",!1,!0),a=this.getStyle("height",!1,!0);n.hasValue()&&(i.attributes.width=new H(e,"width",n.getString())),a.hasValue()&&(i.attributes.height=new H(e,"height",a.getString()))}var s=i.parent;i.parent=this,i.render(t),i.parent=s}}getBoundingBox(t){var{element:e}=this;return e?e.getBoundingBox(t):null}elementTransform(){var{document:t,element:e}=this;return at.fromElement(t,e)}get element(){return this.cachedElement||(this.cachedElement=this.getHrefAttribute().getDefinition()),this.cachedElement}}function Zt(t,e,r,i,n,a){return t[r*i*4+4*e+a]}function Jt(t,e,r,i,n,a,s){t[r*i*4+4*e+a]=s}function te(t,e,r){return t[e]*r}function ee(t,e,r,i){return e+Math.cos(t)*r+Math.sin(t)*i}class re extends st{constructor(t,e,r){super(t,e,r),this.type="feColorMatrix";var i=y(this.getAttribute("values").getString());switch(this.getAttribute("type").getString("matrix")){case"saturate":var n=i[0];i=[.213+.787*n,.715-.715*n,.072-.072*n,0,0,.213-.213*n,.715+.285*n,.072-.072*n,0,0,.213-.213*n,.715-.715*n,.072+.928*n,0,0,0,0,0,1,0,0,0,0,0,1];break;case"hueRotate":var a=i[0]*Math.PI/180;i=[ee(a,.213,.787,-.213),ee(a,.715,-.715,-.715),ee(a,.072,-.072,.928),0,0,ee(a,.213,-.213,.143),ee(a,.715,.285,.14),ee(a,.072,-.072,-.283),0,0,ee(a,.213,-.213,-.787),ee(a,.715,-.715,.715),ee(a,.072,.928,.072),0,0,0,0,0,1,0,0,0,0,0,1];break;case"luminanceToAlpha":i=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,.2125,.7154,.0721,0,0,0,0,0,0,1]}this.matrix=i,this.includeOpacity=this.getAttribute("includeOpacity").hasValue()}apply(t,e,r,i,n){for(var{includeOpacity:a,matrix:s}=this,o=t.getImageData(0,0,i,n),u=0;u<n;u++)for(var h=0;h<i;h++){var c=Zt(o.data,h,u,i,0,0),l=Zt(o.data,h,u,i,0,1),f=Zt(o.data,h,u,i,0,2),g=Zt(o.data,h,u,i,0,3),p=te(s,0,c)+te(s,1,l)+te(s,2,f)+te(s,3,g)+te(s,4,1),d=te(s,5,c)+te(s,6,l)+te(s,7,f)+te(s,8,g)+te(s,9,1),v=te(s,10,c)+te(s,11,l)+te(s,12,f)+te(s,13,g)+te(s,14,1),y=te(s,15,c)+te(s,16,l)+te(s,17,f)+te(s,18,g)+te(s,19,1);a&&(p=0,d=0,v=0,y*=g/255),Jt(o.data,h,u,i,0,0,p),Jt(o.data,h,u,i,0,1,d),Jt(o.data,h,u,i,0,2,v),Jt(o.data,h,u,i,0,3,y)}t.clearRect(0,0,i,n),t.putImageData(o,0,0)}}class ie extends st{constructor(){super(...arguments),this.type="mask"}apply(t,e){var{document:r}=this,i=this.getAttribute("x").getPixels("x"),n=this.getAttribute("y").getPixels("y"),a=this.getStyle("width").getPixels("x"),s=this.getStyle("height").getPixels("y");if(!a&&!s){var o=new ft;this.children.forEach(e=>{o.addBoundingBox(e.getBoundingBox(t))}),i=Math.floor(o.x1),n=Math.floor(o.y1),a=Math.floor(o.width),s=Math.floor(o.height)}var u=this.removeStyles(e,ie.ignoreStyles),h=r.createCanvas(i+a,n+s),c=h.getContext("2d");r.screen.setDefaults(c),this.renderChildren(c),new re(r,{nodeType:1,childNodes:[],attributes:[{nodeName:"type",value:"luminanceToAlpha"},{nodeName:"includeOpacity",value:"true"}]}).apply(c,0,0,i+a,n+s);var l=r.createCanvas(i+a,n+s),f=l.getContext("2d");r.screen.setDefaults(f),e.render(f),f.globalCompositeOperation="destination-in",f.fillStyle=c.createPattern(h,"no-repeat"),f.fillRect(0,0,i+a,n+s),t.fillStyle=f.createPattern(l,"no-repeat"),t.fillRect(0,0,i+a,n+s),this.restoreStyles(e,u)}render(t){}}ie.ignoreStyles=["mask","transform","clip-path"];var ne=()=>{};class ae extends st{constructor(){super(...arguments),this.type="clipPath"}apply(t){var{document:e}=this,r=Reflect.getPrototypeOf(t),{beginPath:i,closePath:n}=t;r&&(r.beginPath=ne,r.closePath=ne),Reflect.apply(i,t,[]),this.children.forEach(i=>{if(void 0!==i.path){var a=void 0!==i.elementTransform?i.elementTransform():null;a||(a=at.fromElement(e,i)),a&&a.apply(t),i.path(t),r&&(r.closePath=n),a&&a.unapply(t)}}),Reflect.apply(n,t,[]),t.clip(),r&&(r.beginPath=i,r.closePath=n)}render(t){}}class se extends st{constructor(){super(...arguments),this.type="filter"}apply(t,e){var{document:r,children:i}=this,n=e.getBoundingBox(t);if(n){var a=0,s=0;i.forEach(t=>{var e=t.extraFilterDistance||0;a=Math.max(a,e),s=Math.max(s,e)});var o=Math.floor(n.width),u=Math.floor(n.height),h=o+2*a,c=u+2*s;if(!(h<1||c<1)){var l=Math.floor(n.x),f=Math.floor(n.y),g=this.removeStyles(e,se.ignoreStyles),p=r.createCanvas(h,c),d=p.getContext("2d");r.screen.setDefaults(d),d.translate(-l+a,-f+s),e.render(d),i.forEach(t=>{"function"==typeof t.apply&&t.apply(d,0,0,h,c)}),t.drawImage(p,0,0,h,c,l-a,f-s,h,c),this.restoreStyles(e,g)}}}render(t){}}se.ignoreStyles=["filter","transform","clip-path"];class oe extends st{constructor(t,e,r){super(t,e,r),this.type="feDropShadow",this.addStylesFromStyleDefinition()}apply(t,e,r,i,n){}}class ue extends st{constructor(){super(...arguments),this.type="feMorphology"}apply(t,e,r,i,n){}}class he extends st{constructor(){super(...arguments),this.type="feComposite"}apply(t,e,r,i,n){}}class ce extends st{constructor(t,e,r){super(t,e,r),this.type="feGaussianBlur",this.blurRadius=Math.floor(this.getAttribute("stdDeviation").getNumber()),this.extraFilterDistance=this.blurRadius}apply(t,e,r,i,n){var{document:a,blurRadius:s}=this,o=a.window?a.window.document.body:null,u=t.canvas;u.id=a.getUniqueId(),o&&(u.style.display="none",o.appendChild(u)),Object(f.a)(u,e,r,i,n,s),o&&o.removeChild(u)}}class le extends st{constructor(){super(...arguments),this.type="title"}}class fe extends st{constructor(){super(...arguments),this.type="desc"}}var ge={svg:bt,rect:St,circle:wt,ellipse:At,line:Tt,polyline:Ot,polygon:Et,path:dt,pattern:Pt,marker:Ct,defs:Mt,linearGradient:Vt,radialGradient:kt,stop:_t,animate:It,animateColor:Lt,animateTransform:Dt,font:Bt,"font-face":Ft,"missing-glyph":Ut,glyph:vt,text:yt,tspan:mt,tref:zt,a:Ht,textPath:Xt,image:Gt,g:Nt,symbol:qt,style:Kt,use:$t,mask:ie,clipPath:ae,filter:se,feDropShadow:oe,feMorphology:ue,feComposite:he,feColorMatrix:re,feGaussianBlur:ce,title:le,desc:fe};function pe(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var i=Object.getOwnPropertySymbols(t);e&&(i=i.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,i)}return r}function de(){return(de=n()((function*(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=document.createElement("img");return e&&(r.crossOrigin="Anonymous"),new Promise((e,i)=>{r.onload=()=>{e(r)},r.onerror=(t,e,r,n,a)=>{i(a)},r.src=t})}))).apply(this,arguments)}class ve{constructor(t){var{rootEmSize:e=12,emSize:r=12,createCanvas:i=ve.createCanvas,createImage:n=ve.createImage,anonymousCrossOrigin:a}=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};this.canvg=t,this.definitions={},this.styles={},this.stylesSpecificity={},this.images=[],this.fonts=[],this.emSizeStack=[],this.uniqueId=0,this.screen=t.screen,this.rootEmSize=e,this.emSize=r,this.createCanvas=i,this.createImage=this.bindCreateImage(n,a),this.screen.wait(this.isImagesLoaded.bind(this)),this.screen.wait(this.isFontsLoaded.bind(this))}bindCreateImage(t,e){return"boolean"==typeof e?(r,i)=>t(r,"boolean"==typeof i?i:e):t}get window(){return this.screen.window}get fetch(){return this.screen.fetch}get ctx(){return this.screen.ctx}get emSize(){var{emSizeStack:t}=this;return t[t.length-1]}set emSize(t){var{emSizeStack:e}=this;e.push(t)}popEmSize(){var{emSizeStack:t}=this;t.pop()}getUniqueId(){return"canvg".concat(++this.uniqueId)}isImagesLoaded(){return this.images.every(t=>t.loaded)}isFontsLoaded(){return this.fonts.every(t=>t.loaded)}createDocumentElement(t){var e=this.createElement(t.documentElement);return e.root=!0,e.addStylesFromStyleDefinition(),this.documentElement=e,e}createElement(t){var e=t.nodeName.replace(/^[^:]+:/,""),r=ve.elementTypes[e];return void 0!==r?new r(this,t):new ot(this,t)}createTextNode(t){return new xt(this,t)}setViewBox(t){this.screen.setViewBox(function(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?pe(Object(r),!0).forEach((function(e){s()(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):pe(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}({document:this},t))}}function ye(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var i=Object.getOwnPropertySymbols(t);e&&(i=i.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),r.push.apply(r,i)}return r}function me(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?ye(Object(r),!0).forEach((function(e){s()(t,e,r[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):ye(Object(r)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e))}))}return t}ve.createCanvas=function(t,e){var r=document.createElement("canvas");return r.width=t,r.height=e,r},ve.createImage=function(t){return de.apply(this,arguments)},ve.elementTypes=ge;class xe{constructor(t,e){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};this.parser=new $(r),this.screen=new q(t,r),this.options=r;var i=new ve(this,r),n=i.createDocumentElement(e);this.document=i,this.documentElement=n}static from(t,e){var r=arguments;return n()((function*(){var i=r.length>2&&void 0!==r[2]?r[2]:{},n=new $(i),a=yield n.parse(e);return new xe(t,a,i)}))()}static fromString(t,e){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},i=new $(r).parseFromString(e);return new xe(t,i,r)}fork(t,e){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return xe.from(t,e,me(me({},this.options),r))}forkString(t,e){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return xe.fromString(t,e,me(me({},this.options),r))}ready(){return this.screen.ready()}isReady(){return this.screen.isReady()}render(){var t=arguments,e=this;return n()((function*(){var r=t.length>0&&void 0!==t[0]?t[0]:{};e.start(me({enableRedraw:!0,ignoreAnimation:!0,ignoreMouse:!0},r)),yield e.ready(),e.stop()}))()}start(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},{documentElement:e,screen:r,options:i}=this;r.start(e,me(me({enableRedraw:!0},i),t))}stop(){this.screen.stop()}resize(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:t,r=arguments.length>2&&void 0!==arguments[2]&&arguments[2];this.documentElement.resize(t,e,r)}}e.default=xe}.call(this,r("8oxB"))},E9XD:function(t,e,r){"use strict";var i=r("I+eb"),n=r("1Y/n").left,a=r("pkCn"),s=r("LQDL"),o=r("YF1G");i({target:"Array",proto:!0,forced:!a("reduce")||!o&&s>79&&s<83},{reduce:function(t){return n(this,t,arguments.length,arguments.length>1?arguments[1]:void 0)}})},EHx7:function(t,e,r){var i=r("0Dky"),n=r("2oRo").RegExp;t.exports=i((function(){var t=n("(?<a>b)","g");return"b"!==t.exec("b").groups.a||"bc"!=="b".replace(t,"$<a>c")}))},EnZy:function(t,e,r){"use strict";var i=r("14Sl"),n=r("ROdP"),a=r("glrk"),s=r("HYAF"),o=r("SEBh"),u=r("iqWW"),h=r("UMSQ"),c=r("V37c"),l=r("3Eq5"),f=r("FMNM"),g=r("kmMV"),p=r("n3/R"),d=r("0Dky"),v=p.UNSUPPORTED_Y,y=[].push,m=Math.min;i("split",(function(t,e,r){var i;return i="c"=="abbc".split(/(b)*/)[1]||4!="test".split(/(?:)/,-1).length||2!="ab".split(/(?:ab)*/).length||4!=".".split(/(.?)(.?)/).length||".".split(/()()/).length>1||"".split(/.?/).length?function(t,r){var i=c(s(this)),a=void 0===r?4294967295:r>>>0;if(0===a)return[];if(void 0===t)return[i];if(!n(t))return e.call(i,t,a);for(var o,u,h,l=[],f=(t.ignoreCase?"i":"")+(t.multiline?"m":"")+(t.unicode?"u":"")+(t.sticky?"y":""),p=0,d=new RegExp(t.source,f+"g");(o=g.call(d,i))&&!((u=d.lastIndex)>p&&(l.push(i.slice(p,o.index)),o.length>1&&o.index<i.length&&y.apply(l,o.slice(1)),h=o[0].length,p=u,l.length>=a));)d.lastIndex===o.index&&d.lastIndex++;return p===i.length?!h&&d.test("")||l.push(""):l.push(i.slice(p)),l.length>a?l.slice(0,a):l}:"0".split(void 0,0).length?function(t,r){return void 0===t&&0===r?[]:e.call(this,t,r)}:e,[function(e,r){var n=s(this),a=null==e?void 0:l(e,t);return a?a.call(e,n,r):i.call(c(n),e,r)},function(t,n){var s=a(this),l=c(t),g=r(i,s,l,n,i!==e);if(g.done)return g.value;var p=o(s,RegExp),d=s.unicode,y=(s.ignoreCase?"i":"")+(s.multiline?"m":"")+(s.unicode?"u":"")+(v?"g":"y"),x=new p(v?"^(?:"+s.source+")":s,y),b=void 0===n?4294967295:n>>>0;if(0===b)return[];if(0===l.length)return null===f(x,l)?[l]:[];for(var S=0,w=0,A=[];w<l.length;){x.lastIndex=v?0:w;var T,O=f(x,v?l.slice(w):l);if(null===O||(T=m(h(x.lastIndex+(v?w:0)),l.length))===S)w=u(l,w,d);else{if(A.push(l.slice(S,w)),A.length===b)return A;for(var E=1;E<=O.length-1;E++)if(A.push(O[E]),A.length===b)return A;w=S=T}}return A.push(l.slice(S)),A}]}),!!d((function(){var t=/(?:)/,e=t.exec;t.exec=function(){return e.apply(this,arguments)};var r="ab".split(t);return 2!==r.length||"a"!==r[0]||"b"!==r[1]})),v)},FMNM:function(t,e,r){var i=r("glrk"),n=r("Fib7"),a=r("xrYK"),s=r("kmMV");t.exports=function(t,e){var r=t.exec;if(n(r)){var o=r.call(t,e);return null!==o&&i(o),o}if("RegExp"===a(t))return s.call(t,e);throw TypeError("RegExp#exec called on incompatible receiver")}},Fib7:function(t,e){t.exports=function(t){return"function"==typeof t}},"G+Rx":function(t,e,r){var i=r("0GbY");t.exports=i("document","documentElement")},GarU:function(t,e){t.exports=function(t,e,r){if(t instanceof e)return t;throw TypeError("Incorrect "+(r?r+" ":"")+"invocation")}},HH4o:function(t,e,r){var i=r("tiKp")("iterator"),n=!1;try{var a=0,s={next:function(){return{done:!!a++}},return:function(){n=!0}};s[i]=function(){return this},Array.from(s,(function(){throw 2}))}catch(t){}t.exports=function(t,e){if(!e&&!n)return!1;var r=!1;try{var a={};a[i]=function(){return{next:function(){return{done:r=!0}}}},t(a)}catch(t){}return r}},HNyW:function(t,e,r){var i=r("NC/Y");t.exports=/(?:ipad|iphone|ipod).*applewebkit/i.test(i)},HYAF:function(t,e){t.exports=function(t){if(null==t)throw TypeError("Can't call method on "+t);return t}},"I+eb":function(t,e,r){var i=r("2oRo"),n=r("Bs8V").f,a=r("kRJp"),s=r("busE"),o=r("zk60"),u=r("6JNq"),h=r("lMq5");t.exports=function(t,e){var r,c,l,f,g,p=t.target,d=t.global,v=t.stat;if(r=d?i:v?i[p]||o(p,{}):(i[p]||{}).prototype)for(c in e){if(f=e[c],l=t.noTargetGet?(g=n(r,c))&&g.value:r[c],!h(d?c:p+(v?".":"#")+c,t.forced)&&void 0!==l){if(typeof f==typeof l)continue;u(f,l)}(t.sham||l&&l.sham)&&a(f,"sham",!0),s(r,c,f,t)}}},I8vh:function(t,e,r){var i=r("ppGB"),n=Math.max,a=Math.min;t.exports=function(t,e){var r=i(t);return r<0?n(r+e,0):a(r,e)}},ImZN:function(t,e,r){var i=r("glrk"),n=r("6VoE"),a=r("UMSQ"),s=r("A2ZE"),o=r("mh/w"),u=r("NaFW"),h=r("KmKo"),c=function(t,e){this.stopped=t,this.result=e};t.exports=function(t,e,r){var l,f,g,p,d,v,y,m=r&&r.that,x=!(!r||!r.AS_ENTRIES),b=!(!r||!r.IS_ITERATOR),S=!(!r||!r.INTERRUPTED),w=s(e,m,1+x+S),A=function(t){return l&&h(l,"normal",t),new c(!0,t)},T=function(t){return x?(i(t),S?w(t[0],t[1],A):w(t[0],t[1])):S?w(t,A):w(t)};if(b)l=t;else{if(!(f=u(t)))throw TypeError(String(t)+" is not iterable");if(n(f)){for(g=0,p=a(t.length);p>g;g++)if((d=T(t[g]))&&d instanceof c)return d;return new c(!1)}l=o(t,f)}for(v=l.next;!(y=v.call(l)).done;){try{d=T(y.value)}catch(t){h(l,"throw",t)}if("object"==typeof d&&d&&d instanceof c)return d}return new c(!1)}},JBy8:function(t,e,r){var i=r("yoRg"),n=r("eDl+").concat("length","prototype");e.f=Object.getOwnPropertyNames||function(t){return i(t,n)}},JTJg:function(t,e,r){"use strict";var i=r("I+eb"),n=r("WjRb"),a=r("HYAF"),s=r("V37c");i({target:"String",proto:!0,forced:!r("qxPZ")("includes")},{includes:function(t){return!!~s(a(this)).indexOf(s(n(t)),arguments.length>1?arguments[1]:void 0)}})},JfAA:function(t,e,r){"use strict";var i=r("Xnc8").PROPER,n=r("busE"),a=r("glrk"),s=r("V37c"),o=r("0Dky"),u=r("rW0t"),h=RegExp.prototype,c=h.toString,l=o((function(){return"/a/b"!=c.call({source:"a",flags:"b"})})),f=i&&"toString"!=c.name;(l||f)&&n(RegExp.prototype,"toString",(function(){var t=a(this),e=s(t.source),r=t.flags;return"/"+e+"/"+s(void 0===r&&t instanceof RegExp&&!("flags"in h)?u.call(t):r)}),{unsafe:!0})},JiZb:function(t,e,r){"use strict";var i=r("0GbY"),n=r("m/L8"),a=r("tiKp"),s=r("g6v/"),o=a("species");t.exports=function(t){var e=i(t),r=n.f;s&&e&&!e[o]&&r(e,o,{configurable:!0,get:function(){return this}})}},Junv:function(t,e,r){"use strict";var i=r("I+eb"),n=r("6LWA"),a=[].reverse,s=[1,2];i({target:"Array",proto:!0,forced:String(s)===String(s.reverse())},{reverse:function(){return n(this)&&(this.length=this.length),a.call(this)}})},KmKo:function(t,e,r){var i=r("glrk"),n=r("3Eq5");t.exports=function(t,e,r){var a,s;i(t);try{if(!(a=n(t,"return"))){if("throw"===e)throw r;return r}a=a.call(t)}catch(t){s=!0,a=t}if("throw"===e)throw r;if(s)throw a;return i(a),r}},LKBx:function(t,e,r){"use strict";var i,n=r("I+eb"),a=r("Bs8V").f,s=r("UMSQ"),o=r("V37c"),u=r("WjRb"),h=r("HYAF"),c=r("qxPZ"),l=r("xDBR"),f="".startsWith,g=Math.min,p=c("startsWith");n({target:"String",proto:!0,forced:!!(l||p||(i=a(String.prototype,"startsWith"),!i||i.writable))&&!p},{startsWith:function(t){var e=o(h(this));u(t);var r=s(g(arguments.length>1?arguments[1]:void 0,e.length)),i=o(t);return f?f.call(e,i,r):e.slice(r,r+i.length)===i}})},LPSS:function(t,e,r){var i,n,a,s,o=r("2oRo"),u=r("Fib7"),h=r("0Dky"),c=r("A2ZE"),l=r("G+Rx"),f=r("zBJ4"),g=r("HNyW"),p=r("YF1G"),d=o.setImmediate,v=o.clearImmediate,y=o.process,m=o.MessageChannel,x=o.Dispatch,b=0,S={};try{i=o.location}catch(t){}var w=function(t){if(S.hasOwnProperty(t)){var e=S[t];delete S[t],e()}},A=function(t){return function(){w(t)}},T=function(t){w(t.data)},O=function(t){o.postMessage(String(t),i.protocol+"//"+i.host)};d&&v||(d=function(t){for(var e=[],r=arguments.length,i=1;r>i;)e.push(arguments[i++]);return S[++b]=function(){(u(t)?t:Function(t)).apply(void 0,e)},n(b),b},v=function(t){delete S[t]},p?n=function(t){y.nextTick(A(t))}:x&&x.now?n=function(t){x.now(A(t))}:m&&!g?(s=(a=new m).port2,a.port1.onmessage=T,n=c(s.postMessage,s,1)):o.addEventListener&&u(o.postMessage)&&!o.importScripts&&i&&"file:"!==i.protocol&&!h(O)?(n=O,o.addEventListener("message",T,!1)):n="onreadystatechange"in f("script")?function(t){l.appendChild(f("script")).onreadystatechange=function(){l.removeChild(this),w(t)}}:function(t){setTimeout(A(t),0)}),t.exports={set:d,clear:v}},LQDL:function(t,e,r){var i,n,a=r("2oRo"),s=r("NC/Y"),o=a.process,u=a.Deno,h=o&&o.versions||u&&u.version,c=h&&h.v8;c?n=(i=c.split("."))[0]<4?1:i[0]+i[1]:s&&(!(i=s.match(/Edge\/(\d+)/))||i[1]>=74)&&(i=s.match(/Chrome\/(\d+)/))&&(n=i[1]),t.exports=n&&+n},"N+g0":function(t,e,r){var i=r("g6v/"),n=r("m/L8"),a=r("glrk"),s=r("33Wh");t.exports=i?Object.defineProperties:function(t,e){a(t);for(var r,i=s(e),o=i.length,u=0;o>u;)n.f(t,r=i[u++],e[r]);return t}},"NC/Y":function(t,e,r){var i=r("0GbY");t.exports=i("navigator","userAgent")||""},NaFW:function(t,e,r){var i=r("9d/t"),n=r("3Eq5"),a=r("P4y1"),s=r("tiKp")("iterator");t.exports=function(t){if(null!=t)return n(t,s)||n(t,"@@iterator")||a[i(t)]}},O741:function(t,e,r){var i=r("Fib7");t.exports=function(t){if("object"==typeof t||i(t))return t;throw TypeError("Can't set "+String(t)+" as a prototype")}},P4y1:function(t,e){t.exports={}},RK3t:function(t,e,r){var i=r("0Dky"),n=r("xrYK"),a="".split;t.exports=i((function(){return!Object("z").propertyIsEnumerable(0)}))?function(t){return"String"==n(t)?a.call(t,""):Object(t)}:Object},RN6c:function(t,e,r){var i=r("2oRo");t.exports=function(t,e){var r=i.console;r&&r.error&&(1===arguments.length?r.error(t):r.error(t,e))}},RNIs:function(t,e,r){var i=r("tiKp"),n=r("fHMY"),a=r("m/L8"),s=i("unscopables"),o=Array.prototype;null==o[s]&&a.f(o,s,{configurable:!0,value:n(null)}),t.exports=function(t){o[s][t]=!0}},ROdP:function(t,e,r){var i=r("hh1v"),n=r("xrYK"),a=r("tiKp")("match");t.exports=function(t){var e;return i(t)&&(void 0!==(e=t[a])?!!e:"RegExp"==n(t))}},Rm1S:function(t,e,r){"use strict";var i=r("14Sl"),n=r("glrk"),a=r("UMSQ"),s=r("V37c"),o=r("HYAF"),u=r("3Eq5"),h=r("iqWW"),c=r("FMNM");i("match",(function(t,e,r){return[function(e){var r=o(this),i=null==e?void 0:u(e,t);return i?i.call(e,r):new RegExp(e)[t](s(r))},function(t){var i=n(this),o=s(t),u=r(e,i,o);if(u.done)return u.value;if(!i.global)return c(i,o);var l=i.unicode;i.lastIndex=0;for(var f,g=[],p=0;null!==(f=c(i,o));){var d=s(f[0]);g[p]=d,""===d&&(i.lastIndex=h(o,a(i.lastIndex),l)),p++}return 0===p?null:g}]}))},SEBh:function(t,e,r){var i=r("glrk"),n=r("UIe5"),a=r("tiKp")("species");t.exports=function(t,e){var r,s=i(t).constructor;return void 0===s||null==(r=i(s)[a])?e:n(r)}},SFrS:function(t,e,r){var i=r("Fib7"),n=r("hh1v");t.exports=function(t,e){var r,a;if("string"===e&&i(r=t.toString)&&!n(a=r.call(t)))return a;if(i(r=t.valueOf)&&!n(a=r.call(t)))return a;if("string"!==e&&i(r=t.toString)&&!n(a=r.call(t)))return a;throw TypeError("Can't convert object to primitive value")}},STAE:function(t,e,r){var i=r("LQDL"),n=r("0Dky");t.exports=!!Object.getOwnPropertySymbols&&!n((function(){var t=Symbol();return!String(t)||!(Object(t)instanceof Symbol)||!Symbol.sham&&i&&i<41}))},SYor:function(t,e,r){"use strict";var i=r("I+eb"),n=r("WKiH").trim;i({target:"String",proto:!0,forced:r("yNLB")("trim")},{trim:function(){return n(this)}})},TWQb:function(t,e,r){var i=r("/GqU"),n=r("UMSQ"),a=r("I8vh"),s=function(t){return function(e,r,s){var o,u=i(e),h=n(u.length),c=a(s,h);if(t&&r!=r){for(;h>c;)if((o=u[c++])!=o)return!0}else for(;h>c;c++)if((t||c in u)&&u[c]===r)return t||c||0;return!t&&-1}};t.exports={includes:s(!0),indexOf:s(!1)}},UIe5:function(t,e,r){var i=r("aO6C"),n=r("DVFp");t.exports=function(t){if(i(t))return t;throw TypeError(n(t)+" is not a constructor")}},UMSQ:function(t,e,r){var i=r("ppGB"),n=Math.min;t.exports=function(t){return t>0?n(i(t),9007199254740991):0}},UTVS:function(t,e,r){var i=r("ewvW"),n={}.hasOwnProperty;t.exports=Object.hasOwn||function(t,e){return n.call(i(t),e)}},UxlC:function(t,e,r){"use strict";var i=r("14Sl"),n=r("0Dky"),a=r("glrk"),s=r("Fib7"),o=r("ppGB"),u=r("UMSQ"),h=r("V37c"),c=r("HYAF"),l=r("iqWW"),f=r("3Eq5"),g=r("DLK6"),p=r("FMNM"),d=r("tiKp")("replace"),v=Math.max,y=Math.min,m="$0"==="a".replace(/./,"$0"),x=!!/./[d]&&""===/./[d]("a","$0");i("replace",(function(t,e,r){var i=x?"$":"$0";return[function(t,r){var i=c(this),n=null==t?void 0:f(t,d);return n?n.call(t,i,r):e.call(h(i),t,r)},function(t,n){var c=a(this),f=h(t);if("string"==typeof n&&-1===n.indexOf(i)&&-1===n.indexOf("$<")){var d=r(e,c,f,n);if(d.done)return d.value}var m=s(n);m||(n=h(n));var x=c.global;if(x){var b=c.unicode;c.lastIndex=0}for(var S=[];;){var w=p(c,f);if(null===w)break;if(S.push(w),!x)break;""===h(w[0])&&(c.lastIndex=l(f,u(c.lastIndex),b))}for(var A,T="",O=0,E=0;E<S.length;E++){w=S[E];for(var P=h(w[0]),C=v(y(o(w.index),f.length),0),M=[],N=1;N<w.length;N++)M.push(void 0===(A=w[N])?A:String(A));var R=w.groups;if(m){var V=[P].concat(M,C,f);void 0!==R&&V.push(R);var k=h(n.apply(void 0,V))}else k=g(P,f,C,M,R,n);C>=O&&(T+=f.slice(O,C)+k,O=C+P.length)}return T+f.slice(O)}]}),!!n((function(){var t=/./;return t.exec=function(){var t=[];return t.groups={a:"7"},t},"7"!=="".replace(t,"$<a>")}))||!m||x)},V37c:function(t,e,r){var i=r("9d/t");t.exports=function(t){if("Symbol"===i(t))throw TypeError("Cannot convert a Symbol value to a string");return String(t)}},VpIT:function(t,e,r){var i=r("xDBR"),n=r("xs3f");(t.exports=function(t,e){return n[t]||(n[t]=void 0!==e?e:{})})("versions",[]).push({version:"3.18.1",mode:i?"pure":"global",copyright:"© 2021 Denis Pushkarev (zloirock.ru)"})},Vu81:function(t,e,r){var i=r("0GbY"),n=r("JBy8"),a=r("dBg+"),s=r("glrk");t.exports=i("Reflect","ownKeys")||function(t){var e=n.f(s(t)),r=a.f;return r?e.concat(r(t)):e}},WJkJ:function(t,e){t.exports="\t\n\v\f\r                　\u2028\u2029\ufeff"},WKiH:function(t,e,r){var i=r("HYAF"),n=r("V37c"),a="["+r("WJkJ")+"]",s=RegExp("^"+a+a+"*"),o=RegExp(a+a+"*$"),u=function(t){return function(e){var r=n(i(e));return 1&t&&(r=r.replace(s,"")),2&t&&(r=r.replace(o,"")),r}};t.exports={start:u(1),end:u(2),trim:u(3)}},WOGj:function(t,e){t.exports=function(t){this.ok=!1,this.alpha=1,"#"==t.charAt(0)&&(t=t.substr(1,6)),t=(t=t.replace(/ /g,"")).toLowerCase();var e={aliceblue:"f0f8ff",antiquewhite:"faebd7",aqua:"00ffff",aquamarine:"7fffd4",azure:"f0ffff",beige:"f5f5dc",bisque:"ffe4c4",black:"000000",blanchedalmond:"ffebcd",blue:"0000ff",blueviolet:"8a2be2",brown:"a52a2a",burlywood:"deb887",cadetblue:"5f9ea0",chartreuse:"7fff00",chocolate:"d2691e",coral:"ff7f50",cornflowerblue:"6495ed",cornsilk:"fff8dc",crimson:"dc143c",cyan:"00ffff",darkblue:"00008b",darkcyan:"008b8b",darkgoldenrod:"b8860b",darkgray:"a9a9a9",darkgreen:"006400",darkkhaki:"bdb76b",darkmagenta:"8b008b",darkolivegreen:"556b2f",darkorange:"ff8c00",darkorchid:"9932cc",darkred:"8b0000",darksalmon:"e9967a",darkseagreen:"8fbc8f",darkslateblue:"483d8b",darkslategray:"2f4f4f",darkturquoise:"00ced1",darkviolet:"9400d3",deeppink:"ff1493",deepskyblue:"00bfff",dimgray:"696969",dodgerblue:"1e90ff",feldspar:"d19275",firebrick:"b22222",floralwhite:"fffaf0",forestgreen:"228b22",fuchsia:"ff00ff",gainsboro:"dcdcdc",ghostwhite:"f8f8ff",gold:"ffd700",goldenrod:"daa520",gray:"808080",green:"008000",greenyellow:"adff2f",honeydew:"f0fff0",hotpink:"ff69b4",indianred:"cd5c5c",indigo:"4b0082",ivory:"fffff0",khaki:"f0e68c",lavender:"e6e6fa",lavenderblush:"fff0f5",lawngreen:"7cfc00",lemonchiffon:"fffacd",lightblue:"add8e6",lightcoral:"f08080",lightcyan:"e0ffff",lightgoldenrodyellow:"fafad2",lightgrey:"d3d3d3",lightgreen:"90ee90",lightpink:"ffb6c1",lightsalmon:"ffa07a",lightseagreen:"20b2aa",lightskyblue:"87cefa",lightslateblue:"8470ff",lightslategray:"778899",lightsteelblue:"b0c4de",lightyellow:"ffffe0",lime:"00ff00",limegreen:"32cd32",linen:"faf0e6",magenta:"ff00ff",maroon:"800000",mediumaquamarine:"66cdaa",mediumblue:"0000cd",mediumorchid:"ba55d3",mediumpurple:"9370d8",mediumseagreen:"3cb371",mediumslateblue:"7b68ee",mediumspringgreen:"00fa9a",mediumturquoise:"48d1cc",mediumvioletred:"c71585",midnightblue:"191970",mintcream:"f5fffa",mistyrose:"ffe4e1",moccasin:"ffe4b5",navajowhite:"ffdead",navy:"000080",oldlace:"fdf5e6",olive:"808000",olivedrab:"6b8e23",orange:"ffa500",orangered:"ff4500",orchid:"da70d6",palegoldenrod:"eee8aa",palegreen:"98fb98",paleturquoise:"afeeee",palevioletred:"d87093",papayawhip:"ffefd5",peachpuff:"ffdab9",peru:"cd853f",pink:"ffc0cb",plum:"dda0dd",powderblue:"b0e0e6",purple:"800080",rebeccapurple:"663399",red:"ff0000",rosybrown:"bc8f8f",royalblue:"4169e1",saddlebrown:"8b4513",salmon:"fa8072",sandybrown:"f4a460",seagreen:"2e8b57",seashell:"fff5ee",sienna:"a0522d",silver:"c0c0c0",skyblue:"87ceeb",slateblue:"6a5acd",slategray:"708090",snow:"fffafa",springgreen:"00ff7f",steelblue:"4682b4",tan:"d2b48c",teal:"008080",thistle:"d8bfd8",tomato:"ff6347",turquoise:"40e0d0",violet:"ee82ee",violetred:"d02090",wheat:"f5deb3",white:"ffffff",whitesmoke:"f5f5f5",yellow:"ffff00",yellowgreen:"9acd32"};t=e[t]||t;for(var r=[{re:/^rgba\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3}),\s*((?:\d?\.)?\d)\)$/,example:["rgba(123, 234, 45, 0.8)","rgba(255,234,245,1.0)"],process:function(t){return[parseInt(t[1]),parseInt(t[2]),parseInt(t[3]),parseFloat(t[4])]}},{re:/^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/,example:["rgb(123, 234, 45)","rgb(255,234,245)"],process:function(t){return[parseInt(t[1]),parseInt(t[2]),parseInt(t[3])]}},{re:/^([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/,example:["#00ff00","336699"],process:function(t){return[parseInt(t[1],16),parseInt(t[2],16),parseInt(t[3],16)]}},{re:/^([0-9a-fA-F]{1})([0-9a-fA-F]{1})([0-9a-fA-F]{1})$/,example:["#fb0","f0f"],process:function(t){return[parseInt(t[1]+t[1],16),parseInt(t[2]+t[2],16),parseInt(t[3]+t[3],16)]}}],i=0;i<r.length;i++){var n=r[i].re,a=r[i].process,s=n.exec(t);if(s){var o=a(s);this.r=o[0],this.g=o[1],this.b=o[2],o.length>3&&(this.alpha=o[3]),this.ok=!0}}this.r=this.r<0||isNaN(this.r)?0:this.r>255?255:this.r,this.g=this.g<0||isNaN(this.g)?0:this.g>255?255:this.g,this.b=this.b<0||isNaN(this.b)?0:this.b>255?255:this.b,this.alpha=this.alpha<0?0:this.alpha>1||isNaN(this.alpha)?1:this.alpha,this.toRGB=function(){return"rgb("+this.r+", "+this.g+", "+this.b+")"},this.toRGBA=function(){return"rgba("+this.r+", "+this.g+", "+this.b+", "+this.alpha+")"},this.toHex=function(){var t=this.r.toString(16),e=this.g.toString(16),r=this.b.toString(16);return 1==t.length&&(t="0"+t),1==e.length&&(e="0"+e),1==r.length&&(r="0"+r),"#"+t+e+r},this.getHelpXML=function(){for(var t=new Array,i=0;i<r.length;i++)for(var n=r[i].example,a=0;a<n.length;a++)t[t.length]=n[a];for(var s in e)t[t.length]=s;var o=document.createElement("ul");o.setAttribute("id","rgbcolor-examples");for(i=0;i<t.length;i++)try{var u=document.createElement("li"),h=new RGBColor(t[i]),c=document.createElement("div");c.style.cssText="margin: 3px; border: 1px solid black; background:"+h.toHex()+"; color:"+h.toHex(),c.appendChild(document.createTextNode("test"));var l=document.createTextNode(" "+t[i]+" -> "+h.toRGB()+" -> "+h.toHex());u.appendChild(c),u.appendChild(l),o.appendChild(u)}catch(t){}return o}}},We1y:function(t,e,r){var i=r("Fib7"),n=r("DVFp");t.exports=function(t){if(i(t))return t;throw TypeError(n(t)+" is not a function")}},WjRb:function(t,e,r){var i=r("ROdP");t.exports=function(t){if(i(t))throw TypeError("The method doesn't accept regular expressions");return t}},XGwC:function(t,e){t.exports=function(t,e){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:e}}},Xnc8:function(t,e,r){var i=r("g6v/"),n=r("UTVS"),a=Function.prototype,s=i&&Object.getOwnPropertyDescriptor,o=n(a,"name"),u=o&&"something"===function(){}.name,h=o&&(!i||i&&s(a,"name").configurable);t.exports={EXISTS:o,PROPER:u,CONFIGURABLE:h}},Xp4B:function(t,e,r){"use strict";function i(t){return(i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}r.d(e,"a",(function(){return o}));var n=[512,512,456,512,328,456,335,512,405,328,271,456,388,335,292,512,454,405,364,328,298,271,496,456,420,388,360,335,312,292,273,512,482,454,428,405,383,364,345,328,312,298,284,271,259,496,475,456,437,420,404,388,374,360,347,335,323,312,302,292,282,273,265,512,497,482,468,454,441,428,417,405,394,383,373,364,354,345,337,328,320,312,305,298,291,284,278,271,265,259,507,496,485,475,465,456,446,437,428,420,412,404,396,388,381,374,367,360,354,347,341,335,329,323,318,312,307,302,297,292,287,282,278,273,269,265,261,512,505,497,489,482,475,468,461,454,447,441,435,428,422,417,411,405,399,394,389,383,378,373,368,364,359,354,350,345,341,337,332,328,324,320,316,312,309,305,301,298,294,291,287,284,281,278,274,271,268,265,262,259,257,507,501,496,491,485,480,475,470,465,460,456,451,446,442,437,433,428,424,420,416,412,408,404,400,396,392,388,385,381,377,374,370,367,363,360,357,354,350,347,344,341,338,335,332,329,326,323,320,318,315,312,310,307,304,302,299,297,294,292,289,287,285,282,280,278,275,273,271,269,267,265,263,261,259],a=[9,11,12,13,13,14,14,15,15,15,15,16,16,16,16,17,17,17,17,17,17,17,18,18,18,18,18,18,18,18,18,19,19,19,19,19,19,19,19,19,19,19,19,19,19,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24];function s(t,e,r,n,a){if("string"==typeof t&&(t=document.getElementById(t)),!t||"object"!==i(t)||!("getContext"in t))throw new TypeError("Expecting canvas with `getContext` method in processCanvasRGB(A) calls!");var s=t.getContext("2d");try{return s.getImageData(e,r,n,a)}catch(t){throw new Error("unable to access image data: "+t)}}function o(t,e,r,i,o,h){if(!(isNaN(h)||h<1)){h|=0;var c=s(t,e,r,i,o);c=function(t,e,r,i,s,o){for(var h,c=t.data,l=2*o+1,f=i-1,g=s-1,p=o+1,d=p*(p+1)/2,v=new u,y=v,m=1;m<l;m++)y=y.next=new u,m===p&&(h=y);y.next=v;for(var x=null,b=null,S=0,w=0,A=n[o],T=a[o],O=0;O<s;O++){y=v;for(var E=c[w],P=c[w+1],C=c[w+2],M=c[w+3],N=0;N<p;N++)y.r=E,y.g=P,y.b=C,y.a=M,y=y.next;for(var R=0,V=0,k=0,_=0,I=p*E,L=p*P,D=p*C,B=p*M,F=d*E,U=d*P,z=d*C,H=d*M,j=1;j<p;j++){var Y=w+((f<j?f:j)<<2),X=c[Y],W=c[Y+1],G=c[Y+2],q=c[Y+3],Q=p-j;F+=(y.r=X)*Q,U+=(y.g=W)*Q,z+=(y.b=G)*Q,H+=(y.a=q)*Q,R+=X,V+=W,k+=G,_+=q,y=y.next}x=v,b=h;for(var K=0;K<i;K++){var $=H*A>>T;if(c[w+3]=$,0!==$){var Z=255/$;c[w]=(F*A>>T)*Z,c[w+1]=(U*A>>T)*Z,c[w+2]=(z*A>>T)*Z}else c[w]=c[w+1]=c[w+2]=0;F-=I,U-=L,z-=D,H-=B,I-=x.r,L-=x.g,D-=x.b,B-=x.a;var J=K+o+1;J=S+(J<f?J:f)<<2,R+=x.r=c[J],V+=x.g=c[J+1],k+=x.b=c[J+2],_+=x.a=c[J+3],F+=R,U+=V,z+=k,H+=_,x=x.next;var tt=b,et=tt.r,rt=tt.g,it=tt.b,nt=tt.a;I+=et,L+=rt,D+=it,B+=nt,R-=et,V-=rt,k-=it,_-=nt,b=b.next,w+=4}S+=i}for(var at=0;at<i;at++){var st=c[w=at<<2],ot=c[w+1],ut=c[w+2],ht=c[w+3],ct=p*st,lt=p*ot,ft=p*ut,gt=p*ht,pt=d*st,dt=d*ot,vt=d*ut,yt=d*ht;y=v;for(var mt=0;mt<p;mt++)y.r=st,y.g=ot,y.b=ut,y.a=ht,y=y.next;for(var xt=i,bt=0,St=0,wt=0,At=0,Tt=1;Tt<=o;Tt++){w=xt+at<<2;var Ot=p-Tt;pt+=(y.r=st=c[w])*Ot,dt+=(y.g=ot=c[w+1])*Ot,vt+=(y.b=ut=c[w+2])*Ot,yt+=(y.a=ht=c[w+3])*Ot,At+=st,bt+=ot,St+=ut,wt+=ht,y=y.next,Tt<g&&(xt+=i)}w=at,x=v,b=h;for(var Et=0;Et<s;Et++){var Pt=w<<2;c[Pt+3]=ht=yt*A>>T,ht>0?(ht=255/ht,c[Pt]=(pt*A>>T)*ht,c[Pt+1]=(dt*A>>T)*ht,c[Pt+2]=(vt*A>>T)*ht):c[Pt]=c[Pt+1]=c[Pt+2]=0,pt-=ct,dt-=lt,vt-=ft,yt-=gt,ct-=x.r,lt-=x.g,ft-=x.b,gt-=x.a,Pt=at+((Pt=Et+p)<g?Pt:g)*i<<2,pt+=At+=x.r=c[Pt],dt+=bt+=x.g=c[Pt+1],vt+=St+=x.b=c[Pt+2],yt+=wt+=x.a=c[Pt+3],x=x.next,ct+=st=b.r,lt+=ot=b.g,ft+=ut=b.b,gt+=ht=b.a,At-=st,bt-=ot,St-=ut,wt-=ht,b=b.next,w+=i}}return t}(c,0,0,i,o,h),t.getContext("2d").putImageData(c,e,r)}}var u=function t(){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,t),this.r=0,this.g=0,this.b=0,this.a=0,this.next=null}},YF1G:function(t,e,r){var i=r("xrYK"),n=r("2oRo");t.exports="process"==i(n.process)},YGnB:function(t,e){t.exports="object"==typeof window},ZUd8:function(t,e,r){var i=r("ppGB"),n=r("V37c"),a=r("HYAF"),s=function(t){return function(e,r){var s,o,u=n(a(e)),h=i(r),c=u.length;return h<0||h>=c?t?"":void 0:(s=u.charCodeAt(h))<55296||s>56319||h+1===c||(o=u.charCodeAt(h+1))<56320||o>57343?t?u.charAt(h):s:t?u.slice(h,h+2):o-56320+(s-55296<<10)+65536}};t.exports={codeAt:s(!1),charAt:s(!0)}},aO6C:function(t,e,r){var i=r("0Dky"),n=r("Fib7"),a=r("9d/t"),s=r("0GbY"),o=r("iSVu"),u=[],h=s("Reflect","construct"),c=/^\s*(?:class|function)\b/,l=c.exec,f=!c.exec((function(){})),g=function(t){if(!n(t))return!1;try{return h(Object,u,t),!0}catch(t){return!1}};t.exports=!h||i((function(){var t;return g(g.call)||!g(Object)||!g((function(){t=!0}))||t}))?function(t){if(!n(t))return!1;switch(a(t)){case"AsyncFunction":case"GeneratorFunction":case"AsyncGeneratorFunction":return!1}return f||!!l.call(c,o(t))}:g},afO8:function(t,e,r){var i,n,a,s=r("f5p1"),o=r("2oRo"),u=r("hh1v"),h=r("kRJp"),c=r("UTVS"),l=r("xs3f"),f=r("93I0"),g=r("0BK2"),p=o.WeakMap;if(s||l.state){var d=l.state||(l.state=new p),v=d.get,y=d.has,m=d.set;i=function(t,e){if(y.call(d,t))throw new TypeError("Object already initialized");return e.facade=t,m.call(d,t,e),e},n=function(t){return v.call(d,t)||{}},a=function(t){return y.call(d,t)}}else{var x=f("state");g[x]=!0,i=function(t,e){if(c(t,x))throw new TypeError("Object already initialized");return e.facade=t,h(t,x,e),e},n=function(t){return c(t,x)?t[x]:{}},a=function(t){return c(t,x)}}t.exports={set:i,get:n,has:a,enforce:function(t){return a(t)?n(t):i(t,{})},getterFor:function(t){return function(e){var r;if(!u(e)||(r=n(e)).type!==t)throw TypeError("Incompatible receiver, "+t+" required");return r}}}},bQgK:function(t,e,r){(function(e){(function(){var r,i,n,a,s,o;"undefined"!=typeof performance&&null!==performance&&performance.now?t.exports=function(){return performance.now()}:null!=e&&e.hrtime?(t.exports=function(){return(r()-s)/1e6},i=e.hrtime,a=(r=function(){var t;return 1e9*(t=i())[0]+t[1]})(),o=1e9*e.uptime(),s=a-o):Date.now?(t.exports=function(){return Date.now()-n},n=Date.now()):(t.exports=function(){return(new Date).getTime()-n},n=(new Date).getTime())}).call(this)}).call(this,r("8oxB"))},busE:function(t,e,r){var i=r("2oRo"),n=r("Fib7"),a=r("UTVS"),s=r("kRJp"),o=r("zk60"),u=r("iSVu"),h=r("afO8"),c=r("Xnc8").CONFIGURABLE,l=h.get,f=h.enforce,g=String(String).split("String");(t.exports=function(t,e,r,u){var h,l=!!u&&!!u.unsafe,p=!!u&&!!u.enumerable,d=!!u&&!!u.noTargetGet,v=u&&void 0!==u.name?u.name:e;n(r)&&("Symbol("===String(v).slice(0,7)&&(v="["+String(v).replace(/^Symbol\(([^)]*)\)/,"$1")+"]"),(!a(r,"name")||c&&r.name!==v)&&s(r,"name",v),(h=f(r)).source||(h.source=g.join("string"==typeof v?v:""))),t!==i?(l?!d&&t[e]&&(p=!0):delete t[e],p?t[e]=r:s(t,e,r)):p?t[e]=r:o(e,r)})(Function.prototype,"toString",(function(){return n(this)&&l(this).source||u(this)}))},"dBg+":function(t,e){e.f=Object.getOwnPropertySymbols},"eDl+":function(t,e){t.exports=["constructor","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","toLocaleString","toString","valueOf"]},eFrH:function(t,e,r){var i=r("zBJ4")("span").classList,n=i&&i.constructor&&i.constructor.prototype;t.exports=n===Object.prototype?void 0:n},ewvW:function(t,e,r){var i=r("HYAF");t.exports=function(t){return Object(i(t))}},f5p1:function(t,e,r){var i=r("2oRo"),n=r("Fib7"),a=r("iSVu"),s=i.WeakMap;t.exports=n(s)&&/native code/.test(a(s))},fHMY:function(t,e,r){var i,n=r("glrk"),a=r("N+g0"),s=r("eDl+"),o=r("0BK2"),u=r("G+Rx"),h=r("zBJ4"),c=r("93I0"),l=c("IE_PROTO"),f=function(){},g=function(t){return"<script>"+t+"<\/script>"},p=function(t){t.write(g("")),t.close();var e=t.parentWindow.Object;return t=null,e},d=function(){try{i=new ActiveXObject("htmlfile")}catch(t){}var t,e;d="undefined"!=typeof document?document.domain&&i?p(i):((e=h("iframe")).style.display="none",u.appendChild(e),e.src=String("javascript:"),(t=e.contentWindow.document).open(),t.write(g("document.F=Object")),t.close(),t.F):p(i);for(var r=s.length;r--;)delete d.prototype[s[r]];return d()};o[l]=!0,t.exports=Object.create||function(t,e){var r;return null!==t?(f.prototype=n(t),r=new f,f.prototype=null,r[l]=t):r=d(),void 0===e?r:a(r,e)}},fdAy:function(t,e,r){"use strict";var i=r("I+eb"),n=r("xDBR"),a=r("Xnc8"),s=r("Fib7"),o=r("ntOU"),u=r("4WOD"),h=r("0rvr"),c=r("1E5z"),l=r("kRJp"),f=r("busE"),g=r("tiKp"),p=r("P4y1"),d=r("rpNk"),v=a.PROPER,y=a.CONFIGURABLE,m=d.IteratorPrototype,x=d.BUGGY_SAFARI_ITERATORS,b=g("iterator"),S=function(){return this};t.exports=function(t,e,r,a,g,d,w){o(r,e,a);var A,T,O,E=function(t){if(t===g&&R)return R;if(!x&&t in M)return M[t];switch(t){case"keys":case"values":case"entries":return function(){return new r(this,t)}}return function(){return new r(this)}},P=e+" Iterator",C=!1,M=t.prototype,N=M[b]||M["@@iterator"]||g&&M[g],R=!x&&N||E(g),V="Array"==e&&M.entries||N;if(V&&(A=u(V.call(new t)))!==Object.prototype&&A.next&&(n||u(A)===m||(h?h(A,m):s(A[b])||f(A,b,S)),c(A,P,!0,!0),n&&(p[P]=S)),v&&"values"==g&&N&&"values"!==N.name&&(!n&&y?l(M,"name","values"):(C=!0,R=function(){return N.call(this)})),g)if(T={values:E("values"),keys:d?R:E("keys"),entries:E("entries")},w)for(O in T)(x||C||!(O in M))&&f(M,O,T[O]);else i({target:e,proto:!0,forced:x||C},T);return n&&!w||M[b]===R||f(M,b,R,{name:g}),p[e]=R,T}},"g6v/":function(t,e,r){var i=r("0Dky");t.exports=!i((function(){return 7!=Object.defineProperty({},1,{get:function(){return 7}})[1]}))},glrk:function(t,e,r){var i=r("hh1v");t.exports=function(t){if(i(t))return t;throw TypeError(String(t)+" is not an object")}},hh1v:function(t,e,r){var i=r("Fib7");t.exports=function(t){return"object"==typeof t?null!==t:i(t)}},iSVu:function(t,e,r){var i=r("Fib7"),n=r("xs3f"),a=Function.toString;i(n.inspectSource)||(n.inspectSource=function(t){return a.call(t)}),t.exports=n.inspectSource},inlA:function(t,e,r){"use strict";var i,n=r("I+eb"),a=r("Bs8V").f,s=r("UMSQ"),o=r("V37c"),u=r("WjRb"),h=r("HYAF"),c=r("qxPZ"),l=r("xDBR"),f="".endsWith,g=Math.min,p=c("endsWith");n({target:"String",proto:!0,forced:!!(l||p||(i=a(String.prototype,"endsWith"),!i||i.writable))&&!p},{endsWith:function(t){var e=o(h(this));u(t);var r=arguments.length>1?arguments[1]:void 0,i=s(e.length),n=void 0===r?i:g(s(r),i),a=o(t);return f?f.call(e,a,n):e.slice(n-a.length,n)===a}})},iqWW:function(t,e,r){"use strict";var i=r("ZUd8").charAt;t.exports=function(t,e,r){return e+(r?i(t,e).length:1)}},kOOl:function(t,e){var r=0,i=Math.random();t.exports=function(t){return"Symbol("+String(void 0===t?"":t)+")_"+(++r+i).toString(36)}},kRJp:function(t,e,r){var i=r("g6v/"),n=r("m/L8"),a=r("XGwC");t.exports=i?function(t,e,r){return n.f(t,e,a(1,r))}:function(t,e,r){return t[e]=r,t}},kmMV:function(t,e,r){"use strict";var i,n,a=r("V37c"),s=r("rW0t"),o=r("n3/R"),u=r("VpIT"),h=r("fHMY"),c=r("afO8").get,l=r("/OPJ"),f=r("EHx7"),g=RegExp.prototype.exec,p=u("native-string-replace",String.prototype.replace),d=g,v=(i=/a/,n=/b*/g,g.call(i,"a"),g.call(n,"a"),0!==i.lastIndex||0!==n.lastIndex),y=o.UNSUPPORTED_Y||o.BROKEN_CARET,m=void 0!==/()??/.exec("")[1];(v||m||y||l||f)&&(d=function(t){var e,r,i,n,o,u,l,f=this,x=c(f),b=a(t),S=x.raw;if(S)return S.lastIndex=f.lastIndex,e=d.call(S,b),f.lastIndex=S.lastIndex,e;var w=x.groups,A=y&&f.sticky,T=s.call(f),O=f.source,E=0,P=b;if(A&&(-1===(T=T.replace("y","")).indexOf("g")&&(T+="g"),P=b.slice(f.lastIndex),f.lastIndex>0&&(!f.multiline||f.multiline&&"\n"!==b.charAt(f.lastIndex-1))&&(O="(?: "+O+")",P=" "+P,E++),r=new RegExp("^(?:"+O+")",T)),m&&(r=new RegExp("^"+O+"$(?!\\s)",T)),v&&(i=f.lastIndex),n=g.call(A?r:f,P),A?n?(n.input=n.input.slice(E),n[0]=n[0].slice(E),n.index=f.lastIndex,f.lastIndex+=n[0].length):f.lastIndex=0:v&&n&&(f.lastIndex=f.global?n.index+n[0].length:i),m&&n&&n.length>1&&p.call(n[0],r,(function(){for(o=1;o<arguments.length-2;o++)void 0===arguments[o]&&(n[o]=void 0)})),n&&w)for(n.groups=u=h(null),o=0;o<w.length;o++)u[(l=w[o])[0]]=n[l[1]];return n}),t.exports=d},lMq5:function(t,e,r){var i=r("0Dky"),n=r("Fib7"),a=/#|\.prototype\./,s=function(t,e){var r=u[o(t)];return r==c||r!=h&&(n(e)?i(e):!!e)},o=s.normalize=function(t){return String(t).replace(a,".").toLowerCase()},u=s.data={},h=s.NATIVE="N",c=s.POLYFILL="P";t.exports=s},lSNA:function(t,e){t.exports=function(t,e,r){return e in t?Object.defineProperty(t,e,{value:r,enumerable:!0,configurable:!0,writable:!0}):t[e]=r,t},t.exports.default=t.exports,t.exports.__esModule=!0},"m/L8":function(t,e,r){var i=r("g6v/"),n=r("DPsx"),a=r("glrk"),s=r("oEtG"),o=Object.defineProperty;e.f=i?o:function(t,e,r){if(a(t),e=s(e),a(r),n)try{return o(t,e,r)}catch(t){}if("get"in r||"set"in r)throw TypeError("Accessors not supported");return"value"in r&&(t[e]=r.value),t}},"mh/w":function(t,e,r){var i=r("We1y"),n=r("glrk"),a=r("NaFW");t.exports=function(t,e){var r=arguments.length<2?a(t):e;if(i(r))return n(r.call(t));throw TypeError(String(t)+" is not iterable")}},"n3/R":function(t,e,r){var i=r("0Dky"),n=r("2oRo").RegExp;e.UNSUPPORTED_Y=i((function(){var t=n("a","y");return t.lastIndex=2,null!=t.exec("abcd")})),e.BROKEN_CARET=i((function(){var t=n("^r","gy");return t.lastIndex=2,null!=t.exec("str")}))},ntOU:function(t,e,r){"use strict";var i=r("rpNk").IteratorPrototype,n=r("fHMY"),a=r("XGwC"),s=r("1E5z"),o=r("P4y1"),u=function(){return this};t.exports=function(t,e,r){var h=e+" Iterator";return t.prototype=n(i,{next:a(1,r)}),s(t,h,!1,!0),o[h]=u,t}},oEtG:function(t,e,r){var i=r("wE6v"),n=r("2bX/");t.exports=function(t){var e=i(t,"string");return n(e)?e:String(e)}},pLQz:function(t,e,r){var i=r("NC/Y");t.exports=/web0s(?!.*chrome)/i.test(i)},pkCn:function(t,e,r){"use strict";var i=r("0Dky");t.exports=function(t,e){var r=[][t];return!!r&&i((function(){r.call(null,e||function(){throw 1},1)}))}},ppGB:function(t,e){var r=Math.ceil,i=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?i:r)(t)}},qxPZ:function(t,e,r){var i=r("tiKp")("match");t.exports=function(t){var e=/./;try{"/./"[t](e)}catch(r){try{return e[i]=!1,"/./"[t](e)}catch(t){}}return!1}},rB9j:function(t,e,r){"use strict";var i=r("I+eb"),n=r("kmMV");i({target:"RegExp",proto:!0,forced:/./.exec!==n},{exec:n})},rW0t:function(t,e,r){"use strict";var i=r("glrk");t.exports=function(){var t=i(this),e="";return t.global&&(e+="g"),t.ignoreCase&&(e+="i"),t.multiline&&(e+="m"),t.dotAll&&(e+="s"),t.unicode&&(e+="u"),t.sticky&&(e+="y"),e}},rpNk:function(t,e,r){"use strict";var i,n,a,s=r("0Dky"),o=r("Fib7"),u=r("fHMY"),h=r("4WOD"),c=r("busE"),l=r("tiKp"),f=r("xDBR"),g=l("iterator"),p=!1;[].keys&&("next"in(a=[].keys())?(n=h(h(a)))!==Object.prototype&&(i=n):p=!0),null==i||s((function(){var t={};return i[g].call(t)!==t}))?i={}:f&&(i=u(i)),o(i[g])||c(i,g,(function(){return this})),t.exports={IteratorPrototype:i,BUGGY_SAFARI_ITERATORS:p}},tXUg:function(t,e,r){var i,n,a,s,o,u,h,c,l=r("2oRo"),f=r("Bs8V").f,g=r("LPSS").set,p=r("HNyW"),d=r("1MNl"),v=r("pLQz"),y=r("YF1G"),m=l.MutationObserver||l.WebKitMutationObserver,x=l.document,b=l.process,S=l.Promise,w=f(l,"queueMicrotask"),A=w&&w.value;A||(i=function(){var t,e;for(y&&(t=b.domain)&&t.exit();n;){e=n.fn,n=n.next;try{e()}catch(t){throw n?s():a=void 0,t}}a=void 0,t&&t.enter()},p||y||v||!m||!x?!d&&S&&S.resolve?((h=S.resolve(void 0)).constructor=S,c=h.then,s=function(){c.call(h,i)}):s=y?function(){b.nextTick(i)}:function(){g.call(l,i)}:(o=!0,u=x.createTextNode(""),new m(i).observe(u,{characterData:!0}),s=function(){u.data=o=!o})),t.exports=A||function(t){var e={fn:t,next:void 0};a&&(a.next=e),n||(n=e,s()),a=e}},tiKp:function(t,e,r){var i=r("2oRo"),n=r("VpIT"),a=r("UTVS"),s=r("kOOl"),o=r("STAE"),u=r("/b8u"),h=n("wks"),c=i.Symbol,l=u?c:c&&c.withoutSetter||s;t.exports=function(t){return a(h,t)&&(o||"string"==typeof h[t])||(o&&a(c,t)?h[t]=c[t]:h[t]=l("Symbol."+t)),h[t]}},wE6v:function(t,e,r){var i=r("hh1v"),n=r("2bX/"),a=r("3Eq5"),s=r("SFrS"),o=r("tiKp")("toPrimitive");t.exports=function(t,e){if(!i(t)||n(t))return t;var r,u=a(t,o);if(u){if(void 0===e&&(e="default"),r=u.call(t,e),!i(r)||n(r))return r;throw TypeError("Can't convert object to primitive value")}return void 0===e&&(e="number"),s(t,e)}},xDBR:function(t,e){t.exports=!1},xEkU:function(t,e,r){(function(e){for(var i=r("bQgK"),n="undefined"==typeof window?e:window,a=["moz","webkit"],s="AnimationFrame",o=n["request"+s],u=n["cancel"+s]||n["cancelRequest"+s],h=0;!o&&h<a.length;h++)o=n[a[h]+"Request"+s],u=n[a[h]+"Cancel"+s]||n[a[h]+"CancelRequest"+s];if(!o||!u){var c=0,l=0,f=[];o=function(t){if(0===f.length){var e=i(),r=Math.max(0,1e3/60-(e-c));c=r+e,setTimeout((function(){var t=f.slice(0);f.length=0;for(var e=0;e<t.length;e++)if(!t[e].cancelled)try{t[e].callback(c)}catch(t){setTimeout((function(){throw t}),0)}}),Math.round(r))}return f.push({handle:++l,callback:t,cancelled:!1}),l},u=function(t){for(var e=0;e<f.length;e++)f[e].handle===t&&(f[e].cancelled=!0)}}t.exports=function(t){return o.call(n,t)},t.exports.cancel=function(){u.apply(n,arguments)},t.exports.polyfill=function(t){t||(t=n),t.requestAnimationFrame=o,t.cancelAnimationFrame=u}}).call(this,r("yLpj"))},xrYK:function(t,e){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},xs3f:function(t,e,r){var i=r("2oRo"),n=r("zk60"),a=i["__core-js_shared__"]||n("__core-js_shared__",{});t.exports=a},yNLB:function(t,e,r){var i=r("Xnc8").PROPER,n=r("0Dky"),a=r("WJkJ");t.exports=function(t){return n((function(){return!!a[t]()||"​᠎"!=="​᠎"[t]()||i&&a[t].name!==t}))}},yXPU:function(t,e){function r(t,e,r,i,n,a,s){try{var o=t[a](s),u=o.value}catch(t){return void r(t)}o.done?e(u):Promise.resolve(u).then(i,n)}t.exports=function(t){return function(){var e=this,i=arguments;return new Promise((function(n,a){var s=t.apply(e,i);function o(t){r(s,n,a,o,u,"next",t)}function u(t){r(s,n,a,o,u,"throw",t)}o(void 0)}))}},t.exports.default=t.exports,t.exports.__esModule=!0},yXV3:function(t,e,r){"use strict";var i=r("I+eb"),n=r("TWQb").indexOf,a=r("pkCn"),s=[].indexOf,o=!!s&&1/[1].indexOf(1,-0)<0,u=a("indexOf");i({target:"Array",proto:!0,forced:o||!u},{indexOf:function(t){return o?s.apply(this,arguments)||0:n(this,t,arguments.length>1?arguments[1]:void 0)}})},yoRg:function(t,e,r){var i=r("UTVS"),n=r("/GqU"),a=r("TWQb").indexOf,s=r("0BK2");t.exports=function(t,e){var r,o=n(t),u=0,h=[];for(r in o)!i(s,r)&&i(o,r)&&h.push(r);for(;e.length>u;)i(o,r=e[u++])&&(~a(h,r)||h.push(r));return h}},zBJ4:function(t,e,r){var i=r("2oRo"),n=r("hh1v"),a=i.document,s=n(a)&&n(a.createElement);t.exports=function(t){return s?a.createElement(t):{}}},zfnd:function(t,e,r){var i=r("glrk"),n=r("hh1v"),a=r("8GlL");t.exports=function(t,e){if(i(t),n(e)&&e.constructor===t)return e;var r=a.f(t);return(0,r.resolve)(e),r.promise}},zk60:function(t,e,r){var i=r("2oRo");t.exports=function(t,e){try{Object.defineProperty(i,t,{value:e,configurable:!0,writable:!0})}catch(r){i[t]=e}return e}}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6],{
+
+/***/ "./frontend/node_modules/flatpickr/dist/esm/index.js":
+/*!***********************************************************!*\
+  !*** ./frontend/node_modules/flatpickr/dist/esm/index.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _types_options__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types/options */ "./frontend/node_modules/flatpickr/dist/esm/types/options.js");
+/* harmony import */ var _l10n_default__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./l10n/default */ "./frontend/node_modules/flatpickr/dist/esm/l10n/default.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils */ "./frontend/node_modules/flatpickr/dist/esm/utils/index.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/dom */ "./frontend/node_modules/flatpickr/dist/esm/utils/dom.js");
+/* harmony import */ var _utils_dates__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/dates */ "./frontend/node_modules/flatpickr/dist/esm/utils/dates.js");
+/* harmony import */ var _utils_formatting__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/formatting */ "./frontend/node_modules/flatpickr/dist/esm/utils/formatting.js");
+/* harmony import */ var _utils_polyfills__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/polyfills */ "./frontend/node_modules/flatpickr/dist/esm/utils/polyfills.js");
+/* harmony import */ var _utils_polyfills__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_utils_polyfills__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+const DEBOUNCED_CHANGE_MS = 300;
+function FlatpickrInstance(element, instanceConfig) {
+    const self = {
+        config: Object.assign(Object.assign({}, _types_options__WEBPACK_IMPORTED_MODULE_0__["defaults"]), flatpickr.defaultConfig),
+        l10n: _l10n_default__WEBPACK_IMPORTED_MODULE_1__["default"],
+    };
+    self.parseDate = Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["createDateParser"])({ config: self.config, l10n: self.l10n });
+    self._handlers = [];
+    self.pluginElements = [];
+    self.loadedPlugins = [];
+    self._bind = bind;
+    self._setHoursFromDate = setHoursFromDate;
+    self._positionCalendar = positionCalendar;
+    self.changeMonth = changeMonth;
+    self.changeYear = changeYear;
+    self.clear = clear;
+    self.close = close;
+    self._createElement = _utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"];
+    self.destroy = destroy;
+    self.isEnabled = isEnabled;
+    self.jumpToDate = jumpToDate;
+    self.open = open;
+    self.redraw = redraw;
+    self.set = set;
+    self.setDate = setDate;
+    self.toggle = toggle;
+    function setupHelperFunctions() {
+        self.utils = {
+            getDaysInMonth(month = self.currentMonth, yr = self.currentYear) {
+                if (month === 1 && ((yr % 4 === 0 && yr % 100 !== 0) || yr % 400 === 0))
+                    return 29;
+                return self.l10n.daysInMonth[month];
+            },
+        };
+    }
+    function init() {
+        self.element = self.input = element;
+        self.isOpen = false;
+        parseConfig();
+        setupLocale();
+        setupInputs();
+        setupDates();
+        setupHelperFunctions();
+        if (!self.isMobile)
+            build();
+        bindEvents();
+        if (self.selectedDates.length || self.config.noCalendar) {
+            if (self.config.enableTime) {
+                setHoursFromDate(self.config.noCalendar ? self.latestSelectedDateObj : undefined);
+            }
+            updateValue(false);
+        }
+        setCalendarWidth();
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        if (!self.isMobile && isSafari) {
+            positionCalendar();
+        }
+        triggerEvent("onReady");
+    }
+    function bindToInstance(fn) {
+        return fn.bind(self);
+    }
+    function setCalendarWidth() {
+        const config = self.config;
+        if (config.weekNumbers === false && config.showMonths === 1) {
+            return;
+        }
+        else if (config.noCalendar !== true) {
+            window.requestAnimationFrame(function () {
+                if (self.calendarContainer !== undefined) {
+                    self.calendarContainer.style.visibility = "hidden";
+                    self.calendarContainer.style.display = "block";
+                }
+                if (self.daysContainer !== undefined) {
+                    const daysWidth = (self.days.offsetWidth + 1) * config.showMonths;
+                    self.daysContainer.style.width = daysWidth + "px";
+                    self.calendarContainer.style.width =
+                        daysWidth +
+                            (self.weekWrapper !== undefined
+                                ? self.weekWrapper.offsetWidth
+                                : 0) +
+                            "px";
+                    self.calendarContainer.style.removeProperty("visibility");
+                    self.calendarContainer.style.removeProperty("display");
+                }
+            });
+        }
+    }
+    function updateTime(e) {
+        if (self.selectedDates.length === 0) {
+            const defaultDate = self.config.minDate === undefined ||
+                Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(new Date(), self.config.minDate) >= 0
+                ? new Date()
+                : new Date(self.config.minDate.getTime());
+            const defaults = Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["getDefaultHours"])(self.config);
+            defaultDate.setHours(defaults.hours, defaults.minutes, defaults.seconds, defaultDate.getMilliseconds());
+            self.selectedDates = [defaultDate];
+            self.latestSelectedDateObj = defaultDate;
+        }
+        if (e !== undefined && e.type !== "blur") {
+            timeWrapper(e);
+        }
+        const prevValue = self._input.value;
+        setHoursFromInputs();
+        updateValue();
+        if (self._input.value !== prevValue) {
+            self._debouncedChange();
+        }
+    }
+    function ampm2military(hour, amPM) {
+        return (hour % 12) + 12 * Object(_utils__WEBPACK_IMPORTED_MODULE_2__["int"])(amPM === self.l10n.amPM[1]);
+    }
+    function military2ampm(hour) {
+        switch (hour % 24) {
+            case 0:
+            case 12:
+                return 12;
+            default:
+                return hour % 12;
+        }
+    }
+    function setHoursFromInputs() {
+        if (self.hourElement === undefined || self.minuteElement === undefined)
+            return;
+        let hours = (parseInt(self.hourElement.value.slice(-2), 10) || 0) % 24, minutes = (parseInt(self.minuteElement.value, 10) || 0) % 60, seconds = self.secondElement !== undefined
+            ? (parseInt(self.secondElement.value, 10) || 0) % 60
+            : 0;
+        if (self.amPM !== undefined) {
+            hours = ampm2military(hours, self.amPM.textContent);
+        }
+        const limitMinHours = self.config.minTime !== undefined ||
+            (self.config.minDate &&
+                self.minDateHasTime &&
+                self.latestSelectedDateObj &&
+                Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(self.latestSelectedDateObj, self.config.minDate, true) ===
+                    0);
+        const limitMaxHours = self.config.maxTime !== undefined ||
+            (self.config.maxDate &&
+                self.maxDateHasTime &&
+                self.latestSelectedDateObj &&
+                Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(self.latestSelectedDateObj, self.config.maxDate, true) ===
+                    0);
+        if (limitMaxHours) {
+            const maxTime = self.config.maxTime !== undefined
+                ? self.config.maxTime
+                : self.config.maxDate;
+            hours = Math.min(hours, maxTime.getHours());
+            if (hours === maxTime.getHours())
+                minutes = Math.min(minutes, maxTime.getMinutes());
+            if (minutes === maxTime.getMinutes())
+                seconds = Math.min(seconds, maxTime.getSeconds());
+        }
+        if (limitMinHours) {
+            const minTime = self.config.minTime !== undefined
+                ? self.config.minTime
+                : self.config.minDate;
+            hours = Math.max(hours, minTime.getHours());
+            if (hours === minTime.getHours() && minutes < minTime.getMinutes())
+                minutes = minTime.getMinutes();
+            if (minutes === minTime.getMinutes())
+                seconds = Math.max(seconds, minTime.getSeconds());
+        }
+        setHours(hours, minutes, seconds);
+    }
+    function setHoursFromDate(dateObj) {
+        const date = dateObj || self.latestSelectedDateObj;
+        if (date) {
+            setHours(date.getHours(), date.getMinutes(), date.getSeconds());
+        }
+    }
+    function setHours(hours, minutes, seconds) {
+        if (self.latestSelectedDateObj !== undefined) {
+            self.latestSelectedDateObj.setHours(hours % 24, minutes, seconds || 0, 0);
+        }
+        if (!self.hourElement || !self.minuteElement || self.isMobile)
+            return;
+        self.hourElement.value = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["pad"])(!self.config.time_24hr
+            ? ((12 + hours) % 12) + 12 * Object(_utils__WEBPACK_IMPORTED_MODULE_2__["int"])(hours % 12 === 0)
+            : hours);
+        self.minuteElement.value = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["pad"])(minutes);
+        if (self.amPM !== undefined)
+            self.amPM.textContent = self.l10n.amPM[Object(_utils__WEBPACK_IMPORTED_MODULE_2__["int"])(hours >= 12)];
+        if (self.secondElement !== undefined)
+            self.secondElement.value = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["pad"])(seconds);
+    }
+    function onYearInput(event) {
+        const eventTarget = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(event);
+        const year = parseInt(eventTarget.value) + (event.delta || 0);
+        if (year / 1000 > 1 ||
+            (event.key === "Enter" && !/[^\d]/.test(year.toString()))) {
+            changeYear(year);
+        }
+    }
+    function bind(element, event, handler, options) {
+        if (event instanceof Array)
+            return event.forEach((ev) => bind(element, ev, handler, options));
+        if (element instanceof Array)
+            return element.forEach((el) => bind(el, event, handler, options));
+        element.addEventListener(event, handler, options);
+        self._handlers.push({
+            remove: () => element.removeEventListener(event, handler),
+        });
+    }
+    function triggerChange() {
+        triggerEvent("onChange");
+    }
+    function bindEvents() {
+        if (self.config.wrap) {
+            ["open", "close", "toggle", "clear"].forEach((evt) => {
+                Array.prototype.forEach.call(self.element.querySelectorAll(`[data-${evt}]`), (el) => bind(el, "click", self[evt]));
+            });
+        }
+        if (self.isMobile) {
+            setupMobile();
+            return;
+        }
+        const debouncedResize = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["debounce"])(onResize, 50);
+        self._debouncedChange = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["debounce"])(triggerChange, DEBOUNCED_CHANGE_MS);
+        if (self.daysContainer && !/iPhone|iPad|iPod/i.test(navigator.userAgent))
+            bind(self.daysContainer, "mouseover", (e) => {
+                if (self.config.mode === "range")
+                    onMouseOver(Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e));
+            });
+        bind(window.document.body, "keydown", onKeyDown);
+        if (!self.config.inline && !self.config.static)
+            bind(window, "resize", debouncedResize);
+        if (window.ontouchstart !== undefined)
+            bind(window.document, "touchstart", documentClick);
+        else
+            bind(window.document, "mousedown", documentClick);
+        bind(window.document, "focus", documentClick, { capture: true });
+        if (self.config.clickOpens === true) {
+            bind(self._input, "focus", self.open);
+            bind(self._input, "click", self.open);
+        }
+        if (self.daysContainer !== undefined) {
+            bind(self.monthNav, "click", onMonthNavClick);
+            bind(self.monthNav, ["keyup", "increment"], onYearInput);
+            bind(self.daysContainer, "click", selectDate);
+        }
+        if (self.timeContainer !== undefined &&
+            self.minuteElement !== undefined &&
+            self.hourElement !== undefined) {
+            const selText = (e) => Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e).select();
+            bind(self.timeContainer, ["increment"], updateTime);
+            bind(self.timeContainer, "blur", updateTime, { capture: true });
+            bind(self.timeContainer, "click", timeIncrement);
+            bind([self.hourElement, self.minuteElement], ["focus", "click"], selText);
+            if (self.secondElement !== undefined)
+                bind(self.secondElement, "focus", () => self.secondElement && self.secondElement.select());
+            if (self.amPM !== undefined) {
+                bind(self.amPM, "click", (e) => {
+                    updateTime(e);
+                    triggerChange();
+                });
+            }
+        }
+        if (self.config.allowInput) {
+            bind(self._input, "blur", onBlur);
+        }
+    }
+    function jumpToDate(jumpDate, triggerChange) {
+        const jumpTo = jumpDate !== undefined
+            ? self.parseDate(jumpDate)
+            : self.latestSelectedDateObj ||
+                (self.config.minDate && self.config.minDate > self.now
+                    ? self.config.minDate
+                    : self.config.maxDate && self.config.maxDate < self.now
+                        ? self.config.maxDate
+                        : self.now);
+        const oldYear = self.currentYear;
+        const oldMonth = self.currentMonth;
+        try {
+            if (jumpTo !== undefined) {
+                self.currentYear = jumpTo.getFullYear();
+                self.currentMonth = jumpTo.getMonth();
+            }
+        }
+        catch (e) {
+            e.message = "Invalid date supplied: " + jumpTo;
+            self.config.errorHandler(e);
+        }
+        if (triggerChange && self.currentYear !== oldYear) {
+            triggerEvent("onYearChange");
+            buildMonthSwitch();
+        }
+        if (triggerChange &&
+            (self.currentYear !== oldYear || self.currentMonth !== oldMonth)) {
+            triggerEvent("onMonthChange");
+        }
+        self.redraw();
+    }
+    function timeIncrement(e) {
+        const eventTarget = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e);
+        if (~eventTarget.className.indexOf("arrow"))
+            incrementNumInput(e, eventTarget.classList.contains("arrowUp") ? 1 : -1);
+    }
+    function incrementNumInput(e, delta, inputElem) {
+        const target = e && Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e);
+        const input = inputElem ||
+            (target && target.parentNode && target.parentNode.firstChild);
+        const event = createEvent("increment");
+        event.delta = delta;
+        input && input.dispatchEvent(event);
+    }
+    function build() {
+        const fragment = window.document.createDocumentFragment();
+        self.calendarContainer = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-calendar");
+        self.calendarContainer.tabIndex = -1;
+        if (!self.config.noCalendar) {
+            fragment.appendChild(buildMonthNav());
+            self.innerContainer = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-innerContainer");
+            if (self.config.weekNumbers) {
+                const { weekWrapper, weekNumbers } = buildWeeks();
+                self.innerContainer.appendChild(weekWrapper);
+                self.weekNumbers = weekNumbers;
+                self.weekWrapper = weekWrapper;
+            }
+            self.rContainer = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-rContainer");
+            self.rContainer.appendChild(buildWeekdays());
+            if (!self.daysContainer) {
+                self.daysContainer = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-days");
+                self.daysContainer.tabIndex = -1;
+            }
+            buildDays();
+            self.rContainer.appendChild(self.daysContainer);
+            self.innerContainer.appendChild(self.rContainer);
+            fragment.appendChild(self.innerContainer);
+        }
+        if (self.config.enableTime) {
+            fragment.appendChild(buildTime());
+        }
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "rangeMode", self.config.mode === "range");
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "animate", self.config.animate === true);
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "multiMonth", self.config.showMonths > 1);
+        self.calendarContainer.appendChild(fragment);
+        const customAppend = self.config.appendTo !== undefined &&
+            self.config.appendTo.nodeType !== undefined;
+        if (self.config.inline || self.config.static) {
+            self.calendarContainer.classList.add(self.config.inline ? "inline" : "static");
+            if (self.config.inline) {
+                if (!customAppend && self.element.parentNode)
+                    self.element.parentNode.insertBefore(self.calendarContainer, self._input.nextSibling);
+                else if (self.config.appendTo !== undefined)
+                    self.config.appendTo.appendChild(self.calendarContainer);
+            }
+            if (self.config.static) {
+                const wrapper = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-wrapper");
+                if (self.element.parentNode)
+                    self.element.parentNode.insertBefore(wrapper, self.element);
+                wrapper.appendChild(self.element);
+                if (self.altInput)
+                    wrapper.appendChild(self.altInput);
+                wrapper.appendChild(self.calendarContainer);
+            }
+        }
+        if (!self.config.static && !self.config.inline)
+            (self.config.appendTo !== undefined
+                ? self.config.appendTo
+                : window.document.body).appendChild(self.calendarContainer);
+    }
+    function createDay(className, date, dayNumber, i) {
+        const dateIsEnabled = isEnabled(date, true), dayElement = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("span", "flatpickr-day " + className, date.getDate().toString());
+        dayElement.dateObj = date;
+        dayElement.$i = i;
+        dayElement.setAttribute("aria-label", self.formatDate(date, self.config.ariaDateFormat));
+        if (className.indexOf("hidden") === -1 &&
+            Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(date, self.now) === 0) {
+            self.todayDateElem = dayElement;
+            dayElement.classList.add("today");
+            dayElement.setAttribute("aria-current", "date");
+        }
+        if (dateIsEnabled) {
+            dayElement.tabIndex = -1;
+            if (isDateSelected(date)) {
+                dayElement.classList.add("selected");
+                self.selectedDateElem = dayElement;
+                if (self.config.mode === "range") {
+                    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(dayElement, "startRange", self.selectedDates[0] &&
+                        Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(date, self.selectedDates[0], true) === 0);
+                    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(dayElement, "endRange", self.selectedDates[1] &&
+                        Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(date, self.selectedDates[1], true) === 0);
+                    if (className === "nextMonthDay")
+                        dayElement.classList.add("inRange");
+                }
+            }
+        }
+        else {
+            dayElement.classList.add("flatpickr-disabled");
+        }
+        if (self.config.mode === "range") {
+            if (isDateInRange(date) && !isDateSelected(date))
+                dayElement.classList.add("inRange");
+        }
+        if (self.weekNumbers &&
+            self.config.showMonths === 1 &&
+            className !== "prevMonthDay" &&
+            dayNumber % 7 === 1) {
+            self.weekNumbers.insertAdjacentHTML("beforeend", "<span class='flatpickr-day'>" + self.config.getWeek(date) + "</span>");
+        }
+        triggerEvent("onDayCreate", dayElement);
+        return dayElement;
+    }
+    function focusOnDayElem(targetNode) {
+        targetNode.focus();
+        if (self.config.mode === "range")
+            onMouseOver(targetNode);
+    }
+    function getFirstAvailableDay(delta) {
+        const startMonth = delta > 0 ? 0 : self.config.showMonths - 1;
+        const endMonth = delta > 0 ? self.config.showMonths : -1;
+        for (let m = startMonth; m != endMonth; m += delta) {
+            const month = self.daysContainer.children[m];
+            const startIndex = delta > 0 ? 0 : month.children.length - 1;
+            const endIndex = delta > 0 ? month.children.length : -1;
+            for (let i = startIndex; i != endIndex; i += delta) {
+                const c = month.children[i];
+                if (c.className.indexOf("hidden") === -1 && isEnabled(c.dateObj))
+                    return c;
+            }
+        }
+        return undefined;
+    }
+    function getNextAvailableDay(current, delta) {
+        const givenMonth = current.className.indexOf("Month") === -1
+            ? current.dateObj.getMonth()
+            : self.currentMonth;
+        const endMonth = delta > 0 ? self.config.showMonths : -1;
+        const loopDelta = delta > 0 ? 1 : -1;
+        for (let m = givenMonth - self.currentMonth; m != endMonth; m += loopDelta) {
+            const month = self.daysContainer.children[m];
+            const startIndex = givenMonth - self.currentMonth === m
+                ? current.$i + delta
+                : delta < 0
+                    ? month.children.length - 1
+                    : 0;
+            const numMonthDays = month.children.length;
+            for (let i = startIndex; i >= 0 && i < numMonthDays && i != (delta > 0 ? numMonthDays : -1); i += loopDelta) {
+                const c = month.children[i];
+                if (c.className.indexOf("hidden") === -1 &&
+                    isEnabled(c.dateObj) &&
+                    Math.abs(current.$i - i) >= Math.abs(delta))
+                    return focusOnDayElem(c);
+            }
+        }
+        self.changeMonth(loopDelta);
+        focusOnDay(getFirstAvailableDay(loopDelta), 0);
+        return undefined;
+    }
+    function focusOnDay(current, offset) {
+        const dayFocused = isInView(document.activeElement || document.body);
+        const startElem = current !== undefined
+            ? current
+            : dayFocused
+                ? document.activeElement
+                : self.selectedDateElem !== undefined && isInView(self.selectedDateElem)
+                    ? self.selectedDateElem
+                    : self.todayDateElem !== undefined && isInView(self.todayDateElem)
+                        ? self.todayDateElem
+                        : getFirstAvailableDay(offset > 0 ? 1 : -1);
+        if (startElem === undefined) {
+            self._input.focus();
+        }
+        else if (!dayFocused) {
+            focusOnDayElem(startElem);
+        }
+        else {
+            getNextAvailableDay(startElem, offset);
+        }
+    }
+    function buildMonthDays(year, month) {
+        const firstOfMonth = (new Date(year, month, 1).getDay() - self.l10n.firstDayOfWeek + 7) % 7;
+        const prevMonthDays = self.utils.getDaysInMonth((month - 1 + 12) % 12, year);
+        const daysInMonth = self.utils.getDaysInMonth(month, year), days = window.document.createDocumentFragment(), isMultiMonth = self.config.showMonths > 1, prevMonthDayClass = isMultiMonth ? "prevMonthDay hidden" : "prevMonthDay", nextMonthDayClass = isMultiMonth ? "nextMonthDay hidden" : "nextMonthDay";
+        let dayNumber = prevMonthDays + 1 - firstOfMonth, dayIndex = 0;
+        for (; dayNumber <= prevMonthDays; dayNumber++, dayIndex++) {
+            days.appendChild(createDay(prevMonthDayClass, new Date(year, month - 1, dayNumber), dayNumber, dayIndex));
+        }
+        for (dayNumber = 1; dayNumber <= daysInMonth; dayNumber++, dayIndex++) {
+            days.appendChild(createDay("", new Date(year, month, dayNumber), dayNumber, dayIndex));
+        }
+        for (let dayNum = daysInMonth + 1; dayNum <= 42 - firstOfMonth &&
+            (self.config.showMonths === 1 || dayIndex % 7 !== 0); dayNum++, dayIndex++) {
+            days.appendChild(createDay(nextMonthDayClass, new Date(year, month + 1, dayNum % daysInMonth), dayNum, dayIndex));
+        }
+        const dayContainer = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "dayContainer");
+        dayContainer.appendChild(days);
+        return dayContainer;
+    }
+    function buildDays() {
+        if (self.daysContainer === undefined) {
+            return;
+        }
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["clearNode"])(self.daysContainer);
+        if (self.weekNumbers)
+            Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["clearNode"])(self.weekNumbers);
+        const frag = document.createDocumentFragment();
+        for (let i = 0; i < self.config.showMonths; i++) {
+            const d = new Date(self.currentYear, self.currentMonth, 1);
+            d.setMonth(self.currentMonth + i);
+            frag.appendChild(buildMonthDays(d.getFullYear(), d.getMonth()));
+        }
+        self.daysContainer.appendChild(frag);
+        self.days = self.daysContainer.firstChild;
+        if (self.config.mode === "range" && self.selectedDates.length === 1) {
+            onMouseOver();
+        }
+    }
+    function buildMonthSwitch() {
+        if (self.config.showMonths > 1 ||
+            self.config.monthSelectorType !== "dropdown")
+            return;
+        const shouldBuildMonth = function (month) {
+            if (self.config.minDate !== undefined &&
+                self.currentYear === self.config.minDate.getFullYear() &&
+                month < self.config.minDate.getMonth()) {
+                return false;
+            }
+            return !(self.config.maxDate !== undefined &&
+                self.currentYear === self.config.maxDate.getFullYear() &&
+                month > self.config.maxDate.getMonth());
+        };
+        self.monthsDropdownContainer.tabIndex = -1;
+        self.monthsDropdownContainer.innerHTML = "";
+        for (let i = 0; i < 12; i++) {
+            if (!shouldBuildMonth(i))
+                continue;
+            const month = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("option", "flatpickr-monthDropdown-month");
+            month.value = new Date(self.currentYear, i).getMonth().toString();
+            month.textContent = Object(_utils_formatting__WEBPACK_IMPORTED_MODULE_5__["monthToStr"])(i, self.config.shorthandCurrentMonth, self.l10n);
+            month.tabIndex = -1;
+            if (self.currentMonth === i) {
+                month.selected = true;
+            }
+            self.monthsDropdownContainer.appendChild(month);
+        }
+    }
+    function buildMonth() {
+        const container = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-month");
+        const monthNavFragment = window.document.createDocumentFragment();
+        let monthElement;
+        if (self.config.showMonths > 1 ||
+            self.config.monthSelectorType === "static") {
+            monthElement = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("span", "cur-month");
+        }
+        else {
+            self.monthsDropdownContainer = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("select", "flatpickr-monthDropdown-months");
+            self.monthsDropdownContainer.setAttribute("aria-label", self.l10n.monthAriaLabel);
+            bind(self.monthsDropdownContainer, "change", (e) => {
+                const target = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e);
+                const selectedMonth = parseInt(target.value, 10);
+                self.changeMonth(selectedMonth - self.currentMonth);
+                triggerEvent("onMonthChange");
+            });
+            buildMonthSwitch();
+            monthElement = self.monthsDropdownContainer;
+        }
+        const yearInput = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createNumberInput"])("cur-year", { tabindex: "-1" });
+        const yearElement = yearInput.getElementsByTagName("input")[0];
+        yearElement.setAttribute("aria-label", self.l10n.yearAriaLabel);
+        if (self.config.minDate) {
+            yearElement.setAttribute("min", self.config.minDate.getFullYear().toString());
+        }
+        if (self.config.maxDate) {
+            yearElement.setAttribute("max", self.config.maxDate.getFullYear().toString());
+            yearElement.disabled =
+                !!self.config.minDate &&
+                    self.config.minDate.getFullYear() === self.config.maxDate.getFullYear();
+        }
+        const currentMonth = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-current-month");
+        currentMonth.appendChild(monthElement);
+        currentMonth.appendChild(yearInput);
+        monthNavFragment.appendChild(currentMonth);
+        container.appendChild(monthNavFragment);
+        return {
+            container,
+            yearElement,
+            monthElement,
+        };
+    }
+    function buildMonths() {
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["clearNode"])(self.monthNav);
+        self.monthNav.appendChild(self.prevMonthNav);
+        if (self.config.showMonths) {
+            self.yearElements = [];
+            self.monthElements = [];
+        }
+        for (let m = self.config.showMonths; m--;) {
+            const month = buildMonth();
+            self.yearElements.push(month.yearElement);
+            self.monthElements.push(month.monthElement);
+            self.monthNav.appendChild(month.container);
+        }
+        self.monthNav.appendChild(self.nextMonthNav);
+    }
+    function buildMonthNav() {
+        self.monthNav = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-months");
+        self.yearElements = [];
+        self.monthElements = [];
+        self.prevMonthNav = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("span", "flatpickr-prev-month");
+        self.prevMonthNav.innerHTML = self.config.prevArrow;
+        self.nextMonthNav = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("span", "flatpickr-next-month");
+        self.nextMonthNav.innerHTML = self.config.nextArrow;
+        buildMonths();
+        Object.defineProperty(self, "_hidePrevMonthArrow", {
+            get: () => self.__hidePrevMonthArrow,
+            set(bool) {
+                if (self.__hidePrevMonthArrow !== bool) {
+                    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.prevMonthNav, "flatpickr-disabled", bool);
+                    self.__hidePrevMonthArrow = bool;
+                }
+            },
+        });
+        Object.defineProperty(self, "_hideNextMonthArrow", {
+            get: () => self.__hideNextMonthArrow,
+            set(bool) {
+                if (self.__hideNextMonthArrow !== bool) {
+                    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.nextMonthNav, "flatpickr-disabled", bool);
+                    self.__hideNextMonthArrow = bool;
+                }
+            },
+        });
+        self.currentYearElement = self.yearElements[0];
+        updateNavigationCurrentMonth();
+        return self.monthNav;
+    }
+    function buildTime() {
+        self.calendarContainer.classList.add("hasTime");
+        if (self.config.noCalendar)
+            self.calendarContainer.classList.add("noCalendar");
+        const defaults = Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["getDefaultHours"])(self.config);
+        self.timeContainer = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-time");
+        self.timeContainer.tabIndex = -1;
+        const separator = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("span", "flatpickr-time-separator", ":");
+        const hourInput = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createNumberInput"])("flatpickr-hour", {
+            "aria-label": self.l10n.hourAriaLabel,
+        });
+        self.hourElement = hourInput.getElementsByTagName("input")[0];
+        const minuteInput = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createNumberInput"])("flatpickr-minute", {
+            "aria-label": self.l10n.minuteAriaLabel,
+        });
+        self.minuteElement = minuteInput.getElementsByTagName("input")[0];
+        self.hourElement.tabIndex = self.minuteElement.tabIndex = -1;
+        self.hourElement.value = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["pad"])(self.latestSelectedDateObj
+            ? self.latestSelectedDateObj.getHours()
+            : self.config.time_24hr
+                ? defaults.hours
+                : military2ampm(defaults.hours));
+        self.minuteElement.value = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["pad"])(self.latestSelectedDateObj
+            ? self.latestSelectedDateObj.getMinutes()
+            : defaults.minutes);
+        self.hourElement.setAttribute("step", self.config.hourIncrement.toString());
+        self.minuteElement.setAttribute("step", self.config.minuteIncrement.toString());
+        self.hourElement.setAttribute("min", self.config.time_24hr ? "0" : "1");
+        self.hourElement.setAttribute("max", self.config.time_24hr ? "23" : "12");
+        self.hourElement.setAttribute("maxlength", "2");
+        self.minuteElement.setAttribute("min", "0");
+        self.minuteElement.setAttribute("max", "59");
+        self.minuteElement.setAttribute("maxlength", "2");
+        self.timeContainer.appendChild(hourInput);
+        self.timeContainer.appendChild(separator);
+        self.timeContainer.appendChild(minuteInput);
+        if (self.config.time_24hr)
+            self.timeContainer.classList.add("time24hr");
+        if (self.config.enableSeconds) {
+            self.timeContainer.classList.add("hasSeconds");
+            const secondInput = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createNumberInput"])("flatpickr-second");
+            self.secondElement = secondInput.getElementsByTagName("input")[0];
+            self.secondElement.value = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["pad"])(self.latestSelectedDateObj
+                ? self.latestSelectedDateObj.getSeconds()
+                : defaults.seconds);
+            self.secondElement.setAttribute("step", self.minuteElement.getAttribute("step"));
+            self.secondElement.setAttribute("min", "0");
+            self.secondElement.setAttribute("max", "59");
+            self.secondElement.setAttribute("maxlength", "2");
+            self.timeContainer.appendChild(Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("span", "flatpickr-time-separator", ":"));
+            self.timeContainer.appendChild(secondInput);
+        }
+        if (!self.config.time_24hr) {
+            self.amPM = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("span", "flatpickr-am-pm", self.l10n.amPM[Object(_utils__WEBPACK_IMPORTED_MODULE_2__["int"])((self.latestSelectedDateObj
+                ? self.hourElement.value
+                : self.config.defaultHour) > 11)]);
+            self.amPM.title = self.l10n.toggleTitle;
+            self.amPM.tabIndex = -1;
+            self.timeContainer.appendChild(self.amPM);
+        }
+        return self.timeContainer;
+    }
+    function buildWeekdays() {
+        if (!self.weekdayContainer)
+            self.weekdayContainer = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-weekdays");
+        else
+            Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["clearNode"])(self.weekdayContainer);
+        for (let i = self.config.showMonths; i--;) {
+            const container = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-weekdaycontainer");
+            self.weekdayContainer.appendChild(container);
+        }
+        updateWeekdays();
+        return self.weekdayContainer;
+    }
+    function updateWeekdays() {
+        if (!self.weekdayContainer) {
+            return;
+        }
+        const firstDayOfWeek = self.l10n.firstDayOfWeek;
+        let weekdays = [...self.l10n.weekdays.shorthand];
+        if (firstDayOfWeek > 0 && firstDayOfWeek < weekdays.length) {
+            weekdays = [
+                ...weekdays.splice(firstDayOfWeek, weekdays.length),
+                ...weekdays.splice(0, firstDayOfWeek),
+            ];
+        }
+        for (let i = self.config.showMonths; i--;) {
+            self.weekdayContainer.children[i].innerHTML = `
+      <span class='flatpickr-weekday'>
+        ${weekdays.join("</span><span class='flatpickr-weekday'>")}
+      </span>
+      `;
+        }
+    }
+    function buildWeeks() {
+        self.calendarContainer.classList.add("hasWeeks");
+        const weekWrapper = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-weekwrapper");
+        weekWrapper.appendChild(Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("span", "flatpickr-weekday", self.l10n.weekAbbreviation));
+        const weekNumbers = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("div", "flatpickr-weeks");
+        weekWrapper.appendChild(weekNumbers);
+        return {
+            weekWrapper,
+            weekNumbers,
+        };
+    }
+    function changeMonth(value, isOffset = true) {
+        const delta = isOffset ? value : value - self.currentMonth;
+        if ((delta < 0 && self._hidePrevMonthArrow === true) ||
+            (delta > 0 && self._hideNextMonthArrow === true))
+            return;
+        self.currentMonth += delta;
+        if (self.currentMonth < 0 || self.currentMonth > 11) {
+            self.currentYear += self.currentMonth > 11 ? 1 : -1;
+            self.currentMonth = (self.currentMonth + 12) % 12;
+            triggerEvent("onYearChange");
+            buildMonthSwitch();
+        }
+        buildDays();
+        triggerEvent("onMonthChange");
+        updateNavigationCurrentMonth();
+    }
+    function clear(triggerChangeEvent = true, toInitial = true) {
+        self.input.value = "";
+        if (self.altInput !== undefined)
+            self.altInput.value = "";
+        if (self.mobileInput !== undefined)
+            self.mobileInput.value = "";
+        self.selectedDates = [];
+        self.latestSelectedDateObj = undefined;
+        if (toInitial === true) {
+            self.currentYear = self._initialDate.getFullYear();
+            self.currentMonth = self._initialDate.getMonth();
+        }
+        if (self.config.enableTime === true) {
+            const { hours, minutes, seconds } = Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["getDefaultHours"])(self.config);
+            setHours(hours, minutes, seconds);
+        }
+        self.redraw();
+        if (triggerChangeEvent)
+            triggerEvent("onChange");
+    }
+    function close() {
+        self.isOpen = false;
+        if (!self.isMobile) {
+            if (self.calendarContainer !== undefined) {
+                self.calendarContainer.classList.remove("open");
+            }
+            if (self._input !== undefined) {
+                self._input.classList.remove("active");
+            }
+        }
+        triggerEvent("onClose");
+    }
+    function destroy() {
+        if (self.config !== undefined)
+            triggerEvent("onDestroy");
+        for (let i = self._handlers.length; i--;) {
+            self._handlers[i].remove();
+        }
+        self._handlers = [];
+        if (self.mobileInput) {
+            if (self.mobileInput.parentNode)
+                self.mobileInput.parentNode.removeChild(self.mobileInput);
+            self.mobileInput = undefined;
+        }
+        else if (self.calendarContainer && self.calendarContainer.parentNode) {
+            if (self.config.static && self.calendarContainer.parentNode) {
+                const wrapper = self.calendarContainer.parentNode;
+                wrapper.lastChild && wrapper.removeChild(wrapper.lastChild);
+                if (wrapper.parentNode) {
+                    while (wrapper.firstChild)
+                        wrapper.parentNode.insertBefore(wrapper.firstChild, wrapper);
+                    wrapper.parentNode.removeChild(wrapper);
+                }
+            }
+            else
+                self.calendarContainer.parentNode.removeChild(self.calendarContainer);
+        }
+        if (self.altInput) {
+            self.input.type = "text";
+            if (self.altInput.parentNode)
+                self.altInput.parentNode.removeChild(self.altInput);
+            delete self.altInput;
+        }
+        if (self.input) {
+            self.input.type = self.input._type;
+            self.input.classList.remove("flatpickr-input");
+            self.input.removeAttribute("readonly");
+        }
+        [
+            "_showTimeInput",
+            "latestSelectedDateObj",
+            "_hideNextMonthArrow",
+            "_hidePrevMonthArrow",
+            "__hideNextMonthArrow",
+            "__hidePrevMonthArrow",
+            "isMobile",
+            "isOpen",
+            "selectedDateElem",
+            "minDateHasTime",
+            "maxDateHasTime",
+            "days",
+            "daysContainer",
+            "_input",
+            "_positionElement",
+            "innerContainer",
+            "rContainer",
+            "monthNav",
+            "todayDateElem",
+            "calendarContainer",
+            "weekdayContainer",
+            "prevMonthNav",
+            "nextMonthNav",
+            "monthsDropdownContainer",
+            "currentMonthElement",
+            "currentYearElement",
+            "navigationCurrentMonth",
+            "selectedDateElem",
+            "config",
+        ].forEach((k) => {
+            try {
+                delete self[k];
+            }
+            catch (_) { }
+        });
+    }
+    function isCalendarElem(elem) {
+        if (self.config.appendTo && self.config.appendTo.contains(elem))
+            return true;
+        return self.calendarContainer.contains(elem);
+    }
+    function documentClick(e) {
+        if (self.isOpen && !self.config.inline) {
+            const eventTarget = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e);
+            const isCalendarElement = isCalendarElem(eventTarget);
+            const isInput = eventTarget === self.input ||
+                eventTarget === self.altInput ||
+                self.element.contains(eventTarget) ||
+                (e.path &&
+                    e.path.indexOf &&
+                    (~e.path.indexOf(self.input) ||
+                        ~e.path.indexOf(self.altInput)));
+            const lostFocus = e.type === "blur"
+                ? isInput &&
+                    e.relatedTarget &&
+                    !isCalendarElem(e.relatedTarget)
+                : !isInput &&
+                    !isCalendarElement &&
+                    !isCalendarElem(e.relatedTarget);
+            const isIgnored = !self.config.ignoredFocusElements.some((elem) => elem.contains(eventTarget));
+            if (lostFocus && isIgnored) {
+                if (self.timeContainer !== undefined &&
+                    self.minuteElement !== undefined &&
+                    self.hourElement !== undefined &&
+                    self.input.value !== "" &&
+                    self.input.value !== undefined) {
+                    updateTime();
+                }
+                self.close();
+                if (self.config &&
+                    self.config.mode === "range" &&
+                    self.selectedDates.length === 1) {
+                    self.clear(false);
+                    self.redraw();
+                }
+            }
+        }
+    }
+    function changeYear(newYear) {
+        if (!newYear ||
+            (self.config.minDate && newYear < self.config.minDate.getFullYear()) ||
+            (self.config.maxDate && newYear > self.config.maxDate.getFullYear()))
+            return;
+        const newYearNum = newYear, isNewYear = self.currentYear !== newYearNum;
+        self.currentYear = newYearNum || self.currentYear;
+        if (self.config.maxDate &&
+            self.currentYear === self.config.maxDate.getFullYear()) {
+            self.currentMonth = Math.min(self.config.maxDate.getMonth(), self.currentMonth);
+        }
+        else if (self.config.minDate &&
+            self.currentYear === self.config.minDate.getFullYear()) {
+            self.currentMonth = Math.max(self.config.minDate.getMonth(), self.currentMonth);
+        }
+        if (isNewYear) {
+            self.redraw();
+            triggerEvent("onYearChange");
+            buildMonthSwitch();
+        }
+    }
+    function isEnabled(date, timeless = true) {
+        var _a;
+        const dateToCheck = self.parseDate(date, undefined, timeless);
+        if ((self.config.minDate &&
+            dateToCheck &&
+            Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(dateToCheck, self.config.minDate, timeless !== undefined ? timeless : !self.minDateHasTime) < 0) ||
+            (self.config.maxDate &&
+                dateToCheck &&
+                Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(dateToCheck, self.config.maxDate, timeless !== undefined ? timeless : !self.maxDateHasTime) > 0))
+            return false;
+        if (!self.config.enable && self.config.disable.length === 0)
+            return true;
+        if (dateToCheck === undefined)
+            return false;
+        const bool = !!self.config.enable, array = (_a = self.config.enable) !== null && _a !== void 0 ? _a : self.config.disable;
+        for (let i = 0, d; i < array.length; i++) {
+            d = array[i];
+            if (typeof d === "function" &&
+                d(dateToCheck))
+                return bool;
+            else if (d instanceof Date &&
+                dateToCheck !== undefined &&
+                d.getTime() === dateToCheck.getTime())
+                return bool;
+            else if (typeof d === "string") {
+                const parsed = self.parseDate(d, undefined, true);
+                return parsed && parsed.getTime() === dateToCheck.getTime()
+                    ? bool
+                    : !bool;
+            }
+            else if (typeof d === "object" &&
+                dateToCheck !== undefined &&
+                d.from &&
+                d.to &&
+                dateToCheck.getTime() >= d.from.getTime() &&
+                dateToCheck.getTime() <= d.to.getTime())
+                return bool;
+        }
+        return !bool;
+    }
+    function isInView(elem) {
+        if (self.daysContainer !== undefined)
+            return (elem.className.indexOf("hidden") === -1 &&
+                elem.className.indexOf("flatpickr-disabled") === -1 &&
+                self.daysContainer.contains(elem));
+        return false;
+    }
+    function onBlur(e) {
+        const isInput = e.target === self._input;
+        if (isInput &&
+            (self.selectedDates.length > 0 || self._input.value.length > 0) &&
+            !(e.relatedTarget && isCalendarElem(e.relatedTarget))) {
+            self.setDate(self._input.value, true, e.target === self.altInput
+                ? self.config.altFormat
+                : self.config.dateFormat);
+        }
+    }
+    function onKeyDown(e) {
+        const eventTarget = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e);
+        const isInput = self.config.wrap
+            ? element.contains(eventTarget)
+            : eventTarget === self._input;
+        const allowInput = self.config.allowInput;
+        const allowKeydown = self.isOpen && (!allowInput || !isInput);
+        const allowInlineKeydown = self.config.inline && isInput && !allowInput;
+        if (e.keyCode === 13 && isInput) {
+            if (allowInput) {
+                self.setDate(self._input.value, true, eventTarget === self.altInput
+                    ? self.config.altFormat
+                    : self.config.dateFormat);
+                return eventTarget.blur();
+            }
+            else {
+                self.open();
+            }
+        }
+        else if (isCalendarElem(eventTarget) ||
+            allowKeydown ||
+            allowInlineKeydown) {
+            const isTimeObj = !!self.timeContainer &&
+                self.timeContainer.contains(eventTarget);
+            switch (e.keyCode) {
+                case 13:
+                    if (isTimeObj) {
+                        e.preventDefault();
+                        updateTime();
+                        focusAndClose();
+                    }
+                    else
+                        selectDate(e);
+                    break;
+                case 27:
+                    e.preventDefault();
+                    focusAndClose();
+                    break;
+                case 8:
+                case 46:
+                    if (isInput && !self.config.allowInput) {
+                        e.preventDefault();
+                        self.clear();
+                    }
+                    break;
+                case 37:
+                case 39:
+                    if (!isTimeObj && !isInput) {
+                        e.preventDefault();
+                        if (self.daysContainer !== undefined &&
+                            (allowInput === false ||
+                                (document.activeElement && isInView(document.activeElement)))) {
+                            const delta = e.keyCode === 39 ? 1 : -1;
+                            if (!e.ctrlKey)
+                                focusOnDay(undefined, delta);
+                            else {
+                                e.stopPropagation();
+                                changeMonth(delta);
+                                focusOnDay(getFirstAvailableDay(1), 0);
+                            }
+                        }
+                    }
+                    else if (self.hourElement)
+                        self.hourElement.focus();
+                    break;
+                case 38:
+                case 40:
+                    e.preventDefault();
+                    const delta = e.keyCode === 40 ? 1 : -1;
+                    if ((self.daysContainer &&
+                        eventTarget.$i !== undefined) ||
+                        eventTarget === self.input ||
+                        eventTarget === self.altInput) {
+                        if (e.ctrlKey) {
+                            e.stopPropagation();
+                            changeYear(self.currentYear - delta);
+                            focusOnDay(getFirstAvailableDay(1), 0);
+                        }
+                        else if (!isTimeObj)
+                            focusOnDay(undefined, delta * 7);
+                    }
+                    else if (eventTarget === self.currentYearElement) {
+                        changeYear(self.currentYear - delta);
+                    }
+                    else if (self.config.enableTime) {
+                        if (!isTimeObj && self.hourElement)
+                            self.hourElement.focus();
+                        updateTime(e);
+                        self._debouncedChange();
+                    }
+                    break;
+                case 9:
+                    if (isTimeObj) {
+                        const elems = [
+                            self.hourElement,
+                            self.minuteElement,
+                            self.secondElement,
+                            self.amPM,
+                        ]
+                            .concat(self.pluginElements)
+                            .filter((x) => x);
+                        const i = elems.indexOf(eventTarget);
+                        if (i !== -1) {
+                            const target = elems[i + (e.shiftKey ? -1 : 1)];
+                            e.preventDefault();
+                            (target || self._input).focus();
+                        }
+                    }
+                    else if (!self.config.noCalendar &&
+                        self.daysContainer &&
+                        self.daysContainer.contains(eventTarget) &&
+                        e.shiftKey) {
+                        e.preventDefault();
+                        self._input.focus();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        if (self.amPM !== undefined && eventTarget === self.amPM) {
+            switch (e.key) {
+                case self.l10n.amPM[0].charAt(0):
+                case self.l10n.amPM[0].charAt(0).toLowerCase():
+                    self.amPM.textContent = self.l10n.amPM[0];
+                    setHoursFromInputs();
+                    updateValue();
+                    break;
+                case self.l10n.amPM[1].charAt(0):
+                case self.l10n.amPM[1].charAt(0).toLowerCase():
+                    self.amPM.textContent = self.l10n.amPM[1];
+                    setHoursFromInputs();
+                    updateValue();
+                    break;
+            }
+        }
+        if (isInput || isCalendarElem(eventTarget)) {
+            triggerEvent("onKeyDown", e);
+        }
+    }
+    function onMouseOver(elem) {
+        if (self.selectedDates.length !== 1 ||
+            (elem &&
+                (!elem.classList.contains("flatpickr-day") ||
+                    elem.classList.contains("flatpickr-disabled"))))
+            return;
+        const hoverDate = elem
+            ? elem.dateObj.getTime()
+            : self.days.firstElementChild.dateObj.getTime(), initialDate = self.parseDate(self.selectedDates[0], undefined, true).getTime(), rangeStartDate = Math.min(hoverDate, self.selectedDates[0].getTime()), rangeEndDate = Math.max(hoverDate, self.selectedDates[0].getTime());
+        let containsDisabled = false;
+        let minRange = 0, maxRange = 0;
+        for (let t = rangeStartDate; t < rangeEndDate; t += _utils_dates__WEBPACK_IMPORTED_MODULE_4__["duration"].DAY) {
+            if (!isEnabled(new Date(t), true)) {
+                containsDisabled =
+                    containsDisabled || (t > rangeStartDate && t < rangeEndDate);
+                if (t < initialDate && (!minRange || t > minRange))
+                    minRange = t;
+                else if (t > initialDate && (!maxRange || t < maxRange))
+                    maxRange = t;
+            }
+        }
+        for (let m = 0; m < self.config.showMonths; m++) {
+            const month = self.daysContainer.children[m];
+            for (let i = 0, l = month.children.length; i < l; i++) {
+                const dayElem = month.children[i], date = dayElem.dateObj;
+                const timestamp = date.getTime();
+                const outOfRange = (minRange > 0 && timestamp < minRange) ||
+                    (maxRange > 0 && timestamp > maxRange);
+                if (outOfRange) {
+                    dayElem.classList.add("notAllowed");
+                    ["inRange", "startRange", "endRange"].forEach((c) => {
+                        dayElem.classList.remove(c);
+                    });
+                    continue;
+                }
+                else if (containsDisabled && !outOfRange)
+                    continue;
+                ["startRange", "inRange", "endRange", "notAllowed"].forEach((c) => {
+                    dayElem.classList.remove(c);
+                });
+                if (elem !== undefined) {
+                    elem.classList.add(hoverDate <= self.selectedDates[0].getTime()
+                        ? "startRange"
+                        : "endRange");
+                    if (initialDate < hoverDate && timestamp === initialDate)
+                        dayElem.classList.add("startRange");
+                    else if (initialDate > hoverDate && timestamp === initialDate)
+                        dayElem.classList.add("endRange");
+                    if (timestamp >= minRange &&
+                        (maxRange === 0 || timestamp <= maxRange) &&
+                        Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["isBetween"])(timestamp, initialDate, hoverDate))
+                        dayElem.classList.add("inRange");
+                }
+            }
+        }
+    }
+    function onResize() {
+        if (self.isOpen && !self.config.static && !self.config.inline)
+            positionCalendar();
+    }
+    function open(e, positionElement = self._positionElement) {
+        if (self.isMobile === true) {
+            if (e) {
+                e.preventDefault();
+                const eventTarget = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e);
+                if (eventTarget) {
+                    eventTarget.blur();
+                }
+            }
+            if (self.mobileInput !== undefined) {
+                self.mobileInput.focus();
+                self.mobileInput.click();
+            }
+            triggerEvent("onOpen");
+            return;
+        }
+        else if (self._input.disabled || self.config.inline) {
+            return;
+        }
+        const wasOpen = self.isOpen;
+        self.isOpen = true;
+        if (!wasOpen) {
+            self.calendarContainer.classList.add("open");
+            self._input.classList.add("active");
+            triggerEvent("onOpen");
+            positionCalendar(positionElement);
+        }
+        if (self.config.enableTime === true && self.config.noCalendar === true) {
+            if (self.config.allowInput === false &&
+                (e === undefined ||
+                    !self.timeContainer.contains(e.relatedTarget))) {
+                setTimeout(() => self.hourElement.select(), 50);
+            }
+        }
+    }
+    function minMaxDateSetter(type) {
+        return (date) => {
+            const dateObj = (self.config[`_${type}Date`] = self.parseDate(date, self.config.dateFormat));
+            const inverseDateObj = self.config[`_${type === "min" ? "max" : "min"}Date`];
+            if (dateObj !== undefined) {
+                self[type === "min" ? "minDateHasTime" : "maxDateHasTime"] =
+                    dateObj.getHours() > 0 ||
+                        dateObj.getMinutes() > 0 ||
+                        dateObj.getSeconds() > 0;
+            }
+            if (self.selectedDates) {
+                self.selectedDates = self.selectedDates.filter((d) => isEnabled(d));
+                if (!self.selectedDates.length && type === "min")
+                    setHoursFromDate(dateObj);
+                updateValue();
+            }
+            if (self.daysContainer) {
+                redraw();
+                if (dateObj !== undefined)
+                    self.currentYearElement[type] = dateObj.getFullYear().toString();
+                else
+                    self.currentYearElement.removeAttribute(type);
+                self.currentYearElement.disabled =
+                    !!inverseDateObj &&
+                        dateObj !== undefined &&
+                        inverseDateObj.getFullYear() === dateObj.getFullYear();
+            }
+        };
+    }
+    function parseConfig() {
+        const boolOpts = [
+            "wrap",
+            "weekNumbers",
+            "allowInput",
+            "allowInvalidPreload",
+            "clickOpens",
+            "time_24hr",
+            "enableTime",
+            "noCalendar",
+            "altInput",
+            "shorthandCurrentMonth",
+            "inline",
+            "static",
+            "enableSeconds",
+            "disableMobile",
+        ];
+        const userConfig = Object.assign(Object.assign({}, JSON.parse(JSON.stringify(element.dataset || {}))), instanceConfig);
+        const formats = {};
+        self.config.parseDate = userConfig.parseDate;
+        self.config.formatDate = userConfig.formatDate;
+        Object.defineProperty(self.config, "enable", {
+            get: () => self.config._enable,
+            set: (dates) => {
+                self.config._enable = parseDateRules(dates);
+            },
+        });
+        Object.defineProperty(self.config, "disable", {
+            get: () => self.config._disable,
+            set: (dates) => {
+                self.config._disable = parseDateRules(dates);
+            },
+        });
+        const timeMode = userConfig.mode === "time";
+        if (!userConfig.dateFormat && (userConfig.enableTime || timeMode)) {
+            const defaultDateFormat = flatpickr.defaultConfig.dateFormat || _types_options__WEBPACK_IMPORTED_MODULE_0__["defaults"].dateFormat;
+            formats.dateFormat =
+                userConfig.noCalendar || timeMode
+                    ? "H:i" + (userConfig.enableSeconds ? ":S" : "")
+                    : defaultDateFormat + " H:i" + (userConfig.enableSeconds ? ":S" : "");
+        }
+        if (userConfig.altInput &&
+            (userConfig.enableTime || timeMode) &&
+            !userConfig.altFormat) {
+            const defaultAltFormat = flatpickr.defaultConfig.altFormat || _types_options__WEBPACK_IMPORTED_MODULE_0__["defaults"].altFormat;
+            formats.altFormat =
+                userConfig.noCalendar || timeMode
+                    ? "h:i" + (userConfig.enableSeconds ? ":S K" : " K")
+                    : defaultAltFormat + ` h:i${userConfig.enableSeconds ? ":S" : ""} K`;
+        }
+        Object.defineProperty(self.config, "minDate", {
+            get: () => self.config._minDate,
+            set: minMaxDateSetter("min"),
+        });
+        Object.defineProperty(self.config, "maxDate", {
+            get: () => self.config._maxDate,
+            set: minMaxDateSetter("max"),
+        });
+        const minMaxTimeSetter = (type) => (val) => {
+            self.config[type === "min" ? "_minTime" : "_maxTime"] = self.parseDate(val, "H:i:S");
+        };
+        Object.defineProperty(self.config, "minTime", {
+            get: () => self.config._minTime,
+            set: minMaxTimeSetter("min"),
+        });
+        Object.defineProperty(self.config, "maxTime", {
+            get: () => self.config._maxTime,
+            set: minMaxTimeSetter("max"),
+        });
+        if (userConfig.mode === "time") {
+            self.config.noCalendar = true;
+            self.config.enableTime = true;
+        }
+        Object.assign(self.config, formats, userConfig);
+        for (let i = 0; i < boolOpts.length; i++)
+            self.config[boolOpts[i]] =
+                self.config[boolOpts[i]] === true ||
+                    self.config[boolOpts[i]] === "true";
+        _types_options__WEBPACK_IMPORTED_MODULE_0__["HOOKS"].filter((hook) => self.config[hook] !== undefined).forEach((hook) => {
+            self.config[hook] = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["arrayify"])(self.config[hook] || []).map(bindToInstance);
+        });
+        self.isMobile =
+            !self.config.disableMobile &&
+                !self.config.inline &&
+                self.config.mode === "single" &&
+                !self.config.disable.length &&
+                !self.config.enable &&
+                !self.config.weekNumbers &&
+                /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        for (let i = 0; i < self.config.plugins.length; i++) {
+            const pluginConf = self.config.plugins[i](self) || {};
+            for (const key in pluginConf) {
+                if (_types_options__WEBPACK_IMPORTED_MODULE_0__["HOOKS"].indexOf(key) > -1) {
+                    self.config[key] = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["arrayify"])(pluginConf[key])
+                        .map(bindToInstance)
+                        .concat(self.config[key]);
+                }
+                else if (typeof userConfig[key] === "undefined")
+                    self.config[key] = pluginConf[key];
+            }
+        }
+        if (!userConfig.altInputClass) {
+            self.config.altInputClass =
+                getInputElem().className + " " + self.config.altInputClass;
+        }
+        triggerEvent("onParseConfig");
+    }
+    function getInputElem() {
+        return self.config.wrap
+            ? element.querySelector("[data-input]")
+            : element;
+    }
+    function setupLocale() {
+        if (typeof self.config.locale !== "object" &&
+            typeof flatpickr.l10ns[self.config.locale] === "undefined")
+            self.config.errorHandler(new Error(`flatpickr: invalid locale ${self.config.locale}`));
+        self.l10n = Object.assign(Object.assign({}, flatpickr.l10ns.default), (typeof self.config.locale === "object"
+            ? self.config.locale
+            : self.config.locale !== "default"
+                ? flatpickr.l10ns[self.config.locale]
+                : undefined));
+        _utils_formatting__WEBPACK_IMPORTED_MODULE_5__["tokenRegex"].K = `(${self.l10n.amPM[0]}|${self.l10n.amPM[1]}|${self.l10n.amPM[0].toLowerCase()}|${self.l10n.amPM[1].toLowerCase()})`;
+        const userConfig = Object.assign(Object.assign({}, instanceConfig), JSON.parse(JSON.stringify(element.dataset || {})));
+        if (userConfig.time_24hr === undefined &&
+            flatpickr.defaultConfig.time_24hr === undefined) {
+            self.config.time_24hr = self.l10n.time_24hr;
+        }
+        self.formatDate = Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["createDateFormatter"])(self);
+        self.parseDate = Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["createDateParser"])({ config: self.config, l10n: self.l10n });
+    }
+    function positionCalendar(customPositionElement) {
+        if (typeof self.config.position === "function") {
+            return void self.config.position(self, customPositionElement);
+        }
+        if (self.calendarContainer === undefined)
+            return;
+        triggerEvent("onPreCalendarPosition");
+        const positionElement = customPositionElement || self._positionElement;
+        const calendarHeight = Array.prototype.reduce.call(self.calendarContainer.children, ((acc, child) => acc + child.offsetHeight), 0), calendarWidth = self.calendarContainer.offsetWidth, configPos = self.config.position.split(" "), configPosVertical = configPos[0], configPosHorizontal = configPos.length > 1 ? configPos[1] : null, inputBounds = positionElement.getBoundingClientRect(), distanceFromBottom = window.innerHeight - inputBounds.bottom, showOnTop = configPosVertical === "above" ||
+            (configPosVertical !== "below" &&
+                distanceFromBottom < calendarHeight &&
+                inputBounds.top > calendarHeight);
+        const top = window.pageYOffset +
+            inputBounds.top +
+            (!showOnTop ? positionElement.offsetHeight + 2 : -calendarHeight - 2);
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "arrowTop", !showOnTop);
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "arrowBottom", showOnTop);
+        if (self.config.inline)
+            return;
+        let left = window.pageXOffset + inputBounds.left;
+        let isCenter = false;
+        let isRight = false;
+        if (configPosHorizontal === "center") {
+            left -= (calendarWidth - inputBounds.width) / 2;
+            isCenter = true;
+        }
+        else if (configPosHorizontal === "right") {
+            left -= calendarWidth - inputBounds.width;
+            isRight = true;
+        }
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "arrowLeft", !isCenter && !isRight);
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "arrowCenter", isCenter);
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "arrowRight", isRight);
+        const right = window.document.body.offsetWidth -
+            (window.pageXOffset + inputBounds.right);
+        const rightMost = left + calendarWidth > window.document.body.offsetWidth;
+        const centerMost = right + calendarWidth > window.document.body.offsetWidth;
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "rightMost", rightMost);
+        if (self.config.static)
+            return;
+        self.calendarContainer.style.top = `${top}px`;
+        if (!rightMost) {
+            self.calendarContainer.style.left = `${left}px`;
+            self.calendarContainer.style.right = "auto";
+        }
+        else if (!centerMost) {
+            self.calendarContainer.style.left = "auto";
+            self.calendarContainer.style.right = `${right}px`;
+        }
+        else {
+            const doc = getDocumentStyleSheet();
+            if (doc === undefined)
+                return;
+            const bodyWidth = window.document.body.offsetWidth;
+            const centerLeft = Math.max(0, bodyWidth / 2 - calendarWidth / 2);
+            const centerBefore = ".flatpickr-calendar.centerMost:before";
+            const centerAfter = ".flatpickr-calendar.centerMost:after";
+            const centerIndex = doc.cssRules.length;
+            const centerStyle = `{left:${inputBounds.left}px;right:auto;}`;
+            Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "rightMost", false);
+            Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["toggleClass"])(self.calendarContainer, "centerMost", true);
+            doc.insertRule(`${centerBefore},${centerAfter}${centerStyle}`, centerIndex);
+            self.calendarContainer.style.left = `${centerLeft}px`;
+            self.calendarContainer.style.right = "auto";
+        }
+    }
+    function getDocumentStyleSheet() {
+        let editableSheet = null;
+        for (let i = 0; i < document.styleSheets.length; i++) {
+            const sheet = document.styleSheets[i];
+            try {
+                sheet.cssRules;
+            }
+            catch (err) {
+                continue;
+            }
+            editableSheet = sheet;
+            break;
+        }
+        return editableSheet != null ? editableSheet : createStyleSheet();
+    }
+    function createStyleSheet() {
+        const style = document.createElement("style");
+        document.head.appendChild(style);
+        return style.sheet;
+    }
+    function redraw() {
+        if (self.config.noCalendar || self.isMobile)
+            return;
+        buildMonthSwitch();
+        updateNavigationCurrentMonth();
+        buildDays();
+    }
+    function focusAndClose() {
+        self._input.focus();
+        if (window.navigator.userAgent.indexOf("MSIE") !== -1 ||
+            navigator.msMaxTouchPoints !== undefined) {
+            setTimeout(self.close, 0);
+        }
+        else {
+            self.close();
+        }
+    }
+    function selectDate(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isSelectable = (day) => day.classList &&
+            day.classList.contains("flatpickr-day") &&
+            !day.classList.contains("flatpickr-disabled") &&
+            !day.classList.contains("notAllowed");
+        const t = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["findParent"])(Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e), isSelectable);
+        if (t === undefined)
+            return;
+        const target = t;
+        const selectedDate = (self.latestSelectedDateObj = new Date(target.dateObj.getTime()));
+        const shouldChangeMonth = (selectedDate.getMonth() < self.currentMonth ||
+            selectedDate.getMonth() >
+                self.currentMonth + self.config.showMonths - 1) &&
+            self.config.mode !== "range";
+        self.selectedDateElem = target;
+        if (self.config.mode === "single")
+            self.selectedDates = [selectedDate];
+        else if (self.config.mode === "multiple") {
+            const selectedIndex = isDateSelected(selectedDate);
+            if (selectedIndex)
+                self.selectedDates.splice(parseInt(selectedIndex), 1);
+            else
+                self.selectedDates.push(selectedDate);
+        }
+        else if (self.config.mode === "range") {
+            if (self.selectedDates.length === 2) {
+                self.clear(false, false);
+            }
+            self.latestSelectedDateObj = selectedDate;
+            self.selectedDates.push(selectedDate);
+            if (Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(selectedDate, self.selectedDates[0], true) !== 0)
+                self.selectedDates.sort((a, b) => a.getTime() - b.getTime());
+        }
+        setHoursFromInputs();
+        if (shouldChangeMonth) {
+            const isNewYear = self.currentYear !== selectedDate.getFullYear();
+            self.currentYear = selectedDate.getFullYear();
+            self.currentMonth = selectedDate.getMonth();
+            if (isNewYear) {
+                triggerEvent("onYearChange");
+                buildMonthSwitch();
+            }
+            triggerEvent("onMonthChange");
+        }
+        updateNavigationCurrentMonth();
+        buildDays();
+        updateValue();
+        if (!shouldChangeMonth &&
+            self.config.mode !== "range" &&
+            self.config.showMonths === 1)
+            focusOnDayElem(target);
+        else if (self.selectedDateElem !== undefined &&
+            self.hourElement === undefined) {
+            self.selectedDateElem && self.selectedDateElem.focus();
+        }
+        if (self.hourElement !== undefined)
+            self.hourElement !== undefined && self.hourElement.focus();
+        if (self.config.closeOnSelect) {
+            const single = self.config.mode === "single" && !self.config.enableTime;
+            const range = self.config.mode === "range" &&
+                self.selectedDates.length === 2 &&
+                !self.config.enableTime;
+            if (single || range) {
+                focusAndClose();
+            }
+        }
+        triggerChange();
+    }
+    const CALLBACKS = {
+        locale: [setupLocale, updateWeekdays],
+        showMonths: [buildMonths, setCalendarWidth, buildWeekdays],
+        minDate: [jumpToDate],
+        maxDate: [jumpToDate],
+        clickOpens: [
+            () => {
+                if (self.config.clickOpens === true) {
+                    bind(self._input, "focus", self.open);
+                    bind(self._input, "click", self.open);
+                }
+                else {
+                    self._input.removeEventListener("focus", self.open);
+                    self._input.removeEventListener("click", self.open);
+                }
+            },
+        ],
+    };
+    function set(option, value) {
+        if (option !== null && typeof option === "object") {
+            Object.assign(self.config, option);
+            for (const key in option) {
+                if (CALLBACKS[key] !== undefined)
+                    CALLBACKS[key].forEach((x) => x());
+            }
+        }
+        else {
+            self.config[option] = value;
+            if (CALLBACKS[option] !== undefined)
+                CALLBACKS[option].forEach((x) => x());
+            else if (_types_options__WEBPACK_IMPORTED_MODULE_0__["HOOKS"].indexOf(option) > -1)
+                self.config[option] = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["arrayify"])(value);
+        }
+        self.redraw();
+        updateValue(true);
+    }
+    function setSelectedDate(inputDate, format) {
+        let dates = [];
+        if (inputDate instanceof Array)
+            dates = inputDate.map((d) => self.parseDate(d, format));
+        else if (inputDate instanceof Date || typeof inputDate === "number")
+            dates = [self.parseDate(inputDate, format)];
+        else if (typeof inputDate === "string") {
+            switch (self.config.mode) {
+                case "single":
+                case "time":
+                    dates = [self.parseDate(inputDate, format)];
+                    break;
+                case "multiple":
+                    dates = inputDate
+                        .split(self.config.conjunction)
+                        .map((date) => self.parseDate(date, format));
+                    break;
+                case "range":
+                    dates = inputDate
+                        .split(self.l10n.rangeSeparator)
+                        .map((date) => self.parseDate(date, format));
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+            self.config.errorHandler(new Error(`Invalid date supplied: ${JSON.stringify(inputDate)}`));
+        self.selectedDates = (self.config.allowInvalidPreload
+            ? dates
+            : dates.filter((d) => d instanceof Date && isEnabled(d, false)));
+        if (self.config.mode === "range")
+            self.selectedDates.sort((a, b) => a.getTime() - b.getTime());
+    }
+    function setDate(date, triggerChange = false, format = self.config.dateFormat) {
+        if ((date !== 0 && !date) || (date instanceof Array && date.length === 0))
+            return self.clear(triggerChange);
+        setSelectedDate(date, format);
+        self.latestSelectedDateObj =
+            self.selectedDates[self.selectedDates.length - 1];
+        self.redraw();
+        jumpToDate(undefined, triggerChange);
+        setHoursFromDate();
+        if (self.selectedDates.length === 0) {
+            self.clear(false);
+        }
+        updateValue(triggerChange);
+        if (triggerChange)
+            triggerEvent("onChange");
+    }
+    function parseDateRules(arr) {
+        return arr
+            .slice()
+            .map((rule) => {
+            if (typeof rule === "string" ||
+                typeof rule === "number" ||
+                rule instanceof Date) {
+                return self.parseDate(rule, undefined, true);
+            }
+            else if (rule &&
+                typeof rule === "object" &&
+                rule.from &&
+                rule.to)
+                return {
+                    from: self.parseDate(rule.from, undefined),
+                    to: self.parseDate(rule.to, undefined),
+                };
+            return rule;
+        })
+            .filter((x) => x);
+    }
+    function setupDates() {
+        self.selectedDates = [];
+        self.now = self.parseDate(self.config.now) || new Date();
+        const preloadedDate = self.config.defaultDate ||
+            ((self.input.nodeName === "INPUT" ||
+                self.input.nodeName === "TEXTAREA") &&
+                self.input.placeholder &&
+                self.input.value === self.input.placeholder
+                ? null
+                : self.input.value);
+        if (preloadedDate)
+            setSelectedDate(preloadedDate, self.config.dateFormat);
+        self._initialDate =
+            self.selectedDates.length > 0
+                ? self.selectedDates[0]
+                : self.config.minDate &&
+                    self.config.minDate.getTime() > self.now.getTime()
+                    ? self.config.minDate
+                    : self.config.maxDate &&
+                        self.config.maxDate.getTime() < self.now.getTime()
+                        ? self.config.maxDate
+                        : self.now;
+        self.currentYear = self._initialDate.getFullYear();
+        self.currentMonth = self._initialDate.getMonth();
+        if (self.selectedDates.length > 0)
+            self.latestSelectedDateObj = self.selectedDates[0];
+        if (self.config.minTime !== undefined)
+            self.config.minTime = self.parseDate(self.config.minTime, "H:i");
+        if (self.config.maxTime !== undefined)
+            self.config.maxTime = self.parseDate(self.config.maxTime, "H:i");
+        self.minDateHasTime =
+            !!self.config.minDate &&
+                (self.config.minDate.getHours() > 0 ||
+                    self.config.minDate.getMinutes() > 0 ||
+                    self.config.minDate.getSeconds() > 0);
+        self.maxDateHasTime =
+            !!self.config.maxDate &&
+                (self.config.maxDate.getHours() > 0 ||
+                    self.config.maxDate.getMinutes() > 0 ||
+                    self.config.maxDate.getSeconds() > 0);
+    }
+    function setupInputs() {
+        self.input = getInputElem();
+        if (!self.input) {
+            self.config.errorHandler(new Error("Invalid input element specified"));
+            return;
+        }
+        self.input._type = self.input.type;
+        self.input.type = "text";
+        self.input.classList.add("flatpickr-input");
+        self._input = self.input;
+        if (self.config.altInput) {
+            self.altInput = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])(self.input.nodeName, self.config.altInputClass);
+            self._input = self.altInput;
+            self.altInput.placeholder = self.input.placeholder;
+            self.altInput.disabled = self.input.disabled;
+            self.altInput.required = self.input.required;
+            self.altInput.tabIndex = self.input.tabIndex;
+            self.altInput.type = "text";
+            self.input.setAttribute("type", "hidden");
+            if (!self.config.static && self.input.parentNode)
+                self.input.parentNode.insertBefore(self.altInput, self.input.nextSibling);
+        }
+        if (!self.config.allowInput)
+            self._input.setAttribute("readonly", "readonly");
+        self._positionElement = self.config.positionElement || self._input;
+    }
+    function setupMobile() {
+        const inputType = self.config.enableTime
+            ? self.config.noCalendar
+                ? "time"
+                : "datetime-local"
+            : "date";
+        self.mobileInput = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["createElement"])("input", self.input.className + " flatpickr-mobile");
+        self.mobileInput.tabIndex = 1;
+        self.mobileInput.type = inputType;
+        self.mobileInput.disabled = self.input.disabled;
+        self.mobileInput.required = self.input.required;
+        self.mobileInput.placeholder = self.input.placeholder;
+        self.mobileFormatStr =
+            inputType === "datetime-local"
+                ? "Y-m-d\\TH:i:S"
+                : inputType === "date"
+                    ? "Y-m-d"
+                    : "H:i:S";
+        if (self.selectedDates.length > 0) {
+            self.mobileInput.defaultValue = self.mobileInput.value = self.formatDate(self.selectedDates[0], self.mobileFormatStr);
+        }
+        if (self.config.minDate)
+            self.mobileInput.min = self.formatDate(self.config.minDate, "Y-m-d");
+        if (self.config.maxDate)
+            self.mobileInput.max = self.formatDate(self.config.maxDate, "Y-m-d");
+        if (self.input.getAttribute("step"))
+            self.mobileInput.step = String(self.input.getAttribute("step"));
+        self.input.type = "hidden";
+        if (self.altInput !== undefined)
+            self.altInput.type = "hidden";
+        try {
+            if (self.input.parentNode)
+                self.input.parentNode.insertBefore(self.mobileInput, self.input.nextSibling);
+        }
+        catch (_a) { }
+        bind(self.mobileInput, "change", (e) => {
+            self.setDate(Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e).value, false, self.mobileFormatStr);
+            triggerEvent("onChange");
+            triggerEvent("onClose");
+        });
+    }
+    function toggle(e) {
+        if (self.isOpen === true)
+            return self.close();
+        self.open(e);
+    }
+    function triggerEvent(event, data) {
+        if (self.config === undefined)
+            return;
+        const hooks = self.config[event];
+        if (hooks !== undefined && hooks.length > 0) {
+            for (let i = 0; hooks[i] && i < hooks.length; i++)
+                hooks[i](self.selectedDates, self.input.value, self, data);
+        }
+        if (event === "onChange") {
+            self.input.dispatchEvent(createEvent("change"));
+            self.input.dispatchEvent(createEvent("input"));
+        }
+    }
+    function createEvent(name) {
+        const e = document.createEvent("Event");
+        e.initEvent(name, true, true);
+        return e;
+    }
+    function isDateSelected(date) {
+        for (let i = 0; i < self.selectedDates.length; i++) {
+            if (Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(self.selectedDates[i], date) === 0)
+                return "" + i;
+        }
+        return false;
+    }
+    function isDateInRange(date) {
+        if (self.config.mode !== "range" || self.selectedDates.length < 2)
+            return false;
+        return (Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(date, self.selectedDates[0]) >= 0 &&
+            Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"])(date, self.selectedDates[1]) <= 0);
+    }
+    function updateNavigationCurrentMonth() {
+        if (self.config.noCalendar || self.isMobile || !self.monthNav)
+            return;
+        self.yearElements.forEach((yearElement, i) => {
+            const d = new Date(self.currentYear, self.currentMonth, 1);
+            d.setMonth(self.currentMonth + i);
+            if (self.config.showMonths > 1 ||
+                self.config.monthSelectorType === "static") {
+                self.monthElements[i].textContent =
+                    Object(_utils_formatting__WEBPACK_IMPORTED_MODULE_5__["monthToStr"])(d.getMonth(), self.config.shorthandCurrentMonth, self.l10n) + " ";
+            }
+            else {
+                self.monthsDropdownContainer.value = d.getMonth().toString();
+            }
+            yearElement.value = d.getFullYear().toString();
+        });
+        self._hidePrevMonthArrow =
+            self.config.minDate !== undefined &&
+                (self.currentYear === self.config.minDate.getFullYear()
+                    ? self.currentMonth <= self.config.minDate.getMonth()
+                    : self.currentYear < self.config.minDate.getFullYear());
+        self._hideNextMonthArrow =
+            self.config.maxDate !== undefined &&
+                (self.currentYear === self.config.maxDate.getFullYear()
+                    ? self.currentMonth + 1 > self.config.maxDate.getMonth()
+                    : self.currentYear > self.config.maxDate.getFullYear());
+    }
+    function getDateStr(format) {
+        return self.selectedDates
+            .map((dObj) => self.formatDate(dObj, format))
+            .filter((d, i, arr) => self.config.mode !== "range" ||
+            self.config.enableTime ||
+            arr.indexOf(d) === i)
+            .join(self.config.mode !== "range"
+            ? self.config.conjunction
+            : self.l10n.rangeSeparator);
+    }
+    function updateValue(triggerChange = true) {
+        if (self.mobileInput !== undefined && self.mobileFormatStr) {
+            self.mobileInput.value =
+                self.latestSelectedDateObj !== undefined
+                    ? self.formatDate(self.latestSelectedDateObj, self.mobileFormatStr)
+                    : "";
+        }
+        self.input.value = getDateStr(self.config.dateFormat);
+        if (self.altInput !== undefined) {
+            self.altInput.value = getDateStr(self.config.altFormat);
+        }
+        if (triggerChange !== false)
+            triggerEvent("onValueUpdate");
+    }
+    function onMonthNavClick(e) {
+        const eventTarget = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e);
+        const isPrevMonth = self.prevMonthNav.contains(eventTarget);
+        const isNextMonth = self.nextMonthNav.contains(eventTarget);
+        if (isPrevMonth || isNextMonth) {
+            changeMonth(isPrevMonth ? -1 : 1);
+        }
+        else if (self.yearElements.indexOf(eventTarget) >= 0) {
+            eventTarget.select();
+        }
+        else if (eventTarget.classList.contains("arrowUp")) {
+            self.changeYear(self.currentYear + 1);
+        }
+        else if (eventTarget.classList.contains("arrowDown")) {
+            self.changeYear(self.currentYear - 1);
+        }
+    }
+    function timeWrapper(e) {
+        e.preventDefault();
+        const isKeyDown = e.type === "keydown", eventTarget = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["getEventTarget"])(e), input = eventTarget;
+        if (self.amPM !== undefined && eventTarget === self.amPM) {
+            self.amPM.textContent =
+                self.l10n.amPM[Object(_utils__WEBPACK_IMPORTED_MODULE_2__["int"])(self.amPM.textContent === self.l10n.amPM[0])];
+        }
+        const min = parseFloat(input.getAttribute("min")), max = parseFloat(input.getAttribute("max")), step = parseFloat(input.getAttribute("step")), curValue = parseInt(input.value, 10), delta = e.delta ||
+            (isKeyDown ? (e.which === 38 ? 1 : -1) : 0);
+        let newValue = curValue + step * delta;
+        if (typeof input.value !== "undefined" && input.value.length === 2) {
+            const isHourElem = input === self.hourElement, isMinuteElem = input === self.minuteElement;
+            if (newValue < min) {
+                newValue =
+                    max +
+                        newValue +
+                        Object(_utils__WEBPACK_IMPORTED_MODULE_2__["int"])(!isHourElem) +
+                        (Object(_utils__WEBPACK_IMPORTED_MODULE_2__["int"])(isHourElem) && Object(_utils__WEBPACK_IMPORTED_MODULE_2__["int"])(!self.amPM));
+                if (isMinuteElem)
+                    incrementNumInput(undefined, -1, self.hourElement);
+            }
+            else if (newValue > max) {
+                newValue =
+                    input === self.hourElement ? newValue - max - Object(_utils__WEBPACK_IMPORTED_MODULE_2__["int"])(!self.amPM) : min;
+                if (isMinuteElem)
+                    incrementNumInput(undefined, 1, self.hourElement);
+            }
+            if (self.amPM &&
+                isHourElem &&
+                (step === 1
+                    ? newValue + curValue === 23
+                    : Math.abs(newValue - curValue) > step)) {
+                self.amPM.textContent =
+                    self.l10n.amPM[Object(_utils__WEBPACK_IMPORTED_MODULE_2__["int"])(self.amPM.textContent === self.l10n.amPM[0])];
+            }
+            input.value = Object(_utils__WEBPACK_IMPORTED_MODULE_2__["pad"])(newValue);
+        }
+    }
+    init();
+    return self;
+}
+function _flatpickr(nodeList, config) {
+    const nodes = Array.prototype.slice
+        .call(nodeList)
+        .filter((x) => x instanceof HTMLElement);
+    const instances = [];
+    for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        try {
+            if (node.getAttribute("data-fp-omit") !== null)
+                continue;
+            if (node._flatpickr !== undefined) {
+                node._flatpickr.destroy();
+                node._flatpickr = undefined;
+            }
+            node._flatpickr = FlatpickrInstance(node, config || {});
+            instances.push(node._flatpickr);
+        }
+        catch (e) {
+            console.error(e);
+        }
+    }
+    return instances.length === 1 ? instances[0] : instances;
+}
+if (typeof HTMLElement !== "undefined" &&
+    typeof HTMLCollection !== "undefined" &&
+    typeof NodeList !== "undefined") {
+    HTMLCollection.prototype.flatpickr = NodeList.prototype.flatpickr = function (config) {
+        return _flatpickr(this, config);
+    };
+    HTMLElement.prototype.flatpickr = function (config) {
+        return _flatpickr([this], config);
+    };
+}
+var flatpickr = function (selector, config) {
+    if (typeof selector === "string") {
+        return _flatpickr(window.document.querySelectorAll(selector), config);
+    }
+    else if (selector instanceof Node) {
+        return _flatpickr([selector], config);
+    }
+    else {
+        return _flatpickr(selector, config);
+    }
+};
+flatpickr.defaultConfig = {};
+flatpickr.l10ns = {
+    en: Object.assign({}, _l10n_default__WEBPACK_IMPORTED_MODULE_1__["default"]),
+    default: Object.assign({}, _l10n_default__WEBPACK_IMPORTED_MODULE_1__["default"]),
+};
+flatpickr.localize = (l10n) => {
+    flatpickr.l10ns.default = Object.assign(Object.assign({}, flatpickr.l10ns.default), l10n);
+};
+flatpickr.setDefaults = (config) => {
+    flatpickr.defaultConfig = Object.assign(Object.assign({}, flatpickr.defaultConfig), config);
+};
+flatpickr.parseDate = Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["createDateParser"])({});
+flatpickr.formatDate = Object(_utils_dates__WEBPACK_IMPORTED_MODULE_4__["createDateFormatter"])({});
+flatpickr.compareDates = _utils_dates__WEBPACK_IMPORTED_MODULE_4__["compareDates"];
+if (typeof jQuery !== "undefined" && typeof jQuery.fn !== "undefined") {
+    jQuery.fn.flatpickr = function (config) {
+        return _flatpickr(this, config);
+    };
+}
+Date.prototype.fp_incr = function (days) {
+    return new Date(this.getFullYear(), this.getMonth(), this.getDate() + (typeof days === "string" ? parseInt(days, 10) : days));
+};
+if (typeof window !== "undefined") {
+    window.flatpickr = flatpickr;
+}
+/* harmony default export */ __webpack_exports__["default"] = (flatpickr);
+
+
+/***/ }),
+
+/***/ "./frontend/node_modules/flatpickr/dist/esm/l10n/default.js":
+/*!******************************************************************!*\
+  !*** ./frontend/node_modules/flatpickr/dist/esm/l10n/default.js ***!
+  \******************************************************************/
+/*! exports provided: english, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "english", function() { return english; });
+const english = {
+    weekdays: {
+        shorthand: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        longhand: [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+        ],
+    },
+    months: {
+        shorthand: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+        ],
+        longhand: [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ],
+    },
+    daysInMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+    firstDayOfWeek: 0,
+    ordinal: (nth) => {
+        const s = nth % 100;
+        if (s > 3 && s < 21)
+            return "th";
+        switch (s % 10) {
+            case 1:
+                return "st";
+            case 2:
+                return "nd";
+            case 3:
+                return "rd";
+            default:
+                return "th";
+        }
+    },
+    rangeSeparator: " to ",
+    weekAbbreviation: "Wk",
+    scrollTitle: "Scroll to increment",
+    toggleTitle: "Click to toggle",
+    amPM: ["AM", "PM"],
+    yearAriaLabel: "Year",
+    monthAriaLabel: "Month",
+    hourAriaLabel: "Hour",
+    minuteAriaLabel: "Minute",
+    time_24hr: false,
+};
+/* harmony default export */ __webpack_exports__["default"] = (english);
+
+
+/***/ }),
+
+/***/ "./frontend/node_modules/flatpickr/dist/esm/types/options.js":
+/*!*******************************************************************!*\
+  !*** ./frontend/node_modules/flatpickr/dist/esm/types/options.js ***!
+  \*******************************************************************/
+/*! exports provided: HOOKS, defaults */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HOOKS", function() { return HOOKS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaults", function() { return defaults; });
+const HOOKS = [
+    "onChange",
+    "onClose",
+    "onDayCreate",
+    "onDestroy",
+    "onKeyDown",
+    "onMonthChange",
+    "onOpen",
+    "onParseConfig",
+    "onReady",
+    "onValueUpdate",
+    "onYearChange",
+    "onPreCalendarPosition",
+];
+const defaults = {
+    _disable: [],
+    allowInput: false,
+    allowInvalidPreload: false,
+    altFormat: "F j, Y",
+    altInput: false,
+    altInputClass: "form-control input",
+    animate: typeof window === "object" &&
+        window.navigator.userAgent.indexOf("MSIE") === -1,
+    ariaDateFormat: "F j, Y",
+    autoFillDefaultTime: true,
+    clickOpens: true,
+    closeOnSelect: true,
+    conjunction: ", ",
+    dateFormat: "Y-m-d",
+    defaultHour: 12,
+    defaultMinute: 0,
+    defaultSeconds: 0,
+    disable: [],
+    disableMobile: false,
+    enableSeconds: false,
+    enableTime: false,
+    errorHandler: (err) => typeof console !== "undefined" && console.warn(err),
+    getWeek: (givenDate) => {
+        const date = new Date(givenDate.getTime());
+        date.setHours(0, 0, 0, 0);
+        date.setDate(date.getDate() + 3 - ((date.getDay() + 6) % 7));
+        var week1 = new Date(date.getFullYear(), 0, 4);
+        return (1 +
+            Math.round(((date.getTime() - week1.getTime()) / 86400000 -
+                3 +
+                ((week1.getDay() + 6) % 7)) /
+                7));
+    },
+    hourIncrement: 1,
+    ignoredFocusElements: [],
+    inline: false,
+    locale: "default",
+    minuteIncrement: 5,
+    mode: "single",
+    monthSelectorType: "dropdown",
+    nextArrow: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 17 17'><g></g><path d='M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z' /></svg>",
+    noCalendar: false,
+    now: new Date(),
+    onChange: [],
+    onClose: [],
+    onDayCreate: [],
+    onDestroy: [],
+    onKeyDown: [],
+    onMonthChange: [],
+    onOpen: [],
+    onParseConfig: [],
+    onReady: [],
+    onValueUpdate: [],
+    onYearChange: [],
+    onPreCalendarPosition: [],
+    plugins: [],
+    position: "auto",
+    positionElement: undefined,
+    prevArrow: "<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 17 17'><g></g><path d='M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z' /></svg>",
+    shorthandCurrentMonth: false,
+    showMonths: 1,
+    static: false,
+    time_24hr: false,
+    weekNumbers: false,
+    wrap: false,
+};
+
+
+/***/ }),
+
+/***/ "./frontend/node_modules/flatpickr/dist/esm/utils/dates.js":
+/*!*****************************************************************!*\
+  !*** ./frontend/node_modules/flatpickr/dist/esm/utils/dates.js ***!
+  \*****************************************************************/
+/*! exports provided: createDateFormatter, createDateParser, compareDates, compareTimes, isBetween, duration, getDefaultHours */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDateFormatter", function() { return createDateFormatter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDateParser", function() { return createDateParser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compareDates", function() { return compareDates; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "compareTimes", function() { return compareTimes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBetween", function() { return isBetween; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "duration", function() { return duration; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDefaultHours", function() { return getDefaultHours; });
+/* harmony import */ var _formatting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./formatting */ "./frontend/node_modules/flatpickr/dist/esm/utils/formatting.js");
+/* harmony import */ var _types_options__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types/options */ "./frontend/node_modules/flatpickr/dist/esm/types/options.js");
+/* harmony import */ var _l10n_default__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../l10n/default */ "./frontend/node_modules/flatpickr/dist/esm/l10n/default.js");
+
+
+
+const createDateFormatter = ({ config = _types_options__WEBPACK_IMPORTED_MODULE_1__["defaults"], l10n = _l10n_default__WEBPACK_IMPORTED_MODULE_2__["english"], isMobile = false, }) => (dateObj, frmt, overrideLocale) => {
+    const locale = overrideLocale || l10n;
+    if (config.formatDate !== undefined && !isMobile) {
+        return config.formatDate(dateObj, frmt, locale);
+    }
+    return frmt
+        .split("")
+        .map((c, i, arr) => _formatting__WEBPACK_IMPORTED_MODULE_0__["formats"][c] && arr[i - 1] !== "\\"
+        ? _formatting__WEBPACK_IMPORTED_MODULE_0__["formats"][c](dateObj, locale, config)
+        : c !== "\\"
+            ? c
+            : "")
+        .join("");
+};
+const createDateParser = ({ config = _types_options__WEBPACK_IMPORTED_MODULE_1__["defaults"], l10n = _l10n_default__WEBPACK_IMPORTED_MODULE_2__["english"] }) => (date, givenFormat, timeless, customLocale) => {
+    if (date !== 0 && !date)
+        return undefined;
+    const locale = customLocale || l10n;
+    let parsedDate;
+    const dateOrig = date;
+    if (date instanceof Date)
+        parsedDate = new Date(date.getTime());
+    else if (typeof date !== "string" &&
+        date.toFixed !== undefined)
+        parsedDate = new Date(date);
+    else if (typeof date === "string") {
+        const format = givenFormat || (config || _types_options__WEBPACK_IMPORTED_MODULE_1__["defaults"]).dateFormat;
+        const datestr = String(date).trim();
+        if (datestr === "today") {
+            parsedDate = new Date();
+            timeless = true;
+        }
+        else if (/Z$/.test(datestr) ||
+            /GMT$/.test(datestr))
+            parsedDate = new Date(date);
+        else if (config && config.parseDate)
+            parsedDate = config.parseDate(date, format);
+        else {
+            parsedDate =
+                !config || !config.noCalendar
+                    ? new Date(new Date().getFullYear(), 0, 1, 0, 0, 0, 0)
+                    : new Date(new Date().setHours(0, 0, 0, 0));
+            let matched, ops = [];
+            for (let i = 0, matchIndex = 0, regexStr = ""; i < format.length; i++) {
+                const token = format[i];
+                const isBackSlash = token === "\\";
+                const escaped = format[i - 1] === "\\" || isBackSlash;
+                if (_formatting__WEBPACK_IMPORTED_MODULE_0__["tokenRegex"][token] && !escaped) {
+                    regexStr += _formatting__WEBPACK_IMPORTED_MODULE_0__["tokenRegex"][token];
+                    const match = new RegExp(regexStr).exec(date);
+                    if (match && (matched = true)) {
+                        ops[token !== "Y" ? "push" : "unshift"]({
+                            fn: _formatting__WEBPACK_IMPORTED_MODULE_0__["revFormat"][token],
+                            val: match[++matchIndex],
+                        });
+                    }
+                }
+                else if (!isBackSlash)
+                    regexStr += ".";
+                ops.forEach(({ fn, val }) => (parsedDate = fn(parsedDate, val, locale) || parsedDate));
+            }
+            parsedDate = matched ? parsedDate : undefined;
+        }
+    }
+    if (!(parsedDate instanceof Date && !isNaN(parsedDate.getTime()))) {
+        config.errorHandler(new Error(`Invalid date provided: ${dateOrig}`));
+        return undefined;
+    }
+    if (timeless === true)
+        parsedDate.setHours(0, 0, 0, 0);
+    return parsedDate;
+};
+function compareDates(date1, date2, timeless = true) {
+    if (timeless !== false) {
+        return (new Date(date1.getTime()).setHours(0, 0, 0, 0) -
+            new Date(date2.getTime()).setHours(0, 0, 0, 0));
+    }
+    return date1.getTime() - date2.getTime();
+}
+function compareTimes(date1, date2) {
+    return (3600 * (date1.getHours() - date2.getHours()) +
+        60 * (date1.getMinutes() - date2.getMinutes()) +
+        date1.getSeconds() -
+        date2.getSeconds());
+}
+const isBetween = (ts, ts1, ts2) => {
+    return ts > Math.min(ts1, ts2) && ts < Math.max(ts1, ts2);
+};
+const duration = {
+    DAY: 86400000,
+};
+function getDefaultHours(config) {
+    let hours = config.defaultHour;
+    let minutes = config.defaultMinute;
+    let seconds = config.defaultSeconds;
+    if (config.minDate !== undefined) {
+        const minHour = config.minDate.getHours();
+        const minMinutes = config.minDate.getMinutes();
+        const minSeconds = config.minDate.getSeconds();
+        if (hours < minHour) {
+            hours = minHour;
+        }
+        if (hours === minHour && minutes < minMinutes) {
+            minutes = minMinutes;
+        }
+        if (hours === minHour && minutes === minMinutes && seconds < minSeconds)
+            seconds = config.minDate.getSeconds();
+    }
+    if (config.maxDate !== undefined) {
+        const maxHr = config.maxDate.getHours();
+        const maxMinutes = config.maxDate.getMinutes();
+        hours = Math.min(hours, maxHr);
+        if (hours === maxHr)
+            minutes = Math.min(maxMinutes, minutes);
+        if (hours === maxHr && minutes === maxMinutes)
+            seconds = config.maxDate.getSeconds();
+    }
+    return { hours, minutes, seconds };
+}
+
+
+/***/ }),
+
+/***/ "./frontend/node_modules/flatpickr/dist/esm/utils/dom.js":
+/*!***************************************************************!*\
+  !*** ./frontend/node_modules/flatpickr/dist/esm/utils/dom.js ***!
+  \***************************************************************/
+/*! exports provided: toggleClass, createElement, clearNode, findParent, createNumberInput, getEventTarget */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleClass", function() { return toggleClass; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createElement", function() { return createElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearNode", function() { return clearNode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findParent", function() { return findParent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNumberInput", function() { return createNumberInput; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getEventTarget", function() { return getEventTarget; });
+function toggleClass(elem, className, bool) {
+    if (bool === true)
+        return elem.classList.add(className);
+    elem.classList.remove(className);
+}
+function createElement(tag, className, content) {
+    const e = window.document.createElement(tag);
+    className = className || "";
+    content = content || "";
+    e.className = className;
+    if (content !== undefined)
+        e.textContent = content;
+    return e;
+}
+function clearNode(node) {
+    while (node.firstChild)
+        node.removeChild(node.firstChild);
+}
+function findParent(node, condition) {
+    if (condition(node))
+        return node;
+    else if (node.parentNode)
+        return findParent(node.parentNode, condition);
+    return undefined;
+}
+function createNumberInput(inputClassName, opts) {
+    const wrapper = createElement("div", "numInputWrapper"), numInput = createElement("input", "numInput " + inputClassName), arrowUp = createElement("span", "arrowUp"), arrowDown = createElement("span", "arrowDown");
+    if (navigator.userAgent.indexOf("MSIE 9.0") === -1) {
+        numInput.type = "number";
+    }
+    else {
+        numInput.type = "text";
+        numInput.pattern = "\\d*";
+    }
+    if (opts !== undefined)
+        for (const key in opts)
+            numInput.setAttribute(key, opts[key]);
+    wrapper.appendChild(numInput);
+    wrapper.appendChild(arrowUp);
+    wrapper.appendChild(arrowDown);
+    return wrapper;
+}
+function getEventTarget(event) {
+    try {
+        if (typeof event.composedPath === "function") {
+            const path = event.composedPath();
+            return path[0];
+        }
+        return event.target;
+    }
+    catch (error) {
+        return event.target;
+    }
+}
+
+
+/***/ }),
+
+/***/ "./frontend/node_modules/flatpickr/dist/esm/utils/formatting.js":
+/*!**********************************************************************!*\
+  !*** ./frontend/node_modules/flatpickr/dist/esm/utils/formatting.js ***!
+  \**********************************************************************/
+/*! exports provided: monthToStr, revFormat, tokenRegex, formats */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "monthToStr", function() { return monthToStr; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "revFormat", function() { return revFormat; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tokenRegex", function() { return tokenRegex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formats", function() { return formats; });
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils */ "./frontend/node_modules/flatpickr/dist/esm/utils/index.js");
+
+const doNothing = () => undefined;
+const monthToStr = (monthNumber, shorthand, locale) => locale.months[shorthand ? "shorthand" : "longhand"][monthNumber];
+const revFormat = {
+    D: doNothing,
+    F: function (dateObj, monthName, locale) {
+        dateObj.setMonth(locale.months.longhand.indexOf(monthName));
+    },
+    G: (dateObj, hour) => {
+        dateObj.setHours(parseFloat(hour));
+    },
+    H: (dateObj, hour) => {
+        dateObj.setHours(parseFloat(hour));
+    },
+    J: (dateObj, day) => {
+        dateObj.setDate(parseFloat(day));
+    },
+    K: (dateObj, amPM, locale) => {
+        dateObj.setHours((dateObj.getHours() % 12) +
+            12 * Object(_utils__WEBPACK_IMPORTED_MODULE_0__["int"])(new RegExp(locale.amPM[1], "i").test(amPM)));
+    },
+    M: function (dateObj, shortMonth, locale) {
+        dateObj.setMonth(locale.months.shorthand.indexOf(shortMonth));
+    },
+    S: (dateObj, seconds) => {
+        dateObj.setSeconds(parseFloat(seconds));
+    },
+    U: (_, unixSeconds) => new Date(parseFloat(unixSeconds) * 1000),
+    W: function (dateObj, weekNum, locale) {
+        const weekNumber = parseInt(weekNum);
+        const date = new Date(dateObj.getFullYear(), 0, 2 + (weekNumber - 1) * 7, 0, 0, 0, 0);
+        date.setDate(date.getDate() - date.getDay() + locale.firstDayOfWeek);
+        return date;
+    },
+    Y: (dateObj, year) => {
+        dateObj.setFullYear(parseFloat(year));
+    },
+    Z: (_, ISODate) => new Date(ISODate),
+    d: (dateObj, day) => {
+        dateObj.setDate(parseFloat(day));
+    },
+    h: (dateObj, hour) => {
+        dateObj.setHours(parseFloat(hour));
+    },
+    i: (dateObj, minutes) => {
+        dateObj.setMinutes(parseFloat(minutes));
+    },
+    j: (dateObj, day) => {
+        dateObj.setDate(parseFloat(day));
+    },
+    l: doNothing,
+    m: (dateObj, month) => {
+        dateObj.setMonth(parseFloat(month) - 1);
+    },
+    n: (dateObj, month) => {
+        dateObj.setMonth(parseFloat(month) - 1);
+    },
+    s: (dateObj, seconds) => {
+        dateObj.setSeconds(parseFloat(seconds));
+    },
+    u: (_, unixMillSeconds) => new Date(parseFloat(unixMillSeconds)),
+    w: doNothing,
+    y: (dateObj, year) => {
+        dateObj.setFullYear(2000 + parseFloat(year));
+    },
+};
+const tokenRegex = {
+    D: "(\\w+)",
+    F: "(\\w+)",
+    G: "(\\d\\d|\\d)",
+    H: "(\\d\\d|\\d)",
+    J: "(\\d\\d|\\d)\\w+",
+    K: "",
+    M: "(\\w+)",
+    S: "(\\d\\d|\\d)",
+    U: "(.+)",
+    W: "(\\d\\d|\\d)",
+    Y: "(\\d{4})",
+    Z: "(.+)",
+    d: "(\\d\\d|\\d)",
+    h: "(\\d\\d|\\d)",
+    i: "(\\d\\d|\\d)",
+    j: "(\\d\\d|\\d)",
+    l: "(\\w+)",
+    m: "(\\d\\d|\\d)",
+    n: "(\\d\\d|\\d)",
+    s: "(\\d\\d|\\d)",
+    u: "(.+)",
+    w: "(\\d\\d|\\d)",
+    y: "(\\d{2})",
+};
+const formats = {
+    Z: (date) => date.toISOString(),
+    D: function (date, locale, options) {
+        return locale.weekdays.shorthand[formats.w(date, locale, options)];
+    },
+    F: function (date, locale, options) {
+        return monthToStr(formats.n(date, locale, options) - 1, false, locale);
+    },
+    G: function (date, locale, options) {
+        return Object(_utils__WEBPACK_IMPORTED_MODULE_0__["pad"])(formats.h(date, locale, options));
+    },
+    H: (date) => Object(_utils__WEBPACK_IMPORTED_MODULE_0__["pad"])(date.getHours()),
+    J: function (date, locale) {
+        return locale.ordinal !== undefined
+            ? date.getDate() + locale.ordinal(date.getDate())
+            : date.getDate();
+    },
+    K: (date, locale) => locale.amPM[Object(_utils__WEBPACK_IMPORTED_MODULE_0__["int"])(date.getHours() > 11)],
+    M: function (date, locale) {
+        return monthToStr(date.getMonth(), true, locale);
+    },
+    S: (date) => Object(_utils__WEBPACK_IMPORTED_MODULE_0__["pad"])(date.getSeconds()),
+    U: (date) => date.getTime() / 1000,
+    W: function (date, _, options) {
+        return options.getWeek(date);
+    },
+    Y: (date) => Object(_utils__WEBPACK_IMPORTED_MODULE_0__["pad"])(date.getFullYear(), 4),
+    d: (date) => Object(_utils__WEBPACK_IMPORTED_MODULE_0__["pad"])(date.getDate()),
+    h: (date) => (date.getHours() % 12 ? date.getHours() % 12 : 12),
+    i: (date) => Object(_utils__WEBPACK_IMPORTED_MODULE_0__["pad"])(date.getMinutes()),
+    j: (date) => date.getDate(),
+    l: function (date, locale) {
+        return locale.weekdays.longhand[date.getDay()];
+    },
+    m: (date) => Object(_utils__WEBPACK_IMPORTED_MODULE_0__["pad"])(date.getMonth() + 1),
+    n: (date) => date.getMonth() + 1,
+    s: (date) => date.getSeconds(),
+    u: (date) => date.getTime(),
+    w: (date) => date.getDay(),
+    y: (date) => String(date.getFullYear()).substring(2),
+};
+
+
+/***/ }),
+
+/***/ "./frontend/node_modules/flatpickr/dist/esm/utils/index.js":
+/*!*****************************************************************!*\
+  !*** ./frontend/node_modules/flatpickr/dist/esm/utils/index.js ***!
+  \*****************************************************************/
+/*! exports provided: pad, int, debounce, arrayify */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pad", function() { return pad; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "int", function() { return int; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "debounce", function() { return debounce; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "arrayify", function() { return arrayify; });
+const pad = (number, length = 2) => `000${number}`.slice(length * -1);
+const int = (bool) => (bool === true ? 1 : 0);
+function debounce(fn, wait) {
+    let t;
+    return function () {
+        clearTimeout(t);
+        t = setTimeout(() => fn.apply(this, arguments), wait);
+    };
+}
+const arrayify = (obj) => obj instanceof Array ? obj : [obj];
+
+
+/***/ }),
+
+/***/ "./frontend/node_modules/flatpickr/dist/esm/utils/polyfills.js":
+/*!*********************************************************************!*\
+  !*** ./frontend/node_modules/flatpickr/dist/esm/utils/polyfills.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+if (typeof Object.assign !== "function") {
+    Object.assign = function (target, ...args) {
+        if (!target) {
+            throw TypeError("Cannot convert undefined or null to object");
+        }
+        for (const source of args) {
+            if (source) {
+                Object.keys(source).forEach((key) => (target[key] = source[key]));
+            }
+        }
+        return target;
+    };
+}
+
+
+/***/ }),
+
+/***/ "./frontend/node_modules/vue-flatpickr-component/dist/vue-flatpickr.min.js":
+/*!*********************************************************************************!*\
+  !*** ./frontend/node_modules/vue-flatpickr-component/dist/vue-flatpickr.min.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,e){ true?module.exports=e(__webpack_require__(/*! flatpickr */ "./frontend/node_modules/flatpickr/dist/esm/index.js")):undefined}("undefined"!=typeof self?self:this,(function(t){return function(t){var e={};function n(r){if(e[r])return e[r].exports;var o=e[r]={i:r,l:!1,exports:{}};return t[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)n.d(r,o,function(e){return t[e]}.bind(null,o));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=1)}([function(e,n){e.exports=t},function(t,e,n){"use strict";n.r(e),n.d(e,"Component",(function(){return c})),n.d(e,"Plugin",(function(){return p}));var r=n(0),o=n.n(r),i=["onChange","onClose","onDestroy","onMonthChange","onOpen","onYearChange"];function u(){return(u=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(t[r]=n[r])}return t}).apply(this,arguments)}var a=function(t){return t.replace(/([a-z])([A-Z])/g,"$1-$2").toLowerCase()},f=function(t){return u({},t)},l=i.concat(["onValueUpdate","onDayCreate","onParseConfig","onReady","onPreCalendarPosition","onKeyDown"]),s=["locale","showMonths"],c={name:"flat-pickr",render:function(t){return t("input",{attrs:{type:"text","data-input":!0},props:{disabled:this.disabled},on:{input:this.onInput}})},props:{value:{default:null,required:!0,validator:function(t){return null===t||t instanceof Date||"string"==typeof t||t instanceof String||t instanceof Array||"number"==typeof t}},config:{type:Object,default:function(){return{wrap:!1,defaultDate:null}}},events:{type:Array,default:function(){return i}},disabled:{type:Boolean,default:!1}},data:function(){return{fp:null}},mounted:function(){var t=this;if(!this.fp){var e=f(this.config);this.events.forEach((function(n){var r,i=o.a.defaultConfig[n]||[];e[n]=(r=e[n]||[],r instanceof Array?r:[r]).concat(i,(function(){for(var e=arguments.length,r=new Array(e),o=0;o<e;o++)r[o]=arguments[o];t.$emit.apply(t,[a(n)].concat(r))}))})),e.defaultDate=this.value||e.defaultDate,this.fp=new o.a(this.getElem(),e),this.fpInput().addEventListener("blur",this.onBlur),this.$on("on-close",this.onClose),this.$watch("disabled",this.watchDisabled,{immediate:!0})}},methods:{getElem:function(){return this.config.wrap?this.$el.parentNode:this.$el},onInput:function(t){var e=this,n=t.target;this.$nextTick((function(){e.$emit("input",n.value)}))},fpInput:function(){return this.fp.altInput||this.fp.input},onBlur:function(t){this.$emit("blur",t.target.value)},onClose:function(t,e){this.$emit("input",e)},watchDisabled:function(t){t?this.fpInput().setAttribute("disabled",t):this.fpInput().removeAttribute("disabled")}},watch:{config:{deep:!0,handler:function(t){var e=this,n=f(t);l.forEach((function(t){delete n[t]})),this.fp.set(n),s.forEach((function(t){void 0!==n[t]&&e.fp.set(t,n[t])}))}},value:function(t){t!==this.$el.value&&this.fp&&this.fp.setDate(t,!0)}},beforeDestroy:function(){this.fp&&(this.fpInput().removeEventListener("blur",this.onBlur),this.fp.destroy(),this.fp=null)}},p=function(t,e){var n="flat-pickr";"string"==typeof e&&(n=e),t.component(n,c)};c.install=p;e.default=c}]).default}));
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./frontend/node_modules/flatpickr/dist/flatpickr.css":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/css-loader!./frontend/node_modules/flatpickr/dist/flatpickr.css ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".flatpickr-calendar {\n  background: transparent;\n  opacity: 0;\n  display: none;\n  text-align: center;\n  visibility: hidden;\n  padding: 0;\n  -webkit-animation: none;\n          animation: none;\n  direction: ltr;\n  border: 0;\n  font-size: 14px;\n  line-height: 24px;\n  border-radius: 5px;\n  position: absolute;\n  width: 307.875px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -ms-touch-action: manipulation;\n      touch-action: manipulation;\n  background: #fff;\n  -webkit-box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0,0,0,0.08);\n          box-shadow: 1px 0 0 #e6e6e6, -1px 0 0 #e6e6e6, 0 1px 0 #e6e6e6, 0 -1px 0 #e6e6e6, 0 3px 13px rgba(0,0,0,0.08);\n}\n.flatpickr-calendar.open,\n.flatpickr-calendar.inline {\n  opacity: 1;\n  max-height: 640px;\n  visibility: visible;\n}\n.flatpickr-calendar.open {\n  display: inline-block;\n  z-index: 99999;\n}\n.flatpickr-calendar.animate.open {\n  -webkit-animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1);\n          animation: fpFadeInDown 300ms cubic-bezier(0.23, 1, 0.32, 1);\n}\n.flatpickr-calendar.inline {\n  display: block;\n  position: relative;\n  top: 2px;\n}\n.flatpickr-calendar.static {\n  position: absolute;\n  top: calc(100% + 2px);\n}\n.flatpickr-calendar.static.open {\n  z-index: 999;\n  display: block;\n}\n.flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+1) .flatpickr-day.inRange:nth-child(7n+7) {\n  -webkit-box-shadow: none !important;\n          box-shadow: none !important;\n}\n.flatpickr-calendar.multiMonth .flatpickr-days .dayContainer:nth-child(n+2) .flatpickr-day.inRange:nth-child(7n+1) {\n  -webkit-box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;\n          box-shadow: -2px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;\n}\n.flatpickr-calendar .hasWeeks .dayContainer,\n.flatpickr-calendar .hasTime .dayContainer {\n  border-bottom: 0;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.flatpickr-calendar .hasWeeks .dayContainer {\n  border-left: 0;\n}\n.flatpickr-calendar.hasTime .flatpickr-time {\n  height: 40px;\n  border-top: 1px solid #e6e6e6;\n}\n.flatpickr-calendar.noCalendar.hasTime .flatpickr-time {\n  height: auto;\n}\n.flatpickr-calendar:before,\n.flatpickr-calendar:after {\n  position: absolute;\n  display: block;\n  pointer-events: none;\n  border: solid transparent;\n  content: '';\n  height: 0;\n  width: 0;\n  left: 22px;\n}\n.flatpickr-calendar.rightMost:before,\n.flatpickr-calendar.arrowRight:before,\n.flatpickr-calendar.rightMost:after,\n.flatpickr-calendar.arrowRight:after {\n  left: auto;\n  right: 22px;\n}\n.flatpickr-calendar.arrowCenter:before,\n.flatpickr-calendar.arrowCenter:after {\n  left: 50%;\n  right: 50%;\n}\n.flatpickr-calendar:before {\n  border-width: 5px;\n  margin: 0 -5px;\n}\n.flatpickr-calendar:after {\n  border-width: 4px;\n  margin: 0 -4px;\n}\n.flatpickr-calendar.arrowTop:before,\n.flatpickr-calendar.arrowTop:after {\n  bottom: 100%;\n}\n.flatpickr-calendar.arrowTop:before {\n  border-bottom-color: #e6e6e6;\n}\n.flatpickr-calendar.arrowTop:after {\n  border-bottom-color: #fff;\n}\n.flatpickr-calendar.arrowBottom:before,\n.flatpickr-calendar.arrowBottom:after {\n  top: 100%;\n}\n.flatpickr-calendar.arrowBottom:before {\n  border-top-color: #e6e6e6;\n}\n.flatpickr-calendar.arrowBottom:after {\n  border-top-color: #fff;\n}\n.flatpickr-calendar:focus {\n  outline: 0;\n}\n.flatpickr-wrapper {\n  position: relative;\n  display: inline-block;\n}\n.flatpickr-months {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n}\n.flatpickr-months .flatpickr-month {\n  background: transparent;\n  color: rgba(0,0,0,0.9);\n  fill: rgba(0,0,0,0.9);\n  height: 34px;\n  line-height: 1;\n  text-align: center;\n  position: relative;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  overflow: hidden;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\n.flatpickr-months .flatpickr-prev-month,\n.flatpickr-months .flatpickr-next-month {\n  text-decoration: none;\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  height: 34px;\n  padding: 10px;\n  z-index: 3;\n  color: rgba(0,0,0,0.9);\n  fill: rgba(0,0,0,0.9);\n}\n.flatpickr-months .flatpickr-prev-month.flatpickr-disabled,\n.flatpickr-months .flatpickr-next-month.flatpickr-disabled {\n  display: none;\n}\n.flatpickr-months .flatpickr-prev-month i,\n.flatpickr-months .flatpickr-next-month i {\n  position: relative;\n}\n.flatpickr-months .flatpickr-prev-month.flatpickr-prev-month,\n.flatpickr-months .flatpickr-next-month.flatpickr-prev-month {\n/*\n      /*rtl:begin:ignore*/\n/*\n      */\n  left: 0;\n/*\n      /*rtl:end:ignore*/\n/*\n      */\n}\n/*\n      /*rtl:begin:ignore*/\n/*\n      /*rtl:end:ignore*/\n.flatpickr-months .flatpickr-prev-month.flatpickr-next-month,\n.flatpickr-months .flatpickr-next-month.flatpickr-next-month {\n/*\n      /*rtl:begin:ignore*/\n/*\n      */\n  right: 0;\n/*\n      /*rtl:end:ignore*/\n/*\n      */\n}\n/*\n      /*rtl:begin:ignore*/\n/*\n      /*rtl:end:ignore*/\n.flatpickr-months .flatpickr-prev-month:hover,\n.flatpickr-months .flatpickr-next-month:hover {\n  color: #959ea9;\n}\n.flatpickr-months .flatpickr-prev-month:hover svg,\n.flatpickr-months .flatpickr-next-month:hover svg {\n  fill: #f64747;\n}\n.flatpickr-months .flatpickr-prev-month svg,\n.flatpickr-months .flatpickr-next-month svg {\n  width: 14px;\n  height: 14px;\n}\n.flatpickr-months .flatpickr-prev-month svg path,\n.flatpickr-months .flatpickr-next-month svg path {\n  -webkit-transition: fill 0.1s;\n  transition: fill 0.1s;\n  fill: inherit;\n}\n.numInputWrapper {\n  position: relative;\n  height: auto;\n}\n.numInputWrapper input,\n.numInputWrapper span {\n  display: inline-block;\n}\n.numInputWrapper input {\n  width: 100%;\n}\n.numInputWrapper input::-ms-clear {\n  display: none;\n}\n.numInputWrapper input::-webkit-outer-spin-button,\n.numInputWrapper input::-webkit-inner-spin-button {\n  margin: 0;\n  -webkit-appearance: none;\n}\n.numInputWrapper span {\n  position: absolute;\n  right: 0;\n  width: 14px;\n  padding: 0 4px 0 2px;\n  height: 50%;\n  line-height: 50%;\n  opacity: 0;\n  cursor: pointer;\n  border: 1px solid rgba(57,57,57,0.15);\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.numInputWrapper span:hover {\n  background: rgba(0,0,0,0.1);\n}\n.numInputWrapper span:active {\n  background: rgba(0,0,0,0.2);\n}\n.numInputWrapper span:after {\n  display: block;\n  content: \"\";\n  position: absolute;\n}\n.numInputWrapper span.arrowUp {\n  top: 0;\n  border-bottom: 0;\n}\n.numInputWrapper span.arrowUp:after {\n  border-left: 4px solid transparent;\n  border-right: 4px solid transparent;\n  border-bottom: 4px solid rgba(57,57,57,0.6);\n  top: 26%;\n}\n.numInputWrapper span.arrowDown {\n  top: 50%;\n}\n.numInputWrapper span.arrowDown:after {\n  border-left: 4px solid transparent;\n  border-right: 4px solid transparent;\n  border-top: 4px solid rgba(57,57,57,0.6);\n  top: 40%;\n}\n.numInputWrapper span svg {\n  width: inherit;\n  height: auto;\n}\n.numInputWrapper span svg path {\n  fill: rgba(0,0,0,0.5);\n}\n.numInputWrapper:hover {\n  background: rgba(0,0,0,0.05);\n}\n.numInputWrapper:hover span {\n  opacity: 1;\n}\n.flatpickr-current-month {\n  font-size: 135%;\n  line-height: inherit;\n  font-weight: 300;\n  color: inherit;\n  position: absolute;\n  width: 75%;\n  left: 12.5%;\n  padding: 7.48px 0 0 0;\n  line-height: 1;\n  height: 34px;\n  display: inline-block;\n  text-align: center;\n  -webkit-transform: translate3d(0px, 0px, 0px);\n          transform: translate3d(0px, 0px, 0px);\n}\n.flatpickr-current-month span.cur-month {\n  font-family: inherit;\n  font-weight: 700;\n  color: inherit;\n  display: inline-block;\n  margin-left: 0.5ch;\n  padding: 0;\n}\n.flatpickr-current-month span.cur-month:hover {\n  background: rgba(0,0,0,0.05);\n}\n.flatpickr-current-month .numInputWrapper {\n  width: 6ch;\n  width: 7ch\\0;\n  display: inline-block;\n}\n.flatpickr-current-month .numInputWrapper span.arrowUp:after {\n  border-bottom-color: rgba(0,0,0,0.9);\n}\n.flatpickr-current-month .numInputWrapper span.arrowDown:after {\n  border-top-color: rgba(0,0,0,0.9);\n}\n.flatpickr-current-month input.cur-year {\n  background: transparent;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  color: inherit;\n  cursor: text;\n  padding: 0 0 0 0.5ch;\n  margin: 0;\n  display: inline-block;\n  font-size: inherit;\n  font-family: inherit;\n  font-weight: 300;\n  line-height: inherit;\n  height: auto;\n  border: 0;\n  border-radius: 0;\n  vertical-align: initial;\n  -webkit-appearance: textfield;\n  -moz-appearance: textfield;\n  appearance: textfield;\n}\n.flatpickr-current-month input.cur-year:focus {\n  outline: 0;\n}\n.flatpickr-current-month input.cur-year[disabled],\n.flatpickr-current-month input.cur-year[disabled]:hover {\n  font-size: 100%;\n  color: rgba(0,0,0,0.5);\n  background: transparent;\n  pointer-events: none;\n}\n.flatpickr-current-month .flatpickr-monthDropdown-months {\n  appearance: menulist;\n  background: transparent;\n  border: none;\n  border-radius: 0;\n  box-sizing: border-box;\n  color: inherit;\n  cursor: pointer;\n  font-size: inherit;\n  font-family: inherit;\n  font-weight: 300;\n  height: auto;\n  line-height: inherit;\n  margin: -1px 0 0 0;\n  outline: none;\n  padding: 0 0 0 0.5ch;\n  position: relative;\n  vertical-align: initial;\n  -webkit-box-sizing: border-box;\n  -webkit-appearance: menulist;\n  -moz-appearance: menulist;\n  width: auto;\n}\n.flatpickr-current-month .flatpickr-monthDropdown-months:focus,\n.flatpickr-current-month .flatpickr-monthDropdown-months:active {\n  outline: none;\n}\n.flatpickr-current-month .flatpickr-monthDropdown-months:hover {\n  background: rgba(0,0,0,0.05);\n}\n.flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month {\n  background-color: transparent;\n  outline: none;\n  padding: 0;\n}\n.flatpickr-weekdays {\n  background: transparent;\n  text-align: center;\n  overflow: hidden;\n  width: 100%;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n  -webkit-align-items: center;\n      -ms-flex-align: center;\n          align-items: center;\n  height: 28px;\n}\n.flatpickr-weekdays .flatpickr-weekdaycontainer {\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\nspan.flatpickr-weekday {\n  cursor: default;\n  font-size: 90%;\n  background: transparent;\n  color: rgba(0,0,0,0.54);\n  line-height: 1;\n  margin: 0;\n  text-align: center;\n  display: block;\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  font-weight: bolder;\n}\n.dayContainer,\n.flatpickr-weeks {\n  padding: 1px 0 0 0;\n}\n.flatpickr-days {\n  position: relative;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: start;\n  -webkit-align-items: flex-start;\n      -ms-flex-align: start;\n          align-items: flex-start;\n  width: 307.875px;\n}\n.flatpickr-days:focus {\n  outline: 0;\n}\n.dayContainer {\n  padding: 0;\n  outline: 0;\n  text-align: left;\n  width: 307.875px;\n  min-width: 307.875px;\n  max-width: 307.875px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  display: inline-block;\n  display: -ms-flexbox;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: flex;\n  -webkit-flex-wrap: wrap;\n          flex-wrap: wrap;\n  -ms-flex-wrap: wrap;\n  -ms-flex-pack: justify;\n  -webkit-justify-content: space-around;\n          justify-content: space-around;\n  -webkit-transform: translate3d(0px, 0px, 0px);\n          transform: translate3d(0px, 0px, 0px);\n  opacity: 1;\n}\n.dayContainer + .dayContainer {\n  -webkit-box-shadow: -1px 0 0 #e6e6e6;\n          box-shadow: -1px 0 0 #e6e6e6;\n}\n.flatpickr-day {\n  background: none;\n  border: 1px solid transparent;\n  border-radius: 150px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  color: #393939;\n  cursor: pointer;\n  font-weight: 400;\n  width: 14.2857143%;\n  -webkit-flex-basis: 14.2857143%;\n      -ms-flex-preferred-size: 14.2857143%;\n          flex-basis: 14.2857143%;\n  max-width: 39px;\n  height: 39px;\n  line-height: 39px;\n  margin: 0;\n  display: inline-block;\n  position: relative;\n  -webkit-box-pack: center;\n  -webkit-justify-content: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  text-align: center;\n}\n.flatpickr-day.inRange,\n.flatpickr-day.prevMonthDay.inRange,\n.flatpickr-day.nextMonthDay.inRange,\n.flatpickr-day.today.inRange,\n.flatpickr-day.prevMonthDay.today.inRange,\n.flatpickr-day.nextMonthDay.today.inRange,\n.flatpickr-day:hover,\n.flatpickr-day.prevMonthDay:hover,\n.flatpickr-day.nextMonthDay:hover,\n.flatpickr-day:focus,\n.flatpickr-day.prevMonthDay:focus,\n.flatpickr-day.nextMonthDay:focus {\n  cursor: pointer;\n  outline: 0;\n  background: #e6e6e6;\n  border-color: #e6e6e6;\n}\n.flatpickr-day.today {\n  border-color: #959ea9;\n}\n.flatpickr-day.today:hover,\n.flatpickr-day.today:focus {\n  border-color: #959ea9;\n  background: #959ea9;\n  color: #fff;\n}\n.flatpickr-day.selected,\n.flatpickr-day.startRange,\n.flatpickr-day.endRange,\n.flatpickr-day.selected.inRange,\n.flatpickr-day.startRange.inRange,\n.flatpickr-day.endRange.inRange,\n.flatpickr-day.selected:focus,\n.flatpickr-day.startRange:focus,\n.flatpickr-day.endRange:focus,\n.flatpickr-day.selected:hover,\n.flatpickr-day.startRange:hover,\n.flatpickr-day.endRange:hover,\n.flatpickr-day.selected.prevMonthDay,\n.flatpickr-day.startRange.prevMonthDay,\n.flatpickr-day.endRange.prevMonthDay,\n.flatpickr-day.selected.nextMonthDay,\n.flatpickr-day.startRange.nextMonthDay,\n.flatpickr-day.endRange.nextMonthDay {\n  background: #569ff7;\n  -webkit-box-shadow: none;\n          box-shadow: none;\n  color: #fff;\n  border-color: #569ff7;\n}\n.flatpickr-day.selected.startRange,\n.flatpickr-day.startRange.startRange,\n.flatpickr-day.endRange.startRange {\n  border-radius: 50px 0 0 50px;\n}\n.flatpickr-day.selected.endRange,\n.flatpickr-day.startRange.endRange,\n.flatpickr-day.endRange.endRange {\n  border-radius: 0 50px 50px 0;\n}\n.flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),\n.flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),\n.flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {\n  -webkit-box-shadow: -10px 0 0 #569ff7;\n          box-shadow: -10px 0 0 #569ff7;\n}\n.flatpickr-day.selected.startRange.endRange,\n.flatpickr-day.startRange.startRange.endRange,\n.flatpickr-day.endRange.startRange.endRange {\n  border-radius: 50px;\n}\n.flatpickr-day.inRange {\n  border-radius: 0;\n  -webkit-box-shadow: -5px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;\n          box-shadow: -5px 0 0 #e6e6e6, 5px 0 0 #e6e6e6;\n}\n.flatpickr-day.flatpickr-disabled,\n.flatpickr-day.flatpickr-disabled:hover,\n.flatpickr-day.prevMonthDay,\n.flatpickr-day.nextMonthDay,\n.flatpickr-day.notAllowed,\n.flatpickr-day.notAllowed.prevMonthDay,\n.flatpickr-day.notAllowed.nextMonthDay {\n  color: rgba(57,57,57,0.3);\n  background: transparent;\n  border-color: transparent;\n  cursor: default;\n}\n.flatpickr-day.flatpickr-disabled,\n.flatpickr-day.flatpickr-disabled:hover {\n  cursor: not-allowed;\n  color: rgba(57,57,57,0.1);\n}\n.flatpickr-day.week.selected {\n  border-radius: 0;\n  -webkit-box-shadow: -5px 0 0 #569ff7, 5px 0 0 #569ff7;\n          box-shadow: -5px 0 0 #569ff7, 5px 0 0 #569ff7;\n}\n.flatpickr-day.hidden {\n  visibility: hidden;\n}\n.rangeMode .flatpickr-day {\n  margin-top: 1px;\n}\n.flatpickr-weekwrapper {\n  float: left;\n}\n.flatpickr-weekwrapper .flatpickr-weeks {\n  padding: 0 12px;\n  -webkit-box-shadow: 1px 0 0 #e6e6e6;\n          box-shadow: 1px 0 0 #e6e6e6;\n}\n.flatpickr-weekwrapper .flatpickr-weekday {\n  float: none;\n  width: 100%;\n  line-height: 28px;\n}\n.flatpickr-weekwrapper span.flatpickr-day,\n.flatpickr-weekwrapper span.flatpickr-day:hover {\n  display: block;\n  width: 100%;\n  max-width: none;\n  color: rgba(57,57,57,0.3);\n  background: transparent;\n  cursor: default;\n  border: none;\n}\n.flatpickr-innerContainer {\n  display: block;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  overflow: hidden;\n}\n.flatpickr-rContainer {\n  display: inline-block;\n  padding: 0;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n.flatpickr-time {\n  text-align: center;\n  outline: 0;\n  display: block;\n  height: 0;\n  line-height: 40px;\n  max-height: 40px;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  overflow: hidden;\n  display: -webkit-box;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n}\n.flatpickr-time:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n.flatpickr-time .numInputWrapper {\n  -webkit-box-flex: 1;\n  -webkit-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  width: 40%;\n  height: 40px;\n  float: left;\n}\n.flatpickr-time .numInputWrapper span.arrowUp:after {\n  border-bottom-color: #393939;\n}\n.flatpickr-time .numInputWrapper span.arrowDown:after {\n  border-top-color: #393939;\n}\n.flatpickr-time.hasSeconds .numInputWrapper {\n  width: 26%;\n}\n.flatpickr-time.time24hr .numInputWrapper {\n  width: 49%;\n}\n.flatpickr-time input {\n  background: transparent;\n  -webkit-box-shadow: none;\n          box-shadow: none;\n  border: 0;\n  border-radius: 0;\n  text-align: center;\n  margin: 0;\n  padding: 0;\n  height: inherit;\n  line-height: inherit;\n  color: #393939;\n  font-size: 14px;\n  position: relative;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  -webkit-appearance: textfield;\n  -moz-appearance: textfield;\n  appearance: textfield;\n}\n.flatpickr-time input.flatpickr-hour {\n  font-weight: bold;\n}\n.flatpickr-time input.flatpickr-minute,\n.flatpickr-time input.flatpickr-second {\n  font-weight: 400;\n}\n.flatpickr-time input:focus {\n  outline: 0;\n  border: 0;\n}\n.flatpickr-time .flatpickr-time-separator,\n.flatpickr-time .flatpickr-am-pm {\n  height: inherit;\n  float: left;\n  line-height: inherit;\n  color: #393939;\n  font-weight: bold;\n  width: 2%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-align-self: center;\n      -ms-flex-item-align: center;\n          align-self: center;\n}\n.flatpickr-time .flatpickr-am-pm {\n  outline: 0;\n  width: 18%;\n  cursor: pointer;\n  text-align: center;\n  font-weight: 400;\n}\n.flatpickr-time input:hover,\n.flatpickr-time .flatpickr-am-pm:hover,\n.flatpickr-time input:focus,\n.flatpickr-time .flatpickr-am-pm:focus {\n  background: #eee;\n}\n.flatpickr-input[readonly] {\n  cursor: pointer;\n}\n@-webkit-keyframes fpFadeInDown {\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -20px, 0);\n            transform: translate3d(0, -20px, 0);\n  }\n  to {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n@keyframes fpFadeInDown {\n  from {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -20px, 0);\n            transform: translate3d(0, -20px, 0);\n  }\n  to {\n    opacity: 1;\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n", ""]);
+
+// exports
+
+
+/***/ })
+
+}]);

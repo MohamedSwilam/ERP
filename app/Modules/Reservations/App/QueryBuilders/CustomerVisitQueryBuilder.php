@@ -41,6 +41,7 @@ class CustomerVisitQueryBuilder extends QueryBuilder
                     'end_time',
                     'visit_status_id',
                 )),
+                AllowedFilter::scope('status'),
             ])
             ->allowedSorts([
                 'room_id',

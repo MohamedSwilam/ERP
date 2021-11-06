@@ -43,6 +43,9 @@ const router = new VueRouter({
         ],
       },
     },
+    // =============================================================================
+    // CALENDAR ROUTES
+    // =============================================================================
     {
       path: '/calendar',
       name: 'calendar',
@@ -53,6 +56,26 @@ const router = new VueRouter({
         breadcrumb: [
           {
             text: 'Calendar',
+            active: true,
+          },
+        ],
+      },
+    },
+    {
+      path: '/calendar/create-visit',
+      name: 'create-visit',
+      beforeEnter: guard,
+      component: () => import('@/views/visit/Create.vue'),
+      meta: {
+        pageTitle: 'Create Visit',
+        breadcrumb: [
+          {
+            text: 'Calendar',
+            to: '/calendar',
+            active: false,
+          },
+          {
+            text: 'Create Visit',
             active: true,
           },
         ],

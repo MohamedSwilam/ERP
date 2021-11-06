@@ -30,6 +30,12 @@
                   alt="logo"
                 />
               </span>
+              <h2 class="brand-text">
+                <b-img
+                  :src="require('@/assets/images/logo/name.png')"
+                  alt="logo-name"
+                />
+              </h2>
             </b-link>
           </li>
 
@@ -157,9 +163,13 @@ export default {
 <style lang="scss">
 @import "~@core/scss/base/core/menu/menu-types/vertical-menu.scss";
 .main-menu .navbar-header .navbar-brand {
-    margin-top: -10px;
+    margin-top: 10px;
+    margin-left: -5px;
 }
 .main-menu .navbar-header .navbar-brand .brand-logo img {
-    max-width: 160px;
+    max-width: 50px;
+}
+.main-menu .navbar-header .navbar-brand .brand-text img {
+    max-width: 120px;
 }
 </style>

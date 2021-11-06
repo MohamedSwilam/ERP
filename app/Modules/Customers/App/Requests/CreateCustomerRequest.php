@@ -27,11 +27,11 @@ class CreateCustomerRequest extends FormRequest
             'name' => 'required',
             'phone' => 'required',
             'email' => [
-                'required',
+                'nullable',
                 'email',
                 'unique:customers,email',
             ],
-            'national_id' => 'required',
+            'national_id' => 'nullable',
             'date_of_birth' => 'required',
             'address' => 'required',
             'customer_type_id' => [

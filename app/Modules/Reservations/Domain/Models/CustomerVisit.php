@@ -2,6 +2,7 @@
 
 namespace App\Modules\Reservations\Domain\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -43,5 +44,9 @@ class CustomerVisit extends Model
      */
     public function visitStatus(): BelongsTo {
         return $this->belongsTo(VisitStatus::class);
+    }
+
+    public function scopeStatus(Builder $query, string $value) {
+        return $query->whereIn('visit_status_id', explode('-', $value));
     }
 }

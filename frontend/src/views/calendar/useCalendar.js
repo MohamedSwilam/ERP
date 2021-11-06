@@ -212,7 +212,7 @@ export default function userCalendar() {
       },
     }).then(() => {
       // eslint-disable-next-line no-use-before-define
-      refetchEvents()
+      // refetchEvents()
     }).catch(error => {
       toast({
         component: ToastificationContent,
@@ -294,11 +294,23 @@ export default function userCalendar() {
     //       },
     //     })
     //   })
-    console.log('==========>', info)
+
+    const statuses = selectedCalendars.value.map(status => {
+      switch (status) {
+        case 'Canceled':
+          return 3
+        case 'Booking':
+          return 1
+        case 'Completed':
+          return 2
+        default:
+          return 'x'
+      }
+    }).join('-')
+    console.log('==========>', statuses)
     store
-      .dispatch('visits/browse', '')
+      .dispatch('visits/browse', `?paginate=1000&page=1&sort=-date&filter[status]=${statuses}`)
       .then(response => {
-        console.log('HEREEEEEEEEEEEE', response.data.data[0].date)
         const visits = response.data.data.map(visit => ({
           allDay: false,
           start: new Date(`${visit.date} ${visit.start_time}`),
@@ -324,9 +336,7 @@ export default function userCalendar() {
           rooms: visit.bookable ? visit?.bookable?.package?.rooms : [],
           customers: visit.bookable ? visit?.bookable?.customers : [],
         }))
-        console.log('+++++++++========> ', visits)
-
-        successCallback(visits)
+        successCallback(statuses ? visits : [])
       })
       .catch(() => {
         toast({

@@ -27,6 +27,7 @@ class BuffetOrderQueryBuilder extends QueryBuilder
                     'customer_id',
                     'discount',
                 )),
+                AllowedFilter::scope('customer_filter'),
             ])
             ->allowedSorts([
                 'customer_id',

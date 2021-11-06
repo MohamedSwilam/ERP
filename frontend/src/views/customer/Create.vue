@@ -91,7 +91,7 @@
                       >
                         <validation-provider
                           v-slot="{ errors }"
-                          rules="required|email"
+                          rules="email"
                           name="Email"
                           vid="email"
                         >
@@ -189,7 +189,7 @@
                         <validation-provider
                           v-slot="{ errors }"
                           name="National Id"
-                          rules="required|length:14"
+                          rules="length:14"
                         >
                           <b-input-group :class="errors.length === 0 ? '' : 'is-invalid'">
                             <b-input-group-prepend is-text>

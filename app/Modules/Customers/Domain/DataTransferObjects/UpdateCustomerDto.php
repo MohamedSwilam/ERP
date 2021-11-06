@@ -15,9 +15,9 @@ class UpdateCustomerDto extends DataTransferObject
 
     public string $phone;
 
-    public string $email;
+    public ?string $email;
 
-    public string $national_id;
+    public ?string $national_id;
 
     public string $date_of_birth;
 

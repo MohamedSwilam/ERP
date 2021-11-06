@@ -7,12 +7,12 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
 
-  <title>Tktbosherp</title>
+  <title>Tktbosh</title>
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset(mix('css/app.css')) }}">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="{{ asset('images/logo/favicon.png') }}">
+  <link rel="shortcut icon" href="{{ asset('images/logo/icon.png') }}">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
 </head>
 <body>
